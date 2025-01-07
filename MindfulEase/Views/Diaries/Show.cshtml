@@ -1,0 +1,61 @@
+﻿@model MindfulEase.Models.Diary
+
+@{
+    ViewBag.Title = "Diary Entry";
+}
+
+<div class="container-fluid" style="background-image: url('@Url.Content("~/img/background1.png")') !important; background-size: cover !important; background-position: center !important; min-height: 100vh; position: relative; z-index: 1;">
+    <div class="row justify-content-center align-items-center" style="min-height: 100vh;">
+        <!-- Centered Column with Entry Display -->
+        <div class="col-md-6">
+            <section class="p-4 shadow-sm rounded" style="background-color: rgba(255, 255, 255, 0.8)">
+                <div style="position: relative; margin-bottom: 20px;">
+                    <a href="@Url.Action("New", "Diaries")" style="font-size: 1.2em; color: #01baa3; text-decoration: none;">
+                        👈 Back
+                    </a>
+                </div>
+                <h2 class="text-center" style="color: #01baa3;">Diary Entry</h2>
+                <hr />
+                <p class="text-center" style="font-size: 1.1em; color: #666;">
+                    Here is what you wrote on @Model.EntryDate.ToString("yyyy-MM-dd").
+                </p>
+
+                <!-- Diary Content -->
+                <div class="mb-3">
+                    <label class="form-label fw-bold" style="color: #01baa3;">Content</label>
+                    <p class="form-control" style="height: auto; border-radius: 30px; background-color: rgba(255, 255, 255, 0.8);">
+                        @Model.Content
+                    </p>
+                </div>
+
+                <!-- Date of Entry -->
+                <div class="mb-3">
+                    <label class="form-label fw-bold" style="color: #01baa3;">Date</label>
+                    <p class="form-control" style="border-radius: 30px; background-color: rgba(255, 255, 255, 0.8);">
+                        @Model.EntryDate.ToString("yyyy-MM-dd")
+                    </p>
+                </div>
+
+                <!-- Action Buttons -->
+
+
+                <div class="text-center mt-4">
+                    <!-- Edit Button -->
+                    <a class="btn btn-warning" href="/Diaries/Edit/@Model.Id" style="font-size: 1.2em; padding: 10px 30px; border-radius: 30px; color: white;">
+                        Edit Entry
+                    </a>
+                </div>
+
+                <div class="text-center mt-4">
+                    <!-- Delete Button -->
+                    <form method="post" action="/Diaries/Delete/@Model.Id">
+
+                        <button class="btn btn-danger" type="submit" style="font-size: 1.2em; padding: 10px 30px; border-radius: 30px; color: white;">Delete</button>
+
+                    </form>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+

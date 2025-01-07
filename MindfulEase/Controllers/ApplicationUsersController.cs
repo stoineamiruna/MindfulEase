@@ -64,27 +64,6 @@ namespace MindfulEase.Controllers
             return View();
         }
 
-        //LEADERBOARD
-        public IActionResult Leaderboard(string search)
-        {
-            SetAccessRights();
-            var users = db.ApplicationUsers.Where(u => !string.IsNullOrEmpty(u.FirstName) && !string.IsNullOrEmpty(u.LastName)); // Convertim DbSet în interogare
-
-            if (!string.IsNullOrEmpty(search))
-            {
-                // Cautăm după nume sau prenume
-                users = users.Where(a => a.FirstName.Contains(search) || a.LastName.Contains(search));
-            }
-
-            ViewBag.Users = users.ToList(); // Obținem lista completă de utilizatori
-            ViewBag.SearchString = search;
-            if (TempData.ContainsKey("message"))
-            {
-                ViewBag.Message = TempData["message"];
-                ViewBag.Alert = TempData["messageType"];
-            }
-            return View();
-        }
 
 
 
@@ -231,7 +210,9 @@ namespace MindfulEase.Controllers
 
             if (user.Id == _userManager.GetUserId(User) || User.IsInRole("Admin") || User.IsInRole("Moderator"))
             {
-
+                // Delete associated diary entries
+                var diariesToDelete = db.Diaries.Where(d => d.UserId == user.Id).ToList();
+                db.Diaries.RemoveRange(diariesToDelete);
                 db.ApplicationUsers.Remove(user);
                 TempData["message"] = "Your profile has been deleted.";
                 TempData["messageType"] = "alert-success";

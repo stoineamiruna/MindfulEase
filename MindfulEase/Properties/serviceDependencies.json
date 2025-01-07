@@ -2,7 +2,7 @@
   "dependencies": {
     "mssql2": {
       "type": "mssql",
-      "connectionId": "MindfulEaseV1"
+      "connectionId": "MindfulEaseV2"
     }
   }
 }
