@@ -14,7 +14,6 @@ namespace MindfulEase.Models
         //[Required(ErrorMessage = "Last name is required")]
         //[StringLength(100, ErrorMessage = "Last name cannot have more than 100 characters")]
         public string? LastName { get; set; }
-        public int? ReputationPoints { get; set; }
         public string? EmailAddress { get; set; }
 
         // [Required(ErrorMessage = "Data nașterii este obligatorie.")]
@@ -22,6 +21,27 @@ namespace MindfulEase.Models
 
         //[Required(ErrorMessage = "Description is required")]
         public string? Description { get; set; }
+
+        // Properties for therapist-specific information
+        [Required(ErrorMessage = "Please specify if the user is a therapist.")]
+        public bool? IsTherapist { get; set; } // Indicates if the user is a therapist
+
+        [Url(ErrorMessage = "Please provide a valid URL for the profile picture.")]
+        public string? ProfilePicture { get; set; } // Path or URL to profile picture
+
+        [StringLength(200, ErrorMessage = "Studies information cannot exceed 200 characters.")]
+        public string? Studies { get; set; } // Education or qualifications
+
+        [Phone(ErrorMessage = "Please enter a valid phone number.")]
+        public string? PhoneNumber { get; set; } // Phone number of the therapist
+
+        public string? BackgroundColor { get; set; } // Preferred background color for profile
+
+        [Range(1, 5, ErrorMessage = "Rating must be between 1 and 5.")]
+        public double? Rating { get; set; } // Rating between 1 and 5
+
+        [Range(0, int.MaxValue, ErrorMessage = "Reviews count cannot be negative.")]
+        public int? NumberOfReviews { get; set; } // Number of reviews received
 
         // Relații One-to-Many
         public ICollection<Diary> Diaries { get; set; }
