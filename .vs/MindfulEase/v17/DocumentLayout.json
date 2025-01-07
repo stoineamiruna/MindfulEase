@@ -94,8 +94,7 @@
               "RelativeToolTip": "MindfulEase\\Views\\ApplicationUsers\\EditTherapist.cshtml",
               "ViewState": "AQIAABoAAAAAAAAAAAAAACYAAAAsAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-01-07T16:09:08.531Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-07T16:09:08.531Z"
             },
             {
               "$type": "Document",
@@ -107,8 +106,7 @@
               "RelativeToolTip": "MindfulEase\\Views\\ApplicationUsers\\NewTherapist.cshtml",
               "ViewState": "AQIAABoAAAAAAAAAAAAYwCAAAACDAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-01-07T16:08:01.068Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-07T16:08:01.068Z"
             },
             {
               "$type": "Document",
@@ -117,8 +115,7 @@
               "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/MindfulEaseV1/True/SqlTable/dbo.AspNetUsers.sql",
               "ToolTip": "dbo.AspNetUsers [Data]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2025-01-07T13:14:30.027Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-07T13:14:30.027Z"
             },
             {
               "$type": "Document",
@@ -130,8 +127,7 @@
               "RelativeToolTip": "MindfulEase\\Views\\Shared\\_Layout.cshtml",
               "ViewState": "AQIAABsAAAAAAAAAAAAuwCYAAAAhAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-01-06T18:48:12.848Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-06T18:48:12.848Z"
             },
             {
               "$type": "Document",
@@ -143,8 +139,7 @@
               "RelativeToolTip": "MindfulEase\\wwwroot\\css\\site.css",
               "ViewState": "AQIAADAAAAAAAAAAAAAqwDkAAABQAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-01-06T18:45:35.238Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-06T18:45:35.238Z"
             },
             {
               "$type": "Document",
@@ -156,8 +151,7 @@
               "RelativeToolTip": "MindfulEase\\Views\\Home\\Index.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAGAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-01-06T18:41:59.57Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-06T18:41:59.57Z"
             },
             {
               "$type": "Document",
@@ -182,8 +176,7 @@
               "RelativeToolTip": "MindfulEase\\Views\\ApplicationUsers\\Edit.cshtml",
               "ViewState": "AQIAABgAAAAAAAAAAAAmwCUAAAB+AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-01-06T16:11:10.804Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-06T16:11:10.804Z"
             },
             {
               "$type": "Document",
@@ -195,8 +188,7 @@
               "RelativeToolTip": "MindfulEase\\Views\\ApplicationUsers\\Show.cshtml",
               "ViewState": "AQIAABsAAAAAAAAAAAAAACYAAABTAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-01-06T16:09:35.592Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-06T16:09:35.592Z"
             },
             {
               "$type": "Document",
@@ -208,8 +200,7 @@
               "RelativeToolTip": "MindfulEase\\Views\\ApplicationUsers\\New.cshtml",
               "ViewState": "AQIAADIAAAAAAAAAAAAYwDgAAAAaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-01-06T16:08:51.167Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-06T16:08:51.167Z"
             },
             {
               "$type": "Document",
@@ -221,8 +212,7 @@
               "RelativeToolTip": "MindfulEase\\Controllers\\ApplicationUsersController.cs",
               "ViewState": "AQIAACsAAAAAAAAAAAAIwC4AAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-06T15:59:17.83Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-06T15:59:17.83Z"
             },
             {
               "$type": "Document",
@@ -234,8 +224,7 @@
               "RelativeToolTip": "MindfulEase\\Models\\ApplicationUser.cs",
               "ViewState": "AQIAAA0AAAAAAAAAAAAAADAAAAA6AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-17T13:13:26.612Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-17T13:13:26.612Z"
             }
           ]
         },
