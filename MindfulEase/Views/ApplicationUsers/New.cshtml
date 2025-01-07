@@ -1,0 +1,67 @@
+﻿@model MindfulEase.Models.ApplicationUser
+
+@{
+    ViewBag.Title = "Create Your Profile";
+}
+
+<div class="container-fluid" style="background-image: url('@Url.Content("~/img/NewProfile.jpg")') !important; background-size: cover !important; background-position: center !important; height: 100vh;">
+
+    <div class="row justify-content-start align-items-center" style="height: 100%;">
+
+        <!-- Coloană pentru formularul din stânga -->
+        <div class="col-md-6">
+            <section class="p-4 shadow-sm rounded" style="background-color: rgba(240, 248, 255, 0.7)">
+                <h2 class="text-center newProfile" style="color: #01baa3" >Create Your Profile</h2>
+                <hr />
+                <p class="text-center" style="font-size: 1.1em; color: #666;">
+                    Please share a bit about yourself to get started on your wellness journey. Your profile helps us to tailor experiences for you.
+                </p>
+
+                @using (Html.BeginForm(actionName: "New", controllerName: "ApplicationUsers", method: FormMethod.Post))
+                {
+                    <!-- First Name -->
+                    <div class="mb-3">
+                        <label for="FirstName" class="form-label fw-bold" style="color: #01baa3">First Name</label>
+                        @Html.TextBox("FirstName", null, new { @class = "form-control", placeholder = "Enter your first name", style = "border-radius: 30px;" })
+                    </div>
+
+                    <!-- Last Name -->
+                    <div class="mb-3">
+                        <label for="LastName" class="form-label fw-bold" style="color: #01baa3">Last Name</label>
+                        @Html.TextBox("LastName", null, new { @class = "form-control", placeholder = "Enter your last name",style = "border-radius: 30px;" })
+                    </div>
+
+                    <!-- Description -->
+                    <div class="mb-3">
+                        <label for="Description" class="form-label fw-bold" style="color: #01baa3">Tell us about yourself 𓂃🖊</label>
+                        @Html.TextArea("Description", null, new { @class = "form-control", placeholder = "A short description of yourself", style = "height: 150px; border-radius: 30px; " })
+                    </div>
+
+                    <!-- Birthday -->
+                    <div class="mb-3">
+                        <label for="Birthday" class="form-label fw-bold" style="color: #01baa3">Birthday 🎉</label>
+                        <input type="date" name="Birthday" id="Birthday" class="form-control" style="border-radius: 30px;" value="@Model.Birthday?.ToString("yyyy-MM-dd")" />
+                        @Html.ValidationMessageFor(m => m.Birthday, null, new { @class = "text-danger" })
+                    </div>
+                    <!-- Button -->
+                    <div class="text-center">
+                        <button class="btn btn-info" type="submit" style="font-size: 1.2em; padding: 10px 30px; border-radius: 30px; color: white">Create My Profile</button>
+                    </div>
+
+                    <!-- Button to ask if the user wants to be a therapist -->
+                    <div class="text-center mt-4">
+  
+                        <a class="btn btn-secondary" href="/ApplicationUsers/NewTherapist" style="font-size: 1.2em; padding: 10px 30px; border-radius: 30px;">
+                            Want to be a therapist? Create your therapist profile
+                        </a>
+                    </div>
+
+                }
+            </section>
+        </div>
+    </div>
+</div>
+
+<br />
+<br />
+
