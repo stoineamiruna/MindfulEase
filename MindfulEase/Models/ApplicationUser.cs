@@ -44,16 +44,16 @@ namespace MindfulEase.Models
         public int? NumberOfReviews { get; set; } // Number of reviews received
 
         // Relații One-to-Many
-        public ICollection<Diary> Diaries { get; set; }
-        public ICollection<WeeklyReport> WeeklyReports { get; set; }
-        public ICollection<Routine> Routines { get; set; }
-        public ICollection<Statistics> Statistics { get; set; }
-        public ICollection<Reward> Rewards { get; set; }
+        public ICollection<Diary>? Diaries { get; set; }
+        public ICollection<WeeklyReport>? WeeklyReports { get; set; }
+        public ICollection<Routine>? Routines { get; set; }
+        public ICollection<Statistics>? Statistics { get; set; }
+        public ICollection<Reward>? Rewards { get; set; }
 
         // Relație Many-to-Many
-        public ICollection<ApplicationUserTherapeuticGame> TherapeuticGames { get; set; }
-        public ICollection<ApplicationUserEmotion> Emotions { get; set; }
-        public ICollection<ApplicationUserQuiz> Quizzes { get; set; }
+        public ICollection<ApplicationUserTherapeuticGame>? TherapeuticGames { get; set; }
+        public ICollection<ApplicationUserEmotion>? Emotions { get; set; }
+        public ICollection<ApplicationUserQuiz>? Quizzes { get; set; }
 
         [NotMapped]
         public IEnumerable<SelectListItem>? AllRoles { get; set; }

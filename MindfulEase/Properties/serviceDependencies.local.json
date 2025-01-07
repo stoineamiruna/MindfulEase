@@ -5,7 +5,7 @@
       "secretStore": null,
       "resourceId": null,
       "type": "mssql.local",
-      "connectionId": "MindfulEaseV1"
+      "connectionId": "MindfulEaseV2"
     }
   }
 }

@@ -1,0 +1,77 @@
+﻿@model MindfulEase.Models.Diary
+
+@{
+    ViewBag.Title = "Diary";
+}
+
+<div class="container-fluid" style="background-image: url('@Url.Content("~/img/background1.png")') !important; background-size: cover !important; background-position: center !important; min-height: 100vh; background-repeat: repeat-y; position: relative; z-index: 1;">
+    <div class="row justify-content-center align-items-center" style="min-height: 100vh;">
+        <!-- Centered Column with form -->
+        <div class="col-md-6">
+            <section class="p-4 shadow-sm rounded" style="background-color: rgba(255, 255, 255, 0.8)">
+                <h2 class="text-center" style="color: #01baa3;">Diary</h2>
+                <hr />
+                <p class="text-center" style="font-size: 1.1em; color: #666;">
+                    Take a moment to reflect and write your thoughts. Your journey starts here. ✍
+                </p>
+
+                @using (Html.BeginForm(actionName: "New", controllerName: "Diaries", method: FormMethod.Post))
+                {
+                    <!-- Diary Content -->
+                    <div class="mb-3">
+                        <label for="Content" class="form-label fw-bold" style="color: #01baa3">How was your day?</label>
+                        @Html.TextArea("Content", null, new { @class = "form-control", placeholder = "Write your thoughts here...", style = "height: 200px; border-radius: 30px;" })
+                    </div>
+
+                    <!-- Date of Entry -->
+                    <div class="mb-3">
+                        <label for="EntryDate" class="form-label fw-bold" style="color: #01baa3">Date</label>
+                        <input type="date" name="EntryDate" id="EntryDate" class="form-control" style="border-radius: 30px;" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="text-center">
+                        <button class="btn btn-info" type="submit" style="font-size: 1.2em; padding: 10px 30px; border-radius: 30px; color: white">
+                            Save My Entry
+                        </button>
+                    </div>
+                }
+            </section>
+        </div>
+    </div>
+
+    <!-- Display User's Previous Diary Entries -->
+    @if (ViewBag.UserDiaries != null && ViewBag.UserDiaries.Count > 0)
+    {
+        <section class="mt-4">
+            <h3 class="text-center" style="color: #01baa3;">Your Previous Entries</h3>
+            <div class="d-flex flex-column align-items-center">
+                @foreach (var diary in ViewBag.UserDiaries)
+                {
+                    <div class="d-flex align-items-center mb-3" style="width: 80%; max-width: 700px;">
+                        <div class="card w-100" style="border-radius: 15px; background-color: rgba(255, 255, 255, 0.8);">
+                            <div class="card-body d-flex justify-content-between align-items-center">
+                                <div>
+                                <p class="fw-bold" style="color: #01baa3;">Page @diary.Id</p>
+                            </div>
+                                <div>
+                                    <p class="fw-bold" style="color: #01baa3;">@diary.EntryDate.ToString("yyyy-MM-dd")</p>
+                                </div>
+                                <div>
+                                    <a href="@Url.Action("Show", "Diaries", new { id = diary.Id })" class="btn btn-info" style="border-radius: 25px;">View Entry</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </section>
+    }
+    else
+    {
+        <p class="text-center" style="color: #666;">You don't have any diary entries yet. Start by writing your first entry!</p>
+    }
+</div>
+
+<br />
+<br />
