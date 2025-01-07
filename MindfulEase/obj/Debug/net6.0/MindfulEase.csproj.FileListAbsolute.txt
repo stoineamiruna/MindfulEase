@@ -76,3 +76,4 @@ C:\Users\Miru\Desktop\Licenta\MindfulEase\MindfulEase\obj\Debug\net6.0\MindfulEa
 C:\Users\Miru\Desktop\Licenta\MindfulEase\MindfulEase\obj\Debug\net6.0\MindfulEase.genruntimeconfig.cache
 C:\Users\Miru\Desktop\Licenta\MindfulEase\MindfulEase\obj\Debug\net6.0\ref\MindfulEase.dll
 C:\Users\Miru\Desktop\Licenta\MindfulEase\MindfulEase\obj\Debug\net6.0\MindfulEase.sourcelink.json
+C:\Users\Miru\Desktop\Licenta\MindfulEase\MindfulEase\bin\Debug\net6.0\Newtonsoft.Json.dll

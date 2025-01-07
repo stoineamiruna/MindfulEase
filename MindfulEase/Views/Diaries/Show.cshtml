@@ -35,7 +35,26 @@
                         @Model.EntryDate.ToString("yyyy-MM-dd")
                     </p>
                 </div>
-
+                <!-- Emotions -->
+                <div class="mb-3">
+                    <label class="form-label fw-bold" style="color: #01baa3;">Associated Emotions</label>
+                    @if (Model.Emotions != null && Model.Emotions.Any())
+                    {
+                        <ul class="list-group">
+                            @foreach (var diaryEmotion in Model.Emotions)
+                            {
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    @diaryEmotion.Emotion.Label
+                                    <span class="badge bg-primary rounded-pill">@diaryEmotion.Score</span>
+                                </li>
+                            }
+                        </ul>
+                    }
+                    else
+                    {
+                        <p class="text-muted">No emotions associated with this entry.</p>
+                    }
+                </div>
                 <!-- Action Buttons -->
 
 
