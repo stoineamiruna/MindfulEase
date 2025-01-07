@@ -33,7 +33,6 @@ namespace MindfulEase.Models
         public string? Studies { get; set; } // Education or qualifications
 
         [Phone(ErrorMessage = "Please enter a valid phone number.")]
-        public string? PhoneNumber { get; set; } // Phone number of the therapist
 
         public string? BackgroundColor { get; set; } // Preferred background color for profile
 
@@ -52,7 +51,6 @@ namespace MindfulEase.Models
 
         // Relație Many-to-Many
         public ICollection<ApplicationUserTherapeuticGame>? TherapeuticGames { get; set; }
-        public ICollection<ApplicationUserEmotion>? Emotions { get; set; }
         public ICollection<ApplicationUserQuiz>? Quizzes { get; set; }
 
         [NotMapped]
