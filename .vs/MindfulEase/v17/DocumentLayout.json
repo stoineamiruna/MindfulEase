@@ -162,6 +162,16 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+<<<<<<< HEAD
+              "Title": "20241217141629_CreareDB.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Data\\Migrations\\20241217141629_CreareDB.cs",
+              "RelativeDocumentMoniker": "MindfulEase\\Data\\Migrations\\20241217141629_CreareDB.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Data\\Migrations\\20241217141629_CreareDB.cs",
+              "RelativeToolTip": "MindfulEase\\Data\\Migrations\\20241217141629_CreareDB.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-17T14:16:30.171Z",
+=======
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Views\\ApplicationUsers\\Index.cshtml",
               "RelativeDocumentMoniker": "MindfulEase\\Views\\ApplicationUsers\\Index.cshtml",
@@ -209,6 +219,7 @@
               "ViewState": "AQIAADIAAAAAAAAAAAAYwDgAAAAaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-01-06T16:08:51.167Z",
+>>>>>>> 9688003fb4913df0ee2962f2c87ddf209ff2fc5e
               "EditorCaption": ""
             },
             {
