@@ -1,0 +1,84 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<div class="img-custom">
+    <!-- Imagine de fundal, începe sub navbar -->
+    <div class="container-fluid" style="background-image: linear-gradient(to bottom, transparent 90%, rgb(255, 255, 255) 100%), url('@Url.Content("~/img/indexUser1.jpg")'); background-size: cover; background-position: center; height: 100vh; margin-top: 56px;">
+
+        <!-- Textul în colțul stâng sus fără fundal -->
+        <div class="position-absolute top-40 start-0 p-4">
+            <h1 class="app-title">Find Therapists</h1>
+            <p class="app-description">Explore a wide range of experienced therapists to begin your wellness journey.</p>
+            <br />
+            <br />
+            <p class="app-description">Below, you can search for therapists based on your preferences.</p>
+            <p class="app-description">Find professionals who match your needs and begin your wellness journey.</p>
+        </div>
+    </div>
+</div>
+<br />
+<hr />
+<!-- Secțiune imagine pattern -->
+<div class="pattern-section"
+     style="background-image: url('@Url.Content("~/img/background1.png")');
+           background-repeat: repeat-y;
+           background-size: cover;
+           background-position: center;
+           min-height: 100vh;">
+    <!-- Conținutul secțiunii -->
+    <section class="p-3" style="padding-top: 100px;">
+        <div class="d-flex justify-content-center mb-4">
+            <form method="GET" class="w-75" style="max-width: 700px; width: 100%; background-color: #f8f9fa; padding: 10px; border-radius: 25px; border: 1px solid #ced4da;">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control"
+                           placeholder="Search topics or keywords" name="search"
+                           value="@ViewBag.SearchString" style="border-radius: 20px;">
+                    <button class="btn btn-outline-primary" type="submit" style="border-radius: 20px;">Search</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <section class="p-3">
+        @if (TempData["message"] != null)
+        {
+            <div class="alert alert-primary p-3 rounded-3 text-center mb-5" role="alert">
+                @ViewBag.Message
+            </div>
+        }
+
+        <div class="d-flex flex-column gap-2 align-content-center justify-content-center align-items-center">
+            @foreach (var user in ViewBag.Users)
+            {
+                <div class="card mb-3" style="max-width: 700px; width: 100%; background-color: @user.BackgroundColor; border-radius: 15px;">
+                    <div class="card-body d-flex align-items-center" style="min-height: 250px;">
+                        <!-- Poza de profil în stânga, mai mare -->
+                        <img src="@user.ProfilePicture" class="card-img-top rounded-circle" alt="@user.FirstName @user.LastName" style="width: 150px; height: 150px; object-fit: cover; margin-right: 20px;">
+
+                        <!-- Informațiile despre utilizator în dreapta -->
+                        <div class="d-flex flex-column justify-content-between" style="flex-grow: 1;">
+                            <h5 class="card-title">@user.FirstName @user.LastName</h5>
+                            <p class="card-text">𓂃🖊 @user.Description</p>
+                            <p class="card-text"><strong>Studies:</strong> 📚 @user.Studies</p>
+
+                            <!-- Rating și Reviews -->
+                            <div class="d-flex justify-content-start align-items-center gap-2">
+                                <span class="badge bg-warning text-dark"><i class="bi bi-star-fill"></i> ⭐ @user.Rating</span>
+                                <span class="badge bg-info"><i class="bi bi-chat-left-dots-fill"></i> 💬 @user.NumberOfReviews</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Buton pentru vizualizarea profilului (plasat la baza cardului, mai rotunjit) -->
+                    <div class="card-footer text-center" style="padding-top: 10px;">
+                        <a href="/ApplicationUsers/Show/@user.Id" class="btn btn-outline-info w-100" style="background-color: rgba(255, 255, 255, 0.7); padding: 10px 2px; border-radius: 25px;">Show Profile</a>
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+</div>
+
+<br />
+<br />

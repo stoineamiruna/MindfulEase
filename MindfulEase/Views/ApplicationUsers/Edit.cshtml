@@ -1,0 +1,59 @@
+﻿@model MindfulEase.Models.ApplicationUser
+@{
+    ViewBag.Title = "Edit";
+}
+
+<div class="container-fluid" style="background-image: url('@Url.Content("~/img/NewProfile.jpg")') !important; background-size: cover !important; background-position: center !important; height: 100vh;">
+    <div class="row justify-content-start align-items-center" style="height: 100%;">
+
+        <!-- Coloană pentru formularul din stânga -->
+        <div class="col-md-6">
+            <section class="p-4 shadow-sm rounded" style="background-color: rgba(240, 248, 255, 0.7)">
+                <h2 class="text-center" style="color: #01baa3">Edit Your Profile</h2>
+                <hr />
+                <p class="text-center" style="font-size: 1.1em; color: #666;">
+                    Update your profile information below to keep your wellness journey on track.
+                </p>
+
+                @using (Html.BeginForm(actionName: "Edit", controllerName: "ApplicationUsers",
+                method: FormMethod.Post,
+                routeValues: new { id = Model.Id }))
+                {
+                    <!-- First Name -->
+                    <div class="mb-3">
+                        <label for="FirstName" class="form-label fw-bold" style="color: #01baa3">First Name</label>
+                        @Html.Editor("FirstName", new { htmlAttributes = new { @class = "form-control", style = "border-radius: 30px;" } })
+                        @Html.ValidationMessageFor(m => m.FirstName, null, new { @class = "text-danger" })
+                    </div>
+
+                    <!-- Last Name -->
+                    <div class="mb-3">
+                        <label for="LastName" class="form-label fw-bold" style="color: #01baa3">Last Name</label>
+                        @Html.Editor("LastName", new { htmlAttributes = new { @class = "form-control", style = "border-radius: 30px;" } })
+                        @Html.ValidationMessageFor(m => m.LastName, null, new { @class = "text-danger" })
+                    </div>
+
+                    <!-- Description -->
+                    <div class="mb-3">
+                        <label for="Description" class="form-label fw-bold" style="color: #01baa3">Tell us about yourself 𓂃🖊</label>
+                        @Html.Editor("Description", new { htmlAttributes = new { @class = "form-control", style = "height: 150px; border-radius: 30px;" } })
+                        @Html.ValidationMessageFor(m => m.Description, null, new { @class = "text-danger" })
+                    </div>
+
+                    <!-- Birthday -->
+                    <div class="mb-3">
+                        <label for="Birthday" class="form-label fw-bold" style="color: #01baa3">Birthday 🎉</label>
+                        @Html.Editor("Birthday", new { htmlAttributes = new { @class = "form-control", style = "border-radius: 30px;" } })
+                        @Html.ValidationMessageFor(m => m.Birthday, null, new { @class = "text-danger" })
+                    </div>
+
+                    <br />
+
+                    <div class="text-center">
+                        <button class="btn btn-info" type="submit" style="font-size: 1.2em; padding: 10px 30px; border-radius: 30px; color: white">Apply Changes</button>
+                    </div>
+                }
+            </section>
+        </div>
+    </div>
+</div>

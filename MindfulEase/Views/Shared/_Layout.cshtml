@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@inject Microsoft.AspNetCore.Identity.UserManager<ApplicationUser> _userManager
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -7,6 +9,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/MindfulEase.styles.css" asp-append-version="true" />
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -23,6 +26,26 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
+                            @{
+                                // Verifică dacă utilizatorul este autentificat
+                                var currentUser = User.Identity.IsAuthenticated ? _userManager.GetUserAsync(User).Result : null;
+
+                                if (currentUser != null && !string.IsNullOrEmpty(currentUser.FirstName))
+                                {
+                                // Dacă utilizatorul are FirstName setat
+                                    <a class="nav-link" href="/ApplicationUsers/Show/@currentUser.Id">Profile</a>
+                                }
+                                else
+                                {
+                                    // Dacă utilizatorul nu are profil complet
+                                    <a class="nav-link" href="/ApplicationUsers/New">Profile</a>
+                                }
+                            }
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="ApplicationUsers" asp-action="Index">Therapists</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                     </ul>
@@ -31,7 +54,7 @@
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div >
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
