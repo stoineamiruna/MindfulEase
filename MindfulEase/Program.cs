@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MindfulEase.Data;
 using MindfulEase.Models;
+using MindfulEase.Services.MindfulEase.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +20,7 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.R
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddHttpClient();  // Register HttpClient for compiler
+builder.Services.AddHttpClient<SentimentAnalysisService>();
 
 var app = builder.Build();
 

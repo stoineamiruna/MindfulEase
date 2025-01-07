@@ -22,7 +22,7 @@ namespace MindfulEase.Data
         public DbSet<Quiz> Quizzes { get; set; }
         public DbSet<ApplicationUserQuiz> ApplicationUserQuizzes { get; set; }
         public DbSet<Emotion> Emotions { get; set; }
-        public DbSet<ApplicationUserEmotion> ApplicationUserEmotions { get; set; }
+        public DbSet<DiaryEmotion> DiaryEmotions { get; set; }
         public DbSet<WeeklyChallenge> WeeklyChallenges { get; set; }
         public DbSet<Statistics> Statistics { get; set; }
         public DbSet<Resource> Resources { get; set; }
@@ -59,18 +59,18 @@ namespace MindfulEase.Data
                 .WithMany(q => q.Users)
                 .HasForeignKey(uq => uq.QuizId);
 
-            // Many-to-Many Relationship: ApplicationUser <-> Emotion
-            modelBuilder.Entity<ApplicationUserEmotion>()
-                .HasKey(ue => new { ue.UserId, ue.EmotionId });
+            // Many-to-Many Relationship: Diary <-> Emotion
+            modelBuilder.Entity<DiaryEmotion>()
+                .HasKey(ue => new { ue.DiaryId, ue.EmotionId });
 
-            modelBuilder.Entity<ApplicationUserEmotion>()
-                .HasOne(ue => ue.User)
+            modelBuilder.Entity<DiaryEmotion>()
+                .HasOne(ue => ue.Diary)
                 .WithMany(u => u.Emotions)
-                .HasForeignKey(ue => ue.UserId);
+                .HasForeignKey(ue => ue.DiaryId);
 
-            modelBuilder.Entity<ApplicationUserEmotion>()
+            modelBuilder.Entity<DiaryEmotion>()
                 .HasOne(ue => ue.Emotion)
-                .WithMany(e => e.Users)
+                .WithMany(e => e.Diaries)
                 .HasForeignKey(ue => ue.EmotionId);
         }
     }

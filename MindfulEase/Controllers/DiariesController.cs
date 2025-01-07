@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MindfulEase.Data;
 using MindfulEase.Models;
+using MindfulEase.Services.MindfulEase.Services;
 
 namespace MindfulEase.Controllers
 {
@@ -11,17 +12,23 @@ namespace MindfulEase.Controllers
     {
         private readonly ApplicationDbContext db;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SentimentAnalysisService _sentimentAnalysisService;
 
-        public DiariesController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
+        public DiariesController(ApplicationDbContext context, UserManager<ApplicationUser> userManager, SentimentAnalysisService sentimentAnalysisService)
         {
             db = context;
             _userManager = userManager;
+            _sentimentAnalysisService = sentimentAnalysisService;
         }
 
         // Show a single diary entry
         public IActionResult Show(int id)
         {
-            var diary = db.Diaries.Include(d => d.User).FirstOrDefault(d => d.Id == id);
+            var diary = db.Diaries
+                .Include(d => d.User)
+                .Include(d => d.Emotions) // Include legătura cu DiaryEmotion
+                .ThenInclude(de => de.Emotion) // Include emoția asociată
+                .FirstOrDefault(d => d.Id == id);
             if (diary == null)
             {
                 TempData["message"] = "Diary entry not found.";
@@ -43,28 +50,91 @@ namespace MindfulEase.Controllers
 
         // Create a new diary entry
         [HttpPost]
-        public IActionResult New(Diary newDiary)
+        [HttpPost]
+        public async Task<IActionResult> New(Diary newDiary)
         {
             if (ModelState.IsValid)
             {
                 var userId = _userManager.GetUserId(User);
                 newDiary.UserId = userId;
                 newDiary.Content = newDiary.Content;
-                newDiary.EntryDate = newDiary.EntryDate; 
-                Console.WriteLine($"Content: {newDiary.Content}, EntryDate: {newDiary.EntryDate}");
+                newDiary.EntryDate = newDiary.EntryDate;
+
                 db.Diaries.Add(newDiary);
-                db.SaveChanges();
+                await db.SaveChangesAsync();
+
+                // Analizează emoțiile folosind serviciul de sentiment analysis
+                var emotions = await _sentimentAnalysisService.AnalyzeEmotionAsync(newDiary.Content);
+                Console.WriteLine("emotion: " + emotions);
+                if (emotions != null)
+                {
+                    if (emotions != null)
+                    {
+                        // Iterăm prin lista de emoții
+                        foreach (var emotion in emotions)
+                        {
+                            // Verificăm dacă elementul poate fi accesat ca un dicționar
+                            if (emotion is IDictionary<string, object> emotionDict)
+                            {
+                
+                                //var emotionInDb = await db.Emotions.FirstOrDefaultAsync(e => e.Label == emotion.label);
+                                // Accesăm valorile cheilor din dicționar
+                                if (emotionDict.TryGetValue("label", out var label) &&
+                                    emotionDict.TryGetValue("score", out var score))
+                                {
+                                    Console.WriteLine($"1Label: {label}, Score: {score}");
+                                }
+                            }
+                            else
+                            {
+                                string label = emotion.label?.ToString();
+                                double score = Convert.ToDouble(emotion.score);
+                                // Dacă este de tip dynamic, accesăm direct proprietățile
+                                Console.WriteLine($"2Label: {emotion.label}, Score: {emotion.score}");
+                                Console.WriteLine($"2Label: {emotion.label.GetType()}, Score: {emotion.score.GetType()}");
+                                Console.WriteLine($"2Label: {label}, Score: {score}");
+
+                                var emotionInDb = await db.Emotions.FirstOrDefaultAsync(e => e.Label == label);
+                                if (emotionInDb == null)
+                                {
+                                    // Dacă emoția nu există în DB, o adăugăm
+                                    emotionInDb = new Emotion {};
+                                    emotionInDb.Label = label;
+                                    db.Emotions.Add(emotionInDb);
+                                    await db.SaveChangesAsync();
+                                }
+
+                                // Creăm legătura între jurnal și emoție
+                                var diaryEmotion = new DiaryEmotion
+                                {
+                                    DiaryId = newDiary.Id,
+                                    EmotionId = emotionInDb.Id,
+                                    Score = score  // Asociem scorul emoției
+                                };
+
+                                db.DiaryEmotions.Add(diaryEmotion);
+                                await db.SaveChangesAsync();
+                            }
+                        }
+                    }
+
+                }
 
                 TempData["message"] = "Diary entry created successfully!";
                 TempData["messageType"] = "alert-success";
                 return RedirectToAction("New");
             }
+
             foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
             {
                 Console.WriteLine(error.ErrorMessage);
             }
+
             return View(newDiary);
         }
+
+
+
 
         // Display the edit form for a diary entry
         [HttpGet]
