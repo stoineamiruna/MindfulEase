@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using MindfulEase.Data;
 using MindfulEase.Models;
 using MindfulEase.Services.MindfulEase.Services;
+using MindfulEase.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,7 +21,9 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.R
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddHttpClient();  // Register HttpClient for compiler
-builder.Services.AddHttpClient<SentimentAnalysisService>();
+builder.Services.AddScoped<RecommendationService>(); // Service-ul depinde de DbContext
+builder.Services.AddScoped<ClusteringService>(); // Service-ul depinde de DbContext
+builder.Services.AddHttpClient<SentimentAnalysisService>(); // Acest serviciu foloseste HTTP
 
 var app = builder.Build();
 

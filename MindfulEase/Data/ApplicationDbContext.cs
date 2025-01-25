@@ -26,6 +26,8 @@ namespace MindfulEase.Data
         public DbSet<WeeklyChallenge> WeeklyChallenges { get; set; }
         public DbSet<Statistics> Statistics { get; set; }
         public DbSet<Resource> Resources { get; set; }
+        public DbSet<ApplicationUserResource> ApplicationUserResources { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -72,6 +74,20 @@ namespace MindfulEase.Data
                 .HasOne(ue => ue.Emotion)
                 .WithMany(e => e.Diaries)
                 .HasForeignKey(ue => ue.EmotionId);
+
+            // Many-to-Many Relationship: ApplicationUser <-> Resource
+            modelBuilder.Entity<ApplicationUserResource>()
+                .HasKey(ue => new { ue.UserId, ue.ResourceId });
+
+            modelBuilder.Entity<ApplicationUserResource>()
+                .HasOne(ue => ue.User)
+                .WithMany(u => u.Resources)
+                .HasForeignKey(ue => ue.UserId);
+
+            modelBuilder.Entity<ApplicationUserResource>()
+                .HasOne(ue => ue.Resource)
+                .WithMany(e => e.Users)
+                .HasForeignKey(ue => ue.ResourceId);
         }
     }
 }

@@ -245,6 +245,24 @@ namespace MindfulEase.Data.Migrations
                     b.ToTable("ApplicationUserQuizzes");
                 });
 
+            modelBuilder.Entity("MindfulEase.Models.ApplicationUserResource", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int?>("ResourceId")
+                        .HasColumnType("int");
+
+                    b.Property<bool?>("IsLiked")
+                        .HasColumnType("bit");
+
+                    b.HasKey("UserId", "ResourceId");
+
+                    b.HasIndex("ResourceId");
+
+                    b.ToTable("ApplicationUserResources");
+                });
+
             modelBuilder.Entity("MindfulEase.Models.ApplicationUserTherapeuticGame", b =>
                 {
                     b.Property<string>("UserId")
@@ -360,11 +378,16 @@ namespace MindfulEase.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("RoutineId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("RoutineId");
 
                     b.ToTable("Resources");
                 });
@@ -406,24 +429,14 @@ namespace MindfulEase.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("DifficultyLevel")
+                    b.Property<int>("ClusterId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Title")
+                    b.Property<string>("RoutineDescription")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Routines");
                 });
@@ -541,6 +554,9 @@ namespace MindfulEase.Data.Migrations
                     b.Property<DateTime?>("Birthday")
                         .HasColumnType("datetime2");
 
+                    b.Property<int?>("ClusterId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
@@ -643,6 +659,25 @@ namespace MindfulEase.Data.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("MindfulEase.Models.ApplicationUserResource", b =>
+                {
+                    b.HasOne("MindfulEase.Models.Resource", "Resource")
+                        .WithMany("Users")
+                        .HasForeignKey("ResourceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MindfulEase.Models.ApplicationUser", "User")
+                        .WithMany("Resources")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Resource");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("MindfulEase.Models.ApplicationUserTherapeuticGame", b =>
                 {
                     b.HasOne("MindfulEase.Models.TherapeuticGame", "Game")
@@ -690,21 +725,17 @@ namespace MindfulEase.Data.Migrations
                     b.Navigation("Emotion");
                 });
 
+            modelBuilder.Entity("MindfulEase.Models.Resource", b =>
+                {
+                    b.HasOne("MindfulEase.Models.Routine", null)
+                        .WithMany("Resources")
+                        .HasForeignKey("RoutineId");
+                });
+
             modelBuilder.Entity("MindfulEase.Models.Reward", b =>
                 {
                     b.HasOne("MindfulEase.Models.ApplicationUser", "User")
                         .WithMany("Rewards")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("MindfulEase.Models.Routine", b =>
-                {
-                    b.HasOne("MindfulEase.Models.ApplicationUser", "User")
-                        .WithMany("Routines")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -749,6 +780,16 @@ namespace MindfulEase.Data.Migrations
                     b.Navigation("Users");
                 });
 
+            modelBuilder.Entity("MindfulEase.Models.Resource", b =>
+                {
+                    b.Navigation("Users");
+                });
+
+            modelBuilder.Entity("MindfulEase.Models.Routine", b =>
+                {
+                    b.Navigation("Resources");
+                });
+
             modelBuilder.Entity("MindfulEase.Models.TherapeuticGame", b =>
                 {
                     b.Navigation("Users");
@@ -760,9 +801,9 @@ namespace MindfulEase.Data.Migrations
 
                     b.Navigation("Quizzes");
 
-                    b.Navigation("Rewards");
+                    b.Navigation("Resources");
 
-                    b.Navigation("Routines");
+                    b.Navigation("Rewards");
 
                     b.Navigation("Statistics");
 

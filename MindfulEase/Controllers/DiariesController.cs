@@ -49,7 +49,7 @@ namespace MindfulEase.Controllers
         }
 
         // Create a new diary entry
-        [HttpPost]
+
         [HttpPost]
         public async Task<IActionResult> New(Diary newDiary)
         {
