@@ -9,6 +9,7 @@ namespace MindfulEase.Models
         public string Title { get; set; }
         public string Link { get; set; }
         public string ResourceType { get; set; } // Podcast, articol, ghid etc.
+        public virtual ICollection<ApplicationUserResource>? Users { get; set; }
     }
 
 }

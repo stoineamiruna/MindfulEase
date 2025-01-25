@@ -42,10 +42,10 @@ namespace MindfulEase.Models
         [Range(0, int.MaxValue, ErrorMessage = "Reviews count cannot be negative.")]
         public int? NumberOfReviews { get; set; } // Number of reviews received
 
+        public int? ClusterId { get; set; }
         // Relații One-to-Many
         public ICollection<Diary>? Diaries { get; set; }
         public ICollection<WeeklyReport>? WeeklyReports { get; set; }
-        public ICollection<Routine>? Routines { get; set; }
         public ICollection<Statistics>? Statistics { get; set; }
         public ICollection<Reward>? Rewards { get; set; }
 
@@ -55,6 +55,7 @@ namespace MindfulEase.Models
 
         [NotMapped]
         public IEnumerable<SelectListItem>? AllRoles { get; set; }
+        public ICollection<ApplicationUserResource>? Resources { get; set; }
 
     }
 }

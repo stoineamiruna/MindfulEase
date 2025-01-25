@@ -1,0 +1,53 @@
+﻿@model MindfulEase.Models.Resource
+
+@{
+    ViewBag.Title = "Edit Resource";
+}
+
+<div class="container-fluid" style="background-image: url('@Url.Content("~/img/background1.png")') !important; background-size: cover !important; background-position: center !important; min-height: 100vh; position: relative; z-index: 1;">
+    <div class="row justify-content-center align-items-center" style="min-height: 100vh;">
+        <!-- Centered Column with Entry Form -->
+        <div class="col-md-6">
+            <section class="p-4 shadow-sm rounded" style="background-color: rgba(255, 255, 255, 0.8)">
+                <div style="position: relative; margin-bottom: 20px;">
+                    <a href="@Url.Action("Index", "Resources")" style="font-size: 1.2em; color: #01baa3; text-decoration: none;">
+                        👈 Back
+                    </a>
+                </div>
+
+                <h2 class="text-center" style="color: #01baa3;">Edit Resource</h2>
+                <hr />
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <!-- Resource Title -->
+                    <div class="mb-3">
+                        @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "form-label fw-bold", style = "color: #01baa3;" })
+                        @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control", style = "border-radius: 30px; background-color: rgba(255, 255, 255, 0.8);" } })
+                    </div>
+
+                    <!-- Resource Link -->
+                    <div class="mb-3">
+                        @Html.LabelFor(model => model.Link, htmlAttributes: new { @class = "form-label fw-bold", style = "color: #01baa3;" })
+                        @Html.EditorFor(model => model.Link, new { htmlAttributes = new { @class = "form-control", style = "border-radius: 30px; background-color: rgba(255, 255, 255, 0.8);" } })
+                    </div>
+
+                    <!-- Resource Type -->
+                    <div class="mb-3">
+                        @Html.LabelFor(model => model.ResourceType, htmlAttributes: new { @class = "form-label fw-bold", style = "color: #01baa3;" })
+                        @Html.EditorFor(model => model.ResourceType, new { htmlAttributes = new { @class = "form-control", style = "border-radius: 30px; background-color: rgba(255, 255, 255, 0.8);" } })
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="text-center mt-4">
+                        <button type="submit" class="btn btn-warning" style="font-size: 1.2em; padding: 10px 30px; border-radius: 30px; color: white;">
+                            Save Changes
+                        </button>
+                    </div>
+                }
+            </section>
+        </div>
+    </div>
+</div>

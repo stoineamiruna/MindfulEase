@@ -1,0 +1,48 @@
+﻿@model MindfulEase.Models.Resource
+
+@{
+    ViewBag.Title = "New Resource";
+}
+
+<div class="container-fluid" style="background-image: url('@Url.Content("~/img/background1.png")') !important; background-size: cover !important; background-position: center !important; min-height: 100vh; background-repeat: repeat-y; position: relative; z-index: 1;">
+    <div class="row justify-content-center align-items-center" style="min-height: 100vh;">
+        <!-- Centered Column with form -->
+        <div class="col-md-6">
+            <section class="p-4 shadow-sm rounded" style="background-color: rgba(255, 255, 255, 0.8)">
+                <h2 class="text-center" style="color: #01baa3;">Add New Resource</h2>
+                <hr />
+                <p class="text-center" style="font-size: 1.1em; color: #666;">
+                    Share something helpful with the community! 🎧📚✨
+                </p>
+
+                @using (Html.BeginForm(actionName: "New", controllerName: "Resources", method: FormMethod.Post))
+                {
+                    <!-- Resource Title -->
+                    <div class="mb-3">
+                        <label for="Title" class="form-label fw-bold" style="color: #01baa3">Resource Title</label>
+                        @Html.TextBox("Title", null, new { @class = "form-control", placeholder = "Enter the title of the resource", style = "border-radius: 30px;" })
+                    </div>
+
+                    <!-- Resource Link -->
+                    <div class="mb-3">
+                        <label for="Link" class="form-label fw-bold" style="color: #01baa3">Resource Link</label>
+                        @Html.TextBox("Link", null, new { @class = "form-control", placeholder = "Paste the URL to the resource", style = "border-radius: 30px;" })
+                    </div>
+
+                    <!-- Resource Type -->
+                    <div class="mb-3">
+                        <label for="ResourceType" class="form-label fw-bold" style="color: #01baa3">Resource Type</label>
+                        @Html.TextBox("ResourceType", null, new { @class = "form-control", placeholder = "e.g., Video, PodcastVideo, PodcastAudio, Article, Guide", style = "border-radius: 30px;" })
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="text-center">
+                        <button class="btn btn-info" type="submit" style="font-size: 1.2em; padding: 10px 30px; border-radius: 30px; color: white">
+                            Add Resource
+                        </button>
+                    </div>
+                }
+            </section>
+        </div>
+    </div>
+</div>
