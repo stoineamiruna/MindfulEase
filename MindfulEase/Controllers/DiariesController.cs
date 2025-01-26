@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MindfulEase.Data;
 using MindfulEase.Models;
+using MindfulEase.Services;
 using MindfulEase.Services.MindfulEase.Services;
 
 namespace MindfulEase.Controllers
@@ -20,42 +21,90 @@ namespace MindfulEase.Controllers
             _userManager = userManager;
             _sentimentAnalysisService = sentimentAnalysisService;
         }
+        // Conditiile de afisare a butoanelor de editare si stergere
+        private void SetAccessRights()
+        {
+            ViewBag.AfisareButoane = false;
+
+            ViewBag.EsteAdmin = User.IsInRole("Admin");
+
+            ViewBag.EsteModerator = User.IsInRole("Moderator");
+
+            ViewBag.UserCurent = _userManager.GetUserId(User);
+        }
 
         // Show a single diary entry
+        [Authorize(Roles = "Admin,User")]
         public IActionResult Show(int id)
         {
+            SetAccessRights();
             var diary = db.Diaries
                 .Include(d => d.User)
                 .Include(d => d.Emotions) // Include legătura cu DiaryEmotion
                 .ThenInclude(de => de.Emotion) // Include emoția asociată
                 .FirstOrDefault(d => d.Id == id);
+
+            if (diary.UserId != _userManager.GetUserId(User) && User.IsInRole("Admin") == false)
+            {
+                TempData["message"] = "Access denied.";
+                TempData["messageType"] = "alert-danger";
+                // Redirecționează înapoi la pagina anterioară
+                var referer = Request.Headers["Referer"].ToString();
+                if (!string.IsNullOrEmpty(referer))
+                {
+                    return Redirect(referer);
+                }
+            }
             if (diary == null)
             {
                 TempData["message"] = "Diary entry not found.";
                 TempData["messageType"] = "alert-danger";
                 return RedirectToAction("Index");
             }
-
             return View(diary);
         }
 
         // Display the create diary form
+        [Authorize(Roles = "Admin,User")]
         public IActionResult New()
         {
-            var userId = _userManager.GetUserId(User); 
+            SetAccessRights();
+            var userId = _userManager.GetUserId(User);
+            if (userId == null)
+            {
+                TempData["message"] = "Access denied.";
+                TempData["messageType"] = "alert-danger";
+                // Redirecționează înapoi la pagina anterioară
+                var referer = Request.Headers["Referer"].ToString();
+                if (!string.IsNullOrEmpty(referer))
+                {
+                    return Redirect(referer);
+                }
+            }
             var userDiaries = db.Diaries.Where(d => d.UserId == userId).ToList(); 
             ViewBag.UserDiaries = userDiaries; 
             return View();
         }
 
         // Create a new diary entry
-
+        [Authorize(Roles = "Admin,User")]
         [HttpPost]
         public async Task<IActionResult> New(Diary newDiary)
         {
             if (ModelState.IsValid)
             {
                 var userId = _userManager.GetUserId(User);
+                if (userId == null)
+                {
+                    TempData["message"] = "Access denied.";
+                    TempData["messageType"] = "alert-danger";
+                    // Redirecționează înapoi la pagina anterioară
+                    var referer = Request.Headers["Referer"].ToString();
+                    if (!string.IsNullOrEmpty(referer))
+                    {
+                        return Redirect(referer);
+                    }
+                }
                 newDiary.UserId = userId;
                 newDiary.Content = newDiary.Content;
                 newDiary.EntryDate = newDiary.EntryDate;
@@ -120,6 +169,10 @@ namespace MindfulEase.Controllers
 
                 }
 
+                // Actualizăm clusterizarea utilizatorilor
+                var clusteringService = new ClusteringService(db);
+                clusteringService.AssignClustersToUsers();
+
                 TempData["message"] = "Diary entry created successfully!";
                 TempData["messageType"] = "alert-success";
                 return RedirectToAction("New");
@@ -137,13 +190,26 @@ namespace MindfulEase.Controllers
 
 
         // Display the edit form for a diary entry
+        [Authorize(Roles = "Admin,User")]
         [HttpGet]
         public IActionResult Edit(int id)
         {
             var diary = db.Diaries.FirstOrDefault(d => d.Id == id);
-            if (diary == null || diary.UserId != _userManager.GetUserId(User))
+     
+            if (diary.UserId != _userManager.GetUserId(User) && User.IsInRole("Admin") == false)
             {
-                TempData["message"] = "Diary entry not found or you do not have permission to edit it.";
+                TempData["message"] = "Access denied.";
+                TempData["messageType"] = "alert-danger";
+                // Redirecționează înapoi la pagina anterioară
+                var referer = Request.Headers["Referer"].ToString();
+                if (!string.IsNullOrEmpty(referer))
+                {
+                    return Redirect(referer);
+                }
+            }
+            if (diary == null)
+            {
+                TempData["message"] = "Diary entry not found.";
                 TempData["messageType"] = "alert-danger";
                 return RedirectToAction("Index");
             }
@@ -152,15 +218,27 @@ namespace MindfulEase.Controllers
         }
 
         // Save the changes to a diary entry
+        [Authorize(Roles = "Admin,User")]
         [HttpPost]
         public IActionResult Edit(int id, Diary updatedDiary)
         {
             var diary = db.Diaries.FirstOrDefault(d => d.Id == id);
-            if (diary == null || diary.UserId != _userManager.GetUserId(User))
+            if (diary.UserId != _userManager.GetUserId(User) && User.IsInRole("Admin") == false)
             {
-                TempData["message"] = "Diary entry not found or you do not have permission to edit it.";
+                TempData["message"] = "Access denied.";
                 TempData["messageType"] = "alert-danger";
-                return RedirectToAction("New");
+                // Redirecționează înapoi la pagina anterioară
+                var referer = Request.Headers["Referer"].ToString();
+                if (!string.IsNullOrEmpty(referer))
+                {
+                    return Redirect(referer);
+                }
+            }
+            if (diary == null)
+            {
+                TempData["message"] = "Diary entry not found.";
+                TempData["messageType"] = "alert-danger";
+                return RedirectToAction("Index");
             }
 
             diary.Content = updatedDiary.Content; // Update the content of the diary
@@ -173,13 +251,27 @@ namespace MindfulEase.Controllers
             return RedirectToAction("New");
         }
 
+        [Authorize(Roles = "Admin,User")]
         [HttpPost]
         public ActionResult Delete(int id)
         {
             var diary = db.Diaries.FirstOrDefault(d => d.Id == id);
-            if (diary == null || diary.UserId != _userManager.GetUserId(User))
+           
+            if (diary.UserId != _userManager.GetUserId(User) && User.IsInRole("Admin") == false)
             {
-                TempData["message"] = "Diary entry not found or you do not have permission to delete it.";
+                TempData["message"] = "Access denied.";
+                TempData["messageType"] = "alert-danger";
+                // Redirecționează înapoi la pagina anterioară
+                var referer = Request.Headers["Referer"].ToString();
+                if (!string.IsNullOrEmpty(referer))
+                {
+                    return Redirect(referer);
+                }
+            }
+
+            if (diary == null)
+            {
+                TempData["message"] = "Diary entry not found.";
                 TempData["messageType"] = "alert-danger";
                 return RedirectToAction("New");
             }
