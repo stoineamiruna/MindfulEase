@@ -42,7 +42,7 @@ namespace MindfulEase.Controllers
 
 
         // lista tututor userilor si search bar
-
+        [Authorize(Roles = "Admin,Moderator,User")]
         public IActionResult Index(string search)
         {
             SetAccessRights();
@@ -68,6 +68,7 @@ namespace MindfulEase.Controllers
 
 
         //afisarea unui singur profil in functie de id-ul sau
+        [Authorize(Roles = "Admin,Moderator,User")]
         public IActionResult Show(string? id)
         {
             SetAccessRights();
@@ -86,23 +87,6 @@ namespace MindfulEase.Controllers
 
             ViewBag.User = user;
 
-            /*
-            var questions = db.Questions.Include("User").Where(q => q.UserId == id);
-            var answers = db.Answers.Include("User").Where(a => a.UserId == id);
-
-            var answerCount = db.Answers.Count(a => a.UserId == id);
-
-            var questionCount = db.Questions.Count(a => a.UserId == id);
-
-
-            ViewBag.Questions = questions;
-            ViewBag.Answers = answers;
-            ViewBag.AnswerCount = answerCount;
-            ViewBag.QuestionCount = questionCount;
-            //           ViewBag.Scor = answerCount * 10 + questionCount * 5;
-            ViewBag.Scor = user.ReputationPoints;
-            */
-
             if (TempData.ContainsKey("message"))
             {
                 ViewBag.Message = TempData["message"];
@@ -113,6 +97,7 @@ namespace MindfulEase.Controllers
         }
 
         // formularul in care se vor completa datele unei profil nouu
+        [Authorize(Roles = "Admin,Moderator,User")]
         public IActionResult New()
         {
             ApplicationUser user = new ApplicationUser();
@@ -122,6 +107,7 @@ namespace MindfulEase.Controllers
 
 
         // Se adauga profilul in baza de date
+        [Authorize(Roles = "Admin,Moderator,User")]
 
         [HttpPost]
         public IActionResult New(ApplicationUser updatedUser)
@@ -158,11 +144,11 @@ namespace MindfulEase.Controllers
 
         }
 
-        
+
         // HttpGet implicit
         // Se afiseaza formularul impreuna cu datele aferente profilului din baza de date
 
-
+        [Authorize(Roles = "Admin,Moderator,User")]
         [HttpGet]
         public IActionResult Edit(int id)
         {
@@ -176,11 +162,22 @@ namespace MindfulEase.Controllers
         }
 
         // Se adauga profilul modificat in baza de date
+        [Authorize(Roles = "Admin,Moderator,User")]
         [HttpPost]
         public IActionResult Edit(string id, ApplicationUser requestProfile)
         {
             ApplicationUser user = db.ApplicationUsers.Find(id);
-
+            if(id!= _userManager.GetUserId(User) && User.IsInRole("Admin") == false)
+            {
+                TempData["message"] = "Access denied.";
+                TempData["messageType"] = "alert-danger";
+                // Redirecționează înapoi la pagina anterioară
+                var referer = Request.Headers["Referer"].ToString();
+                if (!string.IsNullOrEmpty(referer))
+                {
+                    return Redirect(referer);
+                }
+            }
             user.FirstName = requestProfile.FirstName;
             user.LastName = requestProfile.LastName;
             user.Description = requestProfile.Description;
@@ -192,9 +189,9 @@ namespace MindfulEase.Controllers
 
             return RedirectToAction("Index");
         }
-        /*
 
-        [Authorize(Roles = "User,Admin")]*/
+
+        [Authorize(Roles = "Admin,Moderator,User")]
         public async Task<ActionResult> Delete(string id)
         {
             ApplicationUser user = db.ApplicationUsers
@@ -230,6 +227,7 @@ namespace MindfulEase.Controllers
         }
 
         // Formularul pentru crearea unui profil de terapeut
+        [Authorize(Roles = "Admin,Moderator,User")]
         public IActionResult NewTherapist()
         {
             ApplicationUser therapist = new ApplicationUser();
@@ -237,6 +235,7 @@ namespace MindfulEase.Controllers
         }
 
         // Se adaugă un profil de terapeut în baza de date
+        [Authorize(Roles = "Admin,Moderator,User")]
         [HttpPost]
         public IActionResult NewTherapist(ApplicationUser updatedTherapist)
         {
@@ -275,6 +274,7 @@ namespace MindfulEase.Controllers
         }
 
         // Formularul pentru editarea unui profil de terapeut existent
+        [Authorize(Roles = "Admin,Moderator,User")]
         [HttpGet]
         public IActionResult EditTherapist(string id)
         {
@@ -296,6 +296,7 @@ namespace MindfulEase.Controllers
         }
 
         // Se salvează modificările aduse profilului de terapeut
+        [Authorize(Roles = "Admin,Moderator,User")]
         [HttpPost]
         public IActionResult EditTherapist(string id, ApplicationUser updatedTherapist)
         {

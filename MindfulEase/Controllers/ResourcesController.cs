@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MindfulEase.Data;
 using MindfulEase.Models;
@@ -28,14 +29,14 @@ namespace MindfulEase.Controllers
 
             ViewBag.UserCurent = _userManager.GetUserId(User);
         }
+        [Authorize(Roles = "Admin,Moderator")]
         public IActionResult New()
         {
             return View();
         }
 
 
-        // Se adauga profilul in baza de date
-
+        [Authorize(Roles = "Admin,Moderator")]
         [HttpPost]
         public IActionResult New(Resource resource)
         {
@@ -56,7 +57,7 @@ namespace MindfulEase.Controllers
             return RedirectToAction("Edit", new { id = resource.Id }); 
 
         }
-
+        [Authorize(Roles = "Admin,Moderator")]
         [HttpGet]
         public IActionResult Edit(int id)
         {
@@ -66,7 +67,7 @@ namespace MindfulEase.Controllers
             return View(resource);
         }
 
-        // Se adauga profilul modificat in baza de date
+        [Authorize(Roles = "Admin,Moderator")]
         [HttpPost]
         public IActionResult Edit(int id, Resource requestResource)
         {
@@ -83,6 +84,7 @@ namespace MindfulEase.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize(Roles = "Admin,Moderator")]
         [HttpPost]
         public ActionResult Delete(int id)
         {
