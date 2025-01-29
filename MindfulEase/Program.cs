@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MindfulEase.Data;
 using MindfulEase.Models;
@@ -53,6 +53,12 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.MapControllerRoute(
+    name: "api",
+    pattern: "api/{action}/{id?}",
+    defaults: new { controller = "Api", action = "Index" } // Ruta implicită pentru API
+);
 
 app.MapControllerRoute(
     name: "default",

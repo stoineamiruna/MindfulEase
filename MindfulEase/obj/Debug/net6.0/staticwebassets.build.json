@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "9TsF2YM7U4XxB6eJD00kZUBfD5pNEwCUpX+dCd9D+sg=",
+  "Hash": "yS1LovKNBtDZRaFDFOXTbkHwL/bhu2sslzuHgw/R3bQ=",
   "Source": "MindfulEase",
   "BasePath": "_content/MindfulEase",
   "Mode": "Default",
@@ -1423,6 +1423,25 @@
       "OriginalItemSpec": "wwwroot\\img\\NewProfile.jpg"
     },
     {
+      "Identity": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\js\\brainVisualizer.js",
+      "SourceId": "MindfulEase",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\",
+      "BasePath": "_content/MindfulEase",
+      "RelativePath": "js/brainVisualizer.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\brainVisualizer.js"
+    },
+    {
       "Identity": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\js\\site.js",
       "SourceId": "MindfulEase",
       "SourceType": "Discovered",
@@ -1440,6 +1459,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\site.js"
+    },
+    {
+      "Identity": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\js\\three.core.min.js",
+      "SourceId": "MindfulEase",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\",
+      "BasePath": "_content/MindfulEase",
+      "RelativePath": "js/three.core.min.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\three.core.min.js"
     },
     {
       "Identity": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",

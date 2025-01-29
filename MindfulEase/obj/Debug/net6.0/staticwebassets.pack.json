@@ -53,8 +53,16 @@
       "PackagePath": "staticwebassets\\img\\indexUser1.jpg"
     },
     {
+      "Id": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\js\\brainVisualizer.js",
+      "PackagePath": "staticwebassets\\js\\brainVisualizer.js"
+    },
+    {
       "Id": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\js\\three.core.min.js",
+      "PackagePath": "staticwebassets\\js\\three.core.min.js"
     },
     {
       "Id": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\lib\\bootstrap\\LICENSE",

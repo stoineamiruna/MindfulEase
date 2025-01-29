@@ -282,3 +282,10 @@ C:\Users\Miru\Desktop\Licenta\MindfulEase\MindfulEase\bin\Debug\net6.0\zh-Hans\M
 C:\Users\Miru\Desktop\Licenta\MindfulEase\MindfulEase\bin\Debug\net6.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Miru\Desktop\Licenta\MindfulEase\MindfulEase\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.Pkcs.dll
 C:\Users\Miru\Desktop\Licenta\MindfulEase\MindfulEase\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Miru\Desktop\Licenta\MindfulEase\MindfulEase\bin\Debug\net6.0\System.Web.Mvc.dll
+C:\Users\Miru\Desktop\Licenta\MindfulEase\MindfulEase\bin\Debug\net6.0\System.Web.Razor.dll
+C:\Users\Miru\Desktop\Licenta\MindfulEase\MindfulEase\bin\Debug\net6.0\System.Web.Helpers.dll
+C:\Users\Miru\Desktop\Licenta\MindfulEase\MindfulEase\bin\Debug\net6.0\System.Web.WebPages.Deployment.dll
+C:\Users\Miru\Desktop\Licenta\MindfulEase\MindfulEase\bin\Debug\net6.0\System.Web.WebPages.Razor.dll
+C:\Users\Miru\Desktop\Licenta\MindfulEase\MindfulEase\bin\Debug\net6.0\System.Web.WebPages.dll
+C:\Users\Miru\Desktop\Licenta\MindfulEase\MindfulEase\bin\Debug\net6.0\Microsoft.Web.Infrastructure.dll

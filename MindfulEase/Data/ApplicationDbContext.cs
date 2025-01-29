@@ -27,6 +27,7 @@ namespace MindfulEase.Data
         public DbSet<Statistics> Statistics { get; set; }
         public DbSet<Resource> Resources { get; set; }
         public DbSet<ApplicationUserResource> ApplicationUserResources { get; set; }
+        public DbSet<BrainRegion> BrainRegions { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

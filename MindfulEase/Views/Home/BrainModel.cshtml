@@ -1,0 +1,20 @@
+﻿@* Views/Home/BrainModel.cshtml *@
+@{
+    ViewBag.Title = "Modelul Creierului";
+}
+
+<div id="brain-container" style="width: 100%; height: 500px;">
+    <canvas id="brainCanvas" style="width: 100%; height: 100%;"></canvas>
+</div>
+
+<div id="time-slider-container" style="margin-top: 20px;">
+    <label for="timeSlider">Timp (Ani):</label>
+    <input type="range" id="timeSlider" min="0" max="10" value="0">
+</div>
+
+<div id="info-panel" style="margin-top: 20px; padding: 10px; border: 1px solid #ccc;">
+    <h3>Informații despre regiuni cerebrale</h3>
+    <p id="region-info">Selectează o regiune pentru a vedea detalii.</p>
+</div>
+
+<script src="/js/brainVisualizer.js"></script>
