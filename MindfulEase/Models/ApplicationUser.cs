@@ -52,6 +52,7 @@ namespace MindfulEase.Models
         // Relație Many-to-Many
         public ICollection<ApplicationUserTherapeuticGame>? TherapeuticGames { get; set; }
         public ICollection<ApplicationUserQuiz>? Quizzes { get; set; }
+        public ICollection<ApplicationUserQuestionQuiz>? UserQuestionQuizzes { get; set; }
 
         [NotMapped]
         public IEnumerable<SelectListItem>? AllRoles { get; set; }
