@@ -1,0 +1,46 @@
+﻿@model MindfulEase.Models.Quiz
+
+@{
+    ViewBag.Title = "Solve Quiz";
+}
+
+<div class="container-fluid" style="background-image: url('@Url.Content("~/img/quiz_background.png")'); background-size: cover; background-position: center; min-height: 100vh;">
+    <div class="row justify-content-center align-items-center" style="min-height: 100vh;">
+        <div class="col-md-8">
+            <section class="p-4 shadow-sm rounded" style="background-color: rgba(255, 255, 255, 0.8)">
+                <h2 class="text-center" style="color: #01baa3;">@Model.Title</h2>
+                <p class="text-center" style="font-size: 1.1em; color: #666;">@Model.Description</p>
+                <hr />
+
+                @*<form method="post" action="@Url.Action("Submit", "Quizzes")">*@
+                 <form asp-action="Submit" asp-controller="Quizzes" method="post">
+
+                    <input type="hidden" name="QuizId" value="@Model.Id" />
+                    <div class="mt-4">
+                        <h4 style="color: #01baa3;">Questions</h4>
+                        <ul class="list-group">
+                            @foreach (var question in Model.Questions)
+                            {
+                                <li class="list-group-item">
+                                    <p><strong>@question.Text</strong></p>
+                                    <div class="d-flex justify-content-between">
+                                        @for (int i = 0; i <= 4; i++)
+                                        {
+                                            <label class="test-form_radio">
+                                                <input type="radio" name="answers[@question.Id]" value="@i" required />
+                                                <span class="test-form_radio_label">@i</span>
+                                            </label>
+                                        }
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                    <div class="mt-4 text-center">
+                        <button type="submit" class="btn btn-success" style="border-radius: 30px; font-size: 1.2em;">Submit Answers</button>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </div>
+</div>

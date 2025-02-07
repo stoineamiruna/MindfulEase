@@ -6,9 +6,15 @@ namespace MindfulEase.Models
     {
         [Key]
         public int Id { get; set; }
+        [Required, MaxLength(255)]
         public string Name { get; set; }
-        public string Type { get; set; }
+
+        [Required]
+        public string Type { get; set; }  // Ex: "Puzzle", "Memory Game", etc.
+
         public string Instructions { get; set; }
+
+        public string GameUrl { get; set; } // URL-ul jocului extern
 
         // Relație Many-to-Many
         public virtual ICollection<ApplicationUserTherapeuticGame> Users { get; set; }

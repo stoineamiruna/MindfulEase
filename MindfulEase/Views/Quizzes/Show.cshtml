@@ -1,0 +1,147 @@
+﻿@model MindfulEase.Models.Quiz
+
+@{
+    ViewBag.Title = "Quiz Details";
+}
+
+<div class="container-fluid" style="background-image: url('@Url.Content("~/img/quiz_background.png")'); background-size: cover; background-position: center; min-height: 100vh;">
+    <div class="row justify-content-center align-items-center" style="min-height: 100vh;">
+        <div class="col-md-8">
+            <section class="p-4 shadow-sm rounded" style="background-color: rgba(255, 255, 255, 0.8)">
+                <h2 class="text-center" style="color: #01baa3;">@Model.Title</h2>
+                <p class="text-center" style="font-size: 1.1em; color: #666;">@Model.Description</p>
+                <hr />
+                @if (ViewBag.EsteAdmin || ViewBag.EsteModerator)
+                {
+                @if (Model.CategoryMapping != "")
+                {
+                    <div class="mt-4">
+                        <h4 style="color: #01baa3;">Categories</h4>
+                        <p>@Model.CategoryMapping</p>
+                    </div>
+                }
+                
+                <div class="mt-4">
+                    <h4 style="color: #01baa3;">Result Interpretation</h4>
+                    <p>@Model.Result</p>
+                </div>
+                }
+                <a class="btn btn-info" href="/Quizzes/Submit/@Model.Id" style="font-size: 1.2em; padding: 10px 30px; border-radius: 30px; color: white;">
+                    Solve
+                </a>
+
+                <div class="mt-4" style="border-radius: 30px;">
+                    <h4 style="color: #01baa3;">Questions</h4>
+                    @if (Model.Questions != null && Model.Questions.Any())
+                    {
+                        <ul class="list-group">
+                            @foreach (var question in Model.Questions)
+                            {
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <strong>@question.Order @question.Text</strong>
+                                    @if (ViewBag.EsteAdmin || ViewBag.EsteModerator)
+                                    {
+                                        <span class="badge" style="border-radius: 30px; color:black">@(question.IsReversed ? "Reversed" : "Normal")</span>
+                                        <a href="#editQuestionModal-@question.Id" class="btn btn-outline-info btn-sm" data-bs-toggle="modal" style="border-radius: 30px;">Edit</a>
+                                        <form method="post" action="/Quizzes/DeleteQuestion/@question.Id" style="display:inline-block;">
+                                            <button class="btn btn-outline-danger" type="submit" style="border-radius: 30px;">
+                                                Remove
+                                            </button>
+                                        </form>
+                                  
+               
+                                    }
+                                </li>
+                                <!-- Modal for editing question -->
+                                <div class="modal fade" id="editQuestionModal-@question.Id" tabindex="-1" aria-labelledby="editQuestionModalLabel-@question.Id" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="editQuestionModalLabel-@question.Id">Edit Question</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form method="post" action="/Quizzes/EditQuestion/@question.Id">
+                                                    <div class="mb-3">
+                                                        <label for="questionText" class="form-label">Question Text</label>
+                                                        <textarea class="form-control" id="questionText" name="Text" required rows="3" style="border-radius: 30px;">@question.Text</textarea>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="order" class="form-label">Question Order</label>
+                                                        <input type="number" class="form-control" id="order" name="Order" value="@question.Order" required min="1" placeholder="Enter the order of the question" style="border-radius: 30px;" />
+                                                    </div>
+                                                    <div class="mb-3 form-check">
+                                                     
+                                                        <input id="isReversed" type="checkbox" value="true" name="isReversed" />
+                                                        <input type="hidden" value="false" name="isReversed" />
+                                                        <label class="form-check-label" for="isReversed">Is this a reversed question?</label>
+                                                    </div>
+
+
+                                                    <button type="submit" class="btn btn-success" style="border-radius: 30px;">Save Changes</button>
+                                                </form>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </ul>
+                    }
+                    else
+                    {
+                        <p>No questions have been added yet.</p>
+                    }
+                </div>
+
+                @if (ViewBag.EsteAdmin || ViewBag.EsteModerator)
+                {
+                    <div class="mt-4">
+                        <h4 style="color: #01baa3;">Add New Question</h4>
+                        @using (Html.BeginForm("Show", "Quizzes", new { id = Model.Id }, FormMethod.Post))
+                        {
+                            <div class="mb-3">
+                                <label for="questionText" class="form-label">Question Text</label>
+                                <textarea class="form-control" id="questionText" name="questionText" required rows="3" placeholder="Enter the question" style="border-radius: 30px;"></textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="order" class="form-label">Question Order</label>
+                                <input type="number" class="form-control" id="order" name="order" required min="1" placeholder="Enter the order of the question" style="border-radius: 30px;" />
+                            </div>
+
+                            <div class="mb-3 form-check">
+                                <input id="isReversed" type="checkbox" value="true" name="isReversed" />
+                                <input type="hidden" value="false" name="isReversed" />
+                                <label class="form-check-label" for="isReversed">Is this a reversed question?</label>
+                            </div>
+
+                            <button type="submit" class="btn btn-outline-success" style="border-radius: 30px;">Add Question</button>
+                        }
+                    </div>
+                }
+
+                <div class="mt-4 d-flex justify-content-between">
+                    @if (ViewBag.EsteAdmin || ViewBag.EsteModerator)
+                    {
+                        <a class="btn btn-info" href="/Quizzes/Edit/@Model.Id" style="font-size: 1.2em; padding: 10px 30px; border-radius: 30px; color: white;">
+                            Edit
+                        </a>
+                    }
+
+                    @if (ViewBag.EsteAdmin || ViewBag.EsteModerator)
+                    {
+                        <form method="post" action="/Quizzes/Delete/@Model.Id">
+                            <button class="btn btn-danger" type="submit" style="font-size: 1.2em; padding: 10px 30px; border-radius: 30px; color: white;">
+                                Delete Quiz
+                            </button>
+                        </form>
+                    }
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+<br />
+<br />

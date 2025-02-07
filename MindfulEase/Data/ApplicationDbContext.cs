@@ -27,6 +27,8 @@ namespace MindfulEase.Data
         public DbSet<Statistics> Statistics { get; set; }
         public DbSet<Resource> Resources { get; set; }
         public DbSet<ApplicationUserResource> ApplicationUserResources { get; set; }
+        public DbSet<ApplicationUserQuestionQuiz> ApplicationUserQuestionQuizzes { get; set; }
+        public DbSet<QuestionQuiz> QuestionQuizzes { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -88,6 +90,20 @@ namespace MindfulEase.Data
                 .HasOne(ue => ue.Resource)
                 .WithMany(e => e.Users)
                 .HasForeignKey(ue => ue.ResourceId);
+
+            // Many-to-Many Relationship: ApplicationUser <-> QuestionQuiz
+            modelBuilder.Entity<ApplicationUserQuestionQuiz>()
+                .HasKey(uq => new { uq.UserId, uq.QuestionId });
+
+            modelBuilder.Entity<ApplicationUserQuestionQuiz>()
+                .HasOne(uq => uq.User)
+                .WithMany(u => u.UserQuestionQuizzes)
+                .HasForeignKey(uq => uq.UserId);
+
+            modelBuilder.Entity<ApplicationUserQuestionQuiz>()
+                .HasOne(uq => uq.Question)
+                .WithMany(q => q.UserQuestionQuizzes)
+                .HasForeignKey(uq => uq.QuestionId);
         }
     }
 }
