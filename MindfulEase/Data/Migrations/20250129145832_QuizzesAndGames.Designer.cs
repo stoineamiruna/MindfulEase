@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MindfulEase.Data;
 
@@ -11,9 +12,10 @@ using MindfulEase.Data;
 namespace MindfulEase.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250129145832_QuizzesAndGames")]
+    partial class QuizzesAndGames
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -376,12 +378,6 @@ namespace MindfulEase.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<bool>("IsReversed")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("Order")
-                        .HasColumnType("int");
-
                     b.Property<int?>("QuizId")
                         .HasColumnType("int");
 
@@ -393,7 +389,7 @@ namespace MindfulEase.Data.Migrations
 
                     b.HasIndex("QuizId");
 
-                    b.ToTable("QuestionQuizzes");
+                    b.ToTable("QuestionQuiz");
                 });
 
             modelBuilder.Entity("MindfulEase.Models.Quiz", b =>

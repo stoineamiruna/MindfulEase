@@ -1,0 +1,54 @@
+﻿@model MindfulEase.Models.Quiz
+
+@{
+    ViewBag.Title = "Edit Quiz";
+}
+
+<div class="container-fluid" style="background-image: url('@Url.Content("~/img/background1.png")') !important; background-size: cover !important; background-position: center !important; min-height: 100vh; background-repeat: repeat-y; position: relative; z-index: 1;">
+    <div class="row justify-content-center align-items-center" style="min-height: 100vh;">
+        <div class="col-md-6">
+            <section class="p-4 shadow-sm rounded" style="background-color: rgba(255, 255, 255, 0.8)">
+                <h2 class="text-center" style="color: #01baa3;">Edit Quiz</h2>
+                <hr />
+                <p class="text-center" style="font-size: 1.1em; color: #666;">
+                    Modify the quiz details below to keep it up to date.
+                </p>
+
+                @using (Html.BeginForm(actionName: "Edit", controllerName: "Quizzes", method: FormMethod.Post))
+                {
+                    @Html.HiddenFor(model => model.Id) <!-- Hidden input for Quiz ID -->
+                    <!-- Quiz Title -->
+                    <div class="mb-3">
+                        <label for="Title" class="form-label fw-bold" style="color: #01baa3">Quiz Title</label>
+                        @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter the title of the quiz", style = "border-radius: 30px;" } })
+                    </div>
+
+                    <!-- Quiz Description -->
+                    <div class="mb-3">
+                        <label for="Description" class="form-label fw-bold" style="color: #01baa3">Description</label>
+                        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter a brief description", style = "border-radius: 30px;" } })
+                    </div>
+
+                    <!-- Quiz Category -->
+                    <div class="mb-3">
+                        <label for="CategoryMapping" class="form-label fw-bold" style="color: #01baa3">Category</label>
+                        @Html.EditorFor(model => model.CategoryMapping, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter categories in JSON format", style = "border-radius: 30px;" } })
+                    </div>
+
+                    <!-- Quiz Result -->
+                    <div class="mb-3">
+                        <label for="Result" class="form-label fw-bold" style="color: #01baa3">Result</label>
+                        @Html.EditorFor(model => model.Result, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter result for this quiz", style = "border-radius: 30px;" } })
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="text-center">
+                        <button class="btn btn-info" type="submit" style="font-size: 1.2em; padding: 10px 30px; border-radius: 30px; color: white">
+                            Update Quiz
+                        </button>
+                    </div>
+                }
+            </section>
+        </div>
+    </div>
+</div>
