@@ -40,6 +40,11 @@
                         @Html.TextBoxFor(model => model.Result, new { @class = "form-control", placeholder = "Enter a result for this quiz", style = "border-radius: 30px;" })
                     </div>
 
+                    <!-- Quiz Background -->
+                    <div class="mb-3">
+                        <label for="Background" class="form-label fw-bold" style="color: #01baa3">Quiz Background Image</label>
+                        @Html.TextBoxFor(model => model.Background, new { @class = "form-control", placeholder = "Enter the url for the background of the quiz", style = "border-radius: 30px;" })
+                    </div>
 
                     <!-- Submit Button -->
                     <div class="text-center">

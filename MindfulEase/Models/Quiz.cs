@@ -14,6 +14,7 @@ namespace MindfulEase.Models
         public string Result { get; set; }
         public string? CategoryMapping { get; set; } // Ex: { "Anxietate": "1,3,5,7", "Depresie": "2,4,6,8" }
 
+        public string? Background { get; set; }
         public virtual ICollection<QuestionQuiz>? Questions { get; set; }
 
         // Relație Many-to-Many

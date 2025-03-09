@@ -54,7 +54,7 @@ namespace MindfulEase.Controllers
             TempData["message"] = "Your resource has not been created!";
             TempData["messageType"] = "alert-danger";
 
-            return RedirectToAction("Edit", new { id = resource.Id }); 
+            return Redirect("/Routines/Index");
 
         }
         [Authorize(Roles = "Admin,Moderator")]
@@ -81,7 +81,7 @@ namespace MindfulEase.Controllers
             TempData["messageType"] = "alert-success";
             db.SaveChanges();
 
-            return RedirectToAction("Index");
+            return Redirect("/Routines/Index");
         }
 
         [Authorize(Roles = "Admin,Moderator")]

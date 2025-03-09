@@ -1,0 +1,51 @@
+﻿@model MindfulEase.Models.TherapeuticGame
+
+@{
+    ViewBag.Title = "Therapeutic Game Details";
+}
+
+<div class="container-fluid" style="background-image: url('@Url.Content("~/img/game_background.png")'); background-size: cover; background-position: center; min-height: 100vh;">
+    <div class="row justify-content-center align-items-center" style="min-height: 100vh;">
+        <div class="col-md-8">
+            <section class="p-4 shadow-sm rounded" style="background-color: rgba(255, 255, 255, 0.8)">
+                <h2 class="text-center" style="color: #01baa3;">@Model.Name</h2>
+                <p class="text-center" style="font-size: 1.1em; color: #666;">@Model.Instructions</p>
+                <hr />
+
+                <!-- Game Frame -->
+                <div class="text-center">
+                    <iframe src="@Model.GameUrl" width="100%" height="400vh" frameborder="0" allowfullscreen style="border-radius: 15px;"></iframe>
+                </div>
+
+                <div class="mt-4 d-flex justify-content-between">
+                    @if (ViewBag.EsteAdmin || ViewBag.EsteModerator)
+                    {
+                        <a class="btn btn-info" href="/TherapeuticGames/Edit/@Model.Id" style="font-size: 1.2em; padding: 10px 30px; border-radius: 30px; color: white;">
+                            Edit
+                        </a>
+                    }
+
+                    <form method="post" action="/TherapeuticGames/Delete/@Model.Id">
+                        <button class="btn btn-danger" type="submit" style="font-size: 1.2em; padding: 10px 30px; border-radius: 30px; color: white;">
+                            Delete Game
+                        </button>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+<br />
+<br />
+<br />
+<br />
+<style>
+    body {
+        background: linear-gradient(to bottom, rgba(168, 237, 234, 0.3), rgba(254, 214, 227, 0.3));
+        background-attachment: fixed;
+        min-height: 100vh;
+        margin: 0;
+    }
+
+</style>

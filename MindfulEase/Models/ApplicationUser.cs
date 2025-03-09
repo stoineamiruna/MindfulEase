@@ -57,6 +57,7 @@ namespace MindfulEase.Models
         [NotMapped]
         public IEnumerable<SelectListItem>? AllRoles { get; set; }
         public ICollection<ApplicationUserResource>? Resources { get; set; }
+        public ICollection<UserObjective>? Objectives { get; set; }
 
     }
 }

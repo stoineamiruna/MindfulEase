@@ -90,6 +90,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVpenplc1xOZXcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Miru/Desktop/Licenta/MindfulEase/MindfulEase/Views/Quizzes/Result.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVpenplc1xSZXN1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Miru/Desktop/Licenta/MindfulEase/MindfulEase/Views/Quizzes/Show.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVpenplc1xTaG93LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -128,6 +132,26 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Miru/Desktop/Licenta/MindfulEase/MindfulEase/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Miru/Desktop/Licenta/MindfulEase/MindfulEase/Views/TherapeuticGames/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGhlcmFwZXV0aWNHYW1lc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Miru/Desktop/Licenta/MindfulEase/MindfulEase/Views/TherapeuticGames/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGhlcmFwZXV0aWNHYW1lc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Miru/Desktop/Licenta/MindfulEase/MindfulEase/Views/TherapeuticGames/New.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGhlcmFwZXV0aWNHYW1lc1xOZXcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Miru/Desktop/Licenta/MindfulEase/MindfulEase/Views/TherapeuticGames/Play.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGhlcmFwZXV0aWNHYW1lc1xQbGF5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Miru/Desktop/Licenta/MindfulEase/MindfulEase/Views/TherapeuticGames/SeeMore.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGhlcmFwZXV0aWNHYW1lc1xTZWVNb3JlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Miru/Desktop/Licenta/MindfulEase/MindfulEase/Views/_ViewImports.cshtml]
