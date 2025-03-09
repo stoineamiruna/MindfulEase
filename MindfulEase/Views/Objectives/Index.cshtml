@@ -1,0 +1,221 @@
+﻿@model List<MindfulEase.Models.Objective>
+
+@{
+    ViewBag.Title = "Manage Objectives";
+    var userObjectives = ViewBag.UserObjectives as List<MindfulEase.Models.UserObjective>;
+    var userId = ViewBag.UserId as string;
+}
+
+<div class="container-fluid" style="background-image: url('@Url.Content("~/img/quiz_background.png")'); background-size: cover; background-position: center; min-height: 100vh;">
+    <div class="row justify-content-center " >
+        <div class="col-md-8">
+            <section class="p-4 shadow-sm rounded" style="background-color: rgba(255, 255, 255, 0.8)">
+                <h2 class="text-center" style="color: #01baa3;">Manage Objectives</h2>
+                <p class="text-center" style="font-size: 1.1em; color: #666;">Manage your goals.</p>
+                <hr />
+
+                <!-- Buton pentru adăugare obiectiv -->
+                <div class="text-center mb-3">
+                    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addObjectiveModal" style="border-radius: 30px;">Add Objective</button>
+                </div>
+
+                @if (Model.Any())
+                {
+                    var groupedObjectives = Model.GroupBy(o => o.Category);
+
+                    foreach (var categoryGroup in groupedObjectives)
+                    {
+                        <div class="mt-4">
+                            <h4 style="color: #01baa3;">@categoryGroup.Key</h4>
+                            <ul class="list-group">
+                                @foreach (var obj in categoryGroup)
+                                {
+                                    var userObjective = userObjectives?.FirstOrDefault(uo => uo.ObjectiveId == obj.Id);
+
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <div class="d-flex align-items-center">
+                                            <strong style="margin-right: 10px;">@obj.Title</strong>
+
+                                            @if (ViewBag.EsteAdmin || ViewBag.EsteModerator)
+                                            {
+
+
+                                                <button class="btn btn-outline-info btn-sm edit-btn" data-bs-toggle="modal"
+                                                        data-bs-target="#editObjectiveModal"
+                                                        data-id="@obj.Id"
+                                                        data-title="@obj.Title"
+                                                        data-category="@obj.Category"
+                                                        data-valueType="@obj.ValueType"
+                                                        style="border-radius: 30px;">
+                                                    ✏️
+                                                </button>
+
+                                                <form method="post" action="/Objectives/Delete/@obj.Id" style="display:inline-block;">
+                                                    <button class="btn btn-outline-danger btn-sm ms-1" type="submit" style="border-radius: 30px;">🗑️</button>
+                                                </form>
+                                            }
+                                        </div>
+
+                                        <span class="badge bg-primary">@obj.ValueType</span>
+
+                                        <div>
+                                            <!-- Buton pentru setare goal -->
+                                            @if (userObjective != null)
+                                            {
+                                                <span class="badge bg-success">
+                                                    @if (obj.ValueType == "integer")
+                                                    {
+                                                        @userObjective.TargetValue
+                                                    }
+                                                    else
+                                                    {
+                                                        @userObjective.TargetTime?.TotalMinutes
+                                                        
+                                                            }
+                                                </span>
+                                                <button class="btn btn-warning btn-sm set-goal-btn"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#setGoalModal"
+                                                        data-objective-id="@obj.Id"
+                                                        data-value-type="@obj.ValueType"
+                                                        data-target-value="@userObjective.TargetValue"
+                                                        data-target-time="@userObjective.TargetTime?.TotalMinutes"
+                                                        style="border-radius: 30px;">
+                                                    Edit Goal
+                                                </button>
+                                            }
+                                            else
+                                            {
+                                                <button class="btn btn-success btn-sm set-goal-btn"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#setGoalModal"
+                                                        data-objective-id="@obj.Id"
+                                                        data-value-type="@obj.ValueType"
+                                                        style="border-radius: 30px;">
+                                                    Set Goal
+                                                </button>
+                                            }
+
+                       
+                                        </div>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <p class="text-center text-muted">No objectives available.</p>
+                }
+            </section>
+        </div>
+    </div>
+</div>
+
+<!-- Modal pentru setare/actualizare goal -->
+<div class="modal fade" id="setGoalModal" tabindex="-1" aria-labelledby="setGoalModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="setGoalModalLabel">Set Your Goal</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="/Objectives/SetUserObjective">
+                    <input type="hidden" id="goalObjectiveId" name="ObjectiveId" />
+                    <input type="hidden" id="goalValueType" name="ValueType" />
+
+                    <div class="mb-3" id="targetValueGroup">
+                        <label for="goalTargetValue" class="form-label">Target Value</label>
+                        <input type="number" class="form-control" id="goalTargetValue" name="TargetValue" style="border-radius: 30px;" />
+                    </div>
+
+                    <div class="mb-3" id="targetTimeGroup">
+                        <label for="goalTargetTime" class="form-label">Target Time (minutes)</label>
+                        <input type="number" class="form-control" id="goalTargetTime" name="TargetTime" style="border-radius: 30px;" />
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="border-radius: 30px;">Save Goal</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal pentru editare obiectiv -->
+<div class="modal fade" id="editObjectiveModal" tabindex="-1" aria-labelledby="editObjectiveModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editObjectiveModalLabel">Edit Objective</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="/Objectives/Edit">
+                    <input type="hidden" id="editId" name="Id" />
+
+                    <div class="mb-3">
+                        <label for="editTitle" class="form-label">Title</label>
+                        <input type="text" class="form-control" id="editTitle" name="Title" required style="border-radius: 30px;" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="editCategory" class="form-label">Category</label>
+                        <input type="text" class="form-control" id="editCategory" name="Category" required style="border-radius: 30px;" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="editValueType" class="form-label">Value Type</label>
+                        <select class="form-control" id="editValueType" name="ValueType" required style="border-radius: 30px;">
+                            <option value="minute">Minute</option>
+                            <option value="integer">Integer</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="border-radius: 30px;">Save Changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Event listener pentru modalul de editare obiectiv
+        document.getElementById("editObjectiveModal").addEventListener("show.bs.modal", function (event) {
+            const button = event.relatedTarget;
+            document.getElementById("editId").value = button.getAttribute("data-id");
+            document.getElementById("editTitle").value = button.getAttribute("data-title");
+            document.getElementById("editCategory").value = button.getAttribute("data-category");
+            document.getElementById("editValueType").value = button.getAttribute("data-valueType");
+        });
+
+        // Event listener pentru modalul de setare goal
+        document.getElementById("setGoalModal").addEventListener("show.bs.modal", function (event) {
+            const button = event.relatedTarget;
+            const valueType = button.getAttribute("data-value-type");
+            document.getElementById("goalObjectiveId").value = button.getAttribute("data-objective-id");
+            document.getElementById("goalValueType").value = valueType;
+
+            const targetValueInput = document.getElementById("goalTargetValue");
+            const targetTimeInput = document.getElementById("goalTargetTime");
+            const targetValueGroup = document.getElementById("targetValueGroup");
+            const targetTimeGroup = document.getElementById("targetTimeGroup");
+
+            if (valueType.toLowerCase() === "integer") {
+                targetValueGroup.style.display = "block";
+                targetTimeGroup.style.display = "none";
+                targetValueInput.value = button.getAttribute("data-target-value") || '';
+                targetTimeInput.value = '';
+            } else if (valueType.toLowerCase() === "minute") {
+                targetValueGroup.style.display = "none";
+                targetTimeGroup.style.display = "block";
+                targetTimeInput.value = button.getAttribute("data-target-time") || '';
+                targetValueInput.value = '';
+            } else {
+                targetValueGroup.style.display = "none";
+                targetTimeGroup.style.display = "none";
+            }
+        });
+    });
+
+</script>
