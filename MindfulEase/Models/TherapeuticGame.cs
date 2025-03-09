@@ -15,8 +15,9 @@ namespace MindfulEase.Models
         public string Instructions { get; set; }
 
         public string GameUrl { get; set; } // URL-ul jocului extern
+        public string? Background { get; set; }
 
         // Relație Many-to-Many
-        public virtual ICollection<ApplicationUserTherapeuticGame> Users { get; set; }
+        public virtual ICollection<ApplicationUserTherapeuticGame>? Users { get; set; }
     }
 }

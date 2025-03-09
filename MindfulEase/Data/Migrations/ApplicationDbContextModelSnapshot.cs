@@ -368,6 +368,31 @@ namespace MindfulEase.Data.Migrations
                     b.ToTable("Emotions");
                 });
 
+            modelBuilder.Entity("MindfulEase.Models.Objective", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Category")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ValueType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Objectives");
+                });
+
             modelBuilder.Entity("MindfulEase.Models.QuestionQuiz", b =>
                 {
                     b.Property<int>("Id")
@@ -403,6 +428,9 @@ namespace MindfulEase.Data.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Background")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CategoryMapping")
                         .HasColumnType("nvarchar(max)");
@@ -539,6 +567,9 @@ namespace MindfulEase.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<string>("Background")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("GameUrl")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -559,6 +590,61 @@ namespace MindfulEase.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("TherapeuticGames");
+                });
+
+            modelBuilder.Entity("MindfulEase.Models.UserObjective", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int?>("ObjectiveId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<TimeSpan?>("TargetTime")
+                        .HasColumnType("time");
+
+                    b.Property<int?>("TargetValue")
+                        .HasColumnType("int");
+
+                    b.HasKey("UserId", "ObjectiveId");
+
+                    b.HasIndex("ObjectiveId");
+
+                    b.ToTable("UserObjectives");
+                });
+
+            modelBuilder.Entity("MindfulEase.Models.UserObjectiveProgress", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsCompleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("UserObjectiveId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserObjectiveObjectiveId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserObjectiveUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserObjectiveUserId", "UserObjectiveObjectiveId");
+
+                    b.ToTable("UserObjectiveProgresses");
                 });
 
             modelBuilder.Entity("MindfulEase.Models.WeeklyChallenge", b =>
@@ -849,6 +935,36 @@ namespace MindfulEase.Data.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("MindfulEase.Models.UserObjective", b =>
+                {
+                    b.HasOne("MindfulEase.Models.Objective", "Objective")
+                        .WithMany("Users")
+                        .HasForeignKey("ObjectiveId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MindfulEase.Models.ApplicationUser", "User")
+                        .WithMany("Objectives")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Objective");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("MindfulEase.Models.UserObjectiveProgress", b =>
+                {
+                    b.HasOne("MindfulEase.Models.UserObjective", "UserObjective")
+                        .WithMany("UserObjectiveProgresses")
+                        .HasForeignKey("UserObjectiveUserId", "UserObjectiveObjectiveId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("UserObjective");
+                });
+
             modelBuilder.Entity("MindfulEase.Models.WeeklyReport", b =>
                 {
                     b.HasOne("MindfulEase.Models.ApplicationUser", "User")
@@ -868,6 +984,11 @@ namespace MindfulEase.Data.Migrations
             modelBuilder.Entity("MindfulEase.Models.Emotion", b =>
                 {
                     b.Navigation("Diaries");
+                });
+
+            modelBuilder.Entity("MindfulEase.Models.Objective", b =>
+                {
+                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("MindfulEase.Models.QuestionQuiz", b =>
@@ -897,9 +1018,16 @@ namespace MindfulEase.Data.Migrations
                     b.Navigation("Users");
                 });
 
+            modelBuilder.Entity("MindfulEase.Models.UserObjective", b =>
+                {
+                    b.Navigation("UserObjectiveProgresses");
+                });
+
             modelBuilder.Entity("MindfulEase.Models.ApplicationUser", b =>
                 {
                     b.Navigation("Diaries");
+
+                    b.Navigation("Objectives");
 
                     b.Navigation("Quizzes");
 

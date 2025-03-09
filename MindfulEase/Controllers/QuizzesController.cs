@@ -92,6 +92,7 @@ namespace MindfulEase.Controllers
             quiz.Description = updatedQuiz.Description;
             quiz.CategoryMapping = updatedQuiz.CategoryMapping;
             quiz.Result = updatedQuiz.Result;
+            quiz.Background = updatedQuiz.Background;
 
             db.SaveChanges();
 
@@ -114,6 +115,16 @@ namespace MindfulEase.Controllers
                 return RedirectToAction("Index");
             }
             quiz.Questions = quiz.Questions.OrderBy(q => q.Order).ToList();
+
+            var userId = _userManager.GetUserId(User);  
+
+            // Verificăm dacă utilizatorul a completat acest quiz anterior
+            var userQuiz = db.ApplicationUserQuizzes
+                             .FirstOrDefault(q => q.UserId == userId && q.QuizId == id);
+
+            // Dacă quiz-ul a fost completat anterior, setează ViewBag.Completat
+            ViewBag.Completat = userQuiz != null && userQuiz.IsCompleted;
+
             // Returnează quiz-ul cu întrebările sale
             return View(quiz);
         }
@@ -300,19 +311,22 @@ namespace MindfulEase.Controllers
 
             var responseEntries = new List<ApplicationUserQuestionQuiz>();
             var categoryScores = new Dictionary<string, int>();
-
-            var categoryMapping = quiz.CategoryMapping
-                .Split(new[] { "; " }, StringSplitOptions.RemoveEmptyEntries)
-                .Select(entry => entry.Split(':'))
-                .Where(pair => pair.Length == 2)
-                .ToDictionary(
-                    pair => pair[0].Trim(),
-                    pair => pair[1].Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
-                                  .Select(num => int.TryParse(num, out int val) ? val : -1)
-                                  .Where(num => num != -1)
-                                  .ToList()
-                );
-
+            var categoryMapping = new Dictionary<string, List<int>>(); 
+            if (quiz.CategoryMapping != null)
+            {
+                categoryMapping = quiz.CategoryMapping
+                    .Split(new[] { "; " }, StringSplitOptions.RemoveEmptyEntries)
+                    .Select(entry => entry.Split(':'))
+                    .Where(pair => pair.Length == 2)
+                    .ToDictionary(
+                        pair => pair[0].Trim(),
+                        pair => pair[1].Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
+                                      .Select(num => int.TryParse(num, out int val) ? val : -1)
+                                      .Where(num => num != -1)
+                                      .ToList()
+                    );
+                
+            }
             int totalScore = 0;
 
             foreach (var answer in answers)
@@ -326,15 +340,18 @@ namespace MindfulEase.Controllers
                 // Asocierea întrebării la categorie pe baza ordinii întrebărilor
                 int questionIndex = quiz.Questions.OrderBy(q => q.Order).ToList().FindIndex(q => q.Id == question.Id);
 
-                foreach (var category in categoryMapping)
+                if (categoryMapping.Count != 0)
                 {
-                    // Aici alegi categoria pe baza ordinii întrebărilor
-                    if (category.Value.Contains(questionIndex + 1)) // +1 pentru a începe de la 1, nu de la 0
+                    foreach (var category in categoryMapping)
                     {
-                        if (!categoryScores.ContainsKey(category.Key))
-                            categoryScores[category.Key] = 0;
+                        // Aici alegi categoria pe baza ordinii întrebărilor
+                        if (category.Value.Contains(questionIndex + 1)) // +1 pentru a începe de la 1, nu de la 0
+                        {
+                            if (!categoryScores.ContainsKey(category.Key))
+                                categoryScores[category.Key] = 0;
 
-                        categoryScores[category.Key] += score;
+                            categoryScores[category.Key] += score;
+                        }
                     }
                 }
 
@@ -396,6 +413,110 @@ namespace MindfulEase.Controllers
 
             return View("Submit", quiz);
         }
+
+        [Authorize(Roles = "Admin, Moderator, User")]
+        [HttpGet]
+        [Route("Quizzes/Result/{quizId}")]
+        public IActionResult Result(int? quizId)
+        {
+            Console.WriteLine("quizId "+quizId);
+            var userId = _userManager.GetUserId(User);
+
+            // Obținem quiz-ul pe baza ID-ului
+            var quiz = db.Quizzes.FirstOrDefault(q => q.Id == quizId);
+            if (quiz == null)
+            {
+                TempData["message"] = "Quiz-ul nu a fost găsit.";
+                TempData["messageType"] = "alert-danger";
+                Console.WriteLine("Quiz-ul nu a fost găsit." + quizId);
+                Console.WriteLine(quizId);
+                return RedirectToAction("Index", "Quizzes");
+            }
+
+            // Preluăm întrebările corect, pe baza quizId
+            var questions = db.QuestionQuizzes
+                              .Where(q => q.QuizId == quizId)
+                              .OrderBy(q => q.Order)  // Asigură-te că întrebările sunt ordonate corect
+                              .ToList();
+
+            if (!questions.Any())
+            {
+                TempData["message"] = "Nu există întrebări asociate acestui quiz.";
+                TempData["messageType"] = "alert-warning";
+                return RedirectToAction("Index", "Quizzes");
+            }
+
+            // Obține rezultatele complete pentru acest quiz din baza de date
+            var existingQuizResponse = db.ApplicationUserQuizzes
+                .FirstOrDefault(r => r.UserId == userId && r.QuizId == quizId);
+
+            if (existingQuizResponse == null)
+            {
+                TempData["message"] = "Nu ai completat acest quiz.";
+                TempData["messageType"] = "alert-warning";
+                Console.WriteLine("Nu ai completat acest quiz.");
+                return RedirectToAction("Index", "Quizzes");
+            }
+
+            // Obține răspunsurile la întrebările din quiz
+            var responses = db.ApplicationUserQuestionQuizzes
+                .Where(r => r.UserId == userId && r.Question.QuizId == quizId)
+                .ToList();
+
+            var categoryScores = new Dictionary<string, int>();
+            var categoryMapping = new Dictionary<string, List<int>>();
+
+            // Dacă există mapping pentru categorii, preia-le
+            if (quiz.CategoryMapping != null)
+            {
+                categoryMapping = quiz.CategoryMapping
+                    .Split(new[] { "; " }, StringSplitOptions.RemoveEmptyEntries)
+                    .Select(entry => entry.Split(':'))
+                    .Where(pair => pair.Length == 2)
+                    .ToDictionary(
+                        pair => pair[0].Trim(),
+                        pair => pair[1].Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
+                                      .Select(num => int.TryParse(num, out int val) ? val : -1)
+                                      .Where(num => num != -1)
+                                      .ToList()
+                    );
+            }
+
+            // Calcularea scorului total și scorurilor pe categorii
+            int totalScore = 0;
+            foreach (var response in responses)
+            {
+                var score = response.ResponseValue;
+                totalScore += score;
+
+                // Asocierea răspunsului la categorie
+                var questionIndex = questions.OrderBy(q => q.Order).ToList().FindIndex(q => q.Id == response.QuestionId);
+
+                if (categoryMapping.Count != 0)
+                {
+                    foreach (var category in categoryMapping)
+                    {
+                        if (category.Value.Contains(questionIndex + 1)) // +1 pentru a începe de la 1
+                        {
+                            if (!categoryScores.ContainsKey(category.Key))
+                                categoryScores[category.Key] = 0;
+
+                            categoryScores[category.Key] += score;
+                        }
+                    }
+                }
+            }
+
+            // Setează datele necesare pentru vizualizarea rezultatelor
+            ViewBag.TotalScore = totalScore;
+            ViewBag.CategoryScores = categoryScores;
+            ViewBag.Questions = questions;  // Adaugă întrebările la ViewBag pentru a le folosi în view
+
+            return View("Result", quiz);
+        }
+
+
+
 
 
     }
