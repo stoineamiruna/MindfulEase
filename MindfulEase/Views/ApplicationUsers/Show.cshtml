@@ -69,6 +69,51 @@
 
         <br />
     </div>
+
+    <div class="card mb-3 bg-white bg-opacity-25" style="max-width: 600px; width: 100%; margin: 10px auto;">
+        <div class="card-body">
+            <h5 class="card-title"><i class="bi bi-flag"></i> Goals 📌</h5>
+
+            @if (ViewBag.UserObjectives.Count > 0)
+            {
+                <ul class="list-group">
+                    @foreach (var userObjective in ViewBag.UserObjectives)
+                    {
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <div class="d-flex justify-content-between w-100">
+                                <strong>@userObjective.Objective.Title</strong>
+
+                                <!-- Verifică dacă TargetValue este valid (nu null) -->
+                                @if (userObjective.TargetValue != null )
+                                {
+                                    <span class="badge bg-primary">@userObjective.TargetValue @(userObjective.Objective.ValueType == "minute" ? "min" : "")</span>
+                                }
+
+                                <!-- Verifică dacă TargetTime este valid (nu null) -->
+                                @if (userObjective.TargetTime != null )
+                                {
+                                    <span class="badge bg-info">@userObjective.TargetTime</span>
+                                }
+                            </div>
+                        </li>
+                    }
+
+                </ul>
+            }
+            else
+            {
+                <p class="text-muted">Nu ai setat niciun obiectiv. Adaugă obiective pentru a-ți urmări progresul!</p>
+            }
+            @if(ViewBag.UserCurent == ViewBag.User.Id)
+            {
+                <div class="text-center mt-3">
+                    <a class="btn btn-outline-info" href="/Objectives/Index" style="border-radius: 30px;">Update Goals</a>
+                </div>
+            }
+            
+        </div>
+    </div>
+
 </section>
 
 <br />
