@@ -29,6 +29,9 @@ namespace MindfulEase.Data
         public DbSet<ApplicationUserResource> ApplicationUserResources { get; set; }
         public DbSet<ApplicationUserQuestionQuiz> ApplicationUserQuestionQuizzes { get; set; }
         public DbSet<QuestionQuiz> QuestionQuizzes { get; set; }
+        public DbSet<Objective> Objectives { get; set; }
+        public DbSet<UserObjective> UserObjectives { get; set; }
+        public DbSet<UserObjectiveProgress> UserObjectiveProgresses { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -104,6 +107,20 @@ namespace MindfulEase.Data
                 .HasOne(uq => uq.Question)
                 .WithMany(q => q.UserQuestionQuizzes)
                 .HasForeignKey(uq => uq.QuestionId);
+
+            // Many-to-Many Relationship: ApplicationUser <-> Objective
+            modelBuilder.Entity<UserObjective>()
+                .HasKey(ut => new { ut.UserId, ut.ObjectiveId });
+
+            modelBuilder.Entity<UserObjective>()
+                .HasOne(ut => ut.User)
+                .WithMany(u => u.Objectives)
+                .HasForeignKey(ut => ut.UserId);
+
+            modelBuilder.Entity<UserObjective>()
+                .HasOne(ut => ut.Objective)
+                .WithMany(g => g.Users)
+                .HasForeignKey(ut => ut.ObjectiveId);
         }
     }
 }

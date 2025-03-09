@@ -2,9 +2,26 @@
 
 <div class="container my-5">
     <h2 class="text-center mb-4">Resources</h2>
-    <a href="@Url.Action("Index", "Routines")" style="font-size: 1.2em; color: #01baa3; text-decoration: none;">
-        👈 Back
-    </a>
+    @if (ViewBag.EsteAdmin == true)
+    {
+        <div class="container">
+            <div class="row align-items-center">
+                <!-- Butonul Back (stânga) -->
+                <div class="col text-start">
+                    <a href="@Url.Action("Index", "Routines")" class="btn btn-outline-secondary" style="border-radius: 30px;">👈 Back</a>
+                </div>
+
+                <!-- Butonul New Quiz (dreapta) -->
+                <div class="col text-end">
+                    <a class="btn btn-info" href="/Resources/New" style="color: white; border-radius: 30px;">New Resource</a>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <a href="@Url.Action("Index", "Routines")" class="btn btn-outline-secondary mb-3" style="border-radius: 30px;">👈 Back</a>
+    }
     <br /> <br />
     <div class="row">
         @foreach (var resource in Model)
@@ -14,19 +31,17 @@
                     @if (ViewBag.EsteAdmin || ViewBag.EsteModerator)
                     {
                         <div class="d-flex justify-content-between" style="position: absolute; top: 10px; left: 10px; right: 10px; z-index: 10;">
-                            <a href="@Url.Action("Edit", "Resource", new { id = resource.Id })" class="btn btn-outline-info btn-sm" style="border-radius: 30px;">✏️ Edit</a>
-                            <form method="post" action="@Url.Action("Delete", "Resource", new { id = resource.Id })" class="d-inline">
+                            <a href="@Url.Action("Edit", "Resources", new { id = resource.Id })" class="btn btn-outline-info btn-sm" style="border-radius: 30px;">✏️ Edit</a>
+                            <form method="post" action="@Url.Action("Delete", "Resources", new { id = resource.Id })" class="d-inline">
                                 <button type="submit" class="btn btn-outline-danger btn-sm" style="border-radius: 30px;">🗑️ Delete</button>
                             </form>
                         </div>
-                    }<br />
+                    }<br /> <br /><br />
                     <div class="card-body d-flex align-items-center justify-content-center" style="min-height: 200px;">
                         @if (resource.ResourceType == "PodcastAudio")
                         {
-                            <audio controls class="w-100 d-flex justify-content-center">
-                                <source src="@resource.Link" type="audio/mpeg">
-                                Your browser does not support the audio element.
-                            </audio>
+                            <iframe src="@resource.Link" width="100%" height="152" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
                         }
                         else if (resource.ResourceType == "PodcastVideo" || resource.ResourceType == "Video")
                         {
@@ -58,3 +73,13 @@
         }
     </div>
 </div>
+<br /> <br />
+<style>
+    body {
+        background: linear-gradient(to bottom, rgba(168, 237, 234, 0.3), rgba(254, 214, 227, 0.3));
+        background-attachment: fixed;
+        min-height: 100vh;
+        margin: 0;
+    }
+
+</style>

@@ -41,6 +41,12 @@
                         @Html.EditorFor(model => model.Result, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter result for this quiz", style = "border-radius: 30px;" } })
                     </div>
 
+                    <!-- Quiz Background -->
+                    <div class="mb-3">
+                        <label for="Background" class="form-label fw-bold" style="color: #01baa3">Quiz Background URL</label>
+                        @Html.EditorFor(model => model.Background, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter the background image URL of the quiz", style = "border-radius: 30px;" } })
+                    </div>
+
                     <!-- Submit Button -->
                     <div class="text-center">
                         <button class="btn btn-info" type="submit" style="font-size: 1.2em; padding: 10px 30px; border-radius: 30px; color: white">

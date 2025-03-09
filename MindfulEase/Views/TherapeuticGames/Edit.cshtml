@@ -1,0 +1,60 @@
+﻿@model MindfulEase.Models.TherapeuticGame
+
+@{
+    ViewBag.Title = "Edit Therapeutic Game";
+}
+
+<div class="container-fluid" style="background-image: url('@Url.Content("~/img/background1.png")') !important; background-size: cover !important; background-position: center !important; min-height: 100vh; background-repeat: repeat-y; position: relative; z-index: 1;">
+    <div class="row justify-content-center align-items-center" style="min-height: 100vh;">
+        <div class="col-md-6">
+            <section class="p-4 shadow-sm rounded" style="background-color: rgba(255, 255, 255, 0.8)">
+                <h2 class="text-center" style="color: #01baa3;">Edit Therapeutic Game</h2>
+                <hr />
+                <p class="text-center" style="font-size: 1.1em; color: #666;">
+                    Modify the game details below to keep it up to date.
+                </p>
+
+                @using (Html.BeginForm(actionName: "Edit", controllerName: "TherapeuticGames", method: FormMethod.Post))
+                {
+                    @Html.HiddenFor(model => model.Id) <!-- Hidden input for Game ID -->
+                    <!-- Game Name -->
+                    <div class="mb-3">
+                        <label for="Name" class="form-label fw-bold" style="color: #01baa3">Game Name</label>
+                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter the name of the game", style = "border-radius: 30px;" } })
+                    </div>
+
+                    <!-- Game Type -->
+                    <div class="mb-3">
+                        <label for="Type" class="form-label fw-bold" style="color: #01baa3">Game Type</label>
+                        @Html.EditorFor(model => model.Type, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter the game type", style = "border-radius: 30px;" } })
+                    </div>
+
+                    <!-- Game Instructions -->
+                    <div class="mb-3">
+                        <label for="Instructions" class="form-label fw-bold" style="color: #01baa3">Instructions</label>
+                        @Html.EditorFor(model => model.Instructions, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter instructions for the game", style = "border-radius: 30px;" } })
+                    </div>
+
+                    <!-- Game URL -->
+                    <div class="mb-3">
+                        <label for="GameUrl" class="form-label fw-bold" style="color: #01baa3">Game URL</label>
+                        @Html.EditorFor(model => model.GameUrl, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter the game URL", style = "border-radius: 30px;" } })
+                    </div>
+
+                    <!-- Game Background -->
+                    <div class="mb-3">
+                        <label for="Background" class="form-label fw-bold" style="color: #01baa3">Game Background</label>
+                        @Html.EditorFor(model => model.Background, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter the background URL of the game", style = "border-radius: 30px;" } })
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="text-center">
+                        <button class="btn btn-info" type="submit" style="font-size: 1.2em; padding: 10px 30px; border-radius: 30px; color: white">
+                            Update Game
+                        </button>
+                    </div>
+                }
+            </section>
+        </div>
+    </div>
+</div>

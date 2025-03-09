@@ -1,0 +1,125 @@
+﻿@{
+    ViewBag.Title = "See More";
+    var type = ViewBag.Type as string;
+    var games = ViewBag.Games as List<MindfulEase.Models.TherapeuticGame>;
+    var quizzes = ViewBag.Quizzes as List<MindfulEase.Models.Quiz>;
+    var esteAdmin = ViewBag.EsteAdmin ?? false;
+    var esteModerator = ViewBag.EsteModerator ?? false;
+}
+
+<div class="container my-5">
+    
+    <h2 class="text-center">@ViewBag.Type</h2>
+
+    
+
+    @if (ViewBag.EsteAdmin == true)
+    {
+        <div class="container">
+            <div class="row align-items-center">
+                <!-- Butonul Back (stânga) -->
+                <div class="col text-start">
+                    <a href="@Url.Action("Index", "TherapeuticGames")" class="btn btn-outline-secondary" style="border-radius: 30px;">👈 Back</a>
+                </div>
+
+                <!-- Butonul New Quiz (dreapta) -->
+                <div class="col text-end">
+                    @if (ViewBag.Type == "myQuizzes" || ViewBag.Type == "allQuizzes")
+                    {
+                        <a class="btn btn-info" href="/Quizzes/New" style="color: white; border-radius: 30px;">New Quiz</a>
+                    }
+                    else
+                    {
+                        <a class="btn btn-info" href="/TherapeuticGames/New" style="color: white; border-radius: 30px;">New Game</a>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <a href="@Url.Action("Index", "TherapeuticGames")" class="btn btn-outline-secondary mb-3" style="border-radius: 30px;">👈 Back</a>
+    }
+
+    <!-- Search Bar -->
+    
+    <section class="p-3" style="padding-top: 100px;">
+        <div class="d-flex justify-content-center mb-4">
+            <form method="GET" class=" mb-4" style=" width: 100%; background-color: #f8f9fa; padding: 10px; border-radius: 25px; border: 1px solid #ced4da;">
+                <input type="hidden" name="type" value="@type" />
+                <div class="input-group">
+                    <input type="text" class="form-control"
+                           placeholder="Search..." name="search"
+                           value="@ViewBag.SearchString" style="border-radius: 20px;">
+                    <button class="btn btn-outline-primary" type="submit" style="border-radius: 20px;">Search</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <div class="row">
+        @foreach (var quiz in quizzes ?? new List<MindfulEase.Models.Quiz>())
+        {
+            <div class="col-6 col-md-4 col-lg-3 mb-4">
+                <div class="card shadow-sm h-100" style="border-radius: 20px;">
+                    @if (esteAdmin || esteModerator)
+                    {
+                        <div class="d-flex justify-content-between p-2" style="position: absolute; top: 10px; left: 10px; right: 10px; z-index: 10;">
+                            <a href="@Url.Action("Edit", "Quizzes", new { id = quiz.Id })" class="btn btn-outline-info btn-sm rounded-circle">✏️</a>
+                            <form method="post" action="@Url.Action("Delete", "Quizzes", new { id = quiz.Id })">
+                                <button type="submit" class="btn btn-outline-danger btn-sm rounded-circle">🗑️</button>
+                            </form>
+                        </div>
+                        <br />
+                        <br />
+                    }
+                    <img src="@quiz.Background" class="card-img-top" alt="Quiz Image" style="height: 150px; object-fit: cover; border-radius: 20px;">
+                    <div class="card-body text-center">
+                        <a href="@Url.Action("Show", "Quizzes", new { id = quiz.Id })" class="text-decoration-none fw-bold text-primary">
+                            @quiz.Title
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+
+        @foreach (var game in games ?? new List<MindfulEase.Models.TherapeuticGame>())
+        {
+            <div class="col-6 col-md-4 col-lg-3 mb-4">
+                <div class="card shadow-sm h-100" style="border-radius: 20px;">
+                    @if (esteAdmin || esteModerator)
+                    {
+                        <div class="d-flex justify-content-between p-2" style="position: absolute; top: 10px; left: 10px; right: 10px; z-index: 10;">
+                            <a href="@Url.Action("Edit", "TherapeuticGames", new { id = game.Id })" class="btn btn-outline-info btn-sm rounded-circle">✏️</a>
+                            <form method="post" action="@Url.Action("Delete", "TherapeuticGames", new { id = game.Id })">
+                                <button type="submit" class="btn btn-outline-danger btn-sm rounded-circle">🗑️</button>
+                            </form>
+                        </div>
+                    }
+                    <img src="@game.Background" class="card-img-top" alt="Game Image" style="height: 150px; object-fit: cover; border-radius: 20px;">
+                    <div class="card-body text-center">
+                        <a href="@Url.Action("Play", "TherapeuticGames", new { id = game.Id })" class="text-decoration-none fw-bold text-primary">
+                            @game.Name
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    @if ((games == null || !games.Any()) && (quizzes == null || !quizzes.Any()))
+    {
+        <p class="text-center text-muted">No results found.</p>
+    }
+</div>
+<br />
+<br />
+<style>
+    body {
+        background: linear-gradient(to bottom, rgba(168, 237, 234, 0.3), rgba(254, 214, 227, 0.3));
+        background-attachment: fixed;
+        min-height: 100vh;
+        margin: 0;
+    }
+
+</style>
