@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Humanizer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using MindfulEase.Data;
 using MindfulEase.Models;
+using System;
 
 namespace MindfulEase.Controllers
 {
@@ -85,7 +87,19 @@ namespace MindfulEase.Controllers
                           .Where(u => u.Id == id)
                           .FirstOrDefault();
 
+            if (user == null)
+            {
+                return NotFound();
+            }
             ViewBag.User = user;
+
+            // Obținem obiectivele utilizatorului(din UserObjective, legate de Objective)
+            var userObjectives = db.UserObjectives
+                .Where(uo => uo.UserId == id)
+                .Include(uo => uo.Objective) // Încărcăm și informațiile despre Objective
+                .ToList();
+
+            ViewBag.UserObjectives = userObjectives;
 
             if (TempData.ContainsKey("message"))
             {
