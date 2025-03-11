@@ -1,7 +1,10 @@
-﻿namespace MindfulEase.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace MindfulEase.Models
 {
     public class UserObjective
     {
+        [Key]
         public int Id { get; set; }
         public string? UserId { get; set; }  
         public int? ObjectiveId { get; set; }  

@@ -305,6 +305,35 @@ namespace MindfulEase.Data.Migrations
                     b.ToTable("ApplicationUserTherapeuticGames");
                 });
 
+            modelBuilder.Entity("MindfulEase.Models.Badge", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Activity")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Badges");
+                });
+
             modelBuilder.Entity("MindfulEase.Models.Diary", b =>
                 {
                     b.Property<int>("Id")
@@ -490,18 +519,17 @@ namespace MindfulEase.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<DateTime>("DateEarned")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
+                    b.Property<string>("Activity")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("StarsEarned")
+                    b.Property<DateTime>("DateEarned")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Points")
                         .HasColumnType("int");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
@@ -592,6 +620,27 @@ namespace MindfulEase.Data.Migrations
                     b.ToTable("TherapeuticGames");
                 });
 
+            modelBuilder.Entity("MindfulEase.Models.UserBadge", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int?>("BadgeId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DateUnlocked")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.HasKey("UserId", "BadgeId");
+
+                    b.HasIndex("BadgeId");
+
+                    b.ToTable("UserBadges");
+                });
+
             modelBuilder.Entity("MindfulEase.Models.UserObjective", b =>
                 {
                     b.Property<string>("UserId")
@@ -630,14 +679,13 @@ namespace MindfulEase.Data.Migrations
                     b.Property<bool>("IsCompleted")
                         .HasColumnType("bit");
 
-                    b.Property<int>("UserObjectiveId")
+                    b.Property<int?>("UserObjectiveId")
                         .HasColumnType("int");
 
-                    b.Property<int>("UserObjectiveObjectiveId")
+                    b.Property<int?>("UserObjectiveObjectiveId")
                         .HasColumnType("int");
 
                     b.Property<string>("UserObjectiveUserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
@@ -917,9 +965,7 @@ namespace MindfulEase.Data.Migrations
                 {
                     b.HasOne("MindfulEase.Models.ApplicationUser", "User")
                         .WithMany("Rewards")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
                     b.Navigation("User");
                 });
@@ -931,6 +977,25 @@ namespace MindfulEase.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("MindfulEase.Models.UserBadge", b =>
+                {
+                    b.HasOne("MindfulEase.Models.Badge", "Badge")
+                        .WithMany("Users")
+                        .HasForeignKey("BadgeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MindfulEase.Models.ApplicationUser", "User")
+                        .WithMany("Badges")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Badge");
 
                     b.Navigation("User");
                 });
@@ -958,9 +1023,7 @@ namespace MindfulEase.Data.Migrations
                 {
                     b.HasOne("MindfulEase.Models.UserObjective", "UserObjective")
                         .WithMany("UserObjectiveProgresses")
-                        .HasForeignKey("UserObjectiveUserId", "UserObjectiveObjectiveId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserObjectiveUserId", "UserObjectiveObjectiveId");
 
                     b.Navigation("UserObjective");
                 });
@@ -974,6 +1037,11 @@ namespace MindfulEase.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("MindfulEase.Models.Badge", b =>
+                {
+                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("MindfulEase.Models.Diary", b =>
@@ -1025,6 +1093,8 @@ namespace MindfulEase.Data.Migrations
 
             modelBuilder.Entity("MindfulEase.Models.ApplicationUser", b =>
                 {
+                    b.Navigation("Badges");
+
                     b.Navigation("Diaries");
 
                     b.Navigation("Objectives");

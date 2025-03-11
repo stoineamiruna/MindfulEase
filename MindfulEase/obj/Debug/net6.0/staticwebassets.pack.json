@@ -13,6 +13,26 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\img\\Badges\\badge1.png",
+      "PackagePath": "staticwebassets\\img\\Badges\\badge1.png"
+    },
+    {
+      "Id": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\img\\Badges\\badge2.png",
+      "PackagePath": "staticwebassets\\img\\Badges\\badge2.png"
+    },
+    {
+      "Id": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\img\\Badges\\badge3.png",
+      "PackagePath": "staticwebassets\\img\\Badges\\badge3.png"
+    },
+    {
+      "Id": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\img\\Badges\\badge4.png",
+      "PackagePath": "staticwebassets\\img\\Badges\\badge4.png"
+    },
+    {
+      "Id": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\img\\Badges\\badge5.png",
+      "PackagePath": "staticwebassets\\img\\Badges\\badge5.png"
+    },
+    {
       "Id": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\img\\NewProfile.jpg",
       "PackagePath": "staticwebassets\\img\\NewProfile.jpg"
     },

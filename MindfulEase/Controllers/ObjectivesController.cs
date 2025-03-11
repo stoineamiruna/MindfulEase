@@ -183,5 +183,49 @@ namespace MindfulEase.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpPost]
+        public ActionResult CompleteObjective(int objectiveId)
+        {
+            var userObjectiveProgress = db.UserObjectiveProgresses
+                .FirstOrDefault(p => p.UserObjectiveId == objectiveId && p.Date.Date == DateTime.Now.Date);
+            Console.WriteLine("ObjectiveId: " + objectiveId.ToString());
+            if (userObjectiveProgress == null)
+            {
+                // Dacă nu există progres, îl creăm
+                userObjectiveProgress = new UserObjectiveProgress
+                {
+                    UserObjectiveId = objectiveId,
+                    Date = DateTime.Now.Date,
+                    IsCompleted = true
+                };
+                db.UserObjectiveProgresses.Add(userObjectiveProgress);
+            }
+            else
+            {
+                // Dacă există, actualizăm statusul la completat
+                userObjectiveProgress.IsCompleted = true;
+            }
+
+            db.SaveChanges();
+
+            return Json(new { success = true });
+        }
+
+        [HttpPost]
+        public ActionResult UndoCompleteObjective(int objectiveId)
+        {
+            var userObjectiveProgress = db.UserObjectiveProgresses
+                .FirstOrDefault(p => p.UserObjectiveId == objectiveId && p.Date.Date == DateTime.Now.Date);
+
+            if (userObjectiveProgress != null)
+            {
+                // Dacă există progres, îl setăm ca incomplet
+                userObjectiveProgress.IsCompleted = false;
+                db.SaveChanges();
+            }
+
+            return Json(new { success = true });
+        }
+
     }
 }

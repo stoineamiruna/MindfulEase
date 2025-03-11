@@ -2,10 +2,12 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.ML;
 using MindfulEase.Data;
 using MindfulEase.Models;
 using MindfulEase.Services;
 using MindfulEase.Services.MindfulEase.Services;
+using System.Linq;
 
 namespace MindfulEase.Controllers
 {
@@ -14,12 +16,14 @@ namespace MindfulEase.Controllers
         private readonly ApplicationDbContext db;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SentimentAnalysisService _sentimentAnalysisService;
+        private readonly RewardService _rewardService;
 
-        public DiariesController(ApplicationDbContext context, UserManager<ApplicationUser> userManager, SentimentAnalysisService sentimentAnalysisService)
+        public DiariesController(ApplicationDbContext context, UserManager<ApplicationUser> userManager, SentimentAnalysisService sentimentAnalysisService, RewardService rewardService)
         {
             db = context;
             _userManager = userManager;
             _sentimentAnalysisService = sentimentAnalysisService;
+            _rewardService = rewardService;
         }
         // Conditiile de afisare a butoanelor de editare si stergere
         private void SetAccessRights()
@@ -66,7 +70,7 @@ namespace MindfulEase.Controllers
 
         // Display the create diary form
         [Authorize(Roles = "Admin,User")]
-        public IActionResult New()
+        public async Task<IActionResult> New()
         {
             SetAccessRights();
             var userId = _userManager.GetUserId(User);
@@ -81,6 +85,43 @@ namespace MindfulEase.Controllers
                     return Redirect(referer);
                 }
             }
+            
+            var userObjectives = db.UserObjectives
+                            .Where(uo => uo.UserId == userId)
+                            .Include(uo => uo.Objective)
+                            .ToList();
+
+            // Obținem Id-urile obiectivelor utilizatorului
+            var userObjectiveIds = userObjectives.Select(uo => (int?)uo.Id).ToList();
+
+            // Obținem progresul pentru obiectivele utilizatorului, doar pentru ziua curentă
+            var userObjectiveProgresses = db.UserObjectiveProgresses
+                .Where(up => userObjectiveIds.Contains(up.UserObjectiveId) && up.Date.Date == DateTime.Today)
+            .ToList();
+
+            var userObjectiveProgressesCompleted = db.UserObjectiveProgresses
+                .Where(up => userObjectiveIds.Contains(up.UserObjectiveId) && up.Date.Date == DateTime.Today && up.IsCompleted == true)
+            .ToList();
+
+            if (userObjectives.Count > 0 && userObjectives.Count == userObjectiveProgressesCompleted.Count)
+            {
+                // Verificăm dacă există deja un Reward pentru ziua curentă cu Activity = "CompleteDay"
+                bool alreadyRewarded = await db.Rewards
+                    .AnyAsync(r => r.UserId == userId && r.Activity == "CompleteDay" && r.DateEarned.Date == DateTime.UtcNow.Date);
+
+                if (!alreadyRewarded)
+                {
+                    // Adăugăm Reward-ul de 10 puncte
+                    await _rewardService.AddRewardAsync(userId, "CompleteDay", 10);
+                }
+            }
+
+            Console.WriteLine("Count: "+userObjectiveProgresses.Count);
+            // Trimitem datele către view
+            ViewBag.UserObjectives = userObjectives;
+            ViewBag.UserObjectiveProgresses = userObjectiveProgresses;
+
+
             var userDiaries = db.Diaries.Where(d => d.UserId == userId).ToList(); 
             ViewBag.UserDiaries = userDiaries; 
             return View();
@@ -112,6 +153,7 @@ namespace MindfulEase.Controllers
                 db.Diaries.Add(newDiary);
                 await db.SaveChangesAsync();
 
+                await _rewardService.AddRewardAsync(userId, "Diary", 10);
                 // Analizează emoțiile folosind serviciul de sentiment analysis
                 var emotions = await _sentimentAnalysisService.AnalyzeEmotionAsync(newDiary.Content);
                 Console.WriteLine("emotion: " + emotions);
