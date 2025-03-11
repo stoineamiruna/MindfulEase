@@ -1,0 +1,129 @@
+﻿@model IEnumerable<MindfulEase.Models.Badge>
+@{
+    ViewBag.Title = "Badges";
+}
+
+<div class="container my-5">
+    <h2 class="text-center mb-4">🏅 Manage Badges</h2>
+
+    <!-- Add Badge Button -->
+    <div class="text-center mb-4">
+        <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#createBadgeModal" style="border-radius: 30px;">
+            ➕ Add New Badge
+        </button>
+    </div>
+
+    @foreach (var activityGroup in Model.GroupBy(b => b.Activity))
+    {
+        <section class="mb-5">
+            <h3 class="mb-3">🏆 @activityGroup.Key</h3>
+            <div class="row">
+                @foreach (var badge in activityGroup)
+                {
+                    <div class="col-6 col-md-4 col-lg-3 mb-4">
+                        <div class="card shadow-sm text-center" style="border-radius: 20px;">
+                            <div style="background: white; padding: 10px; border-radius: 20px 20px 0 0;">
+                                <img src="@badge.ImageUrl" class="card-img-top" alt="@badge.Title"
+                                     style="height: 180px; object-fit: contain; max-width: 100%;">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">@badge.Title</h5>
+                                <p class="card-text">@badge.Description</p>
+                                <div class="d-flex justify-content-between">
+                                    <!-- Edit Button -->
+                                    <button class="btn btn-outline-info btn-sm" data-bs-toggle="modal" data-bs-target="#editBadgeModal-@badge.Id" style="border-radius: 30px;">
+                                        ✏️ 
+                                    </button>
+                                    <!-- Delete Button -->
+                                    <form asp-action="Delete" asp-route-id="@badge.Id" method="post">
+                                        <button type="submit" class="btn btn-outline-danger btn-sm" style="border-radius: 30px;">
+                                            🗑️ 
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Edit Badge Modal -->
+                    <div class="modal fade" id="editBadgeModal-@badge.Id" tabindex="-1" aria-labelledby="editBadgeLabel-@badge.Id" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Edit Badge</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form asp-action="Edit" method="post">
+                                        <input type="hidden" name="Id" value="@badge.Id" />
+                                        <div class="mb-3">
+                                            <label class="form-label">Title</label>
+                                            <input type="text" name="Title" class="form-control" value="@badge.Title" required />
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Description</label>
+                                            <textarea name="Description" class="form-control" required>@badge.Description</textarea>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Image URL</label>
+                                            <input type="text" name="ImageUrl" class="form-control" value="@badge.ImageUrl" required />
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Activity</label>
+                                            <input type="text" name="Activity" class="form-control" value="@badge.Activity" required />
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </section>
+    }
+
+    <!-- Create Badge Modal -->
+    <div class="modal fade" id="createBadgeModal" tabindex="-1" aria-labelledby="createBadgeLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add New Badge</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form asp-action="Create" method="post">
+                        <div class="mb-3">
+                            <label class="form-label">Title</label>
+                            <input type="text" name="Title" class="form-control" required />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Description</label>
+                            <textarea name="Description" class="form-control" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Image URL</label>
+                            <input type="text" name="ImageUrl" class="form-control" required />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Activity</label>
+                            <input type="text" name="Activity" class="form-control" required />
+                        </div>
+                        <button type="submit" class="btn btn-primary">Create Badge</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    body {
+        background: linear-gradient(to bottom, rgba(168, 237, 234, 0.3), rgba(254, 214, 227, 0.3));
+        background-attachment: fixed;
+        min-height: 100vh;
+        margin: 0;
+    }
+</style>
+
+<br /><br /><br />

@@ -32,6 +32,8 @@ namespace MindfulEase.Data
         public DbSet<Objective> Objectives { get; set; }
         public DbSet<UserObjective> UserObjectives { get; set; }
         public DbSet<UserObjectiveProgress> UserObjectiveProgresses { get; set; }
+        public DbSet<Badge> Badges { get; set; }
+        public DbSet<UserBadge> UserBadges { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -121,6 +123,20 @@ namespace MindfulEase.Data
                 .HasOne(ut => ut.Objective)
                 .WithMany(g => g.Users)
                 .HasForeignKey(ut => ut.ObjectiveId);
+
+            // Many-to-Many Relationship: ApplicationUser <-> Badge
+            modelBuilder.Entity<UserBadge>()
+                .HasKey(ut => new { ut.UserId, ut.BadgeId });
+
+            modelBuilder.Entity<UserBadge>()
+                .HasOne(ut => ut.User)
+                .WithMany(u => u.Badges)
+                .HasForeignKey(ut => ut.UserId);
+
+            modelBuilder.Entity<UserBadge>()
+                .HasOne(ut => ut.Badge)
+                .WithMany(g => g.Users)
+                .HasForeignKey(ut => ut.BadgeId);
         }
     }
 }

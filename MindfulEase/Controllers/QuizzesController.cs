@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MindfulEase.Data;
 using MindfulEase.Models;
+using MindfulEase.Services;
 using System;
 using System.Linq;
 
@@ -14,11 +15,14 @@ namespace MindfulEase.Controllers
     {
         private readonly ApplicationDbContext db;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly RewardService _rewardService;
         public QuizzesController(ApplicationDbContext context,
-            UserManager<ApplicationUser> userManager)
+            UserManager<ApplicationUser> userManager,
+            RewardService rewardService)
         {
             db = context;
             _userManager = userManager;
+            _rewardService = rewardService;
         }
 
         private void SetAccessRights()
@@ -298,7 +302,7 @@ namespace MindfulEase.Controllers
         [Authorize(Roles = "Admin, Moderator, User")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Submit(int quizId, Dictionary<int, int> answers)
+        public async Task<ActionResult> Submit(int quizId, Dictionary<int, int> answers)
         {
             var userId = _userManager.GetUserId(User);
             var quiz = db.Quizzes.Include("Questions").FirstOrDefault(q => q.Id == quizId);
@@ -404,6 +408,8 @@ namespace MindfulEase.Controllers
             {
                 db.ApplicationUserQuestionQuizzes.AddRange(responseEntries);
             }
+
+            await _rewardService.AddRewardAsync(userId, "CompleteQuiz", 10);
 
             db.SaveChanges();
             Console.WriteLine(totalScore);

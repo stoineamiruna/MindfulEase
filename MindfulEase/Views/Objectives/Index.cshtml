@@ -56,7 +56,7 @@
                                             }
                                         </div>
 
-                                        <span class="badge bg-primary">@obj.ValueType</span>
+                                        <span class="badge bg-info">@obj.ValueType</span>
 
                                         <div>
                                             <!-- Buton pentru setare goal -->
@@ -73,7 +73,7 @@
                                                         
                                                             }
                                                 </span>
-                                                <button class="btn btn-warning btn-sm set-goal-btn"
+                                                <button class="btn btn-outline-info btn-sm set-goal-btn"
                                                         data-bs-toggle="modal"
                                                         data-bs-target="#setGoalModal"
                                                         data-objective-id="@obj.Id"
@@ -86,7 +86,7 @@
                                             }
                                             else
                                             {
-                                                <button class="btn btn-success btn-sm set-goal-btn"
+                                                <button class="btn btn-outline-info btn-sm set-goal-btn"
                                                         data-bs-toggle="modal"
                                                         data-bs-target="#setGoalModal"
                                                         data-objective-id="@obj.Id"
@@ -173,6 +173,35 @@
                     </div>
 
                     <button type="submit" class="btn btn-primary" style="border-radius: 30px;">Save Changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal pentru adăugare obiectiv -->
+<div class="modal fade" id="addObjectiveModal" tabindex="-1" aria-labelledby="addObjectiveModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addObjectiveModalLabel">Add New Objective</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="/Objectives/Create">
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title</label>
+                        <input type="text" class="form-control" id="title" name="Title" required placeholder="Enter objective title" style="border-radius: 30px;" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="valueType" class="form-label">Value Type</label>
+                        <select class="form-control" id="valueType" name="ValueType" required style="border-radius: 30px;">
+                            <option value="minute">Minute</option>
+                            <option value="integer">Integer</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-success" style="border-radius: 30px;">Add Objective</button>
                 </form>
             </div>
         </div>
