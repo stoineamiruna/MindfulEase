@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Diary";
+    var userObjectiveProgresses = (List<MindfulEase.Models.UserObjectiveProgress>)ViewBag.UserObjectiveProgresses;
 }
 
 <div class="container-fluid" style="background-image: url('@Url.Content("~/img/background1.png")') !important; background-size: cover !important; background-position: center !important; min-height: 100vh; background-repeat: repeat-y; position: relative; z-index: 1;">
@@ -40,6 +41,47 @@
         </div>
     </div>
 
+    <!-- Afișare obiective -->
+    <section class="mt-4">
+        <h3 class="text-center" style="color: #01baa3;">Your Objectives for Today</h3>
+        <div class="d-flex flex-column align-items-center" >
+           
+            @foreach (var userObjective in ViewBag.UserObjectives)
+            {
+                var userObjectiveProgress = userObjectiveProgresses
+                .FirstOrDefault(p => p.UserObjectiveId == userObjective.Id);
+
+                bool isCompleted = userObjectiveProgress != null && userObjectiveProgress.IsCompleted;
+
+                <div class="card mb-3 shadow-sm" style="border-radius: 15px; background-color: rgba(255, 255, 255, 0.8); width: 80%; max-width: 700px;">
+                    <div class="card-body d-flex justify-content-between align-items-center">
+                        @if (@userObjective.TargetValue != null)
+                        {
+                            <span class="fw-bold" style="color: #01baa3;">@userObjective.Objective.Title: @userObjective.TargetValue</span>
+                        }
+
+                        else
+                        {
+                        <span class="fw-bold" style="color: #01baa3;">@userObjective.Objective.Title: @userObjective.TargetTime min</span>
+                        }
+                        
+                        @if (isCompleted)
+                        {
+                            <span style="font-size: 1.5em; cursor: pointer;" title="Completed" onclick="markAsIncomplete(@userObjective.Id)">✅</span>
+                        }
+                        else
+                        {
+                            <input type="checkbox" class="form-check-input" id="objective-@userObjective.Id"
+                                   onclick="markAsCompleted(@userObjective.Id)" />
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+
+
+
     <!-- Display User's Previous Diary Entries -->
     @if (ViewBag.UserDiaries != null && ViewBag.UserDiaries.Count > 0)
     {
@@ -75,3 +117,31 @@
 
 <br />
 <br />
+
+<script>
+    function markAsCompleted(objectiveId) {
+        $.ajax({
+            url: '@Url.Action("CompleteObjective", "Objectives")',
+            type: 'POST',
+            data: { objectiveId: objectiveId },
+            success: function (response) {
+                if (response.success) {
+                    location.reload(); // Refresh pentru a vedea emoji-ul ✅
+                }
+            }
+        });
+    }
+
+    function markAsIncomplete(objectiveId) {
+        $.ajax({
+            url: '@Url.Action("UndoCompleteObjective", "Objectives")',
+            type: 'POST',
+            data: { objectiveId: objectiveId },
+            success: function (response) {
+                if (response.success) {
+                    location.reload(); // Refresh pentru a reveni la checkbox
+                }
+            }
+        });
+    }
+</script>

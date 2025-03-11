@@ -58,6 +58,7 @@ namespace MindfulEase.Models
         public IEnumerable<SelectListItem>? AllRoles { get; set; }
         public ICollection<ApplicationUserResource>? Resources { get; set; }
         public ICollection<UserObjective>? Objectives { get; set; }
+        public ICollection<UserBadge>? Badges { get; set; }
 
     }
 }

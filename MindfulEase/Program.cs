@@ -4,6 +4,7 @@ using MindfulEase.Data;
 using MindfulEase.Models;
 using MindfulEase.Services.MindfulEase.Services;
 using MindfulEase.Services;
+using Hangfire;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,9 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+builder.Services.AddHangfire(x => x.UseSqlServerStorage(connectionString));
+builder.Services.AddHangfireServer();
+
 
 // PASUL 2 - useri si roluri
 
@@ -21,9 +25,12 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.R
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddHttpClient();  // Register HttpClient for compiler
+builder.Services.AddScoped<BadgeService>();
 builder.Services.AddScoped<RecommendationService>(); // Service-ul depinde de DbContext
 builder.Services.AddScoped<ClusteringService>(); // Service-ul depinde de DbContext
 builder.Services.AddHttpClient<SentimentAnalysisService>(); // Acest serviciu foloseste HTTP
+builder.Services.AddScoped<RewardService>();
+
 
 var app = builder.Build();
 
@@ -62,4 +69,8 @@ app.MapControllerRoute(
 
 app.MapRazorPages();
 
+app.UseHangfireDashboard("/hangfire");
+RecurringJob.AddOrUpdate<BadgeService>(
+     service => service.CheckAndAwardBadgesAsync(),
+     Cron.Minutely); //Seteaza jobul sa ruleze la fiecare minut
 app.Run();

@@ -69,6 +69,30 @@
 
         <br />
     </div>
+    <!-- Secțiunea de Day Streak și Total Points într-un card -->
+    <div class="card mb-3 bg-white bg-opacity-25" style="max-width: 600px; width: 100%; margin: 10px auto;">
+        <div class="card-body">
+            <h5 class="card-title d-flex justify-content-between">
+                <span><i class="bi bi-calendar-day"></i> Streak & Points</span>
+            </h5>
+            <div class="d-flex justify-content-around mb-3 w-100" style="flex-wrap: wrap;">
+                <!-- Day Streak -->
+                <div class="card text-center" style="max-width: 230px; width: 48%; background-color: #f8f9fa; margin-right: 10px;">
+                    <div class="card-body">
+                        <h5 class="card-title"><span class="bi bi-calendar-day"></span>🔥 @ViewBag.DaysStreak</h5>
+                        <small class="text-muted">Days Streak</small>
+                    </div>
+                </div>
+                <!-- Total Points -->
+                <div class="card text-center" style="max-width: 230px; width: 48%; background-color: #f8f9fa;">
+                    <div class="card-body">
+                        <h5 class="card-title"><span class="bi bi-star"></span> 🌟 @ViewBag.Points</h5>
+                        <small class="text-muted">Total Stars</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="card mb-3 bg-white bg-opacity-25" style="max-width: 600px; width: 100%; margin: 10px auto;">
         <div class="card-body">
@@ -113,6 +137,37 @@
             
         </div>
     </div>
+
+
+
+
+    <!-- Secțiunea de Badge-uri -->
+    <div class="card mb-3 bg-white bg-opacity-25" style="max-width: 600px; width: 100%; margin: 10px auto;">
+        <div class="card-body">
+            <h5 class="card-title d-flex justify-content-between">
+                <span><i class="bi bi-award"></i> Badges 🏅</span>
+                <div>
+                    <a href="/Badges/IndexUserBadges/@ViewBag.User.Id" class="btn btn-link p-0 text-uppercase" style="text-decoration: none;">View All</a>
+
+                    @if (ViewBag.EsteAdmin || ViewBag.EsteModerator)
+                    {
+                        <a href="/Badges/Index" class="btn btn-link p-0 text-uppercase" style="text-decoration: none;">Manage Badges</a>
+                    }
+                </div>
+            </h5>
+            <div class="d-flex">
+                @foreach (var badge in ViewBag.UserBadges)
+                {
+                    <div class="badge" style="margin-right: 10px;">
+                        <img src="@badge.ImageUrl" alt="@badge.Title" style="width: 50px; height: 50px; object-fit: cover;" />
+                        <p class="text-center" style="color:darkturquoise">@badge.Title</p>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+
 
 </section>
 

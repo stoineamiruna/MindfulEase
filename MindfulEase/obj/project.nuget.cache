@@ -1,9 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "cLTlySLebkdbRDWlUSvFC/cxd7XPkGvbR2JvdmH6x18E9c5TZOteDT6lPNnEj1bTilcz12ThKdLIWl3lHJUeJw==",
+  "dgSpecHash": "SyF/Og9VQWxfZzXBEadqZU0txfvXklIVSaiKHh1b9d3oOtIldMaJBhG2wUat7KbuoIkL49Bdhx9CXJ+pLt1DIA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\MindfulEase.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Miru\\.nuget\\packages\\hangfire\\1.8.18\\hangfire.1.8.18.nupkg.sha512",
+    "C:\\Users\\Miru\\.nuget\\packages\\hangfire.aspnetcore\\1.8.18\\hangfire.aspnetcore.1.8.18.nupkg.sha512",
+    "C:\\Users\\Miru\\.nuget\\packages\\hangfire.core\\1.8.18\\hangfire.core.1.8.18.nupkg.sha512",
+    "C:\\Users\\Miru\\.nuget\\packages\\hangfire.netcore\\1.8.18\\hangfire.netcore.1.8.18.nupkg.sha512",
+    "C:\\Users\\Miru\\.nuget\\packages\\hangfire.sqlserver\\1.8.18\\hangfire.sqlserver.1.8.18.nupkg.sha512",
     "C:\\Users\\Miru\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\Miru\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Miru\\.nuget\\packages\\humanizer.core.af\\2.14.1\\humanizer.core.af.2.14.1.nupkg.sha512",
@@ -93,6 +98,7 @@
     "C:\\Users\\Miru\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
     "C:\\Users\\Miru\\.nuget\\packages\\microsoft.extensions.fileproviders.abstractions\\6.0.0\\microsoft.extensions.fileproviders.abstractions.6.0.0.nupkg.sha512",
     "C:\\Users\\Miru\\.nuget\\packages\\microsoft.extensions.fileproviders.embedded\\6.0.35\\microsoft.extensions.fileproviders.embedded.6.0.35.nupkg.sha512",
+    "C:\\Users\\Miru\\.nuget\\packages\\microsoft.extensions.hosting.abstractions\\3.0.0\\microsoft.extensions.hosting.abstractions.3.0.0.nupkg.sha512",
     "C:\\Users\\Miru\\.nuget\\packages\\microsoft.extensions.identity.core\\6.0.35\\microsoft.extensions.identity.core.6.0.35.nupkg.sha512",
     "C:\\Users\\Miru\\.nuget\\packages\\microsoft.extensions.identity.stores\\6.0.35\\microsoft.extensions.identity.stores.6.0.35.nupkg.sha512",
     "C:\\Users\\Miru\\.nuget\\packages\\microsoft.extensions.logging\\6.0.0\\microsoft.extensions.logging.6.0.0.nupkg.sha512",

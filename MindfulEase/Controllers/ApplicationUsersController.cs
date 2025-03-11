@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using MindfulEase.Data;
 using MindfulEase.Models;
+using MindfulEase.Services;
 using System;
 
 namespace MindfulEase.Controllers
@@ -17,17 +18,19 @@ namespace MindfulEase.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
-
+        private readonly RewardService _rewardService;
 
 
         public ApplicationUsersController(ApplicationDbContext context,
            UserManager<ApplicationUser> userManager,
-           RoleManager<IdentityRole> roleManager, SignInManager<ApplicationUser> signInManager)
+           RoleManager<IdentityRole> roleManager, SignInManager<ApplicationUser> signInManager,
+           RewardService rewardService)
         {
             db = context;
             _userManager = userManager;
             _roleManager = roleManager;
             _signInManager = signInManager;
+            _rewardService = rewardService;
         }
 
         // Conditiile de afisare a butoanelor de editare si stergere
@@ -71,7 +74,7 @@ namespace MindfulEase.Controllers
 
         //afisarea unui singur profil in functie de id-ul sau
         [Authorize(Roles = "Admin,Moderator,User")]
-        public IActionResult Show(string? id)
+        public async Task<IActionResult> Show(string? id)
         {
             SetAccessRights();
 
@@ -99,7 +102,20 @@ namespace MindfulEase.Controllers
                 .Include(uo => uo.Objective) // Încărcăm și informațiile despre Objective
                 .ToList();
 
+            ViewBag.Points = await _rewardService.GetTotalPointsAsync(id);
             ViewBag.UserObjectives = userObjectives;
+            
+            // Obținem badge-urile utilizatorului și limităm la 7
+            var userBadges = db.UserBadges
+                .Where(ub => ub.UserId == id)
+                .Select(ub => ub.Badge)
+                .Take(7) // Limitează numărul de badge-uri la 7
+                .ToList();
+
+
+            ViewBag.UserBadges = userBadges;
+
+            ViewBag.DaysStreak = CalculateDaysStreak(id);
 
             if (TempData.ContainsKey("message"))
             {
@@ -108,6 +124,55 @@ namespace MindfulEase.Controllers
             }
 
             return View();
+        }
+        private int CalculateDaysStreak(string userId)
+        {
+            var userObjectives = db.UserObjectives
+                            .Where(uo => uo.UserId == userId)
+                            .Include(uo => uo.Objective)
+                            .ToList();
+
+            // Obținem Id-urile obiectivelor utilizatorului
+            var userObjectiveIds = userObjectives.Select(uo => (int?)uo.Id).ToList();
+
+            var userObjectiveProgresses = db.UserObjectiveProgresses
+                .Where(up => userObjectiveIds.Contains(up.UserObjectiveId) && up.IsCompleted)
+                .OrderByDescending(up => up.Date) // Sortăm descrescător pentru a verifica zile consecutive
+                .Select(up => up.Date.Date) // Luăm doar datele unice
+                .Distinct()
+                .ToList();
+            userObjectiveProgresses = userObjectiveProgresses.OrderByDescending(up => up.Date).ToList();
+            int daysStreak = 0;
+            DateTime today = DateTime.UtcNow.Date;
+            foreach (var x in userObjectiveProgresses)
+            {
+                Console.WriteLine("userObjectiveProgresses: " + x);
+            }
+                
+            Console.WriteLine("nr: " + userObjectiveProgresses.Count);
+
+            // Verificăm dacă utilizatorul a completat obiective pentru ziua de azi
+            if (!userObjectiveProgresses.Contains(today))
+                today = today.AddDays(-1); // Dacă azi nu a completat, începem streak-ul de ieri
+            
+
+            // Parcurgem zilele consecutive
+            foreach (var date in userObjectiveProgresses)
+            {
+                Console.WriteLine("date: " + date);
+                Console.WriteLine("today: " + today);
+                if (date == today)
+                {
+                    daysStreak++;
+                    today = today.AddDays(-1); // Verificăm ziua anterioară
+                }
+                else
+                {
+                    break; // Dacă o zi lipsește, streak-ul s-a întrerupt
+                }
+            }
+
+            return daysStreak;
         }
 
         // formularul in care se vor completa datele unei profil nouu
