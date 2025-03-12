@@ -230,6 +230,30 @@ namespace MindfulEase.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("MindfulEase.Models.ApplicationUserEmotion", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int?>("EmotionId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MoodValue")
+                        .HasColumnType("int");
+
+                    b.HasKey("UserId", "EmotionId");
+
+                    b.HasIndex("EmotionId");
+
+                    b.ToTable("ApplicationUserEmotions");
+                });
+
             modelBuilder.Entity("MindfulEase.Models.ApplicationUserQuestionQuiz", b =>
                 {
                     b.Property<string>("UserId")
@@ -917,6 +941,25 @@ namespace MindfulEase.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("MindfulEase.Models.ApplicationUserEmotion", b =>
+                {
+                    b.HasOne("MindfulEase.Models.Emotion", "Emotion")
+                        .WithMany("Users")
+                        .HasForeignKey("EmotionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MindfulEase.Models.ApplicationUser", "User")
+                        .WithMany("Emotions")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Emotion");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("MindfulEase.Models.ApplicationUserQuestionQuiz", b =>
                 {
                     b.HasOne("MindfulEase.Models.QuestionQuiz", "Question")
@@ -1156,6 +1199,8 @@ namespace MindfulEase.Data.Migrations
             modelBuilder.Entity("MindfulEase.Models.Emotion", b =>
                 {
                     b.Navigation("Diaries");
+
+                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("MindfulEase.Models.Objective", b =>
@@ -1205,6 +1250,8 @@ namespace MindfulEase.Data.Migrations
                     b.Navigation("Badges");
 
                     b.Navigation("Diaries");
+
+                    b.Navigation("Emotions");
 
                     b.Navigation("Notifications");
 

@@ -36,7 +36,7 @@
                     {
                         <div class="row justify-content-center align-items-center mb-4">
                             <div class="col-md-8">
-                                <div class="card" style="box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1); border-radius: 5px">
+                                <div class="card" style="box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1); border-radius: 30px">
                                     <div class="card-body">
                                         <div class="d-flex justify-content-between align-items-start">
                                             <div>
@@ -52,7 +52,7 @@
                                             </div>
                                             <form asp-action="MarkAsRead" asp-controller="Notifications" method="post">
                                                 <input type="hidden" name="id" value="@notification.Id" />
-                                                <button type="submit" class="btn btn-sm btn-outline-@((notification.IsRead) ? "secondary" : "info")" @(notification.IsRead ? "disabled" : "")>
+                                                <button style="border-radius: 30px" type="submit" class="btn btn-sm btn-outline-@((notification.IsRead) ? "secondary" : "info")" @(notification.IsRead ? "disabled" : "")>
                                                     Mark as Read
                                                 </button>
                                             </form>

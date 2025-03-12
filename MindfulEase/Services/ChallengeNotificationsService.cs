@@ -28,7 +28,7 @@ namespace MindfulEase.Services
                     var startNotificationExists = _context.Notifications.Any(n =>
                         (n.UserId == user.Id ||
                         n.UserId == null) &&
-                        n.Link == "/WeeklyChallenges/Show/" + challenge.Id &&
+                        n.Link == "/WeeklyChallenges/Index" &&
                         n.Message == $"Challenge {challenge.Title} has started!");
 
                     if (!startNotificationExists && challenge.StartDate <= DateTime.Now && challenge.EndDate >= DateTime.Now)
@@ -49,7 +49,7 @@ namespace MindfulEase.Services
                     // Notificare spre sfârșitul provocării
                     var endingSoonNotificationExists = _context.Notifications.Any(n =>
                         n.UserId == user.Id &&
-                        n.Link == "/WeeklyChallenges/Show/" + challenge.Id &&
+                        n.Link == "/WeeklyChallenges/Index" &&
                         n.Message == $"Challenge {challenge.Title} is ending soon!");
 
                     if (!endingSoonNotificationExists && (DateTime.Now > challenge.StartDate && DateTime.Now <= challenge.EndDate ||
@@ -71,7 +71,7 @@ namespace MindfulEase.Services
                     // Notificare la sfârșitul provocării
                     var endNotificationExists = _context.Notifications.Any(n =>
                         n.UserId == user.Id &&
-                        n.Link == "/WeeklyChallenges/Show/" + challenge.Id &&
+                        n.Link == "/WeeklyChallenges/Index" &&
                         n.Message == $"Challenge {challenge.Title} has ended!");
 
                     if (!endNotificationExists && DateTime.Now > challenge.EndDate.AddDays(1))
