@@ -30,7 +30,8 @@ builder.Services.AddScoped<RecommendationService>(); // Service-ul depinde de Db
 builder.Services.AddScoped<ClusteringService>(); // Service-ul depinde de DbContext
 builder.Services.AddHttpClient<SentimentAnalysisService>(); // Acest serviciu foloseste HTTP
 builder.Services.AddScoped<RewardService>();
-
+builder.Services.AddScoped<WeeklyChallengeService>();
+builder.Services.AddScoped<ChallengeNotificationsService>();
 
 var app = builder.Build();
 
@@ -73,4 +74,13 @@ app.UseHangfireDashboard("/hangfire");
 RecurringJob.AddOrUpdate<BadgeService>(
      service => service.CheckAndAwardBadgesAsync(),
      Cron.Minutely); //Seteaza jobul sa ruleze la fiecare minut
+
+RecurringJob.AddOrUpdate<WeeklyChallengeService>(
+    service => service.CheckWeeklyChallengesAsync(),   
+    Cron.Minutely);  // Seteaz? jobul s? ruleze la fiecare minut
+
+RecurringJob.AddOrUpdate<ChallengeNotificationsService>(
+    service => service.CheckActiveChallengesAndSendNotifications(),
+    Cron.Minutely);  // Seteaz? jobul s? ruleze la fiecare minut
+
 app.Run();

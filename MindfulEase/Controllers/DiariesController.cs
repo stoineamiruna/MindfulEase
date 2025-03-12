@@ -112,7 +112,19 @@ namespace MindfulEase.Controllers
                 if (!alreadyRewarded)
                 {
                     // Adăugăm Reward-ul de 10 puncte
-                    await _rewardService.AddRewardAsync(userId, "CompleteDay", 10);
+                    await _rewardService.AddRewardAsync(userId, "CompleteDay", 5);
+
+                    var notification = new Notification
+                    {
+                        UserId = userId,
+                        Message = $"Congratulations! You have earned 5 points for a full day",
+                        Link = "/Diaries/New/",
+                        CreatedAt = DateTime.Now,
+                        IsRead = false
+                    };
+
+                    db.Notifications.Add(notification);
+                    db.SaveChanges();
                 }
             }
 

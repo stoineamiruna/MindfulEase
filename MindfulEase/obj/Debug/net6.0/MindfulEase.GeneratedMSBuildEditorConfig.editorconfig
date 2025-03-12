@@ -90,6 +90,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Miru/Desktop/Licenta/MindfulEase/MindfulEase/Views/Notifications/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTm90aWZpY2F0aW9uc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Miru/Desktop/Licenta/MindfulEase/MindfulEase/Views/Objectives/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2JqZWN0aXZlc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -164,6 +168,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Miru/Desktop/Licenta/MindfulEase/MindfulEase/Views/TherapeuticGames/SeeMore.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGhlcmFwZXV0aWNHYW1lc1xTZWVNb3JlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Miru/Desktop/Licenta/MindfulEase/MindfulEase/Views/WeeklyChallenges/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2Vla2x5Q2hhbGxlbmdlc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Miru/Desktop/Licenta/MindfulEase/MindfulEase/Views/WeeklyChallenges/SeeMore.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2Vla2x5Q2hhbGxlbmdlc1xTZWVNb3JlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Miru/Desktop/Licenta/MindfulEase/MindfulEase/Views/_ViewImports.cshtml]

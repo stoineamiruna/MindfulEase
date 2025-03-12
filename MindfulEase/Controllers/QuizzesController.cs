@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.ML;
 using MindfulEase.Data;
 using MindfulEase.Models;
 using MindfulEase.Services;
@@ -410,6 +411,17 @@ namespace MindfulEase.Controllers
             }
 
             await _rewardService.AddRewardAsync(userId, "CompleteQuiz", 10);
+
+            var notification = new Notification
+            {
+                UserId = userId,
+                Message = $"Congratulations! You have earned 10 points for completing the  {quiz.Title} quiz!",
+                Link = "/Quizzes/Show/" + quiz.Id,
+                CreatedAt = DateTime.Now,
+                IsRead = false
+            };
+
+            db.Notifications.Add(notification);
 
             db.SaveChanges();
             Console.WriteLine(totalScore);
