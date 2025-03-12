@@ -1,0 +1,74 @@
+﻿@model IEnumerable<MindfulEase.Models.Notification>
+
+@{
+    ViewData["Title"] = "Notifications";
+}
+
+<link rel="stylesheet" href="~/css/feature_section.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/questions.css" asp-append-version="true" />
+
+<section class="features-area features-one min-vh-100">
+    @if (TempData.ContainsKey("message"))
+    {
+        <h4 class="@ViewBag.MessageType p-3 rounded-3 text-center mb-5">@ViewBag.Message</h4>
+    }
+    <div class="container">
+        <div class="row justify-content-center pb-5">
+            <div class="col-lg-6">
+                <div class="section-title text-center">
+                    <h3 class="title">Notifications</h3>
+                </div>
+                <!-- row -->
+            </div>
+        </div>
+        <!-- row -->
+        <div class="container mt-5">
+            <div class="row g-5 d-flex justify-content-start">
+                @if (!Model.Any())
+                {
+                    <div class="alert alert-info text-center">
+                        <p>You have no notifications.</p>
+                    </div>
+                }
+                else
+                {
+                    @foreach (var notification in Model)
+                    {
+                        <div class="row justify-content-center align-items-center mb-4">
+                            <div class="col-md-8">
+                                <div class="card" style="box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1); border-radius: 5px">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-start">
+                                            <div>
+                                                <h5 class="card-title mb-2">
+                                                    @notification.Message
+                                                </h5>
+                                                @if (!string.IsNullOrEmpty(notification.Link))
+                                                {
+                                                    <a href="@notification.Link" class="btn btn-link text-info p-0" style="text-decoration: none">
+                                                        View Details
+                                                    </a>
+                                                }
+                                            </div>
+                                            <form asp-action="MarkAsRead" asp-controller="Notifications" method="post">
+                                                <input type="hidden" name="id" value="@notification.Id" />
+                                                <button type="submit" class="btn btn-sm btn-outline-@((notification.IsRead) ? "secondary" : "info")" @(notification.IsRead ? "disabled" : "")>
+                                                    Mark as Read
+                                                </button>
+                                            </form>
+                                        </div>
+                                        <small class="text-muted">Created at: @notification.CreatedAt.ToString("g")</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+
+            </div>
+        </div>
+    </div>
+    <!-- container -->
+</section>
+
+<br /><br />
