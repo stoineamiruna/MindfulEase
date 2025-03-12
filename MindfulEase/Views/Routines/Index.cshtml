@@ -10,7 +10,7 @@
             @foreach (var resource in ((List<MindfulEase.Models.Resource>)ViewBag.LikedResources).Take(4))
             {
                 <div class="col-6 col-md-4 col-lg-3 mb-4">
-                    <div class="card shadow-sm h-100 d-flex flex-column justify-content-center">
+                    <div class="card shadow-sm h-100 d-flex flex-column justify-content-center" style="border-radius: 30px;">
                         <!-- Butoanele Editare și Ștergere în partea de sus, stânga și dreapta -->
                         @if (ViewBag.EsteAdmin || ViewBag.EsteModerator)
                         {
@@ -20,33 +20,40 @@
                                     <button type="submit" class="btn btn-outline-danger btn-sm" style="border-radius: 30px;">🗑️ Delete</button>
                                 </form>
                             </div>
-                        }<br /> 
-                        <div class="card-body d-flex align-items-center justify-content-center" style="min-height: 200px;">
+                        }<br />
+                        <div class="card-body d-flex align-items-center justify-content-center" style="min-height: 200px; border-radius: 30px;">
 
                             @if (resource.ResourceType == "Image")
                             {
-                                <img src="@resource.Link" class="card-img-top img-fluid" style="max-height: 200px; object-fit: contain;" alt="@resource.Title">
+                                <img src="@resource.Link" class="card-img-top img-fluid" style="max-height: 200px; object-fit: contain; border-radius: 30px;" alt="@resource.Title">
                             }
                             else if (resource.ResourceType == "Video" || resource.ResourceType == "PodcastVideo")
                             {
                                 <iframe class="embed-responsive-item"
                                         src="@resource.Link"
                                         allowfullscreen
-                                        width="100%">
+                                        width="100%" style="border-radius: 30px;">
                                 </iframe>
                             }
                             else if (resource.ResourceType == "PodcastAudio")
                             {
-                                <iframe src="@resource.Link" width="100%" height="152" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                                <iframe src="@resource.Link" width="100%" height="152" frameborder="0" style="border-radius: 30px;" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>
                             }
                         </div>
                         <h5 class="card-title mt-3 text-center">@resource.Title</h5>
                         @if (ViewBag.UserCurent != null)
                         {
-                            <form method="post" asp-action="ProvideFeedback" asp-route-resourceId="@resource.Id" class="mt-3">
-                                <button type="submit" name="isLiked" value="true" class="btn btn-success btn-sm" style="border-radius: 30px; margin-left: 3%">👍 Like</button>
-                                <button type="submit" name="isLiked" value="false" class="btn btn-danger btn-sm" style="border-radius: 30px;">👎 Dislike</button>
-                            </form>
+                            <div class="d-flex justify-content-between">
+                                <form method="post" asp-action="ProvideFeedback" asp-route-resourceId="@resource.Id" class="mt-3">
+                                    <button type="submit" name="isLiked" value="true" class="btn btn-success btn-sm" style="border-radius: 30px; margin-left: 10px;">👍 Like</button>
+                                </form>
+
+                                <form method="post" asp-action="ProvideFeedback" asp-route-resourceId="@resource.Id" class="mt-3">
+                                    <button type="submit" name="isLiked" value="false" class="btn btn-danger btn-sm" style="border-radius: 30px; margin-right: 10px;">👎 Dislike</button>
+                                </form>
+                            </div>
+
+
                         }
                         
                         <br />
@@ -57,7 +64,7 @@
                 </div>
             }
         </div>
-        <a href="/Routines/SeeMore?section=liked" class="btn btn-primary" style="border-radius: 30px;">See More Liked Resources</a>
+        <a href="/Routines/SeeMore?section=liked" class="btn btn-outline-secondary" style="border-radius: 30px;">See More Liked Resources</a>
     </section>
 
     <!-- Secțiunea pentru Podcasturi Audio -->
@@ -67,7 +74,7 @@
             @foreach (var resource in Model.Where(r => r.ResourceType == "PodcastAudio").Take(4))
             {
                 <div class="col-6 col-md-4 col-lg-3 mb-4">
-                    <div class="card shadow-sm h-100">
+                    <div class="card shadow-sm h-100" style="border-radius: 30px;">
                         <!-- Butoanele Editare și Ștergere în partea de sus, stânga și dreapta -->
                         @if (ViewBag.EsteAdmin || ViewBag.EsteModerator)
                         {
@@ -78,16 +85,22 @@
                                 </form>
                             </div>
                         }<br /> <br />
-                        <div class="card-body">
-                            <iframe src="@resource.Link" width="100%" height="152" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                        <div class="card-body" style="border-radius: 30px;">
+                            <iframe src="@resource.Link" width="100%" style="border-radius: 30px;" height="152" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
                             <h5 class="card-title mt-3">@resource.Title</h5>
                             @if (ViewBag.UserCurent != null)
                             {
-                                <form method="post" asp-action="ProvideFeedback" asp-route-resourceId="@resource.Id" class="mt-3">
-                                    <button type="submit" name="isLiked" value="true" class="btn btn-success btn-sm" style="border-radius: 30px;">👍 Like</button>
-                                    <button type="submit" name="isLiked" value="false" class="btn btn-danger btn-sm" style="border-radius: 30px;">👎 Dislike</button>
-                                </form>
+                                <div class="d-flex justify-content-between">
+                                    <form method="post" asp-action="ProvideFeedback" asp-route-resourceId="@resource.Id" class="mt-3">
+                                        <button type="submit" name="isLiked" value="true" class="btn btn-success btn-sm" style="border-radius: 30px; margin-left: 10px;">👍 Like</button>
+                                    </form>
+
+                                    <form method="post" asp-action="ProvideFeedback" asp-route-resourceId="@resource.Id" class="mt-3">
+                                        <button type="submit" name="isLiked" value="false" class="btn btn-danger btn-sm" style="border-radius: 30px; margin-right: 10px;">👎 Dislike</button>
+                                    </form>
+                                </div>
+
                             }
                             
                         </div>
@@ -95,7 +108,7 @@
                 </div>
             }
         </div>
-        <a href="/Routines/SeeMore?section=PodcastAudio" class="btn btn-primary" style="border-radius: 30px;">See More Audio Podcasts</a>
+        <a href="/Routines/SeeMore?section=PodcastAudio" class="btn btn-outline-secondary" style="border-radius: 30px;">See More Audio Podcasts</a>
     </section>
 
     <!-- Secțiunea pentru Podcasturi Video -->
@@ -105,7 +118,7 @@
             @foreach (var resource in Model.Where(r => r.ResourceType == "PodcastVideo").Take(4))
             {
                 <div class="col-6 col-md-4 col-lg-3 mb-4">
-                    <div class="card shadow-sm h-100">
+                    <div class="card shadow-sm h-100" style="border-radius: 30px;">
                         <!-- Butoanele Editare și Ștergere în partea de sus, stânga și dreapta -->
                         @if (ViewBag.EsteAdmin || ViewBag.EsteModerator)
                         {
@@ -120,15 +133,21 @@
                             <iframe class="embed-responsive-item"
                                     src="@resource.Link"
                                     allowfullscreen
-                                    width="100%">
+                                    width="100%" style="border-radius: 30px;">
                             </iframe>
                             <h5 class="card-title mt-3">@resource.Title</h5>
                             @if (ViewBag.UserCurent != null)
                             {
-                                <form method="post" asp-action="ProvideFeedback" asp-route-resourceId="@resource.Id" class="mt-3">
-                                    <button type="submit" name="isLiked" value="true" class="btn btn-success btn-sm" style="border-radius: 30px;">👍 Like</button>
-                                    <button type="submit" name="isLiked" value="false" class="btn btn-danger btn-sm" style="border-radius: 30px;">👎 Dislike</button>
-                                </form>
+                                <div class="d-flex justify-content-between">
+                                    <form method="post" asp-action="ProvideFeedback" asp-route-resourceId="@resource.Id" class="mt-3">
+                                        <button type="submit" name="isLiked" value="true" class="btn btn-success btn-sm" style="border-radius: 30px; margin-left: 10px;">👍 Like</button>
+                                    </form>
+
+                                    <form method="post" asp-action="ProvideFeedback" asp-route-resourceId="@resource.Id" class="mt-3">
+                                        <button type="submit" name="isLiked" value="false" class="btn btn-danger btn-sm" style="border-radius: 30px; margin-right: 10px;">👎 Dislike</button>
+                                    </form>
+                                </div>
+
                             }
                             
                         </div>
@@ -136,7 +155,7 @@
                 </div>
             }
         </div>
-        <a href="/Routines/SeeMore?section=PodcastVideo" class="btn btn-primary" style="border-radius: 30px;">See More Video Podcasts</a>
+        <a href="/Routines/SeeMore?section=PodcastVideo" class="btn btn-outline-secondary" style="border-radius: 30px;">See More Video Podcasts</a>
     </section>
 
     <!-- Secțiunea pentru Videoclipuri -->
@@ -146,7 +165,7 @@
             @foreach (var resource in Model.Where(r => r.ResourceType == "Video").Take(4))
             {
                 <div class="col-6 col-md-4 col-lg-3 mb-4">
-                    <div class="card shadow-sm h-100">
+                    <div class="card shadow-sm h-100" style="border-radius: 30px;">
                         <!-- Butoanele Editare și Ștergere în partea de sus, stânga și dreapta -->
                         @if (ViewBag.EsteAdmin || ViewBag.EsteModerator)
                         {
@@ -161,15 +180,21 @@
                             <iframe class="embed-responsive-item"
                                     src="@resource.Link"
                                     allowfullscreen
-                                    width="100%">
+                                    width="100%" style="border-radius: 30px;">
                             </iframe>
                             <h5 class="card-title mt-3">@resource.Title</h5>
                             @if (ViewBag.UserCurent != null)
                             {
-                                <form method="post" asp-action="ProvideFeedback" asp-route-resourceId="@resource.Id" class="mt-3">
-                                    <button type="submit" name="isLiked" value="true" class="btn btn-success btn-sm" style="border-radius: 30px;">👍 Like</button>
-                                    <button type="submit" name="isLiked" value="false" class="btn btn-danger btn-sm" style="border-radius: 30px;">👎 Dislike</button>
-                                </form>
+                                <div class="d-flex justify-content-between">
+                                    <form method="post" asp-action="ProvideFeedback" asp-route-resourceId="@resource.Id" class="mt-3">
+                                        <button type="submit" name="isLiked" value="true" class="btn btn-success btn-sm" style="border-radius: 30px; margin-left: 10px;">👍 Like</button>
+                                    </form>
+
+                                    <form method="post" asp-action="ProvideFeedback" asp-route-resourceId="@resource.Id" class="mt-3">
+                                        <button type="submit" name="isLiked" value="false" class="btn btn-danger btn-sm" style="border-radius: 30px; margin-right: 10px;">👎 Dislike</button>
+                                    </form>
+                                </div>
+
                             }
                             
                         </div>
@@ -177,7 +202,7 @@
                 </div>
             }
         </div>
-        <a href="/Routines/SeeMore?section=Video" class="btn btn-primary" style="border-radius: 30px;">See More Educational Videos</a>
+        <a href="/Routines/SeeMore?section=Video" class="btn btn-outline-secondary" style="border-radius: 30px;">See More Educational Videos</a>
     </section>
 
     <!-- Secțiunea pentru Imagini -->
@@ -187,7 +212,7 @@
             @foreach (var resource in Model.Where(r => r.ResourceType == "Image").Take(4))
             {
                 <div class="col-6 col-md-4 col-lg-3 mb-4">
-                    <div class="card shadow-sm h-100 d-flex align-items-center justify-content-center">
+                    <div class="card shadow-sm h-100 d-flex align-items-center justify-content-center border-radius: 30px;">
                         <!-- Butoanele Editare și Ștergere în partea de sus, stânga și dreapta -->
                         @if (ViewBag.EsteAdmin || ViewBag.EsteModerator)
                         {
@@ -198,15 +223,21 @@
                                 </form>
                             </div>
                         }<br /><br />
-                        <img src="@resource.Link" class="card-img-top img-fluid" style="max-height: 200px; object-fit: contain;" alt="@resource.Title">
+                        <img src="@resource.Link" class="card-img-top img-fluid" style="max-height: 200px; object-fit: contain; border-radius: 30px;" alt="@resource.Title">
                         <div class="card-body text-center">
                             <h5 class="card-title">@resource.Title</h5>
                             @if (ViewBag.UserCurent != null)
                             {
-                                <form method="post" asp-action="ProvideFeedback" asp-route-resourceId="@resource.Id" class="mt-3">
-                                    <button type="submit" name="isLiked" value="true" class="btn btn-success btn-sm" style="border-radius: 30px;">👍 Like</button>
-                            <button type="submit" name="isLiked" value="false" class="btn btn-danger btn-sm" style="border-radius: 30px;">👎 Dislike</button>
-                                </form>
+                                <div class="d-flex justify-content-between">
+                                    <form method="post" asp-action="ProvideFeedback" asp-route-resourceId="@resource.Id" class="mt-3">
+                                        <button type="submit" name="isLiked" value="true" class="btn btn-success btn-sm" style="border-radius: 30px; margin-left: 10px;">👍 Like</button>
+                                    </form>
+
+                                    <form method="post" asp-action="ProvideFeedback" asp-route-resourceId="@resource.Id" class="mt-3">
+                                        <button type="submit" name="isLiked" value="false" class="btn btn-danger btn-sm" style="border-radius: 30px; margin-right: 10px;">👎 Dislike</button>
+                                    </form>
+                                </div>
+
                             }
                             
                         </div>
@@ -214,7 +245,7 @@
                 </div>
             }
         </div>
-        <a href="/Routines/SeeMore?section=Image" class="btn btn-primary" style="border-radius: 30px;">See More Educational Images</a>
+        <a href="/Routines/SeeMore?section=Image" class="btn btn-outline-secondary" style="border-radius: 30px;">See More Educational Images</a>
     </section>
 
 </div>

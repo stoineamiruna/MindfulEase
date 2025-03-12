@@ -61,6 +61,7 @@ namespace MindfulEase.Models
         public ICollection<UserBadge>? Badges { get; set; }
         public ICollection<ApplicationUserWeeklyChallenge> WeeklyChallenges { get; set;}
         public ICollection<Notification>? Notifications { get; set; }
+        public ICollection<ApplicationUserEmotion>? Emotions { get; set; }
 
     }
 }
