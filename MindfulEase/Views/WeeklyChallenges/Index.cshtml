@@ -11,7 +11,7 @@
     @if (ViewBag.EsteAdmin || ViewBag.EsteModerator)
     {
         <div class="text-center mb-4">
-            <button class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#createChallengeModal" style="border-radius: 30px;">
+            <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#createChallengeModal" style="border-radius: 30px; color:white;">
                 ➕ Add New Challenge
             </button>
         </div>
@@ -53,7 +53,7 @@
                                     }
                                     <h5 class="card-title">@challenge.Title</h5>
                                     <p class="card-text">@challenge.Description</p>
-                                    <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#challengeModal-@challenge.Id" style="border-radius: 30px;">
+                                    <button class="btn btn-outline-info btn-sm" data-bs-toggle="modal" data-bs-target="#challengeModal-@challenge.Id" style="border-radius: 30px;">
                                         🔍 View Details
                                     </button>
                                 </div>
@@ -65,7 +65,7 @@
                         <!-- Challenge Details Modal -->
                         <div class="modal fade" id="challengeModal-@challenge.Id" tabindex="-1">
                             <div class="modal-dialog">
-                                <div class="modal-content">
+                                <div class="modal-content" style="border-radius: 30px;">
                                     <div class="modal-header">                                     
                                         <h5 class="modal-title">@challenge.Title</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
@@ -170,7 +170,7 @@
                         <!-- Edit Challenge Modal -->
                         <div class="modal fade" id="editChallengeModal-@challenge.Id" tabindex="-1" aria-labelledby="editChallengeLabel-@challenge.Id" aria-hidden="true">
                             <div class="modal-dialog">
-                                <div class="modal-content">
+                                <div class="modal-content" style="border-radius: 30px;">
                                     <div class="modal-header">
                                         <h5 class="modal-title">Edit Weekly Challenge</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -214,7 +214,7 @@
                                                 <label class="form-label">Required Resources</label>
                                                 <input type="number" name="RequiredResources" class="form-control" value="@challenge.RequiredResources" min="0" />
                                             </div>
-                                            <button type="submit" class="btn btn-success" style="border-radius: 30px;">Save Changes</button>
+                                            <button type="submit" class="btn btn-info" style="border-radius: 30px;">Save Changes</button>
                                         </form>
                                     </div>
                                 </div>
@@ -234,7 +234,7 @@
     <!-- Create Weekly Challenge Modal -->
     <div class="modal fade" id="createChallengeModal" tabindex="-1" aria-labelledby="createChallengeLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content">
+            <div class="modal-content" style="border-radius: 30px;">
                 <div class="modal-header">
                     <h5 class="modal-title">Add New Weekly Challenge</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -277,7 +277,7 @@
                             <label class="form-label">Required Resources</label>
                             <input type="number" name="RequiredResources" class="form-control" min="0" />
                         </div>
-                        <button type="submit" class="btn btn-primary" style="border-radius: 30px;">Create Challenge</button>
+                        <button type="submit" class="btn btn-info" style="border-radius: 30px;">Create Challenge</button>
                     </form>
                 </div>
             </div>

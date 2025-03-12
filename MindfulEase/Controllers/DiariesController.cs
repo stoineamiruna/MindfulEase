@@ -337,5 +337,39 @@ namespace MindfulEase.Controllers
             TempData["messageType"] = "alert-success";
             return RedirectToAction("New");
         }
+
+        [HttpPost]
+        public JsonResult UpdateEmotion(int emotionId, int value)
+        {
+            var userId = _userManager.GetUserId(User); // Obține ID-ul utilizatorului curent
+            var today = DateTime.UtcNow.Date; // Data de azi (UTC)
+
+            var existingEmotion = db.ApplicationUserEmotions
+                    .FirstOrDefault(e => e.UserId == userId && e.EmotionId == emotionId && e.Date == today);
+
+            if (existingEmotion != null)
+                {
+                    // Dacă există deja o înregistrare, actualizează valoarea
+                    existingEmotion.MoodValue = value;
+                }
+                else
+                {
+                    // Dacă nu există, creează o nouă intrare
+                    var newEmotion = new ApplicationUserEmotion
+                    {
+                        UserId = userId,
+                        EmotionId = emotionId,
+                        MoodValue = value,
+                        Date = today
+                    };
+                    db.ApplicationUserEmotions.Add(newEmotion);
+                }
+
+                db.SaveChanges();
+            
+
+            return Json(new { success = true });
+        }
+
     }
 }

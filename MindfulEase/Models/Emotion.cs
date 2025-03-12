@@ -11,5 +11,6 @@ namespace MindfulEase.Models
 
         // Relație Many-to-Many
         public virtual ICollection<DiaryEmotion>? Diaries { get; set; }
+        public virtual ICollection<ApplicationUserEmotion>? Users { get; set; }
     }
 }
