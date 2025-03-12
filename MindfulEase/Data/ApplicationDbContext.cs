@@ -34,7 +34,8 @@ namespace MindfulEase.Data
         public DbSet<UserObjectiveProgress> UserObjectiveProgresses { get; set; }
         public DbSet<Badge> Badges { get; set; }
         public DbSet<UserBadge> UserBadges { get; set; }
-
+        public DbSet<ApplicationUserWeeklyChallenge> ApplicationUserWeeklyChallenges { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -137,6 +138,19 @@ namespace MindfulEase.Data
                 .HasOne(ut => ut.Badge)
                 .WithMany(g => g.Users)
                 .HasForeignKey(ut => ut.BadgeId);
+            // Many-to-Many Relationship: ApplicationUser <-> WeeklyChallenge
+            modelBuilder.Entity< ApplicationUserWeeklyChallenge > ()
+                .HasKey(ut => new { ut.UserId, ut.WeeklyChallengeId });
+
+            modelBuilder.Entity<ApplicationUserWeeklyChallenge>()
+                .HasOne(ut => ut.User)
+                .WithMany(u => u.WeeklyChallenges)
+                .HasForeignKey(ut => ut.UserId);
+
+            modelBuilder.Entity<ApplicationUserWeeklyChallenge>()
+                .HasOne(ut => ut.WeeklyChallenge)
+                .WithMany(g => g.Users)
+                .HasForeignKey(ut => ut.WeeklyChallengeId);
         }
     }
 }

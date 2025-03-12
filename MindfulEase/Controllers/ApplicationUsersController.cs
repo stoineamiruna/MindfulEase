@@ -152,6 +152,8 @@ namespace MindfulEase.Controllers
             Console.WriteLine("nr: " + userObjectiveProgresses.Count);
 
             // Verificăm dacă utilizatorul a completat obiective pentru ziua de azi
+
+
             if (!userObjectiveProgresses.Contains(today))
                 today = today.AddDays(-1); // Dacă azi nu a completat, începem streak-ul de ieri
             

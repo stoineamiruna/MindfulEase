@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "shvLmHYjlxitO9+H0djT3EhbbyvOm6Bu11VrOWYVzuA=",
+  "Hash": "g71MVC3/hGSc71es39YbrwnPTCqM7DYcb6mYC/36DVg=",
   "Source": "MindfulEase",
   "BasePath": "_content/MindfulEase",
   "Mode": "Default",
@@ -1345,6 +1345,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\Badges\\badge5.png"
+    },
+    {
+      "Identity": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\img\\bell3.png",
+      "SourceId": "MindfulEase",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\",
+      "BasePath": "_content/MindfulEase",
+      "RelativePath": "img/bell3.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\bell3.png"
     },
     {
       "Identity": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\img\\home2.jpg",

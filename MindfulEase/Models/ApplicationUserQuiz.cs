@@ -17,5 +17,7 @@ namespace MindfulEase.Models
         public int TotalScore { get; set; }  // Se va calcula după completarea quiz-ului
 
         public bool IsCompleted { get; set; }  // Indică dacă utilizatorul a terminat quiz-ul
+        public DateTime? Date { get; set; }
+
     }
 }
