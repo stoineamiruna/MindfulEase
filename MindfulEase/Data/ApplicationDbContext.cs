@@ -154,8 +154,9 @@ namespace MindfulEase.Data
                 .HasForeignKey(ut => ut.WeeklyChallengeId);
 
             // Many-to-Many Relationship: ApplicationUser <-> Emotion
+
             modelBuilder.Entity<ApplicationUserEmotion>()
-                .HasKey(ut => new { ut.UserId, ut.EmotionId });
+                .HasKey(ut => new { ut.UserId, ut.EmotionId, ut.Date });
 
             modelBuilder.Entity<ApplicationUserEmotion>()
                 .HasOne(ut => ut.User)
