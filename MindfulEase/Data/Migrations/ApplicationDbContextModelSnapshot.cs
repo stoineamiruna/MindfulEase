@@ -247,7 +247,7 @@ namespace MindfulEase.Data.Migrations
                     b.Property<int>("MoodValue")
                         .HasColumnType("int");
 
-                    b.HasKey("UserId", "EmotionId");
+                    b.HasKey("UserId", "EmotionId", "Date");
 
                     b.HasIndex("EmotionId");
 
