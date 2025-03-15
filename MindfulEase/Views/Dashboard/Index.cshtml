@@ -1,0 +1,697 @@
+﻿@using System.Text.Json
+@{
+    var rewardProgressData = ViewData["RewardProgressData"] as string;
+}
+<link rel="stylesheet" href="~/css/feature_section.css" asp-append-version="true" />
+
+<div class="features-one features-area">
+    <div class="container pt-3 px-5 d-flex align-items-center flex-column">
+        <h2 class="text-center pb-5 text-info">DASHBOARD</h2>
+        <div class="row">
+            <!-- Total Users -->
+            <div class="col-md-4">
+                <div class="card shadow-sm transparent-bg-element" style="border:3px solid #93C572;">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h5 class="" style="color:#93C572;">Total Users</h5> <h5 class="position-absolute end-0 top-0"><i class="bi bi-pin-angle-fill text-danger"></i></h5>
+                        </div>
+                        <p class="card-text fs-4">
+                            <span class="badge text-dark" style="background-color:#93C572">@Model.TotalUsers</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Total Diaries -->
+            <div class="col-md-4">
+                <div class="card transparent-bg-element shadow-sm custom-card-border" style="border:3px solid #ff8b94">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h5 class="" style="color: #ff8b94">Total Diaries</h5> <h5 class="position-absolute end-0 top-0"><i class="bi bi-pin-angle-fill text-danger"></i></h5>
+                        </div>
+                        <p class="card-text fs-4">
+                            <span class="badge text-dark" style="background-color: #ff8b94">@Model.TotalDiaries</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Total Rewards -->
+            <div class="col-md-4">
+                <div class="card transparent-bg-element shadow-sm custom-card-border" style="border:3px solid #ffac4d;">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h5 class="" style="color:#ffac4d;">Total Rewards</h5> <h5 class="position-absolute end-0 top-0"><i class="bi bi-pin-angle-fill text-danger"></i></h5>
+                        </div>
+                        <p class="card-text fs-4">
+                            <span class="badge text-dark" style="background-color:#ffac4d;">@Model.TotalRewards</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div><br></div>
+
+            <div class="container mt-4">
+                <div class="row d-flex gap-3" style="flex-wrap: nowrap;">
+
+                    <!-- Top Active Users (stânga) -->
+                    <div class="col-md-6 transparent-bg-element" style="border:3px solid #A7C7E7; max-height: 400px; overflow-y: auto;">
+                        <br />
+                        <h5 class="text-info text-center">TOP ACTIVE USERS</h5>
+                        <br /><br />  <br />
+                        <table class="table table-hover table-bordered">
+                            <thead class="table-primary">
+                                <tr>
+                                    <th>User</th>
+                                    <th>Total Activities</th>
+                                    <th>Total Points</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var user in Model.TopActiveUsers)
+                                {
+                                    <tr>
+                                        <td>
+                                            <a asp-controller="ApplicationUsers" asp-action="Show" asp-route-id="@user.UserId" class="text-decoration-none text-black">
+                                                <i class="bi bi-person text-success"></i>
+                                                @user.Username
+                                            </a>
+                                        </td>
+                                        <td>@user.TotalActivities</td>
+                                        <td>@user.TotalPoints</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Grafic (dreapta) -->
+                    <div class="transparent-bg-element col-md-6 d-flex flex-column align-items-center" style="margin-left: 0px; border:3px solid #93C572;">
+                        <!-- Adăugat margin-left -->
+                        <div><br></div>
+                        <h5 class="text-center text-info">POINT PROGRESS TRACKER</h5>
+
+                        <!-- Selector intervale și butoane pentru filtrare pe aceeași linie -->
+                        <div class="d-flex align-items-center">
+                            <label for="intervalSelect" class="mr-2">Select Interval: </label>
+                            <select id="intervalSelect" class="form-control w-auto mr-2" style="margin-left: 15px;">
+                                <option value="daily"><b>Daily</b></option>
+                                <option value="weekly"><b>Weekly</b></option>
+                                <option value="monthly"><b>Monthly</b></option>
+                                <option value="yearly"><b>Yearly</b></option>
+                            </select>
+
+                            <!-- Butoane pentru zi, lună și an -->
+                            <div id="dateFilters" class="d-flex" style="margin-left: 15px;">
+                                <input type="number" id="daySelect" min="1" max="31" class="form-control" style="width: 50px; margin-right: 10px;" placeholder="D">
+                                <input type="number" id="monthSelect" min="1" max="12" class="form-control" style="width: 50px; margin-right: 10px;" placeholder="M">
+                                <input type="number" id="yearSelect" min="2000" max="2099" class="form-control" style="width: 80px; margin-right: 10px;" placeholder="Year">
+                            </div>
+                        </div>
+
+                        <!-- Canvas pentru Chart.js -->
+                        <div class="chart-container mt-3" style="width: 90%; height: 300px; margin-right: 0px">
+                            <canvas id="progressChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div><br></div>
+            <div><br></div>
+
+            <div class="transparent-bg-element" style="border:3px solid #ff8b94;">
+                <br />
+                <h5 class="text-info text-center">EMOTION PROGRESS TRACKER</h5>
+                <br />
+                <div class="row d-flex align-items-center gap-3" style="flex-wrap: wrap; justify-content: space-between; width: 100%;">
+                    <div class="form-group" style="margin-bottom: 1rem; width: auto;">
+                        <label for="emotionSelect" style="margin-right: 10px;">Select the emotion</label>
+                        <select id="emotionSelect" class="form-control" style="width: auto;">
+                            <option value="">Select the emotion</option>
+                            @foreach (var emotion in ViewData["Emotions"] as List<Emotion>)
+                            {
+                                <option value="@emotion.Id">@emotion.Label</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 1rem; width: auto;">
+                        <label for="viewToggle" style="margin-right: 10px;">View:</label>
+                        <select id="viewToggle" class="form-control" style="width: auto;">
+                            <option value="">View</option>
+                            <option value="personal">Personal</option>
+                            <option value="global">Global</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 1rem; width: auto;">
+                        <label for="timeRangeSelect" style="margin-right: 10px;">Period</label>
+                        <div class="d-flex align-items-center" style="gap: 10px; flex-wrap: nowrap; width: auto;">
+                            <select id="timeRangeSelect" class="form-control" style="width: auto;">
+                                <option value="daily">Daily</option>
+                                <option value="weekly">Weekly</option>
+                                <option value="monthly">Monthly</option>
+                                <option value="yearly">Yearly</option>
+                            </select>
+
+                            <!-- Selector pentru zi -->
+                            <select id="dayPicker" class="form-control" style="width: auto; display: none;">
+                                <script>
+                                    let dayPicker = document.getElementById("dayPicker");
+                                    let currentDay = new Date().getDate(); // Ziua curentă
+                                    for (let i = 1; i <= 31; i++) {
+                                        let option = document.createElement("option");
+                                        option.value = i;
+                                        option.textContent = i;
+                                        
+                                        if (i === currentDay) {
+                                            option.selected = true; // Setează ziua curentă ca valoare selectată
+                                        }
+                                        dayPicker.appendChild(option);
+                                    }
+                                </script>
+                            </select>
+
+                            <!-- Selector pentru lună -->
+                            <select id="monthPicker" class="form-control" style="width: auto; display: none;">
+                                <script>
+                                    let monthPicker = document.getElementById("monthPicker");
+                                    let currentMonth = new Date().getMonth(); // Luna curentă (indexată de la 0)
+                                    let months = [
+                                        "January", "February", "March", "April", "May", "June", "July", "August",
+                                        "September", "October", "November", "December"
+                                    ];
+
+                                    for (let i = 0; i < months.length; i++) {
+                                        let option = document.createElement("option");
+                                        option.value = i + 1; // Valoarea lunii
+                                        option.textContent = months[i]; // Numele lunii
+                                        if (i === currentMonth) {
+                                            option.selected = true; // Setează luna curentă ca valoare selectată
+                                        }
+                                        monthPicker.appendChild(option);
+                                    }
+                                </script>
+                            </select>
+
+                            <!-- Selector pentru an -->
+                            <select id="yearPicker" class="form-control" style="width: auto; display: none;">
+                                <script>
+                                    let yearPicker = document.getElementById("yearPicker");
+                                    let currentYear = new Date().getFullYear();
+                                    for (let i = currentYear; i >= currentYear - 10; i--) {
+                                        let option = document.createElement("option");
+                                        option.value = i;
+                                        option.textContent = i;
+                                        yearPicker.appendChild(option);
+                                    }
+                                </script>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div id="noDataMessage" class="alert alert-info text-center mt-3" style="display: none;">
+                    No data available for this selection.
+                </div>
+                <canvas id="emotionJourneyChart" width="400" height="100" style="height: 100px;"></canvas> <!-- Înălțimea graficului mai mică -->
+            </div>
+
+
+            
+        </div>
+    </div>
+</div>
+
+<br /> <br /> <br />
+
+<style>
+    .transparent-bg-element {
+        background-color: rgba(249, 249, 249, 1); /* Gri foarte deschis, aproape alb */
+        border-radius: 20px; /* Colțuri rotunjite, opțional */
+        color: #333; /* Textul va fi vizibil pe fundalul transparent */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Umbra subtilă */
+    }
+
+
+</style>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Obține datele din ViewData
+        var rewardProgressData = @Html.Raw(rewardProgressData);
+        console.log("rewardProgressData: ", rewardProgressData);
+        var ctx = document.getElementById("progressChart").getContext("2d");
+        var progressChartReward;
+
+        function createFilterButtons(interval) {
+            let filterDiv = document.getElementById("dateFilters");
+            filterDiv.innerHTML = ""; // Resetăm conținutul
+
+            // Obține data curentă
+            let today = new Date();
+            let currentDay = today.getDate().toString().padStart(2, '0');  // Ziua curentă
+            let currentMonth = (today.getMonth() + 1).toString().padStart(2, '0');  // Luna curentă (indexată de la 0)
+            let currentYear = today.getFullYear();  // Anul curent
+
+            if (interval === "daily") {
+                filterDiv.innerHTML = `
+                    <div class="d-flex align-items-center">
+                        <input type="number" id="daySelect" min="1" max="31" class="form-control" style="width: 50px; margin-right: 10px;" placeholder="D" value="${currentDay}">
+                        <input type="number" id="monthSelect" min="1" max="12" class="form-control" style="width: 50px; margin-right: 10px;" placeholder="M" value="${currentMonth}">
+                        <input type="number" id="yearSelect" min="2000" max="2099" class="form-control" style="width: 80px; margin-right: 10px;" placeholder="Year" value="${currentYear}">
+                    </div>
+                    `;
+            } else if (interval === "monthly") {
+                filterDiv.innerHTML = `
+                    <div class="d-flex align-items-center">
+                        <input type="number" id="monthSelect" min="1" max="12" class="form-control" style="width: 50px; margin-right: 10px;" placeholder="M" value="${currentMonth}">
+                        <input type="number" id="yearSelect" min="2000" max="2099" class="form-control" style="width: 80px; margin-right: 10px;" placeholder="Year" value="${currentYear}">
+                    </div>
+                    `;
+            } else if (interval === "yearly") {
+                filterDiv.innerHTML = `
+                    <div class="d-flex align-items-center">
+                        <input type="number" id="yearSelect" min="2000" max="2099" class="form-control" style="width: 80px; margin-right: 10px;" placeholder="Year" value="${currentYear}">
+                    </div>
+                    `;
+            }
+
+            // Adăugăm event listener pentru schimbarea valorilor selectorilor
+            document.querySelectorAll("#dateFilters input").forEach(input => {
+                input.addEventListener("change", () => updateChartReward(interval));
+            });
+        }
+
+
+        
+
+        function updateChartReward(interval) {
+            console.log("Interval selectat:", interval);
+            console.log("rewardProgressData:", rewardProgressData);
+
+            if (!rewardProgressData || !rewardProgressData.AllUsersData || !rewardProgressData.UserData) {
+                console.error("Nu există date disponibile!");
+                return;
+            }
+
+            // Filtrăm datele în funcție de interval
+            let filteredUserData = [];
+            let filteredAllUsersData = [];
+
+            if (interval === "daily") {
+                let selectedDay = document.getElementById("daySelect").value.padStart(2, '0');
+                let selectedMonth = document.getElementById("monthSelect").value.padStart(2, '0');
+                let selectedYear = document.getElementById("yearSelect").value;
+                console.log("Zi:", selectedDay, "Lună:", selectedMonth, "An:", selectedYear);
+                let selectedDate = `${selectedYear}-${selectedMonth}-${selectedDay}`;
+                console.log("Filtrare după zi:", selectedDate);
+
+                filteredUserData = rewardProgressData.UserData.filter(entry => entry.TimePeriod === selectedDate);
+                filteredAllUsersData = rewardProgressData.AllUsersData.filter(entry => entry.TimePeriod === selectedDate);
+            } else if (interval === "monthly") {
+                let selectedMonth = document.getElementById("monthSelect").value.padStart(2, '0');
+                let selectedYear = document.getElementById("yearSelect").value;
+                console.log("Lună:", selectedMonth, "An:", selectedYear);
+                let selectedDatePrefix = `${selectedYear}-${selectedMonth}`;
+                console.log("Filtrare după lună:", selectedDatePrefix);
+
+                filteredUserData = rewardProgressData.UserData.filter(entry => entry.TimePeriod.startsWith(selectedDatePrefix));
+                filteredAllUsersData = rewardProgressData.AllUsersData.filter(entry => entry.TimePeriod.startsWith(selectedDatePrefix));
+            } else if (interval === "yearly") {
+                let selectedYear = document.getElementById("yearSelect").value;
+                console.log("Filtrare după an:", selectedYear);
+                console.log("An:", selectedYear);
+                filteredUserData = rewardProgressData.UserData.filter(entry => entry.TimePeriod.startsWith(selectedYear));
+                filteredAllUsersData = rewardProgressData.AllUsersData.filter(entry => entry.TimePeriod.startsWith(selectedYear));
+            } else {
+                // Default: fără filtrare, folosim toate datele
+                filteredUserData = rewardProgressData.UserData;
+                filteredAllUsersData = rewardProgressData.AllUsersData;
+            }
+
+            if (filteredUserData.length === 0 && filteredAllUsersData.length === 0) {
+                console.error("Nu există date pentru intervalul selectat!");
+                return;
+            }
+
+            let labels = filteredUserData.map(entry => entry.TimePeriod);
+            let userPoints = filteredUserData.map(entry => entry.AvgPoints);
+            let allUsersPoints = filteredAllUsersData.map(entry => entry.AvgPoints);
+
+            // Calculăm punctul maxim pentru axa Y și adăugăm 10%
+            let maxPoints = Math.max(
+                Math.max(...userPoints),
+                Math.max(...allUsersPoints)
+            );
+            let maxY = Math.round(maxPoints * 1.1);  // 10% mai mult decât maximul
+
+            let chartDataReward = {
+                labels: labels,
+                datasets: [
+                    {
+                        label: "My progress",
+                        data: userPoints,
+                        borderColor: "blue",
+                        backgroundColor: "rgba(0,0,255,0.1)",
+                        fill: true
+                    },
+                    {
+                        label: "Average of Users",
+                        data: allUsersPoints,
+                        borderColor: "green",
+                        backgroundColor: "rgba(0,255,0,0.1)",
+                        fill: true
+                    }
+                ]
+            };
+
+            if (progressChartReward) {
+                progressChartReward.destroy();
+            }
+
+            progressChartReward = new Chart(ctx, {
+                type: "line",
+                data: chartDataReward,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    scales: {
+                        x: { title: { display: true, text: "Time" } },
+                        y: {
+                            title: { display: true, text: "Points" },
+                            beginAtZero: true,
+                            max: maxY  // Setăm maximul axei Y cu 10% mai mult
+                        }
+                    }
+                }
+            });
+        }
+
+        // Setăm intervalul default pe "weekly" (Săptămânal)
+        document.getElementById("intervalSelect").value = "weekly";
+        createFilterButtons("weekly");
+
+        updateChartReward("weekly");
+
+        // Event listener pentru schimbarea intervalului
+        document.getElementById("intervalSelect").addEventListener("change", function () {
+            let interval = this.value;
+            createFilterButtons(interval);
+            updateChartReward(interval);
+        });
+
+        document.querySelectorAll('#daySelect, #monthSelect, #yearSelect').forEach(input => {
+            input.addEventListener('change', function () {
+                let interval = document.getElementById('intervalSelect').value;
+                updateChartReward(interval);  // Actualizează graficul la schimbarea selectorilor
+            });
+        });
+        
+    });
+
+
+
+
+
+
+    //Alt grafic 
+    document.addEventListener("DOMContentLoaded", function () {
+        // Setează valorile implicite
+        document.getElementById('emotionSelect').value = "1";  // Setează Joy
+        document.getElementById('viewToggle').value = "global";  // Setează Global
+        document.getElementById('timeRangeSelect').value = "yearly";  // Setează Yearly
+        document.getElementById('yearPicker').value = "2025";  // Setează 2025
+        // Setează ziua curentă
+        let currentDay = new Date().getDate(); // Obține ziua curentă
+        document.getElementById('dayPicker').value = currentDay;
+
+        // Setează luna curentă
+        let currentMonth = new Date().getMonth() + 1; // Obține luna curentă (indexată de la 0)
+        document.getElementById('monthPicker').value = currentMonth;
+        // Actualizează afișajul și graficul
+        updateDisplay();
+        filterAndUpdateChart();
+    });
+
+    document.getElementById('timeRangeSelect').addEventListener('change', updateDisplay);
+    document.getElementById('dayPicker').addEventListener('change', updateDisplay);
+    document.getElementById('monthPicker').addEventListener('change', updateDisplay);
+    document.getElementById('yearPicker').addEventListener('change', updateDisplay);
+
+    function updateDisplay() {
+        let selectedRange = document.getElementById('timeRangeSelect').value;
+        let dayPicker = document.getElementById('dayPicker');
+        let monthPicker = document.getElementById('monthPicker');
+        let yearPicker = document.getElementById('yearPicker');
+
+
+        // Ascundem toate selectoarele inițial
+        dayPicker.style.display = 'none';
+        monthPicker.style.display = 'none';
+        yearPicker.style.display = 'none';
+
+        if (selectedRange === 'daily') {
+            dayPicker.style.display = 'block';
+            monthPicker.style.display = 'block';
+            yearPicker.style.display = 'block';
+
+            let day = dayPicker.value;
+            let month = monthPicker.options[monthPicker.selectedIndex].text;
+            let year = yearPicker.value;
+
+            if (day && month && year) {
+                displayText = `Daily: ${day} ${month} ${year}`;
+            }
+        }
+        else if (selectedRange === 'monthly') {
+            monthPicker.style.display = 'block';
+            yearPicker.style.display = 'block';
+
+            let month = monthPicker.options[monthPicker.selectedIndex].text;
+            let year = yearPicker.value;
+
+            if (month && year) {
+                displayText = `Monthly: ${month} ${year}`;
+            }
+        } else if (selectedRange === 'yearly') {
+            yearPicker.style.display = 'block';
+
+            let year = yearPicker.value;
+            if (year) {
+                displayText = `Yearly: ${year}`;
+            }
+        } else {
+            displayText = `Weekly`;
+        }
+
+    }
+
+    // Inițializăm afișarea la încărcarea paginii
+    document.addEventListener("DOMContentLoaded", function () {
+        updateDisplay();
+    });
+
+    var emotionalJourneyData = @Html.Raw(ViewData["EmotionalJourneyData"]);
+    console.log("Emotional Journey Data:", emotionalJourneyData);
+
+    if (!emotionalJourneyData || emotionalJourneyData.length === 0) {
+        console.log("Nu există date disponibile.");
+        document.getElementById('noDataMessage').style.display = 'block';
+    } else {
+        document.getElementById('noDataMessage').style.display = 'none';
+    }
+
+    var ctxLine = document.getElementById('emotionJourneyChart').getContext('2d');
+
+    var emotionJourneyChart = new Chart(ctxLine, {
+        type: 'line',
+        data: {
+            labels: [],
+            datasets: [{
+                label: 'Mood Value',
+                data: [],
+                backgroundColor: '#ff8b94',
+                borderColor: '#93C572',
+                borderWidth: 1,
+                fill: false
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            scales: {
+                x: {
+                    type: 'category',
+                    title: {
+                        display: true,
+                        text: 'Date'
+                    }
+                },
+                y: {
+                    min: 0,
+                    max: 11,
+                    title: {
+                        display: true,
+                        text: 'Mood Value'
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'top',
+                },
+                tooltip: {
+                    mode: 'index',
+                    intersect: false
+                }
+            }
+        }
+    });
+
+    function updateChart(filteredData) {
+        var journeyDates = [];
+        var journeyMoodValues = [];
+
+        filteredData.forEach(item => {
+            item.EmotionalPath.forEach(ep => {
+                journeyDates.push(new Date(ep.Date).toISOString().split('T')[0]);
+                journeyMoodValues.push(ep.MoodValue);
+            });
+        });
+
+        if (journeyDates.length === 0 || journeyMoodValues.length === 0) {
+            console.log("Nu există date pentru această selecție.");
+            document.getElementById('noDataMessage').style.display = 'block';
+            emotionJourneyChart.data.labels = [];
+            emotionJourneyChart.data.datasets[0].data = [];
+            emotionJourneyChart.update();
+            return;
+        } else {
+            document.getElementById('noDataMessage').style.display = 'none';
+        }
+
+        emotionJourneyChart.data.labels = journeyDates;
+        emotionJourneyChart.data.datasets[0].data = journeyMoodValues;
+        emotionJourneyChart.update();
+    }
+
+    function filterAndUpdateChart() {
+        var selectedEmotionId = document.getElementById('emotionSelect').value;
+        var selectedView = document.getElementById('viewToggle').value;
+        var selectedTimeRange = document.getElementById('timeRangeSelect').value;
+        var selectedDay = document.getElementById('dayPicker').value;
+        var selectedMonth = document.getElementById('monthPicker').value;
+        var selectedYear = document.getElementById('yearPicker').value;
+        var currentUserId = "@ViewBag.UserCurent".trim();
+        var now = new Date();
+
+        console.log("Filtrare după:");
+        console.log("Emoție:", selectedEmotionId);
+        console.log("Vizualizare:", selectedView);
+        console.log("Interval de timp:", selectedTimeRange);
+        console.log("Zi:", selectedDay);
+        console.log("Lună:", selectedMonth);
+        console.log("An:", selectedYear);
+
+        var filteredData = emotionalJourneyData;
+
+        // Filtrare după utilizator
+        if (selectedView === "personal") {
+            filteredData = filteredData.filter(item => item.UserId.trim() === currentUserId);
+        }
+
+        // Filtrare după emoție
+        if (selectedEmotionId) {
+            filteredData = filteredData.map(item => ({
+                ...item,
+                EmotionalPath: item.EmotionalPath.filter(ep => ep.EmotionId == selectedEmotionId)
+            })).filter(item => item.EmotionalPath.length > 0);
+        }
+
+        if (selectedTimeRange === 'daily') {
+            filteredData = filteredData.map(item => ({
+                ...item,
+                EmotionalPath: item.EmotionalPath.filter(ep => {
+                    let entryDate = new Date(ep.Date);
+                    return (
+                        entryDate.getDate() === parseInt(dayPicker.value) &&
+                        entryDate.getMonth() + 1 === parseInt(monthPicker.value) &&
+                        entryDate.getFullYear() === parseInt(yearPicker.value)
+                    );
+                })
+            })).filter(item => item.EmotionalPath.length > 0);
+        }
+
+        if (selectedTimeRange === 'weekly') {
+            let startDate = new Date(selectedYear, 0, 1); // Prima zi a anului
+            let weekOfYear = getWeekNumber(new Date(selectedYear, monthPicker.value - 1, dayPicker.value));
+
+            filteredData = filteredData.map(item => ({
+                ...item,
+                EmotionalPath: item.EmotionalPath.filter(ep => {
+                    let entryDate = new Date(ep.Date);
+                    return (
+                        getWeekNumber(entryDate) === weekOfYear && 
+                        entryDate.getFullYear() === parseInt(yearPicker.value)
+                    );
+                })
+            })).filter(item => item.EmotionalPath.length > 0);
+        }
+
+
+        // **Filtrare după lună și an**
+        if (selectedTimeRange === 'monthly') {
+            filteredData = filteredData.map(item => ({
+                ...item,
+                EmotionalPath: item.EmotionalPath.filter(ep => {
+                    let entryDate = new Date(ep.Date);
+                    return (
+                        entryDate.getMonth() + 1 == selectedMonth && 
+                        entryDate.getFullYear() == selectedYear
+                    );
+                })
+            })).filter(item => item.EmotionalPath.length > 0);
+        }
+
+        if (selectedTimeRange === 'monthly') {
+            filteredData = filteredData.map(item => ({
+                ...item,
+                EmotionalPath: item.EmotionalPath.filter(ep => {
+                    let entryDate = new Date(ep.Date);
+                    return (entryDate.getFullYear() == selectedYear);
+                 })
+             })).filter(item => item.EmotionalPath.length > 0);
+        }
+
+        console.log("Date filtrate:", filteredData);
+        updateChart(filteredData);
+    }
+    function getWeekNumber(date) {
+        // Setăm ziua de început a săptămânii la Luni (1)
+        var d = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+        d.setHours(0, 0, 0, 0);
+
+        // Ajustăm pentru a începe săptămâna de luni
+        d.setDate(d.getDate() - (d.getDay() + 6) % 7 + 1); // Săptămâna începe luni
+
+        var startOfYear = new Date(d.getFullYear(), 0, 1);
+        return Math.ceil((((d - startOfYear) / 86400000) + 1) / 7);
+    }
+
+
+    document.getElementById('emotionSelect').addEventListener('change', filterAndUpdateChart);
+    document.getElementById('viewToggle').addEventListener('change', filterAndUpdateChart);
+    document.getElementById('timeRangeSelect').addEventListener('change', filterAndUpdateChart);
+    document.getElementById('monthPicker').addEventListener('change', filterAndUpdateChart);
+    document.getElementById('yearPicker').addEventListener('change', filterAndUpdateChart);
+    document.getElementById('dayPicker').addEventListener('change', filterAndUpdateChart);
+
+    emotionJourneyChart.data.labels = [];
+    emotionJourneyChart.data.datasets[0].data = [];
+    emotionJourneyChart.update();
+</script>
+
