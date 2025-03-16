@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.ML;
 using MindfulEase.Data;
 using MindfulEase.Models;
 using MindfulEase.Services;
@@ -116,6 +117,15 @@ namespace MindfulEase.Controllers
             ViewBag.UserBadges = userBadges;
 
             ViewBag.DaysStreak = CalculateDaysStreak(id);
+
+            // Găsim cel mai recent raport săptămânal pe baza WeekStartDate
+            var lastWeeklyReport = db.WeeklyReports
+                .Where(w => w.UserId == id)
+                .OrderByDescending(w => w.WeekStartDate) // Cel mai recent raport
+                .FirstOrDefault();
+
+            // Adăugăm informațiile necesare în ViewBag
+            ViewBag.LastWeeklyReport = lastWeeklyReport?.Id; // Dacă există raportul, salvăm ID-ul său
 
             if (TempData.ContainsKey("message"))
             {

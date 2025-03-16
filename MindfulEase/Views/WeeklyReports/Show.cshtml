@@ -1,0 +1,178 @@
+﻿@model MindfulEase.Models.WeeklyReport
+
+@{
+    ViewBag.Title = "Weekly Report Details";
+}
+
+<style>
+    body {
+        background: linear-gradient(to bottom, rgba(168, 237, 234, 0.3), rgba(254, 214, 227, 0.3));
+        background-attachment: fixed;
+        min-height: 100vh;
+        margin: 0;
+    }
+    .transparent-bg-element {
+        background-color: rgba(249, 249, 249, 1); /* Gri foarte deschis, aproape alb */
+        border-radius: 20px; /* Colțuri rotunjite, opțional */
+        color: #333; /* Textul va fi vizibil pe fundalul transparent */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Umbra subtilă */
+    }
+</style>
+
+<div class="container-fluid" style="background-size: cover !important; background-position: center !important; min-height: 100vh; background-repeat: repeat-y; position: relative; z-index: 1; border-radius: 30px">
+    <div class="row justify-content-center align-items-center" style="min-height: 100vh;">
+        <div class="col-md-8">
+            <section class="p-4 shadow-sm rounded" >
+                <h2 class="text-center" style="color: #01baa3;">WEEKLY REPORT FOR @Model.User.UserName</h2>
+                <hr />
+                <p class="text-center" style="font-size: 1.1em; color: #666;">
+                    Here are the details for your weekly report.
+                </p>
+                <br /><br />
+
+                <!-- Structură cu două coloane -->
+                <div class="row justify-content-between">
+                    <!-- Coloană stânga: Informații raport -->
+                    <div class="col-md-6 transparent-bg-element" style="max-width: 49%; border:3px solid #93C572;">
+                        <br />
+                        <h4 class="text-center text-info" > REPORT FOR WEEK STARTING: @Model.WeekStartDate.ToString("dd MMM yyyy")</h4>
+                        <br />
+                        <p class="text-center text-info"><strong>Objectives Completed:</strong> @Model.NrObjectives</p>
+                        <p class="text-center text-info"><strong>Challenges Completed:</strong> @Model.NrWeeklyChallenges</p>
+                        <p class ="text-center text-info"><strong>Diaries Written:</strong> @Model.NrDiaries</p>
+
+                        <h5 class="text-center text-info">Average Mood for Emotions:</h5>
+                        @if (ViewBag.EmotionsList != null && ((IEnumerable<dynamic>)ViewBag.EmotionsList).Any())
+                        {
+                            <ul>
+                                @foreach (var emotion in (IEnumerable<dynamic>)ViewBag.EmotionsList)
+                                {
+                                    <li>@emotion.EmotionName: @emotion.AverageMood.ToString("0.0")</li>
+                                }
+                            </ul>
+                        }
+                        else
+                        {
+                            <p>No emotions data available.</p>
+                        }
+                        <br />
+                    </div>
+                    <br />
+                    <!-- Coloană dreapta: Grafic obiective -->
+                    <div class="col-md-6 text-center text-info transparent-bg-element" style="max-width: 49%; border:3px solid #ff8b94">
+                        <br/>
+                        <h4>OBJECTIVES PROGRESS</h4>
+                        <br />
+                        <div style="max-width: 300px; margin: auto;">
+                            <canvas id="objectivesChart"></canvas>
+                        </div>
+                        <br />
+                    </div>
+                </div>
+                <br /><br />
+                <div class="transparent-bg-element" style="border:3px solid #ffac4d;">
+                    <h4 class="text-center mt-4 text-info">EMOTIONAL TRENDS OVER THE WEEKS</h4>
+                    <br />
+                    <canvas id="emotionsChart" width="400" height="100" style="height: 100px;"></canvas>
+                </div>
+                
+
+                <br /><br />
+                <div class="transparent-bg-element" style="border:3px solid #A7C7E7;">
+                    <br />
+                    <h4 class="text-center">Other Reports</h4>
+                    <br>
+                    <p class="text-center">Below are other weekly reports for your reference. Click on any date to view the details of that report.</p>
+
+                    <br />
+                    <!-- List of other weekly reports of the current user -->
+                    <ul class="list-group">
+                        @foreach (var report in ViewBag.UserReports as List<MindfulEase.Models.WeeklyReport>)
+                        {
+                            <li class="list-group-item" style="border-radius: 30px;">
+                                <a href="@Url.Action("Show", "WeeklyReports", new { id = report.Id })">@report.WeekStartDate.ToString("dd MMM yyyy")</a>
+                            </li>
+                        }
+                    </ul>
+                    <br />
+                </div>
+                
+
+            </section>
+        </div>
+    </div>
+</div>
+<br /><br /><br /> <br /> <br />
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var chartData = @Html.Raw(Json.Serialize(ViewBag.ChartData));
+        console.log("chartData", chartData);
+        var ctx = document.getElementById('emotionsChart').getContext('2d');
+
+        var labels = [...new Set(Object.values(chartData).flat().map(e => e.date))].sort();
+        console.log("labels", labels);
+
+        var datasets = Object.keys(chartData).map(emotion => {
+            return {
+                label: emotion,
+                data: labels.map(date => {
+                    var entry = chartData[emotion].find(e => e.date === date);
+                    console.log("entry", entry);
+                    return entry ? entry.avgMood : null;
+                }),
+                borderColor: getRandomColor(),
+                fill: false
+            };
+        });
+
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: datasets
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { position: 'top' }
+                },
+                scales: {
+                    x: { title: { display: true, text: 'Date' } },
+                    y: { title: { display: true, text: 'Average Mood' }, min: 0, max: 10 }
+                }
+            }
+        });
+
+        function getRandomColor() {
+            return `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`;
+        }
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+        var objectivesData = @Html.Raw(Json.Serialize(ViewBag.ObjectivesChartData));
+        console.log("Objectives Chart Data", objectivesData);
+
+        var ctx = document.getElementById('objectivesChart').getContext('2d');
+
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ["Completed", "Uncompleted"],
+                datasets: [{
+                    data: [objectivesData.completed, objectivesData.uncompleted],
+                    backgroundColor: ["#4CAF50", "#ff8b94"], // Verde pentru completate, roșu pentru nefinalizate
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { position: 'top' }
+                }
+            }
+        });
+    });
+</script>
+

@@ -32,34 +32,33 @@
         <h2><i class="bi bi-person-fill"></i> @ViewBag.User.FirstName @ViewBag.User.LastName</h2>
         @if (!string.IsNullOrEmpty(ViewBag.User.ProfilePicture))
         {
-            <img src="@ViewBag.User.ProfilePicture" alt="Profile Picture" class="rounded-circle" style="width: 150px; height: 150px; object-fit: cover; margin-bottom: 20px;" />
+            <img src="@ViewBag.User.ProfilePicture" alt="Profile Picture" class="rounded-circle" style="border:3px solid #A7C7E7; width: 150px; height: 150px; object-fit: cover; margin-bottom: 20px;" />
         }
     </div>
 
     <div class="d-flex flex-column align-items-center justify-content-center px-3">
-        <div class="card mb-3 bg-white bg-opacity-25" style="max-width: 600px; width: 100%; margin: 10px auto; border-radius: 30px;">
+        <div class="card mb-3 bg-white bg-opacity-25" style="border:3px solid #A7C7E7; max-width: 600px; width: 100%; margin: 10px auto; border-radius: 30px;">
             <div class="card-body" >
                 <h5 class="card-title"><i class="bi bi-info-circle"></i> Description 𓂃🖊</h5>
                 <p class="card-text">@ViewBag.User.Description</p>
             </div>
         </div>
 
-        <div class="card mb-3 bg-white bg-opacity-25" style="max-width: 600px; width: 100%; margin: 10px auto; border-radius: 30px;">
+        <div class="card mb-3 bg-white bg-opacity-25" style="border:3px solid #A7C7E7; max-width: 600px; width: 100%; margin: 10px auto; border-radius: 30px;">
             <div class="card-body">
                 <h5 class="card-title"><i class="bi bi-calendar-check"></i> Birthday 🎉</h5>
                 <p class="card-text">@ViewBag.User.Birthday</p>
             </div>
         </div>
-
         @if (ViewBag.User.IsTherapist != null)
         {
-            <div class="card mb-3 bg-white bg-opacity-25" style="max-width: 600px; width: 100%; margin: 10px auto; border-radius: 30px;">
+            <div class="card mb-3 bg-white bg-opacity-25" style="border:3px solid #A7C7E7; max-width: 600px; width: 100%; margin: 10px auto; border-radius: 30px;">
                 <div class="card-body">
                     <h5 class="card-title"><i class="bi bi-phone"></i> Phone Number 📞</h5>
                     <p class="card-text">@ViewBag.User.PhoneNumber</p>
                 </div>
             </div>
-            <div class="card mb-3 bg-white bg-opacity-25" style="max-width: 600px; width: 100%; margin: 10px auto; border-radius: 30px;">
+            <div class="card mb-3 bg-white bg-opacity-25" style="border:3px solid #A7C7E7; max-width: 600px; width: 100%; margin: 10px auto; border-radius: 30px;">
                 <div class="card-body">
                     <h5 class="card-title"><i class="bi bi-bookmark-check"></i> Studies 📚</h5>
                     <p class="card-text">@ViewBag.User.Studies</p>
@@ -67,10 +66,9 @@
             </div>
         }
 
-        <br />
     </div>
     <!-- Secțiunea de Day Streak și Total Points într-un card -->
-    <div class="card mb-3 bg-white bg-opacity-25" style="max-width: 600px; width: 100%; margin: 10px auto; border-radius: 30px;">
+    <div class="card mb-3 bg-white bg-opacity-25" style="border:3px solid #ffac4d; max-width: 600px; width: 100%; margin: 10px auto; border-radius: 30px;">
         <div class="card-body">
             <h5 class="card-title d-flex justify-content-between">
                 <span><i class="bi bi-calendar-day"></i> Streak & Points</span>
@@ -93,9 +91,8 @@
             </div>
         </div>
     </div>
-    <br />
 
-    <div class="card mb-3 bg-white bg-opacity-25" style="max-width: 600px; width: 100%; margin: 10px auto; border-radius: 30px;">
+    <div class="card mb-3 bg-white bg-opacity-25" style="border:3px solid #93C572; max-width: 600px; width: 100%; margin: 10px auto; border-radius: 30px;">
         <div class="card-body">
             <h5 class="card-title"><i class="bi bi-flag"></i> Goals 📌</h5>
 
@@ -104,14 +101,14 @@
                 <ul class="list-group">
                     @foreach (var userObjective in ViewBag.UserObjectives)
                     {
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <div class="d-flex justify-content-between w-100">
+                        <li class="list-group-item d-flex justify-content-between align-items-center" style="border-radius: 30px;">
+                            <div class="d-flex justify-content-between w-100" style="border-radius: 30px;">
                                 <strong>@userObjective.Objective.Title</strong>
 
                                 <!-- Verifică dacă TargetValue este valid (nu null) -->
                                 @if (userObjective.TargetValue != null )
                                 {
-                                    <span class="badge bg-info">@userObjective.TargetValue @(userObjective.Objective.ValueType == "minute" ? "min" : "")</span>
+                                    <span class="badge bg-info" >@userObjective.TargetValue @(userObjective.Objective.ValueType == "minute" ? "min" : "")</span>
                                 }
 
                                 <!-- Verifică dacă TargetTime este valid (nu null) -->
@@ -140,10 +137,9 @@
     </div>
 
 
-    <br />
 
     <!-- Secțiunea de Badge-uri -->
-    <div class="card mb-3 bg-white bg-opacity-25" style="max-width: 600px; width: 100%; margin: 10px auto; border-radius: 30px;">
+    <div class="card mb-3 bg-white bg-opacity-25" style="border:3px solid #ff8b94; max-width: 600px; width: 100%; margin: 10px auto; border-radius: 30px;">
         <div class="card-body">
             <h5 class="card-title d-flex justify-content-between">
                 <span><i class="bi bi-award"></i> Badges 🏅</span>
@@ -168,9 +164,34 @@
         </div>
     </div>
 
-
+    <!-- Secțiunea "See Your Weekly Reports" doar pentru utilizatorul curent -->
+    @if (ViewBag.UserCurent == ViewBag.User.Id && ViewBag.LastWeeklyReport != null)
+    {
+        <div class="card mb-3 bg-white bg-opacity-25" style="border:3px solid #A7C7E7; max-width: 600px; width: 100%; margin: 10px auto; border-radius: 30px;">
+            <div class="card-body">
+                <h5 class="card-title text-center">
+                    <i class="bi bi-calendar-week"></i> See Your Weekly Report
+                </h5>
+                <p class="text-center">
+                    <a href="@Url.Action("Show", "WeeklyReports", new { id = ViewBag.LastWeeklyReport })" class="btn btn-link text-info" style="border-radius: 30px; text-decoration: none;">
+                        View your most recent weekly report
+                    </a>
+                </p>
+            </div>
+        </div>
+    }
 
 </section>
 
 <br />
 <br />
+<br />
+<br />
+<style>
+    body {
+        background: linear-gradient(to bottom, rgba(168, 237, 234, 0.3), rgba(254, 214, 227, 0.3));
+        background-attachment: fixed;
+        min-height: 100vh;
+        margin: 0;
+    }
+</style>

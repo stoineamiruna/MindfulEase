@@ -3,19 +3,69 @@
   "WorkspaceRootPath": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\views\\dashboard\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\views\\dashboard\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\views\\weeklyreports\\show.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\views\\weeklyreports\\show.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\controllers\\weeklyreportscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\controllers\\weeklyreportscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\services\\weeklyreportservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\services\\weeklyreportservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\models\\weeklyreport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\models\\weeklyreport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\data\\migrations\\20250315204612_updateweeklyreports.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\data\\migrations\\20250315204612_updateweeklyreports.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\views\\therapeuticgames\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\views\\therapeuticgames\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/MindfulEaseV2/True/SqlTable/dbo.WeeklyReports.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/MindfulEaseV2/True/SqlTable/dbo.Notifications.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\views\\therapeuticgames\\new.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\views\\therapeuticgames\\new.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\models\\applicationuserweeklychallenge.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\models\\applicationuserweeklychallenge.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/MindfulEaseV2/True/SqlTable/dbo.ApplicationUserEmotions.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/MindfulEaseV2/True/SqlTable/dbo.UserBadges.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\models\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\models\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\models\\diary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\models\\diary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\models\\diaryemotion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\models\\diaryemotion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\models\\applicationuseremotion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\models\\applicationuseremotion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\controllers\\diariescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -26,24 +76,26 @@
       "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\controllers\\applicationuserscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\views\\dashboard\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\views\\dashboard\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\models\\applicationuserweeklychallenge.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\models\\applicationuserweeklychallenge.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/MindfulEaseV2/True/SqlTable/dbo.DiaryEmotions.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/MindfulEaseV2/True/SqlTable/dbo.AspNetUsers.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/MindfulEaseV2/True/SqlTable/dbo.Diaries.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\models\\userobjectiveprogress.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\models\\userobjectiveprogress.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/MindfulEaseV2/True/SqlTable/dbo.Emotions.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\models\\applicationuseremotion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\models\\applicationuseremotion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\models\\userobjective.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -58,12 +110,12 @@
       "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\views\\badges\\indexuserbadges.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\models\\emotion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\models\\emotion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\data\\migrations\\20250315203559_addweeklyreports.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\data\\migrations\\20250315203559_addweeklyreports.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -73,7 +125,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -85,20 +137,208 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "MindfulEase\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "MindfulEase\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAHAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-16T10:49:49.155Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Show.cshtml",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Views\\WeeklyReports\\Show.cshtml",
+              "RelativeDocumentMoniker": "MindfulEase\\Views\\WeeklyReports\\Show.cshtml",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Views\\WeeklyReports\\Show.cshtml*",
+              "RelativeToolTip": "MindfulEase\\Views\\WeeklyReports\\Show.cshtml*",
+              "ViewState": "AQIAAFIAAAAAAAAAAAAuwGEAAAAuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-15T22:31:06.481Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Views\\TherapeuticGames\\Index.cshtml",
+              "RelativeDocumentMoniker": "MindfulEase\\Views\\TherapeuticGames\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Views\\TherapeuticGames\\Index.cshtml",
+              "RelativeToolTip": "MindfulEase\\Views\\TherapeuticGames\\Index.cshtml",
+              "ViewState": "AQIAAFEAAAAAAAAAAAAAAFoAAAAKAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-15T22:21:31.778Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "New.cshtml",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Views\\TherapeuticGames\\New.cshtml",
+              "RelativeDocumentMoniker": "MindfulEase\\Views\\TherapeuticGames\\New.cshtml",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Views\\TherapeuticGames\\New.cshtml",
+              "RelativeToolTip": "MindfulEase\\Views\\TherapeuticGames\\New.cshtml",
+              "ViewState": "AQIAACMAAAAAAAAAAAAAACwAAAAwAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-15T22:21:04.013Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "WeeklyReportsController.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Controllers\\WeeklyReportsController.cs",
+              "RelativeDocumentMoniker": "MindfulEase\\Controllers\\WeeklyReportsController.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Controllers\\WeeklyReportsController.cs",
+              "RelativeToolTip": "MindfulEase\\Controllers\\WeeklyReportsController.cs",
+              "ViewState": "AQIAAI4AAAAAAAAAAAAuwJwAAAA5AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-15T22:15:44.439Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "dbo.Notifications [Data]",
+              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/MindfulEaseV2/True/SqlTable/dbo.Notifications.sql",
+              "ToolTip": "dbo.Notifications [Data]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2025-03-15T22:07:54.174Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "dbo.UserBadges [Data]",
+              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/MindfulEaseV2/True/SqlTable/dbo.UserBadges.sql",
+              "ToolTip": "dbo.UserBadges [Data]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2025-03-15T21:26:31.757Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "dbo.WeeklyReports [Data]",
+              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/MindfulEaseV2/True/SqlTable/dbo.WeeklyReports.sql",
+              "ToolTip": "dbo.WeeklyReports [Data]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2025-03-15T21:04:19.966Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Program.cs",
+              "RelativeDocumentMoniker": "MindfulEase\\Program.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Program.cs",
+              "RelativeToolTip": "MindfulEase\\Program.cs",
+              "ViewState": "AQIAAFAAAAAAAAAAAAAAAFYAAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-15T20:57:33.253Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "WeeklyReportService.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Services\\WeeklyReportService.cs",
+              "RelativeDocumentMoniker": "MindfulEase\\Services\\WeeklyReportService.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Services\\WeeklyReportService.cs",
+              "RelativeToolTip": "MindfulEase\\Services\\WeeklyReportService.cs",
+              "ViewState": "AQIAAEYAAAAAAAAAAAAIwFEAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-15T20:51:09.456Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "20250315204612_UpdateWeeklyReports.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Data\\Migrations\\20250315204612_UpdateWeeklyReports.cs",
+              "RelativeDocumentMoniker": "MindfulEase\\Data\\Migrations\\20250315204612_UpdateWeeklyReports.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Data\\Migrations\\20250315204612_UpdateWeeklyReports.cs",
+              "RelativeToolTip": "MindfulEase\\Data\\Migrations\\20250315204612_UpdateWeeklyReports.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-15T20:46:13.127Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "DiaryEmotion.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\DiaryEmotion.cs",
+              "RelativeDocumentMoniker": "MindfulEase\\Models\\DiaryEmotion.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\DiaryEmotion.cs",
+              "RelativeToolTip": "MindfulEase\\Models\\DiaryEmotion.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-15T20:42:21.311Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Diary.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\Diary.cs",
+              "RelativeDocumentMoniker": "MindfulEase\\Models\\Diary.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\Diary.cs",
+              "RelativeToolTip": "MindfulEase\\Models\\Diary.cs",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAxwAoAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-15T20:42:17.994Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "20250315203559_AddWeeklyReports.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Data\\Migrations\\20250315203559_AddWeeklyReports.cs",
+              "RelativeDocumentMoniker": "MindfulEase\\Data\\Migrations\\20250315203559_AddWeeklyReports.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Data\\Migrations\\20250315203559_AddWeeklyReports.cs",
+              "RelativeToolTip": "MindfulEase\\Data\\Migrations\\20250315203559_AddWeeklyReports.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-15T20:35:59.482Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ApplicationUser.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\ApplicationUser.cs",
+              "RelativeDocumentMoniker": "MindfulEase\\Models\\ApplicationUser.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\ApplicationUser.cs",
+              "RelativeToolTip": "MindfulEase\\Models\\ApplicationUser.cs",
+              "ViewState": "AQIAACkAAAAAAAAAAAAUwCsAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-15T20:33:27.948Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 4,
+              "Title": "WeeklyReport.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\WeeklyReport.cs",
+              "RelativeDocumentMoniker": "MindfulEase\\Models\\WeeklyReport.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\WeeklyReport.cs",
+              "RelativeToolTip": "MindfulEase\\Models\\WeeklyReport.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAxwA0AAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-15T20:28:00.124Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
               "Title": "DiariesController.cs",
               "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Controllers\\DiariesController.cs",
               "RelativeDocumentMoniker": "MindfulEase\\Controllers\\DiariesController.cs",
               "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Controllers\\DiariesController.cs",
               "RelativeToolTip": "MindfulEase\\Controllers\\DiariesController.cs",
-              "ViewState": "AQIAAFwBAAAAAAAAAAAIwGcBAAAoAAAA",
+              "ViewState": "AQIAAFgAAAAAAAAAAAAkwF0AAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T16:13:15.338Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-13T16:13:15.338Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 23,
               "Title": "dbo.AspNetUsers [Data]",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/MindfulEaseV2/True/SqlTable/dbo.AspNetUsers.sql",
               "ToolTip": "dbo.AspNetUsers [Data]",
@@ -107,7 +347,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 18,
               "Title": "ApplicationUsersController.cs",
               "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Controllers\\ApplicationUsersController.cs",
               "RelativeDocumentMoniker": "MindfulEase\\Controllers\\ApplicationUsersController.cs",
@@ -119,16 +359,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "dbo.Diaries [Data]",
-              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/MindfulEaseV2/True/SqlTable/dbo.Diaries.sql",
-              "ToolTip": "dbo.Diaries [Data]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2025-03-13T15:25:01.592Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 22,
               "Title": "dbo.DiaryEmotions [Data]",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/MindfulEaseV2/True/SqlTable/dbo.DiaryEmotions.sql",
               "ToolTip": "dbo.DiaryEmotions [Data]",
@@ -137,20 +368,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 10,
               "Title": "DashboardController.cs",
               "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Controllers\\DashboardController.cs",
               "RelativeDocumentMoniker": "MindfulEase\\Controllers\\DashboardController.cs",
               "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Controllers\\DashboardController.cs",
               "RelativeToolTip": "MindfulEase\\Controllers\\DashboardController.cs",
-              "ViewState": "AQIAAFMAAAAAAAAAAAAYwGgAAAAZAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAABDAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T10:33:33.839Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-13T10:33:33.839Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 20,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Views\\Dashboard\\Index.cshtml",
               "RelativeDocumentMoniker": "MindfulEase\\Views\\Dashboard\\Index.cshtml",
@@ -158,12 +388,11 @@
               "RelativeToolTip": "MindfulEase\\Views\\Dashboard\\Index.cshtml",
               "ViewState": "AQIAABEBAAAAAAAAAADwvyABAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-13T10:35:39.833Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-13T10:35:39.833Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 21,
               "Title": "ApplicationUserWeeklyChallenge.cs",
               "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\ApplicationUserWeeklyChallenge.cs",
               "RelativeDocumentMoniker": "MindfulEase\\Models\\ApplicationUserWeeklyChallenge.cs",
@@ -171,12 +400,11 @@
               "RelativeToolTip": "MindfulEase\\Models\\ApplicationUserWeeklyChallenge.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAApAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T10:32:09.306Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-13T10:32:09.306Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 24,
               "Title": "UserObjectiveProgress.cs",
               "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\UserObjectiveProgress.cs",
               "RelativeDocumentMoniker": "MindfulEase\\Models\\UserObjectiveProgress.cs",
@@ -188,7 +416,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 25,
               "Title": "UserObjective.cs",
               "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\UserObjective.cs",
               "RelativeDocumentMoniker": "MindfulEase\\Models\\UserObjective.cs",
@@ -200,7 +428,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 26,
               "Title": "UserBadge.cs",
               "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\UserBadge.cs",
               "RelativeDocumentMoniker": "MindfulEase\\Models\\UserBadge.cs",
@@ -212,7 +440,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 27,
               "Title": "IndexUserBadges.cshtml",
               "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Views\\Badges\\IndexUserBadges.cshtml",
               "RelativeDocumentMoniker": "MindfulEase\\Views\\Badges\\IndexUserBadges.cshtml",
@@ -224,50 +452,31 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "dbo.ApplicationUserEmotions [Data]",
-              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/MindfulEaseV2/True/SqlTable/dbo.ApplicationUserEmotions.sql",
-              "ToolTip": "dbo.ApplicationUserEmotions [Data]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2025-03-12T19:48:44.707Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "dbo.Emotions [Data]",
-              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/MindfulEaseV2/True/SqlTable/dbo.Emotions.sql",
-              "ToolTip": "dbo.Emotions [Data]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2025-03-12T19:37:54.006Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 19,
               "Title": "ApplicationDbContext.cs",
               "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Data\\ApplicationDbContext.cs",
               "RelativeDocumentMoniker": "MindfulEase\\Data\\ApplicationDbContext.cs",
               "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Data\\ApplicationDbContext.cs",
               "RelativeToolTip": "MindfulEase\\Data\\ApplicationDbContext.cs",
-              "ViewState": "AQIAAI8AAAAAAAAAAAAIwKQAAAA5AAAA",
+              "ViewState": "AQIAAAYAAAAAAAAAAIAxwAwAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-12T19:24:26.904Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 16,
               "Title": "ApplicationUserEmotion.cs",
               "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\ApplicationUserEmotion.cs",
               "RelativeDocumentMoniker": "MindfulEase\\Models\\ApplicationUserEmotion.cs",
               "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\ApplicationUserEmotion.cs",
               "RelativeToolTip": "MindfulEase\\Models\\ApplicationUserEmotion.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAFAAAA",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAAwAwAAAAoAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-12T19:19:14.274Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 28,
               "Title": "Emotion.cs",
               "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\Emotion.cs",
               "RelativeDocumentMoniker": "MindfulEase\\Models\\Emotion.cs",

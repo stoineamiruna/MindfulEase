@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "g71MVC3/hGSc71es39YbrwnPTCqM7DYcb6mYC/36DVg=",
+  "Hash": "JcwBXtmYujSOmuvF+UwnQXyTMRYN2ktKH5q6ZyGlhSo=",
   "Source": "MindfulEase",
   "BasePath": "_content/MindfulEase",
   "Mode": "Default",
@@ -1364,6 +1364,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\bell3.png"
+    },
+    {
+      "Identity": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\img\\chart-pie.png",
+      "SourceId": "MindfulEase",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\",
+      "BasePath": "_content/MindfulEase",
+      "RelativePath": "img/chart-pie.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\chart-pie.png"
     },
     {
       "Identity": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\img\\home2.jpg",

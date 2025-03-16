@@ -54,13 +54,14 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Routines" asp-action="Index">Resources</a>
                             </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle text-white" style="font-weight: bold; border: white" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">Activities</a>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <li><a class="dropdown-item" asp-area="" asp-controller="TherapeuticGames" asp-action="Index">Games & Quizzes</a></li>
-                                    <li><a class="dropdown-item" asp-area="" asp-controller="WeeklyChallenges" asp-action="Index">Weekly Challenges</a></li>
+                            <li class="nav-item-dropdown dropdown">
+                                <a class="nav-link dropdown-toggle" style="border: none; -webkit-text-stroke: 0px white;"  id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">Activities</a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="background: linear-gradient(45deg, #a1c5ff, #d1dfff, #b0e3e6, #f2c4d4);">
+                                    <li><a class="dropdown-item" style="color:white; " asp-area="" asp-controller="TherapeuticGames" asp-action="Index">Games & Quizzes</a></li>
+                                    <li><a class="dropdown-item" style="color:white" asp-area="" asp-controller="WeeklyChallenges" asp-action="Index">Weekly Challenges</a></li>
                                 </ul>
                             </li>
+
 
                             
                         }
@@ -74,9 +75,13 @@
                     </ul>
                     @if (User.Identity.IsAuthenticated)
                         {
-                            <a class="nav-link" asp-controller="Notifications" asp-action="Index">
-                                <img src="~/img/bell3.png" id=logo alt="TLC Logo" style="height: 27px;" />
+                            <a class="nav-link nav-logo" asp-controller="Dashboard" asp-action="Index">
+                            <img src="~/img/chart-pie.png" id=logo alt="TLC Logo" style="vertical-align: middle; height: 25px; margin-right:-9px; margin-top:-3px;" />
                             </a>
+                            <a class="nav-link nav-logo" asp-controller="Notifications" asp-action="Index">
+                            <img src="~/img/bell3.png" id=logo alt="TLC Logo" style="vertical-align: middle; height: 33px; margin-left:0px; margin-right: 0px" />
+                            </a>
+                            
                         }
                     <partial name="_LoginPartial" />
                 </div>
@@ -100,3 +105,5 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+
+

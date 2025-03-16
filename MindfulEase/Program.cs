@@ -25,13 +25,14 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.R
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddHttpClient();  // Register HttpClient for compiler
-builder.Services.AddScoped<BadgeService>();
 builder.Services.AddScoped<RecommendationService>(); // Service-ul depinde de DbContext
 builder.Services.AddScoped<ClusteringService>(); // Service-ul depinde de DbContext
 builder.Services.AddHttpClient<SentimentAnalysisService>(); // Acest serviciu foloseste HTTP
 builder.Services.AddScoped<RewardService>();
 builder.Services.AddScoped<WeeklyChallengeService>();
+builder.Services.AddScoped<WeeklyReportService>();
 builder.Services.AddScoped<ChallengeNotificationsService>();
+builder.Services.AddScoped<BadgeService>();
 
 var app = builder.Build();
 
@@ -71,16 +72,25 @@ app.MapControllerRoute(
 app.MapRazorPages();
 
 app.UseHangfireDashboard("/hangfire");
+
 RecurringJob.AddOrUpdate<BadgeService>(
+    "generate_user_badges",
      service => service.CheckAndAwardBadgesAsync(),
      Cron.Minutely); //Seteaza jobul sa ruleze la fiecare minut
 
 RecurringJob.AddOrUpdate<WeeklyChallengeService>(
+    "verify_weekly_challenges",
     service => service.CheckWeeklyChallengesAsync(),   
-    Cron.Minutely);  // Seteaz? jobul s? ruleze la fiecare minut
+    Cron.Minutely);  // Seteaza jobul sa ruleze la fiecare minut
 
 RecurringJob.AddOrUpdate<ChallengeNotificationsService>(
+    "generate_notifications",
     service => service.CheckActiveChallengesAndSendNotifications(),
-    Cron.Minutely);  // Seteaz? jobul s? ruleze la fiecare minut
+    Cron.Minutely);  // Seteaza jobul sa ruleze la fiecare minut
+
+RecurringJob.AddOrUpdate<WeeklyReportService>(
+    "generate_weekly_report",
+    service => service.GenerateWeeklyReports(),
+    Cron.Weekly(DayOfWeek.Sunday, 23, 59));
 
 app.Run();
