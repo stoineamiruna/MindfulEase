@@ -106,7 +106,8 @@ namespace MindfulEase.Controllers
                 TempData["messageType"] = "alert-danger";
                 return RedirectToAction("Index");
             }
-
+            var applicationUserTherapeuticGames = db.ApplicationUserTherapeuticGames.Where(sr => sr.GameId == id).ToList();
+            db.ApplicationUserTherapeuticGames.RemoveRange(applicationUserTherapeuticGames);
             db.TherapeuticGames.Remove(game);
             db.SaveChanges();
 

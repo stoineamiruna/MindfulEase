@@ -36,6 +36,7 @@ namespace MindfulEase.Data
         public DbSet<ApplicationUserWeeklyChallenge> ApplicationUserWeeklyChallenges { get; set; }
         public DbSet<Notification> Notifications { get; set; }
         public DbSet<ApplicationUserEmotion> ApplicationUserEmotions { get; set; }
+        public DbSet<SavedResource> SavedResources { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -166,6 +167,21 @@ namespace MindfulEase.Data
                 .HasOne(ut => ut.Emotion)
                 .WithMany(g => g.Users)
                 .HasForeignKey(ut => ut.EmotionId);
+
+            // Many-to-Many Relationship: ApplicationUser <-> Resource
+
+            modelBuilder.Entity<SavedResource>()
+                .HasKey(ut => new { ut.UserId, ut.ResourceId});
+
+            modelBuilder.Entity<SavedResource>()
+                .HasOne(ut => ut.User)
+                .WithMany(u => u.SavedResources)
+                .HasForeignKey(ut => ut.UserId);
+
+            modelBuilder.Entity<SavedResource>()
+                .HasOne(ut => ut.Resource)
+                .WithMany(g => g.SavedResources)
+                .HasForeignKey(ut => ut.ResourceId);
         }
     }
 }

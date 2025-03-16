@@ -298,9 +298,56 @@ namespace MindfulEase.Controllers
 
             if (user.Id == _userManager.GetUserId(User) || User.IsInRole("Admin") || User.IsInRole("Moderator"))
             {
-                // Delete associated diary entries
-                var diariesToDelete = db.Diaries.Where(d => d.UserId == user.Id).ToList();
-                db.Diaries.RemoveRange(diariesToDelete);
+
+                var userDiaries = db.Diaries.Where(uo => uo.UserId == id).ToList();
+
+                var userDiariesIds = userDiaries.Select(uo => uo.Id).ToList();
+                var userDiariesEmotions = db.DiaryEmotions
+                                                  .Where(uop => uop.DiaryId.HasValue && userDiariesIds.Contains(uop.DiaryId.Value))
+                                                  .ToList();
+
+                db.DiaryEmotions.RemoveRange(userDiariesEmotions);
+                db.Diaries.RemoveRange(userDiaries);
+
+                var savedEntries = db.SavedResources.Where(sr => sr.UserId == id).ToList();
+                db.SavedResources.RemoveRange(savedEntries);
+
+                var likedEntries = db.ApplicationUserResources.Where(sr => sr.UserId == id).ToList();
+                db.ApplicationUserResources.RemoveRange(likedEntries);
+
+                var userEmotionEntries = db.ApplicationUserEmotions.Where(sr => sr.UserId == id).ToList();
+                db.ApplicationUserEmotions.RemoveRange(userEmotionEntries);
+
+                var userQuestionQuizzes = db.ApplicationUserQuestionQuizzes.Where(sr => sr.UserId == id).ToList();
+                db.ApplicationUserQuestionQuizzes.RemoveRange(userQuestionQuizzes);
+                
+                var userQuizzes = db.ApplicationUserQuizzes.Where(sr => sr.UserId == id).ToList();
+                db.ApplicationUserQuizzes.RemoveRange(userQuizzes);
+
+                var userGamesEntries = db.ApplicationUserTherapeuticGames.Where(sr => sr.UserId == id).ToList();
+                db.ApplicationUserTherapeuticGames.RemoveRange(userGamesEntries);
+
+                var userWeeklyChallengeEntries = db.ApplicationUserWeeklyChallenges.Where(sr => sr.UserId == id).ToList();
+                db.ApplicationUserWeeklyChallenges.RemoveRange(userWeeklyChallengeEntries);
+
+                var userBadges = db.UserBadges.Where(sr => sr.UserId == id).ToList();
+                db.UserBadges.RemoveRange(userBadges);
+
+                var userObjectives = db.UserObjectives.Where(uo => uo.UserId == id).ToList();
+
+                var userObjectiveIds = userObjectives.Select(uo => uo.Id).ToList();
+                var userObjectiveProgresses = db.UserObjectiveProgresses
+                                                  .Where(uop => uop.UserObjectiveId.HasValue && userObjectiveIds.Contains(uop.UserObjectiveId.Value))
+                                                  .ToList();
+                db.UserObjectiveProgresses.RemoveRange(userObjectiveProgresses);
+                db.UserObjectives.RemoveRange(userObjectives);
+
+                var userNotifications = db.Notifications.Where(sr => sr.UserId == id).ToList();
+                db.Notifications.RemoveRange(userNotifications);
+
+                var userWeeklyReports = db.WeeklyReports.Where(sr => sr.UserId == id).ToList();
+                db.WeeklyReports.RemoveRange(userWeeklyReports);
+
                 db.ApplicationUsers.Remove(user);
                 TempData["message"] = "Your profile has been deleted.";
                 TempData["messageType"] = "alert-success";

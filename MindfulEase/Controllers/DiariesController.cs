@@ -329,6 +329,8 @@ namespace MindfulEase.Controllers
                 TempData["messageType"] = "alert-danger";
                 return RedirectToAction("New");
             }
+            var diaryEmotions = db.DiaryEmotions.Where(sr => sr.DiaryId == id).ToList();
+            db.DiaryEmotions.RemoveRange(diaryEmotions);
 
             db.Diaries.Remove(diary);
             db.SaveChanges();

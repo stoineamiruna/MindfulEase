@@ -641,6 +641,27 @@ namespace MindfulEase.Data.Migrations
                     b.ToTable("Routines");
                 });
 
+            modelBuilder.Entity("MindfulEase.Models.SavedResource", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int?>("ResourceId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool?>("IsSaved")
+                        .HasColumnType("bit");
+
+                    b.HasKey("UserId", "ResourceId");
+
+                    b.HasIndex("ResourceId");
+
+                    b.ToTable("SavedResources");
+                });
+
             modelBuilder.Entity("MindfulEase.Models.TherapeuticGame", b =>
                 {
                     b.Property<int>("Id")
@@ -1096,6 +1117,25 @@ namespace MindfulEase.Data.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("MindfulEase.Models.SavedResource", b =>
+                {
+                    b.HasOne("MindfulEase.Models.Resource", "Resource")
+                        .WithMany("SavedResources")
+                        .HasForeignKey("ResourceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MindfulEase.Models.ApplicationUser", "User")
+                        .WithMany("SavedResources")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Resource");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("MindfulEase.Models.UserBadge", b =>
                 {
                     b.HasOne("MindfulEase.Models.Badge", "Badge")
@@ -1188,6 +1228,8 @@ namespace MindfulEase.Data.Migrations
 
             modelBuilder.Entity("MindfulEase.Models.Resource", b =>
                 {
+                    b.Navigation("SavedResources");
+
                     b.Navigation("Users");
                 });
 
@@ -1228,6 +1270,8 @@ namespace MindfulEase.Data.Migrations
                     b.Navigation("Resources");
 
                     b.Navigation("Rewards");
+
+                    b.Navigation("SavedResources");
 
                     b.Navigation("TherapeuticGames");
 
