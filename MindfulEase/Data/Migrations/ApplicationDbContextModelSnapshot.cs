@@ -641,34 +641,6 @@ namespace MindfulEase.Data.Migrations
                     b.ToTable("Routines");
                 });
 
-            modelBuilder.Entity("MindfulEase.Models.Statistics", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<DateTime>("DateRecorded")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("StarsEarned")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TasksCompleted")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Statistics");
-                });
-
             modelBuilder.Entity("MindfulEase.Models.TherapeuticGame", b =>
                 {
                     b.Property<int>("Id")
@@ -827,12 +799,19 @@ namespace MindfulEase.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("Summary")
-                        .IsRequired()
+                    b.Property<string>("AverageEmotions")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("NrDiaries")
+                        .HasColumnType("int");
+
+                    b.Property<int>("NrObjectives")
+                        .HasColumnType("int");
+
+                    b.Property<int>("NrWeeklyChallenges")
+                        .HasColumnType("int");
+
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("WeekStartDate")
@@ -1117,17 +1096,6 @@ namespace MindfulEase.Data.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("MindfulEase.Models.Statistics", b =>
-                {
-                    b.HasOne("MindfulEase.Models.ApplicationUser", "User")
-                        .WithMany("Statistics")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("MindfulEase.Models.UserBadge", b =>
                 {
                     b.HasOne("MindfulEase.Models.Badge", "Badge")
@@ -1179,9 +1147,7 @@ namespace MindfulEase.Data.Migrations
                 {
                     b.HasOne("MindfulEase.Models.ApplicationUser", "User")
                         .WithMany("WeeklyReports")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
                     b.Navigation("User");
                 });
@@ -1262,8 +1228,6 @@ namespace MindfulEase.Data.Migrations
                     b.Navigation("Resources");
 
                     b.Navigation("Rewards");
-
-                    b.Navigation("Statistics");
 
                     b.Navigation("TherapeuticGames");
 

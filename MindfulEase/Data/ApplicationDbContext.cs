@@ -24,7 +24,6 @@ namespace MindfulEase.Data
         public DbSet<Emotion> Emotions { get; set; }
         public DbSet<DiaryEmotion> DiaryEmotions { get; set; }
         public DbSet<WeeklyChallenge> WeeklyChallenges { get; set; }
-        public DbSet<Statistics> Statistics { get; set; }
         public DbSet<Resource> Resources { get; set; }
         public DbSet<ApplicationUserResource> ApplicationUserResources { get; set; }
         public DbSet<ApplicationUserQuestionQuiz> ApplicationUserQuestionQuizzes { get; set; }
