@@ -46,7 +46,6 @@ namespace MindfulEase.Models
         // Relații One-to-Many
         public ICollection<Diary>? Diaries { get; set; }
         public ICollection<WeeklyReport>? WeeklyReports { get; set; }
-        public ICollection<Statistics>? Statistics { get; set; }
         public ICollection<Reward>? Rewards { get; set; }
 
         // Relație Many-to-Many
