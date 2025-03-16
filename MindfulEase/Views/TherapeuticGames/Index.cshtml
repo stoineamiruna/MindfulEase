@@ -27,7 +27,7 @@
             @foreach (var quiz in ((List<MindfulEase.Models.Quiz>)ViewBag.QuizzesUser).Take(4))
             {
                 <div class="col-6 col-md-4 col-lg-3 mb-4" >
-                    <a href="@Url.Action("Show", "Quizzes", new { id = quiz.Id })" class="card shadow-sm text-decoration-none d-flex flex-column" style="border-radius: 20px; height: 100%;">
+                    <a href="@Url.Action("Show", "Quizzes", new { id = quiz.Id })" class="card shadow-sm text-decoration-none d-flex flex-column" style="border-radius: 20px; height: 100%; border:3px solid #F9C7D1;">
                         <img src="@quiz.Background" class="card-img-top" alt="@quiz.Title" style="height: 180px; object-fit: cover; border-radius: 20px 20px 0 0;">
                         <div class="card-body text-center d-flex flex-column justify-content-between">
                             <h5 class="card-title">@quiz.Title</h5>
@@ -49,7 +49,7 @@
             @foreach (var quiz in ((List<MindfulEase.Models.Quiz>)ViewBag.AllQuizzes).Take(4))
             {
                 <div class="col-6 col-md-4 col-lg-3 mb-4" >
-                    <a href="@Url.Action("Show", "Quizzes", new { id = quiz.Id })" class="card shadow-sm text-decoration-none d-flex flex-column" style="border-radius: 20px; height: 100%;">
+                    <a href="@Url.Action("Show", "Quizzes", new { id = quiz.Id })" class="card shadow-sm text-decoration-none d-flex flex-column" style="border-radius: 20px; height: 100%; border:3px solid #D7A7D9">
                         <img src="@quiz.Background" class="card-img-top" alt="@quiz.Title" style="height: 180px; object-fit: cover; border-radius: 20px 20px 0 0;">
                         <div class="card-body text-center d-flex flex-column justify-content-between">
                             <h5 class="card-title">@quiz.Title</h5>
@@ -70,7 +70,7 @@
             @foreach (var game in ((List<MindfulEase.Models.TherapeuticGame>)ViewBag.AllGames).Take(4))
             {
                 <div class="col-6 col-md-4 col-lg-3 mb-4">
-                    <a href="@Url.Action("Play", "TherapeuticGames", new { id = game.Id })" class="card shadow-sm text-decoration-none d-flex flex-column" style="border-radius: 20px; height: 100%;">
+                    <a href="@Url.Action("Play", "TherapeuticGames", new { id = game.Id })" class="card shadow-sm text-decoration-none d-flex flex-column" style="border-radius: 20px; height: 100%; border:3px solid #A8D7E8">
                         <img src="@game.Background" class="card-img-top" alt="@game.Name" style="height: 180px; object-fit: cover; border-radius: 20px 20px 0 0;">
                         <div class="card-body text-center d-flex flex-column justify-content-between">
                             <h5 class="card-title">@game.Name</h5>

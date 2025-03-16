@@ -78,6 +78,28 @@ public class RoutinesController : Controller
                                 (aur, r) => r)
                             .ToList();
         ViewBag.LikedResources = likedResources;
+
+        var disLikedResources = db.ApplicationUserResources
+            .Where(aur => aur.UserId == userId && aur.IsLiked == false)
+            .Join(db.Resources,
+                aur => aur.ResourceId,
+                r => r.Id,
+                (aur, r) => r)
+            .ToList();
+        ViewBag.DisLikedResources = disLikedResources.Select(r => r.Id).ToList();  
+        ViewBag.ReallyLikedResources = likedResources.Select(r => r.Id).ToList();
+
+        var savedResources = db.SavedResources
+                            .Where(aur => aur.UserId == userId && aur.IsSaved == true)
+                            .Join(db.Resources,
+                                aur => aur.ResourceId,
+                                r => r.Id,
+                                (aur, r) => r)
+                            .ToList();
+
+        ViewBag.SavedResources = savedResources.Select(r => r.Id).ToList();
+        ViewBag.SavedResourcesList = savedResources;
+
         Console.WriteLine(User.IsInRole("Admin"));
         return View(combinedResources);
     }
@@ -123,6 +145,16 @@ public class RoutinesController : Controller
                                 (aur, r) => r);
             Console.WriteLine("section: 1");
         }
+        else if (section == "saved")
+        {
+            // Resurse salvate de utilizatorul curent
+            resources = db.SavedResources
+                          .Where(aur => aur.UserId == userId && aur.IsSaved == true)
+                          .Join(db.Resources,
+                                aur => aur.ResourceId,
+                                r => r.Id,
+                                (aur, r) => r);
+        }
         else if (!string.IsNullOrEmpty(section))
         {
             // Resursele cu tipul specificat
@@ -135,7 +167,77 @@ public class RoutinesController : Controller
             resources = db.Resources;
             Console.WriteLine("section: 3");
         }
+        var likedResources = db.ApplicationUserResources
+                            .Where(aur => aur.UserId == userId && aur.IsLiked == true)
+                            .Join(db.Resources,
+                                aur => aur.ResourceId,
+                                r => r.Id,
+                                (aur, r) => r)
+                            .ToList();
+
+        var disLikedResources = db.ApplicationUserResources
+            .Where(aur => aur.UserId == userId && aur.IsLiked == false)
+            .Join(db.Resources,
+                aur => aur.ResourceId,
+                r => r.Id,
+                (aur, r) => r)
+            .ToList();
+        ViewBag.DisLikedResources = disLikedResources.Select(r => r.Id).ToList();
+        ViewBag.ReallyLikedResources = likedResources.Select(r => r.Id).ToList();
+
+        var savedResources = db.SavedResources
+                            .Where(sr => sr.UserId == userId && sr.IsSaved == true)
+                            .Select(sr => sr.ResourceId)
+                            .ToList();
+
+        ViewBag.SavedResources = savedResources;
 
         return View(resources.ToList());
     }
+
+    [Authorize(Roles = "Admin,Moderator,User")]
+    [HttpPost]
+    public IActionResult SaveResource(int resourceId)
+    {
+        SetAccessRights();
+        string userId = _userManager.GetUserId(User);
+        if (string.IsNullOrEmpty(userId) || resourceId <= 0)
+        {
+            return BadRequest("Invalid user ID or resource ID.");
+        }
+
+        try
+        {
+            // Verificăm dacă utilizatorul a salvat deja această resursă
+            var existingEntry = db.SavedResources
+                .FirstOrDefault(sr => sr.UserId == userId && sr.ResourceId == resourceId);
+
+            if (existingEntry == null)
+            {
+                // Adăugăm o nouă intrare dacă nu există
+                var savedResource = new SavedResource
+                {
+                    UserId = userId,
+                    ResourceId = resourceId,
+                    IsSaved = true,
+                    Date = DateTime.UtcNow
+                };
+
+                db.SavedResources.Add(savedResource);
+                db.SaveChanges();
+            }
+            else
+            {
+                existingEntry.IsSaved = !existingEntry.IsSaved;
+                db.SaveChanges();
+            }
+
+            return RedirectToAction("Index");
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, ex.Message);
+        }
+    }
+
 }
