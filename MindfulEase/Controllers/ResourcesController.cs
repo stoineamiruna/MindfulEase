@@ -95,6 +95,14 @@ namespace MindfulEase.Controllers
                 TempData["messageType"] = "alert-danger";
                 return RedirectToAction("New");
             }
+            // Ștergem toate intrările asociate din SavedResources
+            var savedEntries = db.SavedResources.Where(sr => sr.ResourceId == id).ToList();
+            db.SavedResources.RemoveRange(savedEntries);
+
+            // Ștergem toate intrările asociate din SavedResources
+            var likedEntries = db.ApplicationUserResources.Where(sr => sr.ResourceId == id).ToList();
+            db.ApplicationUserResources.RemoveRange(likedEntries);
+
 
             db.Resources.Remove(resource);
             db.SaveChanges();

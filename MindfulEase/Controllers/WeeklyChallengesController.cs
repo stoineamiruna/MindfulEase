@@ -390,6 +390,8 @@ namespace MindfulEase.Controllers
             var challenge = await db.WeeklyChallenges.FindAsync(id);
             if (challenge != null)
             {
+                var applicationUserWeeklyChallenges = db.ApplicationUserWeeklyChallenges.Where(sr => sr.WeeklyChallengeId == id).ToList();
+                db.ApplicationUserWeeklyChallenges.RemoveRange(applicationUserWeeklyChallenges);
                 db.WeeklyChallenges.Remove(challenge);
                 await db.SaveChangesAsync();
             }

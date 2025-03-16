@@ -49,6 +49,14 @@
       "PackagePath": "staticwebassets\\img\\chart-pie.png"
     },
     {
+      "Id": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\img\\dislike.png",
+      "PackagePath": "staticwebassets\\img\\dislike.png"
+    },
+    {
+      "Id": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\img\\disliked.png",
+      "PackagePath": "staticwebassets\\img\\disliked.png"
+    },
+    {
       "Id": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\img\\home2.jpg",
       "PackagePath": "staticwebassets\\img\\home2.jpg"
     },
@@ -79,6 +87,30 @@
     {
       "Id": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\img\\indexUser1.jpg",
       "PackagePath": "staticwebassets\\img\\indexUser1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\img\\like.png",
+      "PackagePath": "staticwebassets\\img\\like.png"
+    },
+    {
+      "Id": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\img\\liked.png",
+      "PackagePath": "staticwebassets\\img\\liked.png"
+    },
+    {
+      "Id": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\img\\notebook.png",
+      "PackagePath": "staticwebassets\\img\\notebook.png"
+    },
+    {
+      "Id": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\img\\save.png",
+      "PackagePath": "staticwebassets\\img\\save.png"
+    },
+    {
+      "Id": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\img\\unsave.png",
+      "PackagePath": "staticwebassets\\img\\unsave.png"
+    },
+    {
+      "Id": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\img\\user.png",
+      "PackagePath": "staticwebassets\\img\\user.png"
     },
     {
       "Id": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\js\\site.js",
