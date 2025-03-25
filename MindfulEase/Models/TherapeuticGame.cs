@@ -19,5 +19,6 @@ namespace MindfulEase.Models
 
         // Relație Many-to-Many
         public virtual ICollection<ApplicationUserTherapeuticGame>? Users { get; set; }
+        public virtual ICollection<TherapeuticGameTag>? Tags { get; set; }
     }
 }

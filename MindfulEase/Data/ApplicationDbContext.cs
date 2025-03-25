@@ -37,6 +37,10 @@ namespace MindfulEase.Data
         public DbSet<Notification> Notifications { get; set; }
         public DbSet<ApplicationUserEmotion> ApplicationUserEmotions { get; set; }
         public DbSet<SavedResource> SavedResources { get; set; }
+        public DbSet<Tag> Tags { get; set; }
+        public DbSet<ResourceTag> ResourceTags { get; set; }
+        public DbSet<QuizTag> QuizTags { get; set; }
+        public DbSet<TherapeuticGameTag> TherapeuticGameTags { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -182,6 +186,53 @@ namespace MindfulEase.Data
                 .HasOne(ut => ut.Resource)
                 .WithMany(g => g.SavedResources)
                 .HasForeignKey(ut => ut.ResourceId);
+
+            // Many-to-Many Relationship: Tag <-> Resource
+
+            modelBuilder.Entity<ResourceTag>()
+                .HasKey(ut => new { ut.TagId, ut.ResourceId });
+
+            modelBuilder.Entity<ResourceTag>()
+                .HasOne(ut => ut.Tag)
+                .WithMany(u => u.Resources)
+                .HasForeignKey(ut => ut.TagId);
+
+            modelBuilder.Entity<ResourceTag>()
+                .HasOne(ut => ut.Resource)
+                .WithMany(g => g.Tags)
+                .HasForeignKey(ut => ut.ResourceId);
+
+            // Many-to-Many Relationship: Tag <-> Resource
+
+            modelBuilder.Entity<QuizTag>()
+                .HasKey(ut => new { ut.TagId, ut.QuizId });
+
+            modelBuilder.Entity<QuizTag>()
+                .HasOne(ut => ut.Tag)
+                .WithMany(u => u.Quizzes)
+                .HasForeignKey(ut => ut.TagId);
+
+            modelBuilder.Entity<QuizTag>()
+                .HasOne(ut => ut.Quiz)
+                .WithMany(g => g.Tags)
+                .HasForeignKey(ut => ut.QuizId);
+
+            // Many-to-Many Relationship: Tag <-> Resource
+
+            modelBuilder.Entity<TherapeuticGameTag>()
+                .HasKey(ut => new { ut.TagId, ut.TherapeuticGameId });
+
+            modelBuilder.Entity<TherapeuticGameTag>()
+                .HasOne(ut => ut.Tag)
+                .WithMany(u => u.TherapeuticGames)
+                .HasForeignKey(ut => ut.TagId);
+
+            modelBuilder.Entity<TherapeuticGameTag>()
+                .HasOne(ut => ut.TherapeuticGame)
+                .WithMany(g => g.Tags)
+                .HasForeignKey(ut => ut.TherapeuticGameId);
+
+
         }
     }
 }

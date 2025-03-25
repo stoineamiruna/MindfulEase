@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Text.Json;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MindfulEase.Controllers
 {
@@ -21,6 +22,7 @@ namespace MindfulEase.Controllers
             _userManager = userManager;
         }
 
+        [Authorize(Roles = "Admin,Moderator,User")]
         public async Task<IActionResult> Index()
         {
             var emotionalJourneyData = await _context.ApplicationUserEmotions
@@ -114,6 +116,257 @@ namespace MindfulEase.Controllers
 
             return View(dashboardStats);
         }
+
+        [Authorize(Roles = "Admin,Moderator,User")]
+        public async Task<IActionResult> PersonalTrainer()
+        {
+            var userId = _userManager.GetUserId(User);
+            var last7Days = DateTime.UtcNow.Date.AddDays(-6);
+
+            // Preluăm emoțiile din ApplicationUserEmotions (valori 1-10)
+            var userEmotionsData = await _context.ApplicationUserEmotions
+                .Where(ue => ue.UserId == userId && ue.Date >= last7Days)
+                .Select(ue => new
+                {
+                    Date = ue.Date.Date,
+                    EmotionLabel = ue.Emotion.Label,
+                    EmotionId = ue.EmotionId,
+                    MoodValue = (double)ue.MoodValue
+                })
+                .ToListAsync();
+
+            // Preluăm emoțiile din DiaryEmotions (valori 0-1 -> convertim la 1-10)
+            var diaryEmotionsData = await _context.DiaryEmotions
+                .Where(de => de.Diary.UserId == userId && de.Diary.EntryDate >= last7Days)
+                .Select(de => new
+                {
+                    Date = de.Diary.EntryDate.Date,
+                    EmotionLabel = de.Emotion.Label,
+                    EmotionId = de.EmotionId,
+                    MoodValue = (double)(de.Score * 9 + 1)  // Conversie la 1-10
+                })
+                .ToListAsync();
+
+            // Combinăm datele din ambele surse
+            var combinedData = userEmotionsData.Concat(diaryEmotionsData);
+
+            var groupedByDate = combinedData
+                .GroupBy(e => e.Date)
+                .Select(g =>
+                {
+                    double moodSum = 0;
+                    int count = 0;
+
+                    foreach (var entry in g)
+                    {
+                        if (new[] { "joy", "love", "surprise" }.Contains(entry.EmotionLabel.ToLower()))
+                        {
+                            moodSum += entry.MoodValue;
+                        }
+                        else
+                        {
+                            moodSum += 10 - entry.MoodValue; // Inversăm pentru emoții negative
+                        }
+                        count++;
+                    }
+
+                    return new
+                    {
+                        Date = g.Key.ToString("yyyy-MM-dd"),
+                        MoodValue = count > 0 ? moodSum / count : 5
+                    };
+                })
+                .OrderBy(e => e.Date)
+                .ToList();
+
+            // Calcul scor stare de bine (ponderare)
+            double wellBeingScore = 0;
+            double weightSum = 0;
+            double weight = 1.0;
+
+            foreach (var day in groupedByDate.OrderByDescending(e => e.Date))
+            {
+                wellBeingScore += day.MoodValue * weight;
+                weightSum += weight;
+                weight -= 0.1;
+            }
+
+            wellBeingScore = weightSum > 0 ? wellBeingScore / weightSum : 5;
+
+            // Calculăm media ponderată pentru fiecare emoție
+            var emotionScores = combinedData
+                .GroupBy(e => e.EmotionLabel)
+                .Select(g =>
+                {
+                    double emotionScoreSum = 0;
+                    double emotionWeightSum = 0;
+                    double emotionWeight = 1.0;
+
+                    foreach (var entry in g.OrderByDescending(e => e.Date))
+                    {
+                        emotionScoreSum += entry.MoodValue * emotionWeight;
+                        emotionWeightSum += emotionWeight;
+                        emotionWeight -= 0.1;
+                    }
+
+                    double? avgScore = emotionWeightSum > 0 ? emotionScoreSum / emotionWeightSum : null;
+
+                    return new
+                    {
+                        Emotion = g.Key,
+                        AvgMoodValue = avgScore
+                    };
+                })
+                .ToDictionary(e => e.Emotion, e => e.AvgMoodValue);
+
+            // Lista de emoții relevante
+            var relevantEmotions = new[] { "Fear", "Love", "Disgust", "Joy", "Surprise", "Sadness", "Anger", "Self-Awareness" };
+
+            // Lista de emoții pozitive
+            var positiveEmotions = new[] { "Love", "Joy", "Surprise" };
+
+            // Dicționare pentru resurse, quizuri și jocuri terapeutice
+            var resources = new List<dynamic>();
+            var quizzes = new List<dynamic>();
+            var therapeuticGames = new List<dynamic>();
+
+            foreach (var emotion in relevantEmotions)
+            {
+                var emotionScore = emotionScores.ContainsKey(emotion.ToLower()) ? emotionScores[emotion.ToLower()] : null;
+
+                // Dacă scorul mediu pentru o emoție este mai mare decât 4
+                if (emotionScore.HasValue && emotionScore >= 4)
+                {
+                    // Dacă emoția este pozitivă, inversăm scorul față de 10
+                    var adjustedScore = positiveEmotions.Contains(emotion) ? 10 - emotionScore.Value : emotionScore.Value;
+
+                    // Dacă scorul ajustat este mai mare decât 4, adăugăm resursele, quizurile și jocurile terapeutice
+                    if (adjustedScore >= 4)
+                    {
+                        // Obținem resurse legate de emoția respectivă prin intermediul tabelului de legătura
+                        var emotionResources = await _context.ResourceTags
+                            .Where(rt => rt.Tag.Title == emotion)  // Căutăm legăturile care au tagul respectiv
+                            .Join(_context.Resources,
+                                rt => rt.ResourceId,  // Join între ResourceTags și Resources pe baza ResourceId
+                                r => r.Id,
+                                (rt, r) => new
+                                {
+                                    r.Id,
+                                    r.Title,
+                                    r.Link,
+                                    r.ResourceType
+                                })
+                            .ToListAsync();
+                        resources.AddRange(emotionResources);
+
+                        // Obținem quizuri legate de emoția respectivă prin intermediul tabelului de legătura
+                        var emotionQuizzes = await _context.QuizTags
+                            .Where(qt => qt.Tag.Title == emotion)  // Căutăm legăturile care au tagul respectiv
+                            .Join(_context.Quizzes,
+                                qt => qt.QuizId,  // Join între QuizTags și Quizzes pe baza QuizId
+                                q => q.Id,
+                                (qt, q) => new
+                                {
+                                    q.Id,
+                                    q.Title,
+                                    q.Background
+                                })
+                            .ToListAsync();
+                        Console.WriteLine("emotionQuizzes: "+ emotion+" " + emotionQuizzes.Count);
+                        quizzes.AddRange(emotionQuizzes);
+
+                        // Obținem jocuri terapeutice legate de emoția respectivă prin intermediul tabelului de legătura
+                        var emotionTherapeuticGames = await _context.TherapeuticGameTags
+                            .Where(tgt => tgt.Tag.Title == emotion)  // Căutăm legăturile care au tagul respectiv
+                            .Join(_context.TherapeuticGames,
+                                tgt => tgt.TherapeuticGameId,  // Join între TherapeuticGameTags și TherapeuticGames pe baza TherapeuticGameId
+                                tg => tg.Id,
+                                (tgt, tg) => new
+                                {
+                                    tg.Id,
+                                    tg.Name,
+                                    tg.Background,
+                                    tg.Type
+                                })
+                            .ToListAsync();
+                        therapeuticGames.AddRange(emotionTherapeuticGames);
+                    }
+                }
+            }
+
+
+            // Dacă oricare dintre listele de resurse, quizuri sau jocuri terapeutice are mai puțin de 5 elemente, adăugăm resurse și quizuri suplimentare pentru tag-ul "Self-Awareness"
+            if (resources.Count < 5)
+            {
+                var selfAwarenessResources = await _context.ResourceTags
+                    .Where(rt => rt.Tag.Title == "Self-Awareness")
+                    .Join(_context.Resources,
+                        rt => rt.ResourceId,
+                        r => r.Id,
+                        (rt, r) => new
+                        {
+                            r.Id,
+                            r.Title,
+                            r.Link,
+                            r.ResourceType
+                        })
+                    .Take(5 - resources.Count).ToListAsync();
+                resources.AddRange(selfAwarenessResources);
+            }
+
+            if (quizzes.Count < 5)
+            {
+                var selfAwarenessQuizzes = await _context.QuizTags
+                    .Where(qt => qt.Tag.Title == "Self-Awareness")
+                    .Join(_context.Quizzes,
+                        qt => qt.QuizId,
+                        q => q.Id,
+                        (qt, q) => new
+                        {
+                            q.Id,
+                            q.Title,
+                            q.Background
+                        })
+                    .Take(5 - quizzes.Count).ToListAsync();
+                quizzes.AddRange(selfAwarenessQuizzes);
+            }
+
+            if (therapeuticGames.Count < 5)
+            {
+                var selfAwarenessTherapeuticGames = await _context.TherapeuticGameTags
+                    .Where(tgt => tgt.Tag.Title == "Self-Awareness")
+                    .Join(_context.TherapeuticGames,
+                        tgt => tgt.TherapeuticGameId,
+                        tg => tg.Id,
+                        (tgt, tg) => new
+                        {
+                            tg.Id,
+                            tg.Name,
+                            tg.Background,
+                            tg.Type
+                        })
+                    .Take(5 - therapeuticGames.Count).ToListAsync();
+                therapeuticGames.AddRange(selfAwarenessTherapeuticGames);
+            }
+
+            // Stocăm datele în ViewData pentru a le accesa în view
+            ViewData["Resources"] = resources;
+            ViewData["Quizzes"] = quizzes;
+            ViewData["TherapeuticGames"] = therapeuticGames;
+
+
+            Console.WriteLine("resources: "+resources.Count);
+            Console.WriteLine("quizzes: "+quizzes.Count);
+            Console.WriteLine("games: "+therapeuticGames.Count);
+
+
+            ViewData["MoodChartData"] = JsonSerializer.Serialize(groupedByDate);
+            ViewData["WellBeingScore"] = wellBeingScore;
+            ViewData["EmotionsScores"] = emotionScores; // Stocăm media ponderată a fiecărei emoții
+
+            return View();
+        }
+
 
 
 

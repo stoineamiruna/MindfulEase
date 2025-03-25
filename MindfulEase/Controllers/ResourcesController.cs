@@ -32,19 +32,31 @@ namespace MindfulEase.Controllers
         [Authorize(Roles = "Admin,Moderator")]
         public IActionResult New()
         {
+            ViewBag.Tags = db.Tags.ToList();
             return View();
         }
 
 
         [Authorize(Roles = "Admin,Moderator")]
         [HttpPost]
-        public IActionResult New(Resource resource)
+        public IActionResult New(Resource resource, List<int> SelectedTags)
         {
             if (ModelState.IsValid)
             {
                 db.Resources.Add(resource);
                 // Salvează modificările în baza de date
                 db.SaveChanges();
+
+                // Asociază tagurile selectate
+                if (SelectedTags != null && SelectedTags.Any())
+                {
+                    foreach (var tagId in SelectedTags)
+                    {
+                        db.ResourceTags.Add(new ResourceTag { ResourceId = resource.Id, TagId = tagId });
+                    }
+                    db.SaveChanges();
+                }
+
                 TempData["message"] = "Your resource has been created successfully!";
                 TempData["messageType"] = "alert-success";
             }
@@ -53,7 +65,7 @@ namespace MindfulEase.Controllers
 
             TempData["message"] = "Your resource has not been created!";
             TempData["messageType"] = "alert-danger";
-
+            ViewBag.Tags = db.Tags.ToList();
             return Redirect("/Routines/Index");
 
         }
@@ -64,18 +76,52 @@ namespace MindfulEase.Controllers
             Resource resource = db.Resources
                                         .Where(u => u.Id == id)
                                         .First();
+            ViewBag.Tags = db.Tags.ToList(); // Toate tagurile disponibile
+
+            var selectedTags = db.ResourceTags
+                      .Where(rt => rt.ResourceId == id) // Filtrează după ResourceId
+                      .Select(rt => rt.TagId) // Selectează doar ID-urile tagurilor
+                      .Where(tagId => tagId.HasValue) // Filtrează doar tagurile care nu sunt null
+                      .Select(tagId => tagId.Value) // Extrage valoarea de tip `int`
+                      .ToList();
+
+            ViewBag.SelectedTags = selectedTags;
+
+
+            Console.WriteLine("selected tags: "+selectedTags.Count);
             return View(resource);
         }
 
         [Authorize(Roles = "Admin,Moderator")]
         [HttpPost]
-        public IActionResult Edit(int id, Resource requestResource)
+        public IActionResult Edit(int id, Resource requestResource, List<int> SelectedTags)
         {
             Resource resource = db.Resources.Find(id);
 
             resource.Title = requestResource.Title;
             resource.Link =  requestResource.Link;
             resource.ResourceType = requestResource.ResourceType;
+
+            // Asigură-te că Tags nu este null
+            if (resource.Tags == null)
+            {
+                resource.Tags = new List<ResourceTag>();
+            }
+
+            // Șterge toate tagurile asociate anterior (din tabela ResourceTags)
+            var existingTags = db.ResourceTags.Where(rt => rt.ResourceId == resource.Id).ToList();
+            db.ResourceTags.RemoveRange(existingTags);
+
+            // Adaugă tagurile noi
+            if (SelectedTags != null && SelectedTags.Any())
+            {
+                foreach (var tagId in SelectedTags)
+                {
+                    db.ResourceTags.Add(new ResourceTag { ResourceId = resource.Id, TagId = tagId });
+                }
+            }
+
+            db.SaveChanges();
 
             TempData["message"] = "You edited your resource successfully!";
             TempData["messageType"] = "alert-success";
@@ -103,13 +149,16 @@ namespace MindfulEase.Controllers
             var likedEntries = db.ApplicationUserResources.Where(sr => sr.ResourceId == id).ToList();
             db.ApplicationUserResources.RemoveRange(likedEntries);
 
+            var resourceTags = db.ResourceTags.Where(sr => sr.ResourceId == id).ToList();
+            db.ResourceTags.RemoveRange(resourceTags);
 
             db.Resources.Remove(resource);
             db.SaveChanges();
 
             TempData["message"] = "Resource deleted successfully!";
             TempData["messageType"] = "alert-success";
-            return RedirectToAction("New");
+            return RedirectToAction("Index", "Routines"); 
+
         }
 
     }

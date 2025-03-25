@@ -1,0 +1,296 @@
+﻿@{
+    var moodData = ViewData["MoodChartData"] as string;
+    var wellBeingScore = ViewData["WellBeingScore"];
+    var emotionScores = ViewData["EmotionsScores"] as Dictionary<string, double?>;
+    var resources = ViewData["Resources"] as List<dynamic>;
+    var quizzes = ViewData["Quizzes"] as List<dynamic>;
+    var therapeuticGames = ViewData["TherapeuticGames"] as List<dynamic>;
+
+}
+
+<style>
+    body {
+        background: linear-gradient(to bottom, rgba(168, 237, 234, 0.3), rgba(254, 214, 227, 0.3));
+        background-attachment: fixed;
+        min-height: 100vh;
+        margin: 0;
+        text-align: center;
+        font-family: Arial, sans-serif;
+    }
+
+    .header-container {
+        position: relative;
+        width: 100%;
+        text-align: center;
+    }
+
+    .header-image {
+        width: 100%;
+        display: block;
+    }
+
+    .emotions-container {
+        position: absolute;
+        top: 50%;
+        left: 40%;
+        transform: translate(-50%, -50%);
+        width: 60vw; /* Proporțional cu lățimea ecranului */
+        height: 60vw;
+        max-width: 650px;
+        max-height: 600px;
+    }
+
+    .score-container {
+        position: absolute;
+        top: 50%;
+        left: 49%;
+        transform: translate(-50%, -50%);
+        width: 40%;
+        height: 40%;
+        background-color: #d97cc5;
+        border-radius: 50%;
+        display: flex;
+        font-size: 2.5vw;
+        font-weight: bold;
+        color: #f2e9d2;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .emotion {
+        position: absolute;
+        font-size: 1.5vw;
+        font-weight: bold;
+        color: #d97cc5;
+        background-color: #e3dcd3;
+        padding: 5px 10px;
+        border-radius: 50px; 
+    }
+
+
+    /* Flex container pentru a organiza secțiunile */
+    .content-wrapper {
+        display: flex;
+        /*justify-content: center; /* Centrează secțiunile orizontal */
+        justify-content: space-between;
+        margin-top: 60px; /* Adaugă un mic spațiu de la imagine */
+        align-items: center;
+        margin-left: auto;
+        margin-right: auto;
+        width: 90%;
+    }
+
+    .left-section {
+        width: 45%; /* Ajustează lățimea secțiunii din stânga */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        
+    }
+
+        .left-section img {
+            width: 50%; /* Ajustează dimensiunea imaginii */
+        }
+
+        .left-section h2 {
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            color: #333;
+        }
+
+    .chart-container {
+        width: 50%;
+        max-width: 600px;
+        height: 40vh;
+    }
+
+
+</style>
+
+<div class="header-container">
+    <img src="~/img/personal_trainer_bg4.png" class="header-image" alt="Mood Tracker">
+
+    <div class="emotions-container">
+        <div class="score-container">
+            <h3>Your mood</h3>
+            <h1>@(wellBeingScore != null ? ((double)wellBeingScore).ToString("0.00") : "N/A")</h1>
+        </div>
+
+        @if (emotionScores != null)
+        {
+            var numEmotions = emotionScores.Count;
+            var angleStep = 360 / numEmotions;
+            var radius = 200;
+
+            int index = 0;
+            foreach (var emotion in emotionScores)
+            {
+                var angle = angleStep * index;
+                var radian = angle * Math.PI / 180;
+                var x = 37 + (radius / 500.0 * 100) * Math.Cos(radian);
+                var y = 47 + (radius / 500.0 * 100) * Math.Sin(radian);
+
+
+                <div class="emotion" style="left: @(x)%; top: @(y)%;">
+                    ◉  @emotion.Key: @(emotion.Value?.ToString("0.00") ?? "N/A")
+                </div>
+
+                index++;
+            }
+        }
+    </div>
+</div>
+
+<hr />
+<br />
+<!-- Secțiune de stânga cu imagine și text -->
+<div class="content-wrapper">
+    <div class="left-section">
+        <h2 style="color:#40E0D0;">Here are some suggestions below to improve your well-being based on your recent mood statistics</h2>
+        <img src="~/img/statistics.png" alt="Trainer">
+    </div>
+
+    <!-- Secțiunea dreapta cu graficul -->
+    <div class="chart-container">
+        <canvas id="moodChart"></canvas>
+    </div>
+</div>
+<br /><br />
+<hr />
+<br />
+<div class="container my-5">
+    <h2 class="text-center mb-4" style="color:#40E0D0;">YOUR SELF-CARE SUGGESTIONS</h2>
+    <br />
+
+    
+    <!-- Verificare și afisare resurse dacă există -->
+    @if (resources != null && resources.Any())
+    {
+        <br />
+        <h3 class="mb-4 text-start" style="color:#40E0D0;">Your Mental Wellness Toolkit 🧰</h3>
+        <div class="row">
+            @foreach (var resource in resources)
+            {
+                <div class="col-6 col-md-4 col-lg-3 mb-4">
+                    <div class="card shadow-sm h-100 d-flex flex-column justify-content-center" style="border-radius: 30px; border:3px solid #F9C7D1;">
+                        <div class="card-body d-flex align-items-center justify-content-center" style="min-height: 200px; border-radius: 30px;">
+                            @if (resource.ResourceType == "PodcastAudio")
+                            {
+                                <iframe src="@resource.Link" width="100%" style="border-radius: 30px;" height="152" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                            }
+                            else if (resource.ResourceType == "PodcastVideo" || resource.ResourceType == "Video")
+                            {
+                                <iframe class="embed-responsive-item"
+                                        src="@resource.Link"
+                                        allowfullscreen
+                                        width="100%" style="border-radius: 30px;">
+                                </iframe>
+                            }
+                            else if (resource.ResourceType == "Image")
+                            {
+                                <img src="@resource.Link" class="card-img-top img-fluid"
+                                     style="max-height: 200px; object-fit: contain; border-radius: 30px;"
+                                     alt="@resource.Title">
+                            }
+                        </div>
+                        <h5 class="card-title mt-3 text-center">@resource.Title</h5>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    <br />
+    
+    <!-- Verificare și afisare quizuri dacă există -->
+    @if (quizzes != null && quizzes.Any())
+    {
+        <br />
+        <h3 class="mb-4 text-start" style="color:#40E0D0;">Mind Check: What’s Your Score? 🧠✅</h3>
+        <div class="row">
+            @foreach (var quiz in quizzes)
+            {
+                <div class="col-6 col-md-4 col-lg-3 mb-4">
+                    <div class="card shadow-sm h-100 d-flex flex-column justify-content-center" style="border-radius: 30px; border:3px solid #D7A7D9;">
+                        <div class="card-body d-flex align-items-center justify-content-center" style="min-height: 200px; border-radius: 30px;">
+                            <a href="/Quizzes/Show/@quiz.Id" target="_blank">
+                                <img src="@quiz.Background" alt="@quiz.Title" class="card-img-top img-fluid" style="max-height: 200px; object-fit: contain; border-radius: 30px;">
+                            </a>
+                        </div>
+                        <h5 class="card-title mt-3 text-center">@quiz.Title</h5>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+
+    
+
+    <!-- Verificare și afisare jocuri terapeutice dacă există -->
+    @if (therapeuticGames != null && therapeuticGames.Any())
+    {
+        <br />
+        <h3 class="mb-4 text-start" style="color:#40E0D0;">Mind Gym: Train, Play, Grow 🧩</h3>
+        <div class="row">
+            @foreach (var game in therapeuticGames)
+            {
+                <div class="col-6 col-md-4 col-lg-3 mb-4">
+                    <div class="card shadow-sm h-100 d-flex flex-column justify-content-center" style="border-radius: 30px; border:3px solid #A8D7E8;">
+                        <div class="card-body d-flex align-items-center justify-content-center" style="min-height: 200px; border-radius: 30px;">
+                            <a href="/TherapeuticGames/Show/@game.Id" target="_blank">
+                                <img src="@game.Background" alt="@game.Name" class="card-img-top img-fluid" style="max-height: 200px; object-fit: contain; border-radius: 30px;">
+                            </a>
+                        </div>
+                        <h5 class="card-title mt-3 text-center">@game.Name</h5>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
+
+<style>
+    body {
+        background: linear-gradient(to bottom, rgba(168, 237, 234, 0.3), rgba(254, 214, 227, 0.3));
+        background-attachment: fixed;
+        min-height: 100vh;
+        margin: 0;
+    }
+</style>
+
+<script>
+    var moodData = @Html.Raw(moodData);
+
+    var ctx = document.getElementById('moodChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: moodData.map(e => e.Date),
+            datasets: [{
+                label: 'Mood General',
+                data: moodData.map(e => e.MoodValue),
+                borderColor: '#40E0D0',
+                fill: false
+            }]
+        },
+        options: {
+            responsive: true,  
+            maintainAspectRatio: false 
+        }
+    });
+    window.addEventListener('resize', function () {
+        if (moodChart) {
+            moodChart.update(); 
+        }
+    });
+
+</script>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+

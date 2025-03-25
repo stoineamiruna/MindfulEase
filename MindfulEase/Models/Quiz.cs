@@ -20,5 +20,6 @@ namespace MindfulEase.Models
 
         // Relație Many-to-Many
         public virtual ICollection<ApplicationUserQuiz>? Users { get; set; }
+        public virtual ICollection<QuizTag>? Tags { get; set; }
     }
 }

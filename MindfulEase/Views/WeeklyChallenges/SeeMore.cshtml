@@ -4,7 +4,7 @@
 }
 
 <div class="container my-5">
-    <h2 class="text-center mb-4">🏆 @ViewBag.CategoryName</h2>
+    <h2 class="text-center text-info mb-4">🏆 @ViewBag.CategoryName</h2>
 
     <!-- Add Challenge Button (only for Admin/Moderator) -->
     @if (ViewBag.EsteAdmin || ViewBag.EsteModerator)
@@ -161,39 +161,39 @@
                                         <input type="hidden" name="Id" value="@challenge.Id" />
                                         <div class="mb-3">
                                             <label class="form-label">Title</label>
-                                            <input type="text" name="Title" class="form-control" value="@challenge.Title" required />
+                                            <input style="border-radius: 30px;" type="text" name="Title" class="form-control" value="@challenge.Title" required />
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Description</label>
-                                            <textarea name="Description" class="form-control" required>@challenge.Description</textarea>
+                                            <textarea style="border-radius: 30px;" name="Description" class="form-control" required>@challenge.Description</textarea>
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Background Image</label>
-                                            <input type="text" name="URLBackground" class="form-control" value="@challenge.URLBackground" />
+                                            <input style="border-radius: 30px;" type="text" name="URLBackground" class="form-control" value="@challenge.URLBackground" />
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Start Date</label>
-                                            <input type="date" name="StartDate" class="form-control" value="@challenge.StartDate.ToString("yyyy-MM-dd")" required />
+                                            <input style="border-radius: 30px;" type="date" name="StartDate" class="form-control" value="@challenge.StartDate.ToString("yyyy-MM-dd")" required />
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">End Date</label>
-                                            <input type="date" name="EndDate" class="form-control" value="@challenge.EndDate.ToString("yyyy-MM-dd")" required />
+                                            <input style="border-radius: 30px;" type="date" name="EndDate" class="form-control" value="@challenge.EndDate.ToString("yyyy-MM-dd")" required />
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Required Points</label>
-                                            <input type="number" name="RequiredPoints" class="form-control" value="@challenge.RequiredPoints" min="0" />
+                                            <input style="border-radius: 30px;" type="number" name="RequiredPoints" class="form-control" value="@challenge.RequiredPoints" min="0" />
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Required Journal Entries</label>
-                                            <input type="number" name="RequiredJournalEntries" class="form-control" value="@challenge.RequiredJournalEntries" min="0" />
+                                            <input style="border-radius: 30px;" type="number" name="RequiredJournalEntries" class="form-control" value="@challenge.RequiredJournalEntries" min="0" />
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Required Quizzes</label>
-                                            <input type="number" name="RequiredQuizzes" class="form-control" value="@challenge.RequiredQuizzes" min="0" />
+                                            <input style="border-radius: 30px;" type="number" name="RequiredQuizzes" class="form-control" value="@challenge.RequiredQuizzes" min="0" />
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Required Resources</label>
-                                            <input type="number" name="RequiredResources" class="form-control" value="@challenge.RequiredResources" min="0" />
+                                            <input style="border-radius: 30px;" type="number" name="RequiredResources" class="form-control" value="@challenge.RequiredResources" min="0" />
                                         </div>
                                         <button type="submit" class="btn btn-info" style="border-radius: 30px;">Save Changes</button>
                                     </form>
@@ -222,39 +222,39 @@
                     <form asp-action="Create" method="post">
                         <div class="mb-3">
                             <label class="form-label">Title</label>
-                            <input type="text" name="Title" class="form-control" required />
+                            <input style="border-radius: 30px;" type="text" name="Title" class="form-control" required />
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Description</label>
-                            <textarea name="Description" class="form-control" required></textarea>
+                            <textarea style="border-radius: 30px;" name="Description" class="form-control" required></textarea>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Background Image</label>
-                            <input type="text" name="URLBackground" class="form-control" />
+                            <input style="border-radius: 30px;" type="text" name="URLBackground" class="form-control" />
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Start Date</label>
-                            <input type="date" name="StartDate" class="form-control" required />
+                            <input style="border-radius: 30px;" type="date" name="StartDate" class="form-control" required />
                         </div>
                         <div class="mb-3">
                             <label class="form-label">End Date</label>
-                            <input type="date" name="EndDate" class="form-control" required />
+                            <input style="border-radius: 30px;" type="date" name="EndDate" class="form-control" required />
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Required Points</label>
-                            <input type="number" name="RequiredPoints" class="form-control" min="0" />
+                            <input style="border-radius: 30px;" type="number" name="RequiredPoints" class="form-control" min="0" />
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Required Journal Entries</label>
-                            <input type="number" name="RequiredJournalEntries" class="form-control" min="0" />
+                            <input style="border-radius: 30px;" type="number" name="RequiredJournalEntries" class="form-control" min="0" />
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Required Quizzes</label>
-                            <input type="number" name="RequiredQuizzes" class="form-control" min="0" />
+                            <input style="border-radius: 30px;" type="number" name="RequiredQuizzes" class="form-control" min="0" />
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Required Resources</label>
-                            <input type="number" name="RequiredResources" class="form-control" min="0" />
+                            <input style="border-radius: 30px;" type="number" name="RequiredResources" class="form-control" min="0" />
                         </div>
                         <button type="submit" class="btn btn-info" style="border-radius: 30px;">Create Challenge</button>
                     </form>
