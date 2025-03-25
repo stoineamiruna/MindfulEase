@@ -4,8 +4,9 @@
 }
 
 <div class="container my-5">
-    <h2 class="text-center mb-4">Explore Therapeutic Games & Quizzes</h2>
+    <h2 class="text-center text-info mb-4">EXPLORE THERAPEUTIC GAMES & QUIZZES</h2>
 
+    <br />
     <!-- Search Bar -->
     <section class="p-3" style="padding-top: 100px;">
         <div class="d-flex justify-content-center mb-4">
@@ -19,10 +20,11 @@
             </form>
         </div>
     </section>
+    <br />
 
     <!-- My Quizzes -->
     <section class="mb-5">
-        <h3 class="mb-3">📘 My Quizzes</h3>
+        <h3 class="mb-3 text-info">📘 My Quizzes</h3>
         <div class="row" >
             @foreach (var quiz in ((List<MindfulEase.Models.Quiz>)ViewBag.QuizzesUser).Take(4))
             {
@@ -44,7 +46,7 @@
 
     <!-- All Quizzes -->
     <section class="mb-5">
-        <h3 class="mb-3">📖 Quizzes</h3>
+        <h3 class="mb-3 text-info">📖 Quizzes</h3>
         <div class="row">
             @foreach (var quiz in ((List<MindfulEase.Models.Quiz>)ViewBag.AllQuizzes).Take(4))
             {
@@ -65,7 +67,7 @@
 
     <!-- All Games -->
     <section class="mb-5">
-        <h3 class="mb-3">🎲 Games</h3>
+        <h3 class="mb-3 text-info">🎲 Games</h3>
         <div class="row">
             @foreach (var game in ((List<MindfulEase.Models.TherapeuticGame>)ViewBag.AllGames).Take(4))
             {

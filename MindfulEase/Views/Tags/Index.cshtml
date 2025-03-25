@@ -1,0 +1,97 @@
+﻿@model IEnumerable<MindfulEase.Models.Tag>
+@{
+    ViewBag.Title = "Tags";
+}
+
+<div class="container my-5">
+    <h2 class="text-center text-info mb-4">🏷️ MANAGE TAGS</h2>
+
+    <!-- Add Tag Button -->
+    <div class="text-center mb-4">
+        <button class="btn btn-info" style="color: white; border-radius: 30px;" data-bs-toggle="modal" data-bs-target="#createTagModal">
+            ➕ Add New Tag
+        </button>
+    </div>
+    <br />
+
+    <div class="row">
+        @foreach (var tag in Model)
+        {
+            <div class="col-6 col-md-4 col-lg-3 mb-4">
+                <div class="card shadow-sm text-center" style="background: rgba(255, 255, 255, 0.8); border-radius: 20px; border:3px solid #ff8b94;">
+                    <div class="card-body">
+                        <h5 class="card-title text-info">@tag.Title</h5>
+                        <div class="d-flex justify-content-between">
+                            <!-- Edit Button -->
+                            <button class="btn btn-outline-info btn-sm" data-bs-toggle="modal" data-bs-target="#editTagModal-@tag.Id" style="border-radius: 30px;">
+                                ✏️
+                            </button>
+                            <!-- Delete Button -->
+                            <form asp-action="Delete" asp-route-id="@tag.Id" method="post">
+                                <button type="submit" class="btn btn-outline-danger btn-sm" style="border-radius: 30px;">
+                                    🗑️
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Edit Tag Modal -->
+            <div class="modal fade" id="editTagModal-@tag.Id" tabindex="-1" aria-labelledby="editTagLabel-@tag.Id" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content" style="border-radius: 30px;">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Edit Tag</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form asp-action="Edit" method="post">
+                                <input type="hidden" name="Id" value="@tag.Id" />
+                                <div class="mb-3">
+                                    <label class="form-label">Title</label>
+                                    <input style="border-radius: 30px;" type="text" name="Title" class="form-control" value="@tag.Title" required />
+                                </div>
+                                <button type="submit" class="btn btn-info" style="border-radius: 30px;">Save Changes</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <!-- Create Tag Modal -->
+    <div class="modal fade" id="createTagModal" tabindex="-1" aria-labelledby="createTagLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" style="border-radius: 30px;">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add New Tag</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form asp-action="Create" method="post">
+                        <div class="mb-3">
+                            <label class="form-label">Title</label>
+                            <input style="border-radius: 30px;" type="text" name="Title" class="form-control" required />
+                        </div>
+                        <button type="submit" class="btn btn-info" style="border-radius: 30px;">Create Tag</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    body {
+        background: linear-gradient(to bottom, rgba(168, 237, 234, 0.3), rgba(254, 214, 227, 0.3));
+        background-attachment: fixed;
+        min-height: 100vh;
+        margin: 0;
+    }
+</style>
+
+<br />
+<br />
+<br />

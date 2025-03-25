@@ -276,7 +276,7 @@ namespace MindfulEase.Controllers
             // Lista provocărilor pentru fiecare categorie
             List<WeeklyChallenge> challenges = category switch
             {
-                "MyChallenges" => db.ApplicationUserWeeklyChallenges
+                "My Challenges" => db.ApplicationUserWeeklyChallenges
                     .Where(auc => auc.UserId == userId && auc.IsCompleted)
                     .Select(auc => auc.WeeklyChallenge)
                     .OrderByDescending(wc => wc.StartDate)

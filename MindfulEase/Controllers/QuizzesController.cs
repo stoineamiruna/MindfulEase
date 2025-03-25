@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Humanizer.Localisation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -39,6 +40,7 @@ namespace MindfulEase.Controllers
         [Authorize(Roles = "Admin, Moderator")]
         public IActionResult New()
         {
+            ViewBag.Tags = db.Tags.ToList();
             return View();
         }
 
@@ -46,22 +48,34 @@ namespace MindfulEase.Controllers
         [Authorize(Roles = "Admin, Moderator")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult New(Quiz quiz)
+        public IActionResult New(Quiz quiz, List<int> SelectedTags)
         {
             if (ModelState.IsValid)
             {
                 db.Quizzes.Add(quiz);
                 db.SaveChanges();
 
+
+                // Asociază tagurile selectate
+                if (SelectedTags != null && SelectedTags.Any())
+                {
+                    foreach (var tagId in SelectedTags)
+                    {
+                        db.QuizTags.Add(new QuizTag { QuizId = quiz.Id, TagId = tagId });
+                    }
+                    db.SaveChanges();
+                }
+
                 TempData["message"] = "Quiz created successfully!";
                 TempData["messageType"] = "alert-success";
-
+                
                 return RedirectToAction("Show", new { id = quiz.Id }); // Redirectează către pagina de detalii a quiz-ului
             }
 
             // În caz de eroare, rămâne pe aceeași pagină
             TempData["message"] = "There was an error creating the quiz.";
             TempData["messageType"] = "alert-danger";
+            ViewBag.Tags = db.Tags.ToList();
             return View(quiz);
         }
 
@@ -77,13 +91,24 @@ namespace MindfulEase.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.Tags = db.Tags.ToList(); // Toate tagurile disponibile
+
+            var selectedTags = db.QuizTags
+                      .Where(rt => rt.QuizId == id) 
+                      .Select(rt => rt.TagId) // Selectează doar ID-urile tagurilor
+                      .Where(tagId => tagId.HasValue) // Filtrează doar tagurile care nu sunt null
+                      .Select(tagId => tagId.Value) // Extrage valoarea de tip `int`
+                      .ToList();
+
+            ViewBag.SelectedTags = selectedTags;
+
             return View(quiz);
         }
 
         // POST: Update quiz details
         [Authorize(Roles = "Admin, Moderator")]
         [HttpPost]
-        public IActionResult Edit(int id, Quiz updatedQuiz)
+        public IActionResult Edit(int id, Quiz updatedQuiz, List<int> SelectedTags)
         {
             var quiz = db.Quizzes.FirstOrDefault(q => q.Id == id);
             if (quiz == null)
@@ -98,6 +123,23 @@ namespace MindfulEase.Controllers
             quiz.CategoryMapping = updatedQuiz.CategoryMapping;
             quiz.Result = updatedQuiz.Result;
             quiz.Background = updatedQuiz.Background;
+
+            if (quiz.Tags == null)
+            {
+                quiz.Tags = new List<QuizTag>();
+            }
+
+            var existingTags = db.QuizTags.Where(rt => rt.QuizId == quiz.Id).ToList();
+            db.QuizTags.RemoveRange(existingTags);
+
+            // Adaugă tagurile noi
+            if (SelectedTags != null && SelectedTags.Any())
+            {
+                foreach (var tagId in SelectedTags)
+                {
+                    db.QuizTags.Add(new QuizTag { QuizId = quiz.Id, TagId = tagId });
+                }
+            }
 
             db.SaveChanges();
 
@@ -206,6 +248,9 @@ namespace MindfulEase.Controllers
             // Remove all associated questions
             db.QuestionQuizzes.RemoveRange(quiz.Questions);
 
+            var quizTags = db.QuizTags.Where(sr => sr.QuizId == id).ToList();
+            db.QuizTags.RemoveRange(quizTags);
+
             // Remove the quiz itself
             db.Quizzes.Remove(quiz);
 
@@ -215,7 +260,7 @@ namespace MindfulEase.Controllers
             TempData["message"] = "Quiz deleted successfully!";
             TempData["messageType"] = "alert-success";
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "TherapeuticGames");
         }
 
         // POST: Delete a question

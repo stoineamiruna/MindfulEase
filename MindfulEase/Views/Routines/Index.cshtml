@@ -1,11 +1,11 @@
 ﻿@model IEnumerable<MindfulEase.Models.Resource>
 
 <div class="container my-5">
-    <h2 class="text-center mb-4">Recommended Resources</h2>
-
+    <h2 class="text-center mb-4 text-info">RECOMMENDED RESOURCES</h2>
+    <br />
     <!-- Secțiunea pentru resursele salvate -->
     <section class="mb-5">
-        <h3 class="mb-3">🌟 Saved Resources</h3>
+        <h3 class="mb-3 text-info">🌟 Saved Resources</h3>
         <div class="row">
             @foreach (var resource in ((List<MindfulEase.Models.Resource>)ViewBag.SavedResourcesList).Take(4))
             {
@@ -27,7 +27,7 @@
                             {
                                 <img src="@resource.Link" class="card-img-top img-fluid" style="max-height: 200px; object-fit: contain; border-radius: 30px;" alt="@resource.Title">
                             }
-                            else if (resource.ResourceType == "Video" || resource.ResourceType == "PodcastVideo")
+                            else if (resource.ResourceType == "Video" || resource.ResourceType == "PodcastVideo" || resource.ResourceType == "Exercise")
                             {
                                 <iframe class="embed-responsive-item"
                                         src="@resource.Link"
@@ -112,7 +112,7 @@
 
     <!-- Secțiunea pentru resursele apreciate -->
     <section class="mb-5">
-        <h3 class="mb-3">❤️ Liked Resources</h3>
+        <h3 class="mb-3 text-info">❤️ Liked Resources</h3>
         <div class="row">
             @foreach (var resource in ((List<MindfulEase.Models.Resource>)ViewBag.LikedResources).Take(4))
             {
@@ -219,7 +219,7 @@
 
     <!-- Secțiunea pentru Podcasturi Audio -->
     <section class="mb-5">
-        <h3 class="mb-3">🎙️ Audio Podcasts</h3>
+        <h3 class="mb-3 text-info">🎙️ Audio Podcasts</h3>
         <div class="row">
             @foreach (var resource in Model.Where(r => r.ResourceType == "PodcastAudio").Take(4))
             {
@@ -306,7 +306,7 @@
 
     <!-- Secțiunea pentru Podcasturi Video -->
     <section class="mb-5">
-        <h3 class="mb-3">📹 Video Podcasts</h3>
+        <h3 class="mb-3 text-info">📹 Video Podcasts</h3>
         <div class="row">
             @foreach (var resource in Model.Where(r => r.ResourceType == "PodcastVideo").Take(4))
             {
@@ -396,7 +396,7 @@
 
     <!-- Secțiunea pentru Videoclipuri -->
     <section class="mb-5">
-        <h3 class="mb-3">📹 Educational Videos</h3>
+        <h3 class="mb-3 text-info">📹 Educational Videos</h3>
         <div class="row">
             @foreach (var resource in Model.Where(r => r.ResourceType == "Video").Take(4))
             {
@@ -486,7 +486,7 @@
 
     <!-- Secțiunea pentru Imagini -->
     <section class="mb-5">
-        <h3 class="mb-3">🖼️ Educational Images</h3>
+        <h3 class="mb-3 text-info">🖼️ Educational Images</h3>
         <div class="row">
             @foreach (var resource in Model.Where(r => r.ResourceType == "Image").Take(4))
             {
@@ -570,6 +570,101 @@
         <a href="/Routines/SeeMore?section=Image" class="btn btn-outline-secondary" style="border-radius: 30px;">See More Educational Images</a>
     </section>
 
+    <br />
+    @if (Model.Where(r => r.ResourceType == "Exercise").Count() > 0)
+    {
+        <!-- Secțiunea pentru Exercitii -->
+        <section class="mb-5">
+            <h3 class="mb-3 text-info">Exercises</h3>
+            <div class="row">
+                @foreach (var resource in Model.Where(r => r.ResourceType == "Exercise").Take(4))
+                {
+                    <div class="col-6 col-md-4 col-lg-3 mb-4">
+                        <div class="card shadow-sm h-100" style="border:3px solid #F9E6A0; border-radius: 30px;">
+                            <!-- Butoanele Editare și Ștergere în partea de sus, stânga și dreapta -->
+                            @if (ViewBag.EsteAdmin || ViewBag.EsteModerator)
+                            {
+                                <div class="d-flex justify-content-between" style="position: absolute; top: 10px; left: 10px; right: 10px; z-index: 10;">
+                                    <a href="@Url.Action("Edit", "Resources", new { id = resource.Id })" class="btn btn-outline-info btn-sm" style="border-radius: 30px;">✏️ Edit</a>
+                                    <form method="post" action="@Url.Action("Delete", "Resources", new { id = resource.Id })" class="d-inline">
+                                        <button type="submit" class="btn btn-outline-danger btn-sm" style="border-radius: 30px;">🗑️ Delete</button>
+                                    </form>
+                                </div>
+                            }<br /><br />
+                            <div class="card-body">
+                                <iframe class="embed-responsive-item"
+                                        src="@resource.Link"
+                                        allowfullscreen
+                                        width="100%" style="border-radius: 30px;">
+                                </iframe>
+                                <h5 class="card-title mt-3">@resource.Title</h5>
+                                @if (ViewBag.UserCurent != null)
+                                {
+                                    <div class="d-flex justify-content-between">
+                                        <div class="d-flex">
+                                            <!-- Butonul de like -->
+                                            <form method="post" asp-action="ProvideFeedback" asp-route-resourceId="@resource.Id" class="mt-3">
+                                                <button type="submit" name="isLiked" value="true" class="btn btn-sm" style="border-radius: 30px; margin-left: 10px;">
+                                                    <!-- Verificăm dacă resursa este apreciată -->
+                                                    @if (ViewBag.ReallyLikedResources.Contains(resource.Id))
+                                                    {
+                                                        <img src="~/img/like.png" alt="Like" style="width: 20px; height: 20px;">
+                                                    }
+                                                    else
+                                                    {
+                                                        <img src="~/img/liked.png" alt="Liked" style="width: 20px; height: 20px;">
+                                                    }
+
+                                                </button>
+                                            </form>
+
+                                            <!-- Butonul de save sau unsave -->
+                                            @if (ViewBag.SavedResources.Contains(resource.Id))
+                                            {
+                                                <form method="post" asp-action="SaveResource" asp-route-resourceId="@resource.Id" class="mt-3">
+                                                    <button type="submit" name="isSaved" value="false" class="btn btn-sm" style="border-radius: 30px; margin-left: 10px;">
+                                                        <img src="~/img/save.png" alt="Unsave" style="width: 20px; height: 20px;">
+                                                    </button>
+                                                </form>
+                                            }
+                                            else
+                                            {
+                                                <form method="post" asp-action="SaveResource" asp-route-resourceId="@resource.Id" class="mt-3">
+                                                    <button type="submit" name="isSaved" value="true" class="btn btn-sm" style="border-radius: 30px; margin-left: 10px;">
+                                                        <img src="~/img/unsave.png" alt="Save" style="width: 20px; height: 20px;">
+                                                    </button>
+                                                </form>
+                                            }
+                                        </div>
+
+                                        <!-- Butonul de dislike -->
+                                        <form method="post" asp-action="ProvideFeedback" asp-route-resourceId="@resource.Id" class="mt-3">
+                                            <button type="submit" name="isLiked" value="false" class="btn btn-sm" style="border-radius: 30px; margin-right: 10px;">
+                                                @if (ViewBag.DisLikedResources.Contains(resource.Id))
+                                                {
+                                                    <img src="~/img/dislike.png" alt="Dislike" style="width: 20px; height: 20px;">
+                                                }
+                                                else
+                                                {
+                                                    <img src="~/img/disliked.png" alt="Dislike" style="width: 20px; height: 20px;">
+                                                }
+
+                                            </button>
+                                        </form>
+                                    </div>
+
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <a href="/Routines/SeeMore?section=Exercise" class="btn btn-outline-secondary" style="border-radius: 30px;">See More Exercises</a>
+        </section>
+        
+    }
+    
 </div>
 <br />
 <br />
