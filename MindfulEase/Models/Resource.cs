@@ -11,6 +11,7 @@ namespace MindfulEase.Models
         public string ResourceType { get; set; } // Podcast, articol, ghid etc.
         public virtual ICollection<ApplicationUserResource>? Users { get; set; }
         public virtual ICollection<SavedResource>? SavedResources { get; set; }
+        public virtual ICollection<ResourceTag>? Tags { get; set; }
     }
 
 }

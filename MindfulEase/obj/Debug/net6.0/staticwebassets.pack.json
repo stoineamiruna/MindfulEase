@@ -45,6 +45,10 @@
       "PackagePath": "staticwebassets\\img\\bell3.png"
     },
     {
+      "Id": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\img\\cattrainer.png",
+      "PackagePath": "staticwebassets\\img\\cattrainer.png"
+    },
+    {
       "Id": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\img\\chart-pie.png",
       "PackagePath": "staticwebassets\\img\\chart-pie.png"
     },
@@ -101,8 +105,32 @@
       "PackagePath": "staticwebassets\\img\\notebook.png"
     },
     {
+      "Id": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\img\\personal_trainer_bg.png",
+      "PackagePath": "staticwebassets\\img\\personal_trainer_bg.png"
+    },
+    {
+      "Id": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\img\\personal_trainer_bg1.png",
+      "PackagePath": "staticwebassets\\img\\personal_trainer_bg1.png"
+    },
+    {
+      "Id": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\img\\personal_trainer_bg2.png",
+      "PackagePath": "staticwebassets\\img\\personal_trainer_bg2.png"
+    },
+    {
+      "Id": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\img\\personal_trainer_bg3.png",
+      "PackagePath": "staticwebassets\\img\\personal_trainer_bg3.png"
+    },
+    {
+      "Id": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\img\\personal_trainer_bg4.png",
+      "PackagePath": "staticwebassets\\img\\personal_trainer_bg4.png"
+    },
+    {
       "Id": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\img\\save.png",
       "PackagePath": "staticwebassets\\img\\save.png"
+    },
+    {
+      "Id": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\img\\statistics.png",
+      "PackagePath": "staticwebassets\\img\\statistics.png"
     },
     {
       "Id": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\img\\unsave.png",

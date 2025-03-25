@@ -46,6 +46,17 @@
                         @Html.TextBoxFor(model => model.Background, new { @class = "form-control", placeholder = "Enter the background URL of the game", style = "border-radius: 30px;" })
                     </div>
 
+                    <!-- Select Tags -->
+                    <div class="mb-3">
+                        <label for="Tags" class="form-label fw-bold" style="color: #01baa3">Select Tags</label>
+                        <select id="Tags" name="SelectedTags" class="form-control" multiple="multiple" style="border-radius: 30px;">
+                            @foreach (var tag in ViewBag.Tags as List<MindfulEase.Models.Tag>)
+                            {
+                                <option value="@tag.Id">@tag.Title</option>
+                            }
+                        </select>
+                    </div>
+
                     <!-- Submit Button -->
                     <div class="text-center">
                         <button class="btn btn-info" type="submit" style="font-size: 1.2em; padding: 10px 30px; border-radius: 30px; color: white">
@@ -57,3 +68,12 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function () {
+        $('#Tags').select2({
+            placeholder: "Search and select tags...",
+            allowClear: true
+        });
+    });
+</script>

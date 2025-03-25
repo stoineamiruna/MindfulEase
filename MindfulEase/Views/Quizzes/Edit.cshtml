@@ -47,6 +47,22 @@
                         @Html.EditorFor(model => model.Background, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter the background image URL of the quiz", style = "border-radius: 30px;" } })
                     </div>
 
+                    <!-- Select Tags -->
+                    <div class="mb-3">
+                        <label for="Tags" class="form-label fw-bold" style="color: #01baa3">Select Tags</label>
+                        <div class="form-check">
+                            @foreach (var tag in ViewBag.Tags as List<MindfulEase.Models.Tag>)
+                            {
+                                bool isSelected = ViewBag.SelectedTags != null && ((List<int>)ViewBag.SelectedTags).Contains(tag.Id);
+                                <input class="form-check-input" type="checkbox" name="SelectedTags" value="@tag.Id" id="tag_@tag.Id" @(isSelected ? "checked" : "")>
+                                <label class="form-check-label" for="tag_@tag.Id" style="color: #01baa3;">
+                                    @tag.Title
+                                </label>
+                                <br />
+                            }
+                        </div>
+                    </div>
+
                     <!-- Submit Button -->
                     <div class="text-center">
                         <button class="btn btn-info" type="submit" style="font-size: 1.2em; padding: 10px 30px; border-radius: 30px; color: white">
@@ -58,3 +74,12 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function () {
+        $('#Tags').select2({
+            placeholder: "Search and select tags...",
+            allowClear: true
+        });
+    });
+</script>
