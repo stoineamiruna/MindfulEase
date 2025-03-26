@@ -22,6 +22,21 @@
     {
         <a href="@Url.Action("Index", "Routines")" class="btn btn-outline-secondary mb-3" style="border-radius: 30px;">👈 Back</a>
     }
+    <br />
+    <!-- Search Bar -->
+    <section class="p-3" style="padding-top: 100px;">
+        <div class="d-flex justify-content-center mb-4">
+            <form method="GET" style=" width: 100%; background-color: #f8f9fa; padding: 10px; border-radius: 25px; border: 1px solid #ced4da;">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control"
+                           placeholder="Search topics or keywords" name="search"
+                           value="@ViewBag.SearchString" style="border-radius: 20px;">
+                    <button class="btn btn-outline-info" type="submit" style="border-radius: 20px;">Search</button>
+                </div>
+            </form>
+        </div>
+    </section>
+    <br />
     <br /> <br />
     <div class="row">
         @foreach (var resource in Model)

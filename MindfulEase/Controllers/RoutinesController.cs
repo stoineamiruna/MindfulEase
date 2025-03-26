@@ -35,7 +35,7 @@ public class RoutinesController : Controller
     }
 
     [Authorize(Roles = "Admin,Moderator,User")]
-    public IActionResult Index()
+    public IActionResult Index(string search)
     {
         SetAccessRights();
         string userId = _userManager.GetUserId(User);
@@ -77,7 +77,6 @@ public class RoutinesController : Controller
                                 r => r.Id,
                                 (aur, r) => r)
                             .ToList();
-        ViewBag.LikedResources = likedResources;
 
         var disLikedResources = db.ApplicationUserResources
             .Where(aur => aur.UserId == userId && aur.IsLiked == false)
@@ -86,8 +85,7 @@ public class RoutinesController : Controller
                 r => r.Id,
                 (aur, r) => r)
             .ToList();
-        ViewBag.DisLikedResources = disLikedResources.Select(r => r.Id).ToList();  
-        ViewBag.ReallyLikedResources = likedResources.Select(r => r.Id).ToList();
+       
 
         var savedResources = db.SavedResources
                             .Where(aur => aur.UserId == userId && aur.IsSaved == true)
@@ -96,9 +94,45 @@ public class RoutinesController : Controller
                                 r => r.Id,
                                 (aur, r) => r)
                             .ToList();
+        if (!string.IsNullOrEmpty(search))
+        {
 
+
+            combinedResources = combinedResources
+                .Where(r => r.Title.ToLower().Contains(search.ToLower()) ||
+                            db.ResourceTags
+                            .Join(db.Tags, tgt => tgt.TagId, t => t.Id, (tgt, t) => new { tgt.ResourceId, t.Title })
+                            .Any(joined => joined.ResourceId == r.Id &&
+                                          joined.Title.ToLower().Contains(search.ToLower())))
+                .ToList();
+            savedResources = savedResources
+                .Where(r => r.Title.ToLower().Contains(search.ToLower()) ||
+                            db.ResourceTags
+                            .Join(db.Tags, tgt => tgt.TagId, t => t.Id, (tgt, t) => new { tgt.ResourceId, t.Title })
+                            .Any(joined => joined.ResourceId == r.Id &&
+                                          joined.Title.ToLower().Contains(search.ToLower())))
+                .ToList();
+            likedResources = likedResources
+                .Where(r => r.Title.ToLower().Contains(search.ToLower()) ||
+                            db.ResourceTags
+                            .Join(db.Tags, tgt => tgt.TagId, t => t.Id, (tgt, t) => new { tgt.ResourceId, t.Title })
+                            .Any(joined => joined.ResourceId == r.Id &&
+                                          joined.Title.ToLower().Contains(search.ToLower())))
+                .ToList();
+            disLikedResources = disLikedResources
+                .Where(r => r.Title.ToLower().Contains(search.ToLower()) ||
+                            db.ResourceTags
+                            .Join(db.Tags, tgt => tgt.TagId, t => t.Id, (tgt, t) => new { tgt.ResourceId, t.Title })
+                            .Any(joined => joined.ResourceId == r.Id &&
+                                          joined.Title.ToLower().Contains(search.ToLower())))
+                .ToList();
+        }
+
+        ViewBag.LikedResources = likedResources;
         ViewBag.SavedResources = savedResources.Select(r => r.Id).ToList();
         ViewBag.SavedResourcesList = savedResources;
+        ViewBag.DisLikedResources = disLikedResources.Select(r => r.Id).ToList();
+        ViewBag.ReallyLikedResources = likedResources.Select(r => r.Id).ToList();
 
         Console.WriteLine(User.IsInRole("Admin"));
         return View(combinedResources);
@@ -126,71 +160,73 @@ public class RoutinesController : Controller
         }
     }
 
-    public IActionResult SeeMore(string section)
+    public IActionResult SeeMore(string section, string search)
     {
         SetAccessRights();
         string userId = _userManager.GetUserId(User);
 
-
         IQueryable<Resource> resources;
         Console.WriteLine(section);
+
         if (section == "liked")
         {
-            // Resurse apreciate de utilizatorul curent
             resources = db.ApplicationUserResources
                           .Where(aur => aur.UserId == userId && aur.IsLiked == true)
-                          .Join(db.Resources,
-                                aur => aur.ResourceId,
-                                r => r.Id,
-                                (aur, r) => r);
-            Console.WriteLine("section: 1");
+                          .Join(db.Resources, aur => aur.ResourceId, r => r.Id, (aur, r) => r);
         }
         else if (section == "saved")
         {
-            // Resurse salvate de utilizatorul curent
             resources = db.SavedResources
                           .Where(aur => aur.UserId == userId && aur.IsSaved == true)
-                          .Join(db.Resources,
-                                aur => aur.ResourceId,
-                                r => r.Id,
-                                (aur, r) => r);
+                          .Join(db.Resources, aur => aur.ResourceId, r => r.Id, (aur, r) => r);
         }
         else if (!string.IsNullOrEmpty(section))
         {
-            // Resursele cu tipul specificat
             resources = db.Resources.Where(r => r.ResourceType == section);
-            Console.WriteLine("section: 2");
         }
         else
         {
-            // Dacă secțiunea nu este specificată, returnează toate resursele
             resources = db.Resources;
-            Console.WriteLine("section: 3");
         }
+
+        // Obțin resursele apreciate și salvate (dar fără `ToList()`)
         var likedResources = db.ApplicationUserResources
-                            .Where(aur => aur.UserId == userId && aur.IsLiked == true)
-                            .Join(db.Resources,
-                                aur => aur.ResourceId,
-                                r => r.Id,
-                                (aur, r) => r)
-                            .ToList();
+                                .Where(aur => aur.UserId == userId && aur.IsLiked == true)
+                                .Join(db.Resources, aur => aur.ResourceId, r => r.Id, (aur, r) => r);
 
         var disLikedResources = db.ApplicationUserResources
-            .Where(aur => aur.UserId == userId && aur.IsLiked == false)
-            .Join(db.Resources,
-                aur => aur.ResourceId,
-                r => r.Id,
-                (aur, r) => r)
-            .ToList();
+                                .Where(aur => aur.UserId == userId && aur.IsLiked == false)
+                                .Join(db.Resources, aur => aur.ResourceId, r => r.Id, (aur, r) => r);
+
+        var savedResourceIds = db.SavedResources
+                                .Where(sr => sr.UserId == userId && sr.IsSaved == true)
+                                .Select(sr => sr.ResourceId);
+
+        // Dacă există căutare, aplicăm filtrarea
+        if (!string.IsNullOrEmpty(search))
+        {
+            string searchLower = search.ToLower(); // Aplică `ToLower()` doar la căutare
+
+            resources = resources.Where(r =>
+                r.Title.ToLower().Contains(searchLower) ||
+                db.ResourceTags.Any(rt => rt.ResourceId == r.Id && rt.Tag.Title.ToLower().Contains(searchLower))
+            );
+
+            likedResources = likedResources.Where(r =>
+                r.Title.ToLower().Contains(searchLower) ||
+                db.ResourceTags.Any(rt => rt.ResourceId == r.Id && rt.Tag.Title.ToLower().Contains(searchLower))
+            );
+
+            disLikedResources = disLikedResources.Where(r =>
+                r.Title.ToLower().Contains(searchLower) ||
+                db.ResourceTags.Any(rt => rt.ResourceId == r.Id && rt.Tag.Title.ToLower().Contains(searchLower))
+            );
+        }
+
+        // Convertim listele finale
         ViewBag.DisLikedResources = disLikedResources.Select(r => r.Id).ToList();
         ViewBag.ReallyLikedResources = likedResources.Select(r => r.Id).ToList();
-
-        var savedResources = db.SavedResources
-                            .Where(sr => sr.UserId == userId && sr.IsSaved == true)
-                            .Select(sr => sr.ResourceId)
-                            .ToList();
-
-        ViewBag.SavedResources = savedResources;
+        ViewBag.SavedResources = savedResourceIds.ToList(); // Folosim ID-uri pentru resurse salvate
 
         return View(resources.ToList());
     }
