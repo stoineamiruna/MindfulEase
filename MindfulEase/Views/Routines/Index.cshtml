@@ -2,6 +2,23 @@
 
 <div class="container my-5">
     <h2 class="text-center mb-4 text-info">RECOMMENDED RESOURCES</h2>
+
+    <br />
+    <!-- Search Bar -->
+    <section class="p-3" style="padding-top: 100px;">
+        <div class="d-flex justify-content-center mb-4">
+            <form method="GET" style=" width: 100%; background-color: #f8f9fa; padding: 10px; border-radius: 25px; border: 1px solid #ced4da;">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control"
+                           placeholder="Search topics or keywords" name="search"
+                           value="@ViewBag.SearchString" style="border-radius: 20px;">
+                    <button class="btn btn-outline-info" type="submit" style="border-radius: 20px;">Search</button>
+                </div>
+            </form>
+        </div>
+    </section>
+    <br />
+
     <br />
     <!-- Secțiunea pentru resursele salvate -->
     <section class="mb-5">
@@ -107,7 +124,10 @@
                 </div>
             }
         </div>
-        <a href="/Routines/SeeMore?section=saved" class="btn btn-outline-secondary" style="border-radius: 30px;">See More Saved Resources</a>
+        
+        <a href="@Url.Action("SeeMore", "Routines", new { type = "saved", search = "" })" class="btn btn-outline-secondary" style="border-radius: 30px;">
+            See More Saved Resources
+        </a>
     </section>
 
     <!-- Secțiunea pentru resursele apreciate -->
@@ -214,7 +234,10 @@
                 </div>
             }
         </div>
-        <a href="/Routines/SeeMore?section=liked" class="btn btn-outline-secondary" style="border-radius: 30px;">See More Liked Resources</a>
+        
+        <a href="@Url.Action("SeeMore", "Routines", new { type = "liked", search = "" })" class="btn btn-outline-secondary" style="border-radius: 30px;">
+            See More Liked Resources
+        </a>
     </section>
 
     <!-- Secțiunea pentru Podcasturi Audio -->
@@ -301,7 +324,10 @@
                 </div>
             }
         </div>
-        <a href="/Routines/SeeMore?section=PodcastAudio" class="btn btn-outline-secondary" style="border-radius: 30px;">See More Audio Podcasts</a>
+        
+        <a href="@Url.Action("SeeMore", "Routines", new { type = "PodcastAudio", search = "" })" class="btn btn-outline-secondary" style="border-radius: 30px;">
+            See More Audio Podcasts
+        </a>
     </section>
 
     <!-- Secțiunea pentru Podcasturi Video -->
@@ -391,7 +417,10 @@
                 </div>
             }
         </div>
-        <a href="/Routines/SeeMore?section=PodcastVideo" class="btn btn-outline-secondary" style="border-radius: 30px;">See More Video Podcasts</a>
+        
+        <a href="@Url.Action("SeeMore", "Routines", new { type = "PodcastVideo", search = "" })" class="btn btn-outline-secondary" style="border-radius: 30px;">
+            See More Video Podcasts
+        </a>
     </section>
 
     <!-- Secțiunea pentru Videoclipuri -->
@@ -481,7 +510,10 @@
                 </div>
             }
         </div>
-        <a href="/Routines/SeeMore?section=Video" class="btn btn-outline-secondary" style="border-radius: 30px;">See More Educational Videos</a>
+        
+        <a href="@Url.Action("SeeMore", "Routines", new { type = "Video", search = "" })" class="btn btn-outline-secondary" style="border-radius: 30px;">
+            See More Educational Videos
+        </a>
     </section>
 
     <!-- Secțiunea pentru Imagini -->
@@ -567,7 +599,10 @@
                 </div>
             }
         </div>
-        <a href="/Routines/SeeMore?section=Image" class="btn btn-outline-secondary" style="border-radius: 30px;">See More Educational Images</a>
+        
+        <a href="@Url.Action("SeeMore", "Routines", new { type = "Image", search = "" })" class="btn btn-outline-secondary" style="border-radius: 30px;">
+            See More Educational Images
+        </a>
     </section>
 
     <br />
@@ -660,7 +695,10 @@
                     </div>
                 }
             </div>
-            <a href="/Routines/SeeMore?section=Exercise" class="btn btn-outline-secondary" style="border-radius: 30px;">See More Exercises</a>
+            
+            <a href="@Url.Action("SeeMore", "Routines", new { type = "Exercise", search = "" })" class="btn btn-outline-secondary" style="border-radius: 30px;">
+                See More Exercises
+            </a>
         </section>
         
     }
