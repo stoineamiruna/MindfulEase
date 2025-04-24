@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "yWIylG4zv027wNf3b7UZVayAc8Gr1mQDQmOWzBG8uhQ=",
+  "Hash": "z21N+Z2I1ZAj0HDMQdlPSAWRE1x7Y+HpT+FXptWDzeU=",
   "Source": "MindfulEase",
   "BasePath": "_content/MindfulEase",
   "Mode": "Default",
@@ -1383,6 +1383,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\bell3.png"
+    },
+    {
+      "Identity": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\img\\brain.png",
+      "SourceId": "MindfulEase",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\",
+      "BasePath": "_content/MindfulEase",
+      "RelativePath": "img/brain.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\brain.png"
     },
     {
       "Identity": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\img\\cattrainer.png",
