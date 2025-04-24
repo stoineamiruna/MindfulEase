@@ -41,6 +41,8 @@ namespace MindfulEase.Data
         public DbSet<ResourceTag> ResourceTags { get; set; }
         public DbSet<QuizTag> QuizTags { get; set; }
         public DbSet<TherapeuticGameTag> TherapeuticGameTags { get; set; }
+        public DbSet<BrainRegion> BrainRegions { get; set; }
+        public DbSet<EmotionBrainRegion> EmotionBrainRegions { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -231,6 +233,21 @@ namespace MindfulEase.Data
                 .HasOne(ut => ut.TherapeuticGame)
                 .WithMany(g => g.Tags)
                 .HasForeignKey(ut => ut.TherapeuticGameId);
+
+            // Many-to-Many Relationship: Emotion <-> BrainRegion
+
+            modelBuilder.Entity<EmotionBrainRegion>()
+                .HasKey(ut => new { ut.EmotionId, ut.BrainRegionId });
+
+            modelBuilder.Entity<EmotionBrainRegion>()
+                .HasOne(ut => ut.Emotion)
+                .WithMany(u => u.BrainRegions)
+                .HasForeignKey(ut => ut.EmotionId);
+
+            modelBuilder.Entity<EmotionBrainRegion>()
+                .HasOne(ut => ut.BrainRegion)
+                .WithMany(g => g.Emotions)
+                .HasForeignKey(ut => ut.BrainRegionId);
 
 
         }

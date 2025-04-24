@@ -1,10 +1,11 @@
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MindfulEase.Data;
 using MindfulEase.Models;
 using MindfulEase.Services.MindfulEase.Services;
 using MindfulEase.Services;
 using Hangfire;
+using Microsoft.AspNetCore.StaticFiles;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -56,7 +57,17 @@ else
 }
 
 app.UseHttpsRedirection();
-app.UseStaticFiles();
+//app.UseStaticFiles();
+
+var provider = new FileExtensionContentTypeProvider();
+provider.Mappings[".glb"] = "model/gltf-binary"; // sau "model/gltf+json" dacă e .gltf
+
+app.UseStaticFiles(new StaticFileOptions
+{
+    ContentTypeProvider = provider,
+    ServeUnknownFileTypes = true // opțional, dacă vrei fallback pentru alte extensii
+});
+
 
 app.UseRouting();
 
