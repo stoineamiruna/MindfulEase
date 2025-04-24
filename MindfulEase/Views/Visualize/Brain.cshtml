@@ -1,0 +1,132 @@
+﻿@{
+    ViewBag.Title = "Brain Visualization";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<canvas id="brainCanvas"></canvas>
+
+<script type="module">
+    import * as THREE from 'three';
+    import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+    import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+    const canvas = document.getElementById('brainCanvas');
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+
+    const light = new THREE.DirectionalLight(0xffffff, 1);
+    light.position.set(10, 10, 10);
+    scene.add(light);
+
+
+
+    const loader = new GLTFLoader();
+    loader.load('/Brain.glb', function (gltf) {
+        const brain = gltf.scene;
+        brain.scale.set(1.5, 1.5, 1.5);
+        scene.add(brain);
+
+        const body = brain.getObjectByName("Line03");
+        if (body) {
+            body.material = new THREE.MeshStandardMaterial({
+                color: new THREE.Color("rgba(0,123,255,1)"),
+                transparent: true,
+                opacity: 0.2,
+                depthWrite: false, 
+                depthTest: true,
+                roughness: 0.1,
+                metalness: 0.0
+            });
+            body.renderOrder = 0; 
+        }
+        else {
+            console.warn("Nu s-a găsit corpul uman (Line03) în model.");
+        }
+
+        ["Left-Brain", "Right-Brain"].forEach(name => {
+            const group = brain.getObjectByName(name);
+            if (group) {
+                group.traverse(child => {
+                    if (child.isMesh) {
+                        child.material = new THREE.MeshStandardMaterial({
+                            color: 0xffd1df, 
+                            transparent: true,
+                            opacity: 0.4,
+                            depthWrite: true,
+                            depthTest: true
+                        });
+                        child.renderOrder = 1;
+                    }
+                });
+            } else {
+                console.warn(`${name} not found`);
+            }
+        });
+
+
+        const simulatedData = [
+            { BrainRegion: ["Amygdala"], Color: "#FF0000", Score: 0.9 },
+            { BrainRegion: ["Brainstem"], Color: "#e3dac9", Score: 0.6 },
+            { BrainRegion: ["Insula-L", "Insula-R"], Color: "#FF00FF", Score: 0.6 },
+            { BrainRegion: ["Hippocampus-R"], Color: "#0000FF", Score: 0.7 },
+            { BrainRegion: ["OFC-L", "OFC-R"], Color: "#FFA500", Score: 0.65 },
+            { BrainRegion: ["DPC-L", "DPC-R"], Color: "#00FFFF", Score: 0.55 },
+            { BrainRegion: ["VPC-L", "VPC-R"], Color: "#1ABC9C", Score: 0.5 },
+            { BrainRegion: ["SPC-L", "SPC-R"], Color: "#4CAF50", Score: 0.65 },
+            { BrainRegion: ["Thalamus-L", "Thalamus-R"], Color: "#9932CC", Score: 0.8 },
+            { BrainRegion: ["NA-L", "NA-R"], Color: "#8B0000", Score: 0.75 },
+            { BrainRegion: ["BasalGanglia-L", "BasalGanglia-R"], Color: "#8E44AD", Score: 0.6 },
+            { BrainRegion: ["HypoThalamus-L", "HypoThalamus-R"], Color: "#FF69B4", Score: 0.7 },
+            { BrainRegion: ["ACC-L", "ACC-R"], Color: "#4682B4", Score: 0.68 },
+            { BrainRegion: ["Cerebellum-L", "Cerebellum-R"], Color: "#FF69B4", Score: 0.68 }
+        ];
+
+        simulatedData.forEach(regionData => {
+            regionData.BrainRegion.forEach(name => {
+                const region = brain.getObjectByName(name);
+                if (region) {
+                    region.material = new THREE.MeshStandardMaterial({
+                        color: regionData.Color,
+                        transparent: true,
+                        opacity: regionData.Score,
+                        depthWrite: true,
+                        depthTest: true
+                    });
+                    region.renderOrder = 1; // se redă după corp
+                } else {
+                    console.warn(`Region not found: ${name}`);
+                }
+            });
+        });
+
+
+    }, undefined, function (error) {
+        console.error('An error occurred while loading the model:', error);
+    });
+
+    camera.position.z = 5;
+
+    function animate() {
+        requestAnimationFrame(animate);
+        controls.update();
+        renderer.render(scene, camera);
+    }
+    animate();
+</script>
+
+
+
+<style>
+    #brainCanvas {
+        width: 100%;
+        height: 600px;
+        display: block;
+    }
+</style>

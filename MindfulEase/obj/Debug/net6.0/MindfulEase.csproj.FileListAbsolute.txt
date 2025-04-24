@@ -300,3 +300,5 @@ C:\Users\Miru\Desktop\Licenta\MindfulEase\MindfulEase\bin\Debug\net6.0\sv\Hangfi
 C:\Users\Miru\Desktop\Licenta\MindfulEase\MindfulEase\bin\Debug\net6.0\tr-TR\Hangfire.Core.resources.dll
 C:\Users\Miru\Desktop\Licenta\MindfulEase\MindfulEase\bin\Debug\net6.0\zh-TW\Hangfire.Core.resources.dll
 C:\Users\Miru\Desktop\Licenta\MindfulEase\MindfulEase\bin\Debug\net6.0\zh\Hangfire.Core.resources.dll
+C:\Users\Miru\Desktop\Licenta\MindfulEase\MindfulEase\bin\Debug\net6.0\wwwroot\models\Brain.glb
+C:\Users\Miru\Desktop\Licenta\MindfulEase\MindfulEase\bin\Debug\net6.0\wwwroot\Brain.glb

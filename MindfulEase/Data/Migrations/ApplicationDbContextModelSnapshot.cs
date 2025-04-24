@@ -382,6 +382,23 @@ namespace MindfulEase.Data.Migrations
                     b.ToTable("Badges");
                 });
 
+            modelBuilder.Entity("MindfulEase.Models.BrainRegion", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("BrainRegions");
+                });
+
             modelBuilder.Entity("MindfulEase.Models.Diary", b =>
                 {
                     b.Property<int>("Id")
@@ -443,6 +460,21 @@ namespace MindfulEase.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Emotions");
+                });
+
+            modelBuilder.Entity("MindfulEase.Models.EmotionBrainRegion", b =>
+                {
+                    b.Property<int?>("EmotionId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("BrainRegionId")
+                        .HasColumnType("int");
+
+                    b.HasKey("EmotionId", "BrainRegionId");
+
+                    b.HasIndex("BrainRegionId");
+
+                    b.ToTable("EmotionBrainRegions");
                 });
 
             modelBuilder.Entity("MindfulEase.Models.Notification", b =>
@@ -1144,6 +1176,25 @@ namespace MindfulEase.Data.Migrations
                     b.Navigation("Emotion");
                 });
 
+            modelBuilder.Entity("MindfulEase.Models.EmotionBrainRegion", b =>
+                {
+                    b.HasOne("MindfulEase.Models.BrainRegion", "BrainRegion")
+                        .WithMany("Emotions")
+                        .HasForeignKey("BrainRegionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MindfulEase.Models.Emotion", "Emotion")
+                        .WithMany("BrainRegions")
+                        .HasForeignKey("EmotionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("BrainRegion");
+
+                    b.Navigation("Emotion");
+                });
+
             modelBuilder.Entity("MindfulEase.Models.Notification", b =>
                 {
                     b.HasOne("MindfulEase.Models.ApplicationUser", "User")
@@ -1315,6 +1366,11 @@ namespace MindfulEase.Data.Migrations
                     b.Navigation("Users");
                 });
 
+            modelBuilder.Entity("MindfulEase.Models.BrainRegion", b =>
+                {
+                    b.Navigation("Emotions");
+                });
+
             modelBuilder.Entity("MindfulEase.Models.Diary", b =>
                 {
                     b.Navigation("Emotions");
@@ -1322,6 +1378,8 @@ namespace MindfulEase.Data.Migrations
 
             modelBuilder.Entity("MindfulEase.Models.Emotion", b =>
                 {
+                    b.Navigation("BrainRegions");
+
                     b.Navigation("Diaries");
 
                     b.Navigation("Users");
