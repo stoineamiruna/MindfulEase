@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\MindfulEase.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\Brain.glb",
+      "PackagePath": "staticwebassets\\Brain.glb"
+    },
+    {
       "Id": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
@@ -139,6 +143,14 @@
     {
       "Id": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\img\\user.png",
       "PackagePath": "staticwebassets\\img\\user.png"
+    },
+    {
+      "Id": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\js\\barinVisualization.js",
+      "PackagePath": "staticwebassets\\js\\barinVisualization.js"
+    },
+    {
+      "Id": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\js\\brainActivityVisualization.js",
+      "PackagePath": "staticwebassets\\js\\brainActivityVisualization.js"
     },
     {
       "Id": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\js\\site.js",
@@ -371,6 +383,26 @@
     {
       "Id": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\lib\\three\\build\\three.core.min.js",
+      "PackagePath": "staticwebassets\\lib\\three\\build\\three.core.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\lib\\three\\build\\three.module.min.js",
+      "PackagePath": "staticwebassets\\lib\\three\\build\\three.module.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\lib\\three\\examples\\jsm\\controls\\OrbitControls.js",
+      "PackagePath": "staticwebassets\\lib\\three\\examples\\jsm\\controls\\OrbitControls.js"
+    },
+    {
+      "Id": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\lib\\three\\examples\\jsm\\loaders\\GLTFLoader.js",
+      "PackagePath": "staticwebassets\\lib\\three\\examples\\jsm\\loaders\\GLTFLoader.js"
+    },
+    {
+      "Id": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\models\\Brain.glb",
+      "PackagePath": "staticwebassets\\models\\Brain.glb"
     },
     {
       "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.MindfulEase.Microsoft.AspNetCore.StaticWebAssets.props",

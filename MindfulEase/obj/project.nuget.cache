@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "SyF/Og9VQWxfZzXBEadqZU0txfvXklIVSaiKHh1b9d3oOtIldMaJBhG2wUat7KbuoIkL49Bdhx9CXJ+pLt1DIA==",
+  "dgSpecHash": "1ZBRYqRB/EFjkypo2s6WV7iXn0zwOlSIdGAzx3Uff2q4pAk1152MlnLWi16CsudH0kz+BavEL3v2r7p0syxuHQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\MindfulEase.csproj",
   "expectedPackageFiles": [
@@ -232,7 +232,11 @@
     "C:\\Users\\Miru\\.nuget\\packages\\system.threading.timer\\4.3.0\\system.threading.timer.4.3.0.nupkg.sha512",
     "C:\\Users\\Miru\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512",
     "C:\\Users\\Miru\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
-    "C:\\Users\\Miru\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512"
+    "C:\\Users\\Miru\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
+    "C:\\Users\\Miru\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.36\\microsoft.windowsdesktop.app.ref.6.0.36.nupkg.sha512",
+    "C:\\Users\\Miru\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.36\\microsoft.netcore.app.ref.6.0.36.nupkg.sha512",
+    "C:\\Users\\Miru\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.36\\microsoft.aspnetcore.app.ref.6.0.36.nupkg.sha512",
+    "C:\\Users\\Miru\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.36\\microsoft.netcore.app.host.win-x64.6.0.36.nupkg.sha512"
   ],
   "logs": []
 }
