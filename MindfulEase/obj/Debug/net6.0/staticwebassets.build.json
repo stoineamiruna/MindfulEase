@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "z21N+Z2I1ZAj0HDMQdlPSAWRE1x7Y+HpT+FXptWDzeU=",
+  "Hash": "s0zxntYjPRNKOTxQ+XyrVwxxCIIIVTPAT/ooM51vG7E=",
   "Source": "MindfulEase",
   "BasePath": "_content/MindfulEase",
   "Mode": "Default",
@@ -1214,6 +1214,25 @@
       "OriginalItemSpec": "wwwroot\\Brain.glb"
     },
     {
+      "Identity": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\css\\brain.css",
+      "SourceId": "MindfulEase",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\",
+      "BasePath": "_content/MindfulEase",
+      "RelativePath": "css/brain.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\brain.css"
+    },
+    {
       "Identity": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\css\\site.css",
       "SourceId": "MindfulEase",
       "SourceType": "Discovered",
@@ -1879,12 +1898,12 @@
       "OriginalItemSpec": "wwwroot\\img\\user.png"
     },
     {
-      "Identity": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\js\\barinVisualization.js",
+      "Identity": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\js\\brainVisualization.js",
       "SourceId": "MindfulEase",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\",
       "BasePath": "_content/MindfulEase",
-      "RelativePath": "js/barinVisualization.js",
+      "RelativePath": "js/brainVisualization.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1895,15 +1914,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\barinVisualization.js"
+      "OriginalItemSpec": "wwwroot\\js\\brainVisualization.js"
     },
     {
-      "Identity": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\js\\brainActivityVisualization.js",
+      "Identity": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\js\\myBrain.js",
       "SourceId": "MindfulEase",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\",
       "BasePath": "_content/MindfulEase",
-      "RelativePath": "js/brainActivityVisualization.js",
+      "RelativePath": "js/myBrain.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1914,7 +1933,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\brainActivityVisualization.js"
+      "OriginalItemSpec": "wwwroot\\js\\myBrain.js"
     },
     {
       "Identity": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\js\\site.js",

@@ -9,6 +9,10 @@
       "PackagePath": "staticwebassets\\Brain.glb"
     },
     {
+      "Id": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\css\\brain.css",
+      "PackagePath": "staticwebassets\\css\\brain.css"
+    },
+    {
       "Id": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
@@ -149,12 +153,12 @@
       "PackagePath": "staticwebassets\\img\\user.png"
     },
     {
-      "Id": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\js\\barinVisualization.js",
-      "PackagePath": "staticwebassets\\js\\barinVisualization.js"
+      "Id": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\js\\brainVisualization.js",
+      "PackagePath": "staticwebassets\\js\\brainVisualization.js"
     },
     {
-      "Id": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\js\\brainActivityVisualization.js",
-      "PackagePath": "staticwebassets\\js\\brainActivityVisualization.js"
+      "Id": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\js\\myBrain.js",
+      "PackagePath": "staticwebassets\\js\\myBrain.js"
     },
     {
       "Id": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\js\\site.js",
