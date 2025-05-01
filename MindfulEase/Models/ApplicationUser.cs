@@ -21,6 +21,8 @@ namespace MindfulEase.Models
 
         //[Required(ErrorMessage = "Description is required")]
         public string? Description { get; set; }
+        public int? Age { get; set; }
+        public string? Sex { get; set; }
 
         // Properties for therapist-specific information
         [Required(ErrorMessage = "Please specify if the user is a therapist.")]

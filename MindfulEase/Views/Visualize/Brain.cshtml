@@ -9,8 +9,10 @@
     const emotionsData = @Html.Raw(ViewBag.EmotionsByDate ?? "[]");
 </script>
 @section Scripts {
+    @*<script type="module" src="/js/brainVisualization.js?v=@DateTime.Now.Ticks"></script>*@
+    
     <script type="module" src="~/js/brainVisualization.js"></script>
-    <script type="module" src="~/js/myBrain.js"></script>
+
 }
 
 
@@ -101,6 +103,7 @@
                 <button style="border-radius: 30px; color:white;"id="viewBrainDamageButton" class="btn btn-warning" disabled>View Brain Damage</button>
                 <p >Click to see the potential impact of emotional activities (such as fear, anger, etc.) on your brain regions.</p>
             </div>
+            <br />
 
             <!-- Slider predicție viitoare -->
             <div style="margin-bottom: 20px;">

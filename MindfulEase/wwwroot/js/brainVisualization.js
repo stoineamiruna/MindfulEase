@@ -202,10 +202,60 @@ loader.load('/Brain.glb', function (gltf) {
     // Setăm valoarea implicită pentru predicție
     predictYears.textContent = predictSlider.value + " years";
 
-    // Adăugăm eveniment pentru slider
     predictSlider.addEventListener("input", function () {
         predictYears.textContent = this.value + " years";
+        const years = parseInt(predictSlider.value);
+        console.log("Predict button clicked for " + years + " years");
+
+        const selectedDateValue = emotionDatePicker.value;
+        if (selectedDateValue) {
+            const selectedDate = new Date(selectedDateValue);
+            console.log("Trigger fetchPrediction cu:", years, selectedDate);
+            fetchPrediction(years, selectedDate);
+        } else {
+            console.warn("Nu a fost selectată o dată.");
+            alert("Please select a date first");
+        }
     });
+
+
+    // Funcția care trimite cererea de predicție
+    async function fetchPrediction(yearsSinceStart, selectedDate) {
+        if (!selectedDate || isNaN(yearsSinceStart)) {
+            alert("Selectează o dată validă și o valoare pentru ani.");
+            return;
+        }
+
+        const body = {
+            date: selectedDate.toISOString(),
+            yearsSinceStart: yearsSinceStart
+        };
+
+        try {
+            const response = await fetch("/Visualize/PredictBrainDamage", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(body)
+            });
+
+            if (!response.ok) throw new Error("Request failed");
+            const prediction = await response.json();
+
+            console.log("Rezultatul predicției:", prediction);
+
+            updateBrainPredicted(prediction);
+
+
+        } catch (error) {
+            console.error("Eroare la predicție:", error);
+            alert("A apărut o problemă la generarea predicției.");
+        }
+    }
+
+   
+
 
     // Emoțiile negative și regiunile aferente pentru daunele cerebrale
     const negativeEmotions = ['anger', 'fear', 'sadness', 'disgust'];
@@ -433,6 +483,69 @@ loader.load('/Brain.glb', function (gltf) {
         }
        
     }
+    function updateBrainPredicted(prediction) {
+        if (!brain || !prediction) return;
+
+        resetBrain(); // curăță regiunile înainte de actualizare
+
+        // Mapping între denumirile din modelul ML și cele din modelul 3D
+        const regionMap = {
+            ventromedialPrefrontalCortex: ["VPC-L", "VPC-R"],
+            nucleusAccumbens: ["NA-L", "NA-R"],
+            amygdala: ["Amygdala"],
+            anteriorCingulateCortex: ["ACC-L", "ACC-R"],
+            insula: ["Insula-L", "Insula-R"],
+            hypothalamus: ["HypoThalamus-L", "HypoThalamus-R"],
+            dorsolateralPrefrontalCortex: ["DPC-L", "DPC-R"],
+            orbitofrontalCortex: ["OFC-L", "OFC-R"],
+            striatum: ["Striatum"],
+            hippocampus: ["Hippocampus-L", "Hippocampus-R"],
+            superiorParietalCortex: ["SPC-L", "SPC-R"],
+            basalGanglia: ["BasalGanglia-L", "BasalGanglia-R"]
+        };
+
+        // Culori pentru diferite niveluri de deteriorare
+        const damageColors = {
+            low: "#FFFF00",     // Galben
+            medium: "#FFA500",  // Portocaliu
+            high: "#FF0000"     // Roșu
+        };
+
+        for (const [mlRegionName, brainRegionNames] of Object.entries(regionMap)) {
+            const value = prediction[mlRegionName];
+
+            if (typeof value !== 'number') continue;
+
+            let damageColor;
+            if (value >= 0.67) {
+                damageColor = damageColors.high;
+            } else if (value >= 0.34) {
+                damageColor = damageColors.medium;
+            } else {
+                damageColor = damageColors.low;
+            }
+
+            brainRegionNames.forEach(regionName => {
+                const region = brain.getObjectByName(regionName);
+                if (region) {
+                    region.traverse(child => {
+                        if (child.isMesh) {
+                            if (!child.userData.defaultMaterial) {
+                                child.userData.defaultMaterial = child.material.clone();
+                            }
+                            child.material = child.userData.defaultMaterial.clone();
+                            child.material.color.set(damageColor);
+                            child.material.opacity = 0.5;
+                            child.material.transparent = true;
+                            child.renderOrder = 1;
+                        }
+                    });
+                }
+            });
+        }
+
+        console.log("Brain updated with prediction:", prediction);
+    }
 
 
     // Eveniment click pe butoane
@@ -528,7 +641,6 @@ loader.load('/Brain.glb', function (gltf) {
             });
         });
     }
-
     if (emotionDatePicker) {
         emotionDatePicker.addEventListener("change", function () {
             const selectedDate = this.value;
@@ -537,6 +649,7 @@ loader.load('/Brain.glb', function (gltf) {
 
         //applyEmotionHighlightForDate(currentDate);
     }
+
 
 
     function viewBrainDamage() {
@@ -681,6 +794,9 @@ loader.load('/Brain.glb', function (gltf) {
         viewBrainDamage();
     });
 
+    
+    
+
 }, undefined, function (error) {
     console.error('An error occurred while loading the model:', error);
 });
@@ -722,6 +838,5 @@ window.addEventListener('load', () => {
                 <li>Click an emoji to view related brain regions.</li>
                 <li>Hover over a brain region to discover its role.</li>
                 <li>Observe how emotions interact with brain structure.</li>
-            </ul>`;
+            </ul>`;  
 });
-

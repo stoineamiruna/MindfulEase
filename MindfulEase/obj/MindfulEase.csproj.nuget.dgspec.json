@@ -85,6 +85,10 @@
               "target": "Package",
               "version": "[4.0.0, )"
             },
+            "Microsoft.ML.FastTree": {
+              "target": "Package",
+              "version": "[4.0.0, )"
+            },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[6.0.18, )"
