@@ -1,0 +1,347 @@
+﻿@model MindfulEase.Models.ML.BrainDamage
+
+@{
+    ViewData["Title"] = "Predicție Daune Creier";
+}
+
+<div class="container">
+    <h2 class="mb-4">Predicție Daune Creier în Timp</h2>
+
+    @if (TempData["Message"] != null)
+    {
+        <div class="alert alert-success">@TempData["Message"]</div>
+    }
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger">@TempData["Error"]</div>
+    }
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h4>Datele tale emoționale</h4>
+                </div>
+                <div class="card-body">
+                    <form asp-action="PredictDamage" method="post">
+                        <div class="form-group">
+                            <label asp-for="Age">Vârstă</label>
+                            <input asp-for="Age" class="form-control" />
+                            <span asp-validation-for="Age" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Sex">Sex</label>
+                            <select asp-for="Sex" class="form-control">
+                                <option value="M">Masculin</option>
+                                <option value="F">Feminin</option>
+                            </select>
+                            <span asp-validation-for="Sex" class="text-danger"></span>
+                        </div>
+
+                        <h5 class="mt-4">Intensitatea emoțiilor (0-10)</h5>
+                        <div class="row">
+                            @foreach (var emotion in Model.Emotions.Where(e => !string.IsNullOrEmpty(e.Label)))
+                            {
+                                var labelRaw = emotion.Label;
+                                var labelNormalized = char.ToUpper(labelRaw[0]) + labelRaw.Substring(1);
+                                var property = Model.GetType().GetProperty(labelNormalized);
+
+                                <div class="col-md-6 mb-3">
+                                    <label for="@labelNormalized">@emotion.Label</label>
+                                    <input type="range" class="form-control-range emotion-slider"
+                                           id="@labelNormalized"
+                                           name="@labelNormalized"
+                                           min="0" max="10" step="0.1"
+                                           value="@(property?.GetValue(Model))" oninput="document.getElementById('@(labelNormalized + "Value")').innerText = this.value" />
+                                    <span id="@(labelNormalized + "Value")">@property?.GetValue(Model)</span>
+                                </div>
+                            }
+                        </div>
+
+                        <div class="form-group mt-4">
+                            <label asp-for="YearsSinceStart">Ani de predicție (1-10)</label>
+                            <input type="range" class="form-control-range"
+                                   asp-for="YearsSinceStart"
+                                   min="1" max="10" step="1"
+                                   oninput="yearsValue.innerText = this.value" />
+                            <span id="yearsValue">@Model.YearsSinceStart</span>
+                            <span asp-validation-for="YearsSinceStart" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mt-4">
+                            <button type="submit" class="btn btn-info">Calculează progresul deteriorării</button>
+                            <a asp-action="TrainModel" class="btn btn-secondary ml-2">Antrenează modelul</a>
+                            @*<button type="button" id="predictAjaxBtn" class="btn btn-info ml-2">Predicție instantanee</button>*@
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Rezultate predicție</h4>
+                </div>
+                <div class="card-body">
+                    <div id="predictionResults">
+                        @if (Model.PredictedDamage != null && Model.PredictedDamage.Any())
+                        {
+                            <h5>Rezultatele predicției după @Model.YearsSinceStart ani</h5>
+                            <table class="table table-sm table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Regiune creier</th>
+                                        <th>Valoare prezisă</th>
+                                        <th>Impactul</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var prediction in Model.PredictedDamage)
+                                    {
+                                        var impactClass = "";
+                                        var impactText = "";
+
+                                        if (prediction.Value < 0.33)
+                                        {
+                                            impactClass = "text-success";
+                                            impactText = "Minim";
+                                        }
+                                        else if (prediction.Value < 0.66)
+                                        {
+                                            impactClass = "text-warning";
+                                            impactText = "Moderat";
+                                        }
+                                        else
+                                        {
+                                            impactClass = "text-danger";
+                                            impactText = "Sever";
+                                        }
+
+                                        <tr>
+                                            <td>@prediction.Key</td>
+                                            <td>@prediction.Value.ToString("F2")</td>
+                                            <td><span class="@impactClass">@impactText</span></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        }
+                        else
+                        {
+                            <div class="alert alert-info">
+                                Introdu datele tale emoționale și modifică valorile pentru a vedea rezultatele.
+                            </div>
+                        }
+                    </div>
+                    <div id="debug-area" class="mt-4">
+                        <h5>Informații debugging</h5>
+                        <pre id="debug-output" class="bg-light p-2" style="max-height: 200px; overflow-y: auto;">Încă nu există logging</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br /><br /><br /><br />
+<style>
+    .form-control-range {
+        accent-color: #0dcaf0;
+    }
+
+    .form-control-range::-webkit-slider-thumb {
+            background: #0dcaf0;
+            border: 2px solid #0dcaf0;
+     }
+</style>
+@section Scripts {
+    <script>
+        // Debugging helper
+        const debug = {
+            log: function (message, data) {
+                const debugOutput = document.getElementById('debug-output');
+                const timestamp = new Date().toLocaleTimeString();
+                let logMessage = `[${timestamp}] ${message}`;
+
+                if (data !== undefined) {
+                    if (typeof data === 'object') {
+                        logMessage += '\n' + JSON.stringify(data, null, 2);
+                    } else {
+                        logMessage += ': ' + data;
+                    }
+                }
+
+                debugOutput.textContent = logMessage + '\n\n' + debugOutput.textContent;
+                console.log(message, data);
+            },
+            error: function (message, error) {
+                const debugOutput = document.getElementById('debug-output');
+                const timestamp = new Date().toLocaleTimeString();
+                let logMessage = `[${timestamp}] ERROR: ${message}`;
+
+                if (error) {
+                    logMessage += '\n' + (error.stack || error.message || JSON.stringify(error));
+                }
+
+                debugOutput.textContent = logMessage + '\n\n' + debugOutput.textContent;
+                console.error(message, error);
+            }
+        };
+
+        // Map pentru a converti de la labelUri normalizate la proprietățile modelului
+        const emotionPropertyMap = {
+            'Joy': 'Joy',
+            'Sadness': 'Sadness',
+            'Anger': 'Anger',
+            'Love': 'Love',
+            'Fear': 'Fear',
+            'Surprise': 'Surprise',
+            'Disgust': 'Disgust'
+        };
+
+        // Selectori și referințe
+        const emotionSliders = document.querySelectorAll(".emotion-slider");
+        const yearsSlider = document.querySelector("input[name='YearsSinceStart']");
+        const ageInput = document.querySelector("input[name='Age']");
+        const sexSelect = document.querySelector("select[name='Sex']");
+        const predictAjaxBtn = document.getElementById("predictAjaxBtn");
+
+        function getPredictionInput() {
+            const input = {
+                Age: parseFloat(ageInput.value),
+                Sex: sexSelect.value,
+                YearsSinceStart: parseInt(yearsSlider.value)
+            };
+
+            debug.log("Colectez valori de intrare");
+
+            // Adaugă fiecare emoție
+            emotionSliders.forEach(slider => {
+                const emotionName = slider.id;
+                const emotionValue = parseFloat(slider.value);
+                input[emotionName] = emotionValue;
+                debug.log(`Emoție ${emotionName}`, emotionValue);
+            });
+
+            return input;
+        }
+
+        async function predict() {
+            try {
+                const input = getPredictionInput();
+                debug.log("Trimit input pentru predicție", input);
+
+                const response = await fetch("/BrainDamage/PredictAjax", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Accept": "application/json"
+                    },
+                    body: JSON.stringify(input)
+                });
+
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    debug.error(`Eroare HTTP ${response.status}: ${response.statusText}`, errorText);
+                    return;
+                }
+
+                const contentType = response.headers.get("content-type");
+                if (!contentType || !contentType.includes("application/json")) {
+                    debug.error("Răspunsul nu este în format JSON",
+                        `Content-Type: ${contentType}, Body: ${await response.text()}`);
+                    return;
+                }
+
+                const prediction = await response.json();
+                debug.log("Rezultatul predicției", prediction);
+
+                renderPredictionResults(prediction);
+            } catch (error) {
+                debug.error("Excepție în timpul predicției", error);
+            }
+        }
+
+        function renderPredictionResults(prediction) {
+            const container = document.getElementById("predictionResults");
+
+            if (!prediction || Object.keys(prediction).length === 0) {
+                debug.error("Predicție goală sau invalidă", prediction);
+                container.innerHTML = `
+                            <div class="alert alert-warning">
+                                Nu s-au primit rezultate valide. Verificați zona de debugging pentru detalii.
+                            </div>`;
+                return;
+            }
+
+            let html = `
+                        <h5>Rezultatele predicției actuale</h5>
+                        <table class="table table-sm table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Regiune creier</th>
+                                    <th>Valoare prezisă</th>
+                                    <th>Impactul</th>
+                                </tr>
+                            </thead>
+                            <tbody>`;
+
+            for (const [region, value] of Object.entries(prediction)) {
+                let impact = "Minim";
+                let impactClass = "text-success";
+
+                if (value >= 0.66) {
+                    impact = "Sever";
+                    impactClass = "text-danger";
+                } else if (value >= 0.33) {
+                    impact = "Moderat";
+                    impactClass = "text-warning";
+                }
+
+                html += `
+                            <tr>
+                                <td>${region}</td>
+                                <td>${parseFloat(value).toFixed(2)}</td>
+                                <td><span class="${impactClass}">${impact}</span></td>
+                            </tr>`;
+            }
+
+            html += `</tbody></table>`;
+            container.innerHTML = html;
+            debug.log("Rezultatele au fost renderizate în interfață");
+        }
+
+        // Event listeners
+        emotionSliders.forEach(slider => {
+            slider.addEventListener("input", () => {
+                clearTimeout(slider._predictTimer);
+                slider._predictTimer = setTimeout(predict, 500);
+            });
+        });
+
+        [yearsSlider, ageInput, sexSelect].forEach(element => {
+            element.addEventListener("input", () => {
+                clearTimeout(element._predictTimer);
+                element._predictTimer = setTimeout(predict, 500);
+            });
+            element.addEventListener("change", () => {
+                clearTimeout(element._predictTimer);
+                element._predictTimer = setTimeout(predict, 100);
+            });
+        });
+
+        predictAjaxBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            predict();
+        });
+
+        // La încărcarea paginii, verificați dacă există valori inițiale
+        document.addEventListener("DOMContentLoaded", () => {
+            debug.log("Pagina s-a încărcat");
+            // Putem declanșa predicția inițială după o scurtă întârziere
+            setTimeout(predict, 1000);
+        });
+    </script>
+}

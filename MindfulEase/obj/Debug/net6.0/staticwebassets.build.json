@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "s0zxntYjPRNKOTxQ+XyrVwxxCIIIVTPAT/ooM51vG7E=",
+  "Hash": "JuRRXlPLWDIKB2Avc40FKNerlo1f/Rqzc5SNXchPxBs=",
   "Source": "MindfulEase",
   "BasePath": "_content/MindfulEase",
   "Mode": "Default",
@@ -1917,25 +1917,6 @@
       "OriginalItemSpec": "wwwroot\\js\\brainVisualization.js"
     },
     {
-      "Identity": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\js\\myBrain.js",
-      "SourceId": "MindfulEase",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\",
-      "BasePath": "_content/MindfulEase",
-      "RelativePath": "js/myBrain.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\myBrain.js"
-    },
-    {
       "Identity": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\js\\site.js",
       "SourceId": "MindfulEase",
       "SourceType": "Discovered",
@@ -3112,25 +3093,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\three\\examples\\jsm\\loaders\\GLTFLoader.js"
-    },
-    {
-      "Identity": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\models\\Brain.glb",
-      "SourceId": "MindfulEase",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\",
-      "BasePath": "_content/MindfulEase",
-      "RelativePath": "models/Brain.glb",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\models\\Brain.glb"
     }
   ]
 }

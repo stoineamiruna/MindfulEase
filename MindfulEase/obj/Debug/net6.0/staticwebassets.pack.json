@@ -157,10 +157,6 @@
       "PackagePath": "staticwebassets\\js\\brainVisualization.js"
     },
     {
-      "Id": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\js\\myBrain.js",
-      "PackagePath": "staticwebassets\\js\\myBrain.js"
-    },
-    {
       "Id": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
@@ -407,10 +403,6 @@
     {
       "Id": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\lib\\three\\examples\\jsm\\loaders\\GLTFLoader.js",
       "PackagePath": "staticwebassets\\lib\\three\\examples\\jsm\\loaders\\GLTFLoader.js"
-    },
-    {
-      "Id": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\models\\Brain.glb",
-      "PackagePath": "staticwebassets\\models\\Brain.glb"
     },
     {
       "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.MindfulEase.Microsoft.AspNetCore.StaticWebAssets.props",

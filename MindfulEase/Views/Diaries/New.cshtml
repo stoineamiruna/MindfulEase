@@ -121,7 +121,7 @@
                                     <p class="fw-bold" style="color: #01baa3;">@diary.EntryDate.ToString("yyyy-MM-dd")</p>
                                 </div>
                                 <div>
-                                    <a href="@Url.Action("Show", "Diaries", new { id = diary.Id })" class="btn btn-info" style="border-radius: 25px;">View Entry</a>
+                                    <a href="@Url.Action("Show", "Diaries", new { id = diary.Id })" class="btn btn-info" style="color:white; border-radius: 25px;">View Entry</a>
                                 </div>
                             </div>
                         </div>
@@ -177,3 +177,13 @@
         });
     }
 </script>
+<style>
+    .form-range {
+        accent-color: #01baa3;
+    }
+
+        .form-range::-webkit-slider-thumb {
+            background: #01baa3;
+            border: 2px solid #01baa3;
+        }
+</style>
