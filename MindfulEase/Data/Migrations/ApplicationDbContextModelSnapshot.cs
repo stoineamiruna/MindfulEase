@@ -942,6 +942,9 @@ namespace MindfulEase.Data.Migrations
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
+                    b.Property<int?>("Age")
+                        .HasColumnType("int");
+
                     b.Property<string>("BackgroundColor")
                         .HasColumnType("nvarchar(max)");
 
@@ -975,6 +978,9 @@ namespace MindfulEase.Data.Migrations
 
                     b.Property<double?>("Rating")
                         .HasColumnType("float");
+
+                    b.Property<string>("Sex")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Studies")
                         .HasMaxLength(200)

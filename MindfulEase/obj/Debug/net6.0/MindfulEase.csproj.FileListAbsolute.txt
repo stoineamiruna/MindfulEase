@@ -300,5 +300,11 @@ C:\Users\Miru\Desktop\Licenta\MindfulEase\MindfulEase\bin\Debug\net6.0\sv\Hangfi
 C:\Users\Miru\Desktop\Licenta\MindfulEase\MindfulEase\bin\Debug\net6.0\tr-TR\Hangfire.Core.resources.dll
 C:\Users\Miru\Desktop\Licenta\MindfulEase\MindfulEase\bin\Debug\net6.0\zh-TW\Hangfire.Core.resources.dll
 C:\Users\Miru\Desktop\Licenta\MindfulEase\MindfulEase\bin\Debug\net6.0\zh\Hangfire.Core.resources.dll
-C:\Users\Miru\Desktop\Licenta\MindfulEase\MindfulEase\bin\Debug\net6.0\wwwroot\models\Brain.glb
 C:\Users\Miru\Desktop\Licenta\MindfulEase\MindfulEase\bin\Debug\net6.0\wwwroot\Brain.glb
+C:\Users\Miru\Desktop\Licenta\MindfulEase\MindfulEase\bin\Debug\net6.0\Microsoft.ML.FastTree.dll
+C:\Users\Miru\Desktop\Licenta\MindfulEase\MindfulEase\bin\Debug\net6.0\runtimes\linux-x64\native\libFastTreeNative.so
+C:\Users\Miru\Desktop\Licenta\MindfulEase\MindfulEase\bin\Debug\net6.0\runtimes\linux-x64\native\libFastTreeNative.so.dbg
+C:\Users\Miru\Desktop\Licenta\MindfulEase\MindfulEase\bin\Debug\net6.0\runtimes\osx-x64\native\libFastTreeNative.dylib
+C:\Users\Miru\Desktop\Licenta\MindfulEase\MindfulEase\bin\Debug\net6.0\runtimes\osx-x64\native\libFastTreeNative.dylib.dwarf
+C:\Users\Miru\Desktop\Licenta\MindfulEase\MindfulEase\bin\Debug\net6.0\runtimes\win-x64\native\FastTreeNative.dll
+C:\Users\Miru\Desktop\Licenta\MindfulEase\MindfulEase\bin\Debug\net6.0\runtimes\win-x86\native\FastTreeNative.dll

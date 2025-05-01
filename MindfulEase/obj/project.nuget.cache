@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "1ZBRYqRB/EFjkypo2s6WV7iXn0zwOlSIdGAzx3Uff2q4pAk1152MlnLWi16CsudH0kz+BavEL3v2r7p0syxuHQ==",
+  "dgSpecHash": "H1826TN+2h+J+xjrNp5N1N5gPiEXNwi99WEiWBFepOAtRHCAI8I885tV6IyjqQS6buZVUk3Ab5Uqewi7e2pVIQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\MindfulEase.csproj",
   "expectedPackageFiles": [
@@ -114,6 +114,7 @@
     "C:\\Users\\Miru\\.nuget\\packages\\microsoft.ml\\4.0.0\\microsoft.ml.4.0.0.nupkg.sha512",
     "C:\\Users\\Miru\\.nuget\\packages\\microsoft.ml.cpumath\\4.0.0\\microsoft.ml.cpumath.4.0.0.nupkg.sha512",
     "C:\\Users\\Miru\\.nuget\\packages\\microsoft.ml.dataview\\4.0.0\\microsoft.ml.dataview.4.0.0.nupkg.sha512",
+    "C:\\Users\\Miru\\.nuget\\packages\\microsoft.ml.fasttree\\4.0.0\\microsoft.ml.fasttree.4.0.0.nupkg.sha512",
     "C:\\Users\\Miru\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\Miru\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\Miru\\.nuget\\packages\\microsoft.visualstudio.debugger.contracts\\17.2.0\\microsoft.visualstudio.debugger.contracts.17.2.0.nupkg.sha512",

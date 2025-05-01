@@ -34,6 +34,9 @@ builder.Services.AddScoped<WeeklyChallengeService>();
 builder.Services.AddScoped<WeeklyReportService>();
 builder.Services.AddScoped<ChallengeNotificationsService>();
 builder.Services.AddScoped<BadgeService>();
+var appDataPath = Path.Combine(Directory.GetCurrentDirectory(), "App_Data");
+// Înregistrează serviciul de predicție
+builder.Services.AddSingleton(new BrainDamagePredictionService(appDataPath));
 
 var app = builder.Build();
 
