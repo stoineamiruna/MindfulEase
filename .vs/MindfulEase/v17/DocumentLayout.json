@@ -3,24 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\views\\visualize\\brain.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\views\\visualize\\brain.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\wwwroot\\js\\brainvisualization.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\wwwroot\\js\\brainvisualization.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\services\\braindamagepredictionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\services\\braindamagepredictionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\views\\visualize\\brain.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\views\\visualize\\brain.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\wwwroot\\css\\brain.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\wwwroot\\css\\brain.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\controllers\\braindamagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\controllers\\braindamagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\wwwroot\\css\\brain.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\wwwroot\\css\\brain.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\services\\braindamagepredictionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\services\\braindamagepredictionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,13 +42,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "Brain.cshtml",
               "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Views\\Visualize\\Brain.cshtml",
               "RelativeDocumentMoniker": "MindfulEase\\Views\\Visualize\\Brain.cshtml",
               "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Views\\Visualize\\Brain.cshtml",
               "RelativeToolTip": "MindfulEase\\Views\\Visualize\\Brain.cshtml",
-              "ViewState": "AQIAAJ4AAAAAAAAAAAAqwKYAAAAhAAAA",
+              "ViewState": "AQIAAIUAAAAAAAAAAAAwwJMAAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-05-03T06:38:46.367Z",
               "EditorCaption": ""
@@ -68,41 +68,42 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "BrainDamagePredictionService.cs",
               "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Services\\BrainDamagePredictionService.cs",
               "RelativeDocumentMoniker": "MindfulEase\\Services\\BrainDamagePredictionService.cs",
               "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Services\\BrainDamagePredictionService.cs",
               "RelativeToolTip": "MindfulEase\\Services\\BrainDamagePredictionService.cs",
-              "ViewState": "AQIAACAAAAAAAAAAAAAAwCsAAABAAAAA",
+              "ViewState": "AQIAACAAAAAAAAAAAAAxwCsAAABAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-30T16:56:08.271Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "brainVisualization.js",
               "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\js\\brainVisualization.js",
               "RelativeDocumentMoniker": "MindfulEase\\wwwroot\\js\\brainVisualization.js",
               "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\js\\brainVisualization.js",
               "RelativeToolTip": "MindfulEase\\wwwroot\\js\\brainVisualization.js",
-              "ViewState": "AQIAAM8BAAAAAAAAAAAYwN4BAAAYAAAA",
+              "ViewState": "AQIAADgEAAAAAAAAAAAawD4EAABAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
               "WhenOpened": "2025-04-25T08:04:52.845Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "brain.css",
               "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\css\\brain.css",
               "RelativeDocumentMoniker": "MindfulEase\\wwwroot\\css\\brain.css",
               "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\css\\brain.css",
               "RelativeToolTip": "MindfulEase\\wwwroot\\css\\brain.css",
-              "ViewState": "AQIAAAUAAAAAAAAAAAAwwBAAAAAVAAAA",
+              "ViewState": "AQIAAHIAAAAAAAAAAAAAALsAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-05-01T01:40:28.642Z"
+              "WhenOpened": "2025-05-01T01:40:28.642Z",
+              "EditorCaption": ""
             }
           ]
         },

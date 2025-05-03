@@ -395,6 +395,11 @@ loader.load('/Brain.glb', function (gltf) {
     const riskList = document.getElementById("riskList");
     const balancedList = document.getElementById("balancedList");
     const alertMessage = document.getElementById("alertMessage");
+    const showPredictionInfoBtn = document.getElementById("showPredictionInfoBtn");
+    const predictionModal = document.getElementById("predictionModal");
+    const closePredictionModal = document.getElementById("closePredictionModal");
+    const predictionModalTitle = document.getElementById("predictionModalTitle");
+    const predictionModalContent = document.getElementById("predictionModalContent");
 
     // Setăm valoarea implicită pentru predicție
     predictYears.textContent = predictSlider.value + " years";
@@ -414,6 +419,111 @@ loader.load('/Brain.glb', function (gltf) {
             alert("Please select a date first");
         }
     });
+
+    
+
+    async function showPredictionButton(prediction) {
+        const regionDictionary = {
+            "amygdala": "Amygdala",
+            "anteriorCingulateCortex": "Anterior Cingulate Cortex (ACC)",
+            "basalGanglia": "Basal Ganglia",
+            "dorsolateralPrefrontalCortex": "Dorsolateral Prefrontal Cortex (DPC)",
+            "hippocampus": "Hippocampus",
+            "hypothalamus": "Hypothalamus",
+            "insula": "Insula",
+            "nucleusAccumbens": "Nucleus Accumbens",
+            "orbitofrontalCortex": "Orbitofrontal Cortex (OFC)",
+            "striatum": "Striatum",
+            "superiorParietalCortex": "Superior Parietal Cortex",
+            "ventromedialPrefrontalCortex": "Ventromedial Prefrontal Cortex (VMPFC)"
+        };
+
+        const recommendations = {
+            "Amygdala": "This region governs fear, threat detection, and emotional reactivity. A heightened score may signal emotional hypersensitivity. To soothe the Amygdala, try daily mindfulness practice, calming breathwork, and reducing overstimulation from news or social media.",
+            "Anterior Cingulate Cortex (ACC)": "Responsible for emotion appraisal and attention regulation. An elevated risk may reflect internal conflict or cognitive-emotional dysregulation. Activities like journaling and CBT can help bring clarity and calm to this region.",
+            "Basal Ganglia": "Tied to motivation and motor/emotional control. If overactivated, it may indicate stress buildup or compulsive behaviors. Try grounding activities like yoga, tai chi, or rhythmic movement.",
+            "Dorsolateral Prefrontal Cortex (DPC)": "The center of reasoning and executive function. A risk score here may reflect burnout or mental fatigue. Strategic decision-making exercises, puzzle games, and prioritizing rest can restore its strength.",
+            "Hippocampus": "Core for memory and emotional context. When strained, this may relate to trauma or excessive stress. Therapeutic writing, storytelling, and recalling positive memories may promote resilience.",
+            "Hypothalamus": "Regulates stress response and hormonal balance. An at-risk signal can relate to chronic stress. Focus on sleep hygiene, regular meals, and nature exposure to harmonize this system.",
+            "Insula": "Handles emotional self-awareness. A high score might suggest disconnection from bodily sensations. Practice body scans, mindful eating, or mirror meditation to reestablish this link.",
+            "Nucleus Accumbens": "Processes pleasure and reward. High stress here could reduce motivation or joy. Engage in hobbies, celebrate small wins, and foster social connection for dopamine boosts.",
+            "Orbitofrontal Cortex (OFC)": "Involved in emotional regulation and reward evaluation. At-risk scores may reflect impulsivity or emotional swings. Use structured goal setting and emotion labeling to regain control.",
+            "Striatum": "Regulates goal-directed behavior. Heightened risk may lead to lack of drive or overdependence on routine. Refresh goals weekly and seek novelty to activate this center.",
+            "Superior Parietal Cortex": "Governs attention and sensory coordination. Overactivity might lead to sensory overload or disorientation. Grounding practices and sensory breaks are recommended.",
+            "Ventromedial Prefrontal Cortex (VMPFC)": "Integrates emotion with decision-making. High activation might reflect emotional confusion. Practicing gratitude journaling and perspective-taking can aid integration."
+        };
+
+        let report = `<h3>🧠 Brain-Based Emotional Risk Assessment</h3>
+    <p>This predictive report is generated based on your current emotional and contextual inputs, interpreted through a machine learning model trained on the <strong>NKI-Rockland Sample (NKI-RS)</strong> — a large-scale, open-access neuroimaging dataset used in neuroscience and psychology research. The values reflect the <strong>relative activation or involvement of various brain regions in emotional processing</strong> and potential dysregulation. Scores range from 0 (low involvement) to 1 (high involvement).</p><br/>`;
+
+        const highRisk = [];
+        const lowRisk = [];
+
+        // Split regions into high and low risk
+        for (let region in prediction) {
+            const regionName = regionDictionary[region] || region;
+            const score = prediction[region];
+
+            if (score > 0.5) {
+                highRisk.push({ regionName, score, recommendation: recommendations[regionName] });
+            } else {
+                lowRisk.push({ regionName, score });
+            }
+        }
+
+        // Section: All Scores Overview
+        report += `<h4>📊 Full Overview of Brain Region Scores:</h4><ul>`;
+        const allRegions = [...highRisk, ...lowRisk];
+        allRegions.sort((a, b) => b.score - a.score);
+        for (const { regionName, score } of allRegions) {
+            report += `<li><strong>${regionName}</strong>: ${score.toFixed(3)}</li>`;
+        }
+        report += `</ul><hr/>`;
+
+        // Section: High-Risk Explanation
+        if (highRisk.length > 0) {
+            report += `
+        <h4>🚨 Regions with Elevated Emotional Risk (Score > 0.5)</h4>
+        <p>The following regions show higher-than-average activation and may indicate an increased level of emotional load, cognitive effort, or stress response. This does not necessarily imply pathology, but rather an opportunity for reflection and support.</p>
+        <p>These predictions are not diagnostic and should be interpreted as indicators for potential mental strain. Interventions such as therapy, self-regulation practices, and healthy lifestyle adjustments may be helpful for restoring balance in these regions.</p>
+        <br/>`;
+
+            for (const { regionName, score, recommendation } of highRisk) {
+                report += `
+                <div style="margin-bottom: 20px;">
+                    <h4>🔸 ${regionName}</h4>
+                    <p><strong>Risk Score:</strong> ${score.toFixed(3)}</p>
+                    <p>${recommendation}</p>
+                </div>`;
+            }
+        }
+
+        // Section: Low-Risk Explanation
+        if (lowRisk.length > 0) {
+            report += `
+        <h4>✅ Regions with Stable or Low Activation (Score ≤ 0.5)</h4>
+        <p>The brain regions listed below are currently within a balanced range of activity. This suggests good emotional regulation, healthy cognitive functioning, or reduced stress impact in these areas. Maintaining this balance through rest, mindfulness, and emotional awareness is beneficial for long-term mental health.</p>
+        <ul>`;
+            for (const { regionName, score } of lowRisk) {
+                report += `<li><strong>${regionName}</strong>: ${score.toFixed(3)}</li>`;
+            }
+            report += `</ul>`;
+        }
+
+        report += `<hr/><p style="font-size: 0.9em;"><em>This report is for informational purposes only and does not substitute for clinical advice. For concerns regarding emotional health or neurological function, please consult a licensed healthcare provider.</em></p>`;
+
+        // Update modal content
+        predictionModalTitle.textContent = "Brain Prediction Report";
+        predictionModalContent.innerHTML = report;
+
+        // Show button
+        showPredictionInfoBtn.style.display = "block";
+
+        // Open modal on click
+        showPredictionInfoBtn.addEventListener("click", function () {
+            predictionModal.style.display = "flex";
+        });
+    }
 
 
     // Funcția care trimite cererea de predicție
@@ -443,6 +553,7 @@ loader.load('/Brain.glb', function (gltf) {
             console.log("Rezultatul predicției:", prediction);
 
             updateBrainPredicted(prediction);
+            showPredictionButton(prediction);
 
 
         } catch (error) {
@@ -465,6 +576,7 @@ loader.load('/Brain.glb', function (gltf) {
 
     // Funcție pentru a evidenția regiunile în funcție de emoție
     function highlightEmotion(emotion) {
+
         if (!brain) return;
 
         // Resetează toate regiunile la opacitate slabă
@@ -684,6 +796,7 @@ loader.load('/Brain.glb', function (gltf) {
                 }
             });
         }
+        
        
     }
     function updateBrainPredicted(prediction) {
@@ -757,6 +870,7 @@ loader.load('/Brain.glb', function (gltf) {
             document.querySelectorAll('.emotion-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             const emotion = btn.getAttribute('data-emotion');
+            
             highlightEmotion(emotion);
         });
     });
@@ -848,6 +962,12 @@ loader.load('/Brain.glb', function (gltf) {
     if (emotionDatePicker) {
         emotionDatePicker.addEventListener("change", function () {
             const selectedDate = this.value;
+            if (predictSlider) {
+                predictSlider.value = 0;
+                if (predictYears) {
+                    predictYears.textContent = predictSlider.value; // actualizează textul pentru predictYears
+                }
+            }
             applyEmotionHighlightForDate(selectedDate);
         });
 
@@ -973,9 +1093,11 @@ loader.load('/Brain.glb', function (gltf) {
         if (uniqueBalancedRegions.size > 0) {
             balancedList.innerHTML = balancedListContent;
             document.getElementById("noBalancedMessage").style.display = 'none';  // Ascundem mesajul de "toate regiunile echilibrate"
+            document.getElementById("balancedRegionsText").style.display = 'block';
         } else {
             balancedList.innerHTML = '';
             document.getElementById("noBalancedMessage").style.display = 'block';  // Afișăm mesajul de "toate regiunile echilibrate"
+            document.getElementById("balancedRegionsText").style.display = 'none';
         }
 
         setTimeout(() => {
