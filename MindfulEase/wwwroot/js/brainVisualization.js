@@ -189,6 +189,203 @@ loader.load('/Brain.glb', function (gltf) {
         surprise: ["DPC-L", "DPC-R", "SPC-L", "SPC-R"],
         disgust: ["Insula-L", "Insula-R", "BasalGanglia-L", "BasalGanglia-R", "OFC-L", "OFC-R"]
     };
+    const brainRegionRoles = {
+        "Ventromedial Prefrontal Cortex (VPC)": "Involved in decision making and emotional regulation, related to rewards and satisfaction.",
+        "Nucleus Accumbens (NA)": "Plays a key role in reward processing and motivation.",
+        "Insula": "Associated with processing internal sensations and feelings, particularly related to emotions.",
+        "Amygdala": "Critical in processing emotions, particularly fear and anger.",
+        "Anterior Cingulate Cortex (ACC)": "Involved in emotional regulation, pain processing, and decision-making.",
+        "Hypothalamus": "Controls the body’s responses to emotions, including fight or flight reactions.",
+        "Dorsolateral Prefrontal Cortex (DPC)": "Involved in higher cognitive functions such as decision-making and controlling impulses.",
+        "Orbitofrontal Cortex (OFC)": "Plays a role in reward processing and the evaluation of social and emotional stimuli.",
+        "Striatum": "Involved in motivation and the formation of attachment and reward processing.",
+        "Hippocampus": "Important for memory formation, especially related to fear and emotional experiences.",
+        "Basal Ganglia": "Involved in emotional responses, movement regulation, and avoidance behavior.",
+        "Superior Parietal Cortex (SPC)": "Supports spatial awareness and attention, integrating sensory information for body orientation and movement."
+    };
+    const brainRegionDescriptions = {
+        "Ventromedial Prefrontal Cortex (VPC)": `
+        <p><strong>VPC (Ventromedial Prefrontal Cortex)</strong> is a brain region located in the lower part of the frontal lobe, associated with integrating emotions into decision-making processes. This area mediates the balance between emotional responses and rational behaviors.</p><br>
+
+        <p>VPC is considered a hub between the limbic and cognitive systems, strongly connected with the <em>amygdala</em>, <em>hippocampus</em>, and <em>insula</em>. This gives it the ability to integrate past emotional experiences with current situations to guide adaptive behavior. fMRI studies show increased activity in the VPC during decisions involving social rewards or empathy (Bechara et al., 2000; Ochsner & Gross, 2005).</p><br>
+
+        <p>Dysfunctions in this area are correlated with various psychiatric disorders: individuals with lesions in the VPC may display impulsive decisions, antisocial behaviors, or a lack of empathy (Koenigs & Tranel, 2007). In depression, VPC can show hypoactivity, reducing the individual's ability to regulate negative thoughts and perceive rewards.</p><br>
+        <p>From a therapeutic perspective, <em>transcranial magnetic stimulation (TMS)</em> and <em>neurofeedback</em> techniques have been investigated as methods to activate this region, aiding cognitive restructuring in depression and anxiety. Additionally, cognitive-behavioral therapies involving decision-making and cognitive reframing can indirectly train VPC activity.</p><br>
+        <p><strong>Relevant statistics:</strong> According to a longitudinal study published in *Nature Neuroscience* (Drevets et al., 2008), approximately 65% of patients with major depression show changes in volume or activity in the VPC.</p><br>
+        <p><strong>Sources:</strong><br>
+        - Bechara et al. (2000), *Science* — “Emotion, decision making and the orbitofrontal cortex”<br>
+        - Koenigs & Tranel (2007), *Journal of Neuroscience* — “Prefrontal cortex damage impairs moral judgment”<br>
+        - Drevets et al. (2008), *Nat. Neuroscience* — “Functional anatomical correlates of antidepressant response”<br>
+        - Ochsner & Gross (2005), *Trends in Cognitive Sciences* — “The cognitive control of emotion”</p>
+        `,
+
+        "Nucleus Accumbens (NA)": `
+        <p><strong>Nucleus Accumbens (NA)</strong> is a central brain region associated with reward processing, motivation, and pleasure. This area is part of the reward system and is closely linked to the release of dopamine, a neurotransmitter essential for feelings of reward and satisfaction.</p><br>
+
+        <p>Specifically, NA activation is correlated with positive responses to pleasurable stimuli, such as social rewards, music, food, and personal achievements. Under normal conditions, NA promotes adaptive behaviors by reinforcing positive rewards. However, dysfunctions in NA are often involved in addiction disorders, depression, and anhedonia (Salimpoor et al., 2011).</p><br>
+
+        <p>Studies have shown that during addiction experiences, such as substance abuse, NA activity is altered, contributing to the compulsive desire to seek rewards, which leads to a vicious cycle. Additionally, in depression, NA activity may be reduced, leading to a decrease in motivation and a loss of interest in activities that would typically be pleasurable.</p><br>
+
+        <p><strong>Relevant statistics:</strong> According to a study in *Neuron* (Everitt & Robbins, 2005), 70-80% of patients with addiction disorders show significant changes in NA activity.</p><br>
+
+        <p><strong>Sources:</strong><br>
+        - Salimpoor et al. (2011), *Science* — “Anatomy of a musical reward”<br>
+        - Everitt & Robbins (2005), *Neuron* — “Neural mechanisms of drug addiction”<br>
+        `,
+
+        "Insula": `
+        <p><strong>Insula</strong> is a deep cortical region located within the temporal lobes, associated with awareness of the body's internal sensations, such as pain, hunger, and thirst, as well as with processing emotions such as disgust and empathy. It is strongly activated in response to physiological or emotional stimuli that involve a body-mind reaction.</p><br>
+
+        <p>The insula plays a fundamental role in integrating internal sensory information with affective evaluations. For example, when we feel discomfort or danger, the insula is responsible for triggering physiological responses, such as increased heart rate or sweating. In anxiety disorders or post-traumatic stress disorder (PTSD), the insula is hyperactivated, contributing to exaggerated perceptions of danger and a constant state of alertness.</p><br>
+
+        <p>Additionally, the insula is involved in empathic processing and identifying the emotions of others, being essential for social functions, including the development of emotional bonds and interpersonal relationships. Recent studies suggest that changes in the volume and activity of the insula are correlated with personality disorders and a lack of empathy.</p><br>
+
+        <p><strong>Relevant statistics:</strong> In a study from *Brain Research* (Critchley et al., 2004), it was found that 40% of individuals with generalized anxiety disorder showed increased insula volume.</p><br>
+
+        <p><strong>Sources:</strong><br>
+        - Calder et al. (2007), *Neuron* — “The insula and emotion”<br>
+        - Critchley et al. (2004), *Brain Research* — “Neuroanatomy of the insula: Implications for emotion processing”<br>
+        `,
+
+        "Amygdala": `
+        <p><strong>Amygdala</strong> is a small but highly important subcortical structure that plays a central role in processing emotions, particularly fear, anger, and anxiety. It is activated in response to stimuli involving danger or threat and regulates physiological and behavioral responses through its connections with the <em>hypothalamus</em> and <em>prefrontal cortex</em>.</p><br>
+
+        <p>The activity of the amygdala determines rapid responses to dangerous stimuli, generating reactions such as "fight or flight". However, dysfunctions in amygdala activity are associated with emotional and behavioral disorders such as phobias, PTSD, and generalized anxiety. Specifically, the amygdala is involved in excessive fear states and exaggerated emotional reactions.</p><br>
+
+        <p>Studies have shown that, in PTSD, the amygdala becomes hyperactive, contributing to the constant re-experiencing of traumatic memories, a process essential for developing post-traumatic symptoms. Additionally, increased amygdala activity in stressful conditions may contribute to panic reactions.</p><br>
+
+        <p><strong>Relevant statistics:</strong> In a study from *Nature Neuroscience* (Zald, 2003), it was observed that amygdala activity can increase by up to 35% in cases of severe depression, correlating with heightened feelings of sadness and fear.</p><br>
+
+        <p><strong>Sources:</strong><br>
+        - Zald (2003), *Nature Neuroscience* — “The amygdala and emotional processing”<br>
+        - Etkin et al. (2006), *Biological Psychiatry* — “Amygdala regulation of emotional responses”<br>
+        `,
+
+        "Anterior Cingulate Cortex (ACC)": `
+        <p><strong>Anterior Cingulate Cortex (ACC)</strong> plays an essential role in emotional regulation, managing internal conflicts, and processing pain. It is located in the anterior part of the cingulate cortex, near the frontal lobe, and is closely connected to limbic structures, including the <em>amygdala</em> and <em>hypothalamus</em>.</p><br>
+
+        <p>ACC is active during the processing of information that requires self-control and internal conflict evaluation. It also plays an important role in maintaining attention to emotions and modulating emotional responses based on social and situational context. Dysfunctions in ACC are often associated with disorders such as depression, anxiety disorders, and personality disorders.</p><br>
+
+        <p>Studies suggest that low activity in ACC can lead to rumination and persistence in negative thoughts, a phenomenon characteristic of depression. Additionally, ACC plays a significant role in the perception of emotional pain and stress management, and imbalances in this area may be involved in anxiety disorders and treatment-resistant depression.</p><br>
+
+        <p><strong>Relevant statistics:</strong> In a study from *Biological Psychiatry* (Bush et al., 2000), it was found that patients with major depression have reduced ACC activity, and stimulation of this area led to improved emotional control.</p><br>
+
+        <p><strong>Sources:</strong><br>
+        - Bush et al. (2000), *Biological Psychiatry* — “The role of the anterior cingulate cortex in the regulation of emotion”<br>
+        - Posner et al. (2007), *Neuron* — “The anterior cingulate cortex and cognitive control”<br>
+        `,
+
+
+        "Hypothalamus": `
+        <p><strong>The hypothalamus</strong> is a small but vital structure located at the base of the brain, involved in regulating the body's physiological functions including body temperature, heart rate, metabolism, and hormone secretion. The hypothalamus plays a crucial role in the body's emotional and physiological responses, being directly linked to the HPA axis (hypothalamic-pituitary-adrenal), which regulates the stress response.</p><br>
+
+        <p>This homeostasis control center is essential for managing "fight or flight" reactions, activating the release of the stress hormone <em>cortisol</em> and mobilizing the body's resources in the face of a threat. Changes in hypothalamic activity are frequently associated with chronic stress disorders, depression, and sleep disturbances. Imbalances in this area can also contribute to eating disorders and hormonal dysfunctions.</p><br>
+
+        <p>Chronic stress and repeated activation of the HPA axis can lead to structural and functional changes in the hypothalamus, increasing the risk of developing conditions such as anxiety and depression. In addition, elevated cortisol levels in the blood can lead to a reduction in the volume of the hippocampus, a region essential for memory processing.</p><br>
+
+        <p><strong>Relevant statistics:</strong> Research published in *Nature Neuroscience* (Sapolsky, 2004) showed that chronic stress exposure and frequent hypothalamic activation can lead to negative changes in brain structure and deficits in emotional regulation.</p><br>
+
+        <p><strong>Sources:</strong><br>
+        - Sapolsky (2004), *Nature Neuroscience* — “The effects of chronic stress on the brain”<br>
+        - McEwen (2007), *Neuron* — “Stress, brain, and emotions: The role of the hypothalamus in stress response”<br>
+        `,
+
+
+
+        "Dorsolateral Prefrontal Cortex (DPC)": `
+        <p><strong>The dorsolateral prefrontal cortex (DPC)</strong> is a key region for higher cognitive functions such as decision-making, planning, abstract thinking, and self-control. It is located in the upper part of the prefrontal cortex and is involved in processing information related to planning and logical reasoning.</p><br>
+
+        <p>The DPC is essential for inhibiting impulses and regulating behaviors by evaluating the consequences of actions. In personality disorders, depression, and ADHD, dysfunctions in the DPC are commonly observed, and stimulation of this region is being investigated as a therapeutic method for improving impulse control and emotional regulation. Additionally, the DPC plays a central role in establishing adequate self-control and minimizing impulsive reactions under stress.</p><br>
+
+        <p>In depression, reduced activity in the DPC is associated with a diminished capacity for rational decision-making and regulation of negative emotions, which can lead to mental stagnation and rumination. Transcranial magnetic stimulation (TMS) therapy targeting the DPC has shown improvements in cases of treatment-resistant depression.</p><br>
+
+        <p><strong>Relevant statistics:</strong> In a study published in the *Journal of Cognitive Neuroscience* (Miller & Cohen, 2001), it was shown that DPC stimulation improves the ability to solve complex problems and regulate impulsive behaviors.</p><br>
+
+        <p><strong>Sources:</strong><br>
+        - Miller & Cohen (2001), *Journal of Cognitive Neuroscience* — “An integrative theory of prefrontal cortex function”<br>
+        - Fuster (2008), *Neuroscience of Cognitive Development* — “The prefrontal cortex and cognitive behavior”<br>
+        `,
+
+
+        "Orbitofrontal Cortex (OFC)": `
+        <p><strong>The orbitofrontal cortex (OFC)</strong> is involved in processing rewards and evaluating social stimuli, playing a critical role in behavior assessment and impulse regulation. Located in the lower part of the frontal lobe, the OFC is essential in interpreting social information such as facial expressions and tone of voice, and in forming affective responses.</p><br>
+
+        <p>The OFC is active during decisions involving rewards and punishments and in the development of social attachments. Dysfunction in the OFC can contribute to impulsive behaviors, personality disorders, and difficulties in interpreting social cues. In personality disorders—especially sociopathy and antisocial behaviors—the OFC is often implicated, and reduced activity in this region is linked to a lack of empathy and poor self-control.</p><br>
+
+        <p>Furthermore, the OFC plays a significant role in evaluating moral behavior and making ethical decisions. Changes in OFC activity are observed in various behavioral disorders and impulse control disorders, and stimulating this region is a potential approach in treatments targeting such conditions.</p><br>
+
+        <p><strong>Relevant statistics:</strong> A study in *Neuropsychology* (Kringelbach & Rolls, 2004) found that reduced activity in the OFC was associated with impulsive decision-making and antisocial behavior.</p><br>
+
+        <p><strong>Sources:</strong><br>
+        - Kringelbach & Rolls (2004), *Neuropsychology* — “The orbitofrontal cortex and decision making”<br>
+        - Bechara et al. (2000), *Science* — “The role of the orbitofrontal cortex in the processing of reward”<br>
+        `,
+
+
+
+        "Striatum": `
+        <p><strong>The striatum</strong> is a key component of the basal ganglia and plays a central role in motivation, reward-based learning, and habit formation. It receives signals from the cerebral cortex and is crucial for coordinating motor movements, as well as processing social and affective rewards. It is especially sensitive to <em>dopamine</em>, the neurotransmitter associated with pleasure and reward.</p><br>
+
+        <p>The striatum is active during pleasurable experiences, such as eating or positive social interactions, and dopamine release in this region reinforces behaviors that lead to rewards. Striatal activity is strongly influenced by learning experiences and habit formation. In disorders related to addiction and compulsive behaviors, this region can become hyperactive, promoting cycles of repetitive and compulsive behavior.</p><br>
+
+        <p>In the context of depression, low dopamine levels in the striatum can lead to anhedonia (the inability to feel pleasure). In eating disorders such as anorexia nervosa, there is evidence of excessive activity in this region associated with rigid self-regulation of eating behavior.</p><br>
+
+        <p><strong>Relevant statistics:</strong> A study in *Biological Psychiatry* (Volkow et al., 2004) showed that decreased striatal activity in depression is associated with a significantly reduced reward response.</p><br>
+
+        <p><strong>Sources:</strong><br>
+        - Volkow et al. (2004), *Biological Psychiatry* — “Dopamine and the reward system”<br>
+        - Everitt & Robbins (2005), *Nature Neuroscience* — “The role of the striatum in motivation and reward”<br>
+        `,
+
+
+
+        "Hippocampus": `
+        <p><strong>The hippocampus</strong> is one of the brain regions essential for long-term memory formation, spatial information processing, and the consolidation of emotional memories. Located in the medial temporal lobe, the hippocampus is crucial for integrating emotional experiences into declarative memory, helping to form and recall memories related to significant life events.</p><br>
+
+        <p>The hippocampus is highly sensitive to chronic stress, and prolonged exposure to cortisol—the stress hormone—can reduce its volume, negatively impacting the ability to learn and recall information. In post-traumatic stress disorder (PTSD), the hippocampus plays a major role, as traumatic memories are quickly activated and repeatedly revisited, leading to a persistent state of stress and anxiety.</p><br>
+
+        <p>Studies show that reduced hippocampal volume is observed in cases of chronic depression and anxiety disorders, and stimulation of this area can help alleviate symptoms associated with these conditions. The hippocampus is also critical for emotional learning, and changes in its activity are implicated in negative affectivity and affective disorders.</p><br>
+
+        <p><strong>Relevant statistics:</strong> A study in *Nature Neuroscience* (Lupien et al., 2009) found that chronic stress exposure reduces hippocampal volume, which can lead to significant problems with memory and learning.</p><br>
+
+        <p><strong>Sources:</strong><br>
+        - Lupien et al. (2009), *Nature Neuroscience* — “The effects of chronic stress on hippocampal volume”<br>
+        - Bremner et al. (2003), *Journal of Neuroscience* — “Structural changes in the hippocampus of individuals with post-traumatic stress disorder”<br>
+        `,
+
+
+
+        "Basal Ganglia": `
+        <p><strong>The basal ganglia</strong> are a group of brain nuclei involved in movement control, motor learning, and the regulation of emotional behavior. They play a central role in danger avoidance processes and automatic responses to stimuli, being essential for the formation and maintenance of habits and automatic behaviors.</p><br>
+
+        <p>The basal ganglia are heavily involved in emotional processing, regulating involuntary responses to negative stimuli and modulating facial expressions and automatic motor reactions. Imbalances in this region are often linked to compulsive behavior disorders such as obsessive-compulsive disorder (OCD), nervous tics, and, in some cases, personality disorders.</p><br>
+
+        <p>Additionally, the basal ganglia are involved in modulating disgust reactions and avoidance learning, being crucial for protective behaviors and in processing aversive experiences. In psychiatric disorders such as depression, changes in basal ganglia activity can contribute to automatic responses and social withdrawal.</p><br>
+
+        <p><strong>Relevant statistics:</strong> A study in *Neuroscience* (Trost et al., 2012) demonstrated that basal ganglia dysfunction is closely related to compulsive behaviors and abnormal activity in reward-related regions.</p><br>
+
+        <p><strong>Sources:</strong><br>
+        - Trost et al. (2012), *Neuroscience* — “Basal ganglia dysfunction in obsessive-compulsive disorder”<br>
+        - Graybiel (2008), *Neuron* — “The basal ganglia and the formation of habits”<br>
+        `,
+        "Superior Parietal Cortex (SPC)": `
+        <p><strong>The superior parietal cortex (SPC)</strong> is located in the upper part of the parietal lobe and plays a critical role in spatial awareness, sensory integration, and attention regulation. This region helps the brain process and integrate visual, tactile, and proprioceptive information to generate an internal map of the body in space.</p><br>
+
+        <p>The SPC is essential for coordinating movements and directing attention to specific spatial locations. It supports working memory related to spatial orientation and contributes to our sense of body ownership and agency. In neuropsychological conditions such as neglect syndrome, lesions in the SPC result in the inability to attend to one side of space, despite intact sensory input.</p><br>
+
+        <p>In the context of emotional and cognitive disorders, dysfunction in the SPC may contribute to disrupted attention control, disorientation, and difficulties in body perception. Studies also suggest that altered activity in this region may be involved in depersonalization and dissociative experiences, especially under high stress or trauma.</p><br>
+
+        <p><strong>Relevant statistics:</strong> A study in *Cerebral Cortex* (Vossel et al., 2014) demonstrated that the SPC is a central node in the dorsal attention network, with decreased activation linked to impairments in attentional shifting and spatial tracking under cognitive load.</p><br>
+
+        <p><strong>Sources:</strong><br>
+        - Vossel et al. (2014), *Cerebral Cortex* — “The role of the superior parietal cortex in spatial attention and cognitive control”<br>
+        - Culham & Kanwisher (2001), *Nature Reviews Neuroscience* — “Neuroimaging of cognitive functions of the parietal cortex”<br>
+        `
+
+
+
+    };
+
 
     console.log(emotionsData);
     const emotionDatePicker = document.getElementById("emotionDatePicker");
@@ -281,6 +478,7 @@ loader.load('/Brain.glb', function (gltf) {
         <ul>
             <li>Click an emoji to view related brain regions.</li>
             <li>Hover over a brain region to discover its role.</li>
+            <li>Click on a brain region to see detailed scientific information about its function and emotional relevance.</li>
             <li>Observe how emotions interact with brain structure.</li>
         </ul>`;
 
@@ -361,20 +559,8 @@ loader.load('/Brain.glb', function (gltf) {
                 uniqueRegions.add(regionName);
             });
 
-            const brainRegionRoles = {
-                "Ventromedial Prefrontal Cortex (VPC)": "Involved in decision making and emotional regulation, related to rewards and satisfaction.",
-                "Nucleus Accumbens (NA)": "Plays a key role in reward processing and motivation.",
-                "Insula": "Associated with processing internal sensations and feelings, particularly related to emotions.",
-                "Amygdala": "Critical in processing emotions, particularly fear and anger.",
-                "Anterior Cingulate Cortex (ACC)": "Involved in emotional regulation, pain processing, and decision-making.",
-                "Hypothalamus": "Controls the body’s responses to emotions, including fight or flight reactions.",
-                "Dorsolateral Prefrontal Cortex (DPC)": "Involved in higher cognitive functions such as decision-making and controlling impulses.",
-                "Orbitofrontal Cortex (OFC)": "Plays a role in reward processing and the evaluation of social and emotional stimuli.",
-                "Striatum": "Involved in motivation and the formation of attachment and reward processing.",
-                "HiPpocampuS": "Important for memory formation, especially related to fear and emotional experiences.",
-                "Basal Ganglia": "Involved in emotional responses, movement regulation, and avoidance behavior."
-            };
-
+            
+            console.log("Setare innerHTML...");
             emotionDescription.innerHTML = `
                 <h4 style="color:${color};">● ${emotion.charAt(0).toUpperCase() + emotion.slice(1)} Emotion</h4>
                 <br>
@@ -385,6 +571,23 @@ loader.load('/Brain.glb', function (gltf) {
             }).join('')}
                 </ul>
             `;
+
+            setTimeout(() => {
+                const items = document.querySelectorAll('#emotionDescription li');
+
+                items.forEach(li => {
+                    li.style.cursor = "pointer";
+                    li.addEventListener('click', () => {
+                        const regionName = li.textContent.trim();
+                        const description = brainRegionDescriptions[regionName];
+                        if (description) {
+                            document.getElementById('regionTitle').textContent = regionName;
+                            document.getElementById('regionInfo').innerHTML = description;
+                            document.getElementById('regionModal').style.display = 'flex';
+                        }
+                    });
+                });
+            }, 0); 
 
             // Append emotion-specific medical details based on the selected emotion
             switch (emotion.toLowerCase()) {
@@ -561,6 +764,7 @@ loader.load('/Brain.glb', function (gltf) {
         console.error("Nu există emotionsData în context.");
         return;
     }
+
 
     const allAvailableDates = [...new Set(emotionsData.map(e => e.Date))];
     const currentDate = allAvailableDates[0];
@@ -750,11 +954,11 @@ loader.load('/Brain.glb', function (gltf) {
 
         // Populăm listele cu denumirile complete (fără duplicate)
         const riskListContent = Array.from(uniqueRiskRegions).map(region => {
-            return `<li title="${regionNameMap[region]}"">${region}</li>`;
+            return `<li title="${brainRegionRoles[region]}"">${region}</li>`;
         }).join('');
 
         const balancedListContent = Array.from(uniqueBalancedRegions).map(region => {
-            return `<li title="${regionNameMap[region]}"">${region}</li>`;
+            return `<li title="${brainRegionRoles[region]}"">${region}</li>`;
         }).join('');
 
         // Adăugăm conținutul generat în listele de risc și echilibru
@@ -773,6 +977,39 @@ loader.load('/Brain.glb', function (gltf) {
             balancedList.innerHTML = '';
             document.getElementById("noBalancedMessage").style.display = 'block';  // Afișăm mesajul de "toate regiunile echilibrate"
         }
+
+        setTimeout(() => {
+            const items = document.querySelectorAll('#riskList li');
+
+            items.forEach(li => {
+                li.style.cursor = "pointer";
+                li.addEventListener('click', () => {
+                    const regionName = li.textContent.trim();
+                    const description = brainRegionDescriptions[regionName];
+                    if (description) {
+                        document.getElementById('regionTitle').textContent = regionName;
+                        document.getElementById('regionInfo').innerHTML = description;
+                        document.getElementById('regionModal').style.display = 'flex';
+                    }
+                });
+            });
+        }, 0); 
+        setTimeout(() => {
+            const items = document.querySelectorAll('#balancedList li');
+
+            items.forEach(li => {
+                li.style.cursor = "pointer";
+                li.addEventListener('click', () => {
+                    const regionName = li.textContent.trim();
+                    const description = brainRegionDescriptions[regionName];
+                    if (description) {
+                        document.getElementById('regionTitle').textContent = regionName;
+                        document.getElementById('regionInfo').innerHTML = description;
+                        document.getElementById('regionModal').style.display = 'flex';
+                    }
+                });
+            });
+        }, 0); 
 
     }
 
@@ -837,6 +1074,8 @@ window.addEventListener('load', () => {
             <ul>
                 <li>Click an emoji to view related brain regions.</li>
                 <li>Hover over a brain region to discover its role.</li>
+                <li>Click on a brain region to see detailed scientific information about its function and emotional relevance.</li>
                 <li>Observe how emotions interact with brain structure.</li>
             </ul>`;  
 });
+
