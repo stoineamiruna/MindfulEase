@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MindfulEase")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7d878449d0c74df8c656708a775a53dba262a90a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1d9d7fecb395ca0dceacf399c5a4de19e28370a4")]
 [assembly: System.Reflection.AssemblyProductAttribute("MindfulEase")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MindfulEase")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
