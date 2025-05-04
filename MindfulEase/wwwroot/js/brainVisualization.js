@@ -88,12 +88,6 @@ function hidePredictionButton(buttonId) {
 
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
-controls.dampingFactor = 0.05;
-controls.screenSpacePanning = false;
-controls.minDistance = 10;
-controls.maxDistance = 500;
-controls.maxPolarAngle = Math.PI / 2;
-
 scene.background = null;
 
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.3);
