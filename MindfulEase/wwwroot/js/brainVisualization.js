@@ -18,9 +18,81 @@ function resizeRendererToDisplaySize() {
     }
 }
 
+function showLegend(type) {
+    const legendContainer = document.getElementById('emotionLegend');
+    legendContainer.innerHTML = "";
+    const ul = document.createElement('ul');
+    const title = document.createElement('h4');
+    title.style.color = "#088aa7";
+    if (type === "emotional") {
+        const emotions = {
+            "Joy": "#F6BE00",
+            "Sadness": "blue",
+            "Fear": "magenta",
+            "Anger": "red",
+            "Love": "#FF69B4",
+            "Surprise": "#FFD700",
+            "Disgust": "green"
+        };
+        title.textContent = "Emotion Legend";
+        legendContainer.appendChild(title);
+
+        for (const [emotion, color] of Object.entries(emotions)) {
+            const li = document.createElement('li');
+            li.style.color = color;
+            li.innerHTML = `<span>&#128522;</span> ${emotion}`;
+            ul.appendChild(li);
+        }
+    }
+    else if (type === "damage") {
+        const damages = {
+            "🟡 Low Risk": "#F6BE00",
+            "🟠 Moderate Risk": "orange",
+            "🔴 High Risk": "red"
+        };
+        title.textContent = "Damage Legend";
+        legendContainer.appendChild(title);
+        for (const [risk, color] of Object.entries(damages)) {
+            const li = document.createElement('li');
+            li.style.color = color;
+            li.innerHTML = ` ${risk}`;
+            ul.appendChild(li);
+        }
+    }
+
+    legendContainer.appendChild(ul);
+}
+function hidePredictionButton(buttonId) {
+    const showBtn = document.getElementById(`showPredictionInfoBtn${buttonId}`);
+    const modal = document.getElementById(`predictionModal${buttonId}`);
+    const modalContent = document.getElementById(`predictionModalContent${buttonId}`);
+    const modalTitle = document.getElementById(`predictionModalTitle${buttonId}`);
+
+    if (showBtn) {
+        showBtn.style.display = "none";
+        showBtn.dataset.listenerAdded = ""; // dacă vrei să refolosești în viitor
+    }
+
+    if (modal) {
+        modal.style.display = "none";
+    }
+
+    if (modalContent) {
+        modalContent.innerHTML = "";
+    }
+
+    if (modalTitle) {
+        modalTitle.textContent = "";
+    }
+}
 
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
+controls.dampingFactor = 0.05;
+controls.screenSpacePanning = false;
+controls.minDistance = 10;
+controls.maxDistance = 500;
+controls.maxPolarAngle = Math.PI / 2;
 
 scene.background = null;
 
@@ -56,6 +128,7 @@ loader.load('/Brain.glb', function (gltf) {
             metalness: 0.0
         });
         body.renderOrder = 0;
+
     }
     else {
         console.warn("Nu s-a găsit corpul uman (Line03) în model.");
@@ -127,7 +200,6 @@ loader.load('/Brain.glb', function (gltf) {
         "OFC": "Orbitofrontal Cortex (OFC)",
         "Hippocampus": "Hippocampus",
         "BasalGanglia": "Basal Ganglia",
-        "Striatum": "Striatum",
         "HypoThalamus": "Hypothalamus",
         "Cerebellum": "Cerebellum",
         "SPC": "Superior Parietal Cortex (SPC)",
@@ -184,8 +256,8 @@ loader.load('/Brain.glb', function (gltf) {
         joy: ["VPC-L", "VPC-R", "NA-L", "NA-R"],
         sadness: ["Amygdala", "ACC-L", "ACC-R", "Insula-L", "Insula-R"],
         anger: ["Amygdala", "HypoThalamus-L", "HypoThalamus-R", "DPC-L", "DPC-R"],
-        love: ["Insula-L", "Insula-R", "OFC-L", "OFC-R", "Striatum"],
-        fear: ["Amygdala", "OFC-L", "OFC-R", "Hippocampus-L", "Hippocampus-R"],
+        love: ["Insula-L", "Insula-R", "OFC-L", "OFC-R"],
+        fear: ["Amygdala", "OFC-L", "OFC-R", "Hippocampus-R"],
         surprise: ["DPC-L", "DPC-R", "SPC-L", "SPC-R"],
         disgust: ["Insula-L", "Insula-R", "BasalGanglia-L", "BasalGanglia-R", "OFC-L", "OFC-R"]
     };
@@ -198,7 +270,6 @@ loader.load('/Brain.glb', function (gltf) {
         "Hypothalamus": "Controls the body’s responses to emotions, including fight or flight reactions.",
         "Dorsolateral Prefrontal Cortex (DPC)": "Involved in higher cognitive functions such as decision-making and controlling impulses.",
         "Orbitofrontal Cortex (OFC)": "Plays a role in reward processing and the evaluation of social and emotional stimuli.",
-        "Striatum": "Involved in motivation and the formation of attachment and reward processing.",
         "Hippocampus": "Important for memory formation, especially related to fear and emotional experiences.",
         "Basal Ganglia": "Involved in emotional responses, movement regulation, and avoidance behavior.",
         "Superior Parietal Cortex (SPC)": "Supports spatial awareness and attention, integrating sensory information for body orientation and movement."
@@ -323,22 +394,6 @@ loader.load('/Brain.glb', function (gltf) {
 
 
 
-        "Striatum": `
-        <p><strong>The striatum</strong> is a key component of the basal ganglia and plays a central role in motivation, reward-based learning, and habit formation. It receives signals from the cerebral cortex and is crucial for coordinating motor movements, as well as processing social and affective rewards. It is especially sensitive to <em>dopamine</em>, the neurotransmitter associated with pleasure and reward.</p><br>
-
-        <p>The striatum is active during pleasurable experiences, such as eating or positive social interactions, and dopamine release in this region reinforces behaviors that lead to rewards. Striatal activity is strongly influenced by learning experiences and habit formation. In disorders related to addiction and compulsive behaviors, this region can become hyperactive, promoting cycles of repetitive and compulsive behavior.</p><br>
-
-        <p>In the context of depression, low dopamine levels in the striatum can lead to anhedonia (the inability to feel pleasure). In eating disorders such as anorexia nervosa, there is evidence of excessive activity in this region associated with rigid self-regulation of eating behavior.</p><br>
-
-        <p><strong>Relevant statistics:</strong> A study in *Biological Psychiatry* (Volkow et al., 2004) showed that decreased striatal activity in depression is associated with a significantly reduced reward response.</p><br>
-
-        <p><strong>Sources:</strong><br>
-        - Volkow et al. (2004), *Biological Psychiatry* — “Dopamine and the reward system”<br>
-        - Everitt & Robbins (2005), *Nature Neuroscience* — “The role of the striatum in motivation and reward”<br>
-        `,
-
-
-
         "Hippocampus": `
         <p><strong>The hippocampus</strong> is one of the brain regions essential for long-term memory formation, spatial information processing, and the consolidation of emotional memories. Located in the medial temporal lobe, the hippocampus is crucial for integrating emotional experiences into declarative memory, helping to form and recall memories related to significant life events.</p><br>
 
@@ -394,17 +449,15 @@ loader.load('/Brain.glb', function (gltf) {
     const viewBrainDamageButton = document.getElementById("viewBrainDamageButton");
     const riskList = document.getElementById("riskList");
     const balancedList = document.getElementById("balancedList");
-    const alertMessage = document.getElementById("alertMessage");
-    const showPredictionInfoBtn = document.getElementById("showPredictionInfoBtn");
-    const predictionModal = document.getElementById("predictionModal");
-    const closePredictionModal = document.getElementById("closePredictionModal");
-    const predictionModalTitle = document.getElementById("predictionModalTitle");
-    const predictionModalContent = document.getElementById("predictionModalContent");
+    const projectionSlider = document.getElementById('projectionSlider');
+    const projectionYears = document.getElementById('projectionYears');
 
     // Setăm valoarea implicită pentru predicție
     predictYears.textContent = predictSlider.value + " years";
 
-    predictSlider.addEventListener("input", function () {
+    predictSlider.addEventListener("input", async function () {
+        hidePredictionButton(1);
+        showLegend("damage");
         predictYears.textContent = this.value + " years";
         const years = parseInt(predictSlider.value);
         console.log("Predict button clicked for " + years + " years");
@@ -413,16 +466,26 @@ loader.load('/Brain.glb', function (gltf) {
         if (selectedDateValue) {
             const selectedDate = new Date(selectedDateValue);
             console.log("Trigger fetchPrediction cu:", years, selectedDate);
-            fetchPrediction(years, selectedDate);
+
+            document.getElementById("loadingSpinner1").style.display = "block";
+
+            try {
+                await fetchPrediction(years, selectedDate);
+            } catch (error) {
+                console.error("Eroare la fetchPrediction:", error);
+            } finally {
+                document.getElementById("loadingSpinner1").style.display = "none";
+            }
         } else {
             console.warn("Nu a fost selectată o dată.");
             alert("Please select a date first");
         }
     });
 
+
     
 
-    async function showPredictionButton(prediction) {
+    async function showPredictionButton(prediction, buttonId) {
         const regionDictionary = {
             "amygdala": "Amygdala",
             "anteriorCingulateCortex": "Anterior Cingulate Cortex (ACC)",
@@ -433,7 +496,6 @@ loader.load('/Brain.glb', function (gltf) {
             "insula": "Insula",
             "nucleusAccumbens": "Nucleus Accumbens",
             "orbitofrontalCortex": "Orbitofrontal Cortex (OFC)",
-            "striatum": "Striatum",
             "superiorParietalCortex": "Superior Parietal Cortex",
             "ventromedialPrefrontalCortex": "Ventromedial Prefrontal Cortex (VMPFC)"
         };
@@ -448,7 +510,6 @@ loader.load('/Brain.glb', function (gltf) {
             "Insula": "Handles emotional self-awareness. A high score might suggest disconnection from bodily sensations. Practice body scans, mindful eating, or mirror meditation to reestablish this link.",
             "Nucleus Accumbens": "Processes pleasure and reward. High stress here could reduce motivation or joy. Engage in hobbies, celebrate small wins, and foster social connection for dopamine boosts.",
             "Orbitofrontal Cortex (OFC)": "Involved in emotional regulation and reward evaluation. At-risk scores may reflect impulsivity or emotional swings. Use structured goal setting and emotion labeling to regain control.",
-            "Striatum": "Regulates goal-directed behavior. Heightened risk may lead to lack of drive or overdependence on routine. Refresh goals weekly and seek novelty to activate this center.",
             "Superior Parietal Cortex": "Governs attention and sensory coordination. Overactivity might lead to sensory overload or disorientation. Grounding practices and sensory breaks are recommended.",
             "Ventromedial Prefrontal Cortex (VMPFC)": "Integrates emotion with decision-making. High activation might reflect emotional confusion. Practicing gratitude journaling and perspective-taking can aid integration."
         };
@@ -512,18 +573,31 @@ loader.load('/Brain.glb', function (gltf) {
 
         report += `<hr/><p style="font-size: 0.9em;"><em>This report is for informational purposes only and does not substitute for clinical advice. For concerns regarding emotional health or neurological function, please consult a licensed healthcare provider.</em></p>`;
 
-        // Update modal content
-        predictionModalTitle.textContent = "Brain Prediction Report";
-        predictionModalContent.innerHTML = report;
+        // Găsim elementele specifice acestui buton/modal
+        const modalTitle = document.getElementById(`predictionModalTitle${buttonId}`);
+        const modalContent = document.getElementById(`predictionModalContent${buttonId}`);
+        const modal = document.getElementById(`predictionModal${buttonId}`);
+        const showBtn = document.getElementById(`showPredictionInfoBtn${buttonId}`);
 
-        // Show button
-        showPredictionInfoBtn.style.display = "block";
+        if (!modal || !modalTitle || !modalContent || !showBtn) {
+            console.warn(`Elementele pentru butonul ${buttonId} nu au fost găsite.`);
+            return;
+        }
 
-        // Open modal on click
-        showPredictionInfoBtn.addEventListener("click", function () {
-            predictionModal.style.display = "flex";
-        });
+        // Actualizăm și afișăm modalul
+        modalTitle.textContent = "Brain Prediction Report";
+        modalContent.innerHTML = report;
+        showBtn.style.display = "block";
+
+        // Adăugăm handler o singură dată (verificare înainte)
+        if (!showBtn.dataset.listenerAdded) {
+            showBtn.addEventListener("click", function () {
+                modal.style.display = "flex";
+            });
+            showBtn.dataset.listenerAdded = "true";
+        }
     }
+    
 
 
     // Funcția care trimite cererea de predicție
@@ -553,8 +627,8 @@ loader.load('/Brain.glb', function (gltf) {
             console.log("Rezultatul predicției:", prediction);
 
             updateBrainPredicted(prediction);
-            showPredictionButton(prediction);
-
+            showPredictionButton(prediction, 1);
+            hidePredictionButton(2);
 
         } catch (error) {
             console.error("Eroare la predicție:", error);
@@ -814,8 +888,7 @@ loader.load('/Brain.glb', function (gltf) {
             hypothalamus: ["HypoThalamus-L", "HypoThalamus-R"],
             dorsolateralPrefrontalCortex: ["DPC-L", "DPC-R"],
             orbitofrontalCortex: ["OFC-L", "OFC-R"],
-            striatum: ["Striatum"],
-            hippocampus: ["Hippocampus-L", "Hippocampus-R"],
+            hippocampus: ["Hippocampus-R"],
             superiorParietalCortex: ["SPC-L", "SPC-R"],
             basalGanglia: ["BasalGanglia-L", "BasalGanglia-R"]
         };
@@ -961,6 +1034,7 @@ loader.load('/Brain.glb', function (gltf) {
     }
     if (emotionDatePicker) {
         emotionDatePicker.addEventListener("change", function () {
+            showLegend("emotional");
             const selectedDate = this.value;
             if (predictSlider) {
                 predictSlider.value = 0;
@@ -969,6 +1043,7 @@ loader.load('/Brain.glb', function (gltf) {
                 }
             }
             applyEmotionHighlightForDate(selectedDate);
+            hidePredictionButton(1);
         });
 
         //applyEmotionHighlightForDate(currentDate);
@@ -1138,23 +1213,90 @@ loader.load('/Brain.glb', function (gltf) {
     // Adăugăm eveniment pentru schimbarea datei
     emotionDatePicker.addEventListener("change", function () {
         const selectedDate = this.value;
-
+        showLegend("emotional");
         // Actualizăm riscurile și regiunile echilibrate
         updateRiskAndBalancedRegions(selectedDate);
 
         // Activăm butonul pentru a vizualiza daunele cerebrale
         viewBrainDamageButton.disabled = false;
+        hidePredictionButton(1);
 
     });
 
     
     // Funcție pentru a activa vizualizarea daunei cerebrale
     viewBrainDamageButton.addEventListener("click", function () {
+        showLegend("damage");
         viewBrainDamage();
     });
 
+    async function fetchWeightedPrediction(yearsSinceStart) {
+        if (isNaN(yearsSinceStart)) {
+            alert("Selectează o valoare pentru ani.");
+            return;
+        }
+
+        const body = {
+            yearsSinceStart: yearsSinceStart
+        };
+
+        try {
+            const response = await fetch("/Visualize/PredictBrainDamageWeighted", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(body)
+            });
+
+            if (!response.ok) throw new Error("Request failed");
+            const prediction = await response.json();
+
+            console.log("Rezultatul predicției:", prediction);
+
+            updateBrainPredicted(prediction);
+            showPredictionButton(prediction, 2);
+            hidePredictionButton(1);
+
+        } catch (error) {
+            console.error("Eroare la predicție:", error);
+            alert("A apărut o problemă la generarea predicției.");
+        }
+    }
+
+    // Setăm valoarea implicită pentru predicție
+    projectionYears.textContent = projectionSlider.value + " years";
+
+    projectionSlider.addEventListener("input", async function () {
+        hidePredictionButton(2);
+        projectionYears.textContent = this.value + " years";
+        const years = parseInt(projectionSlider.value);
+        console.log("Predicting for " + years + " years");
+       
+        document.getElementById("loadingSpinner2").style.display = "block";
+
+        try {
+            await fetchWeightedPrediction(years);
+        } catch (error) {
+            console.error("Eroare la fetchPrediction:", error);
+        } finally {
+            document.getElementById("loadingSpinner2").style.display = "none";
+        }
+    });
+
     
-    
+    document.getElementById("tabBrainProjection").addEventListener("click", async function () {
+        document.getElementById("loadingSpinner2").style.display = "block";
+
+        try {
+            await fetchWeightedPrediction(0);
+        } catch (error) {
+            console.error("Eroare la fetchPrediction:", error);
+        } finally {
+            document.getElementById("loadingSpinner2").style.display = "none";
+            showLegend("damage");
+        }
+    });
 
 }, undefined, function (error) {
     console.error('An error occurred while loading the model:', error);
@@ -1173,21 +1315,126 @@ function animate() {
 }
 animate();
 
-
 document.getElementById("tabInformative").addEventListener("click", function () {
+    showLegend("emotional");
     document.getElementById("informativePanel").style.display = "block";
     document.getElementById("myBrainPanel").style.display = "none";
+    document.getElementById("brainProjectionPanel").style.display = "none"; // Ascundem tabul de Brain Projection
     this.classList.add("active");
     document.getElementById("tabMyBrain").classList.remove("active");
+    document.getElementById("tabBrainProjection").classList.remove("active");
+    hidePredictionButton(2);
 });
 
 document.getElementById("tabMyBrain").addEventListener("click", function () {
+    showLegend("emotional");
     document.getElementById("informativePanel").style.display = "none";
     document.getElementById("myBrainPanel").style.display = "block";
+    document.getElementById("brainProjectionPanel").style.display = "none"; // Ascundem tabul de Brain Projection
     this.classList.add("active");
     document.getElementById("tabInformative").classList.remove("active");
+    document.getElementById("tabBrainProjection").classList.remove("active");
+    hidePredictionButton(2);
 });
+
+document.getElementById("tabBrainProjection").addEventListener("click", function () {
+    document.getElementById("informativePanel").style.display = "none";
+    document.getElementById("myBrainPanel").style.display = "none"; // Ascundem tabul de MyBrain
+    document.getElementById("brainProjectionPanel").style.display = "block"; // Afișăm tabul de Brain Projection
+    this.classList.add("active");
+    document.getElementById("tabInformative").classList.remove("active");
+    document.getElementById("tabMyBrain").classList.remove("active");
+});
+
+// Funcție pentru pan, simulează mișcarea pe touchpad
+function panCamera(direction) {
+    const panSpeed = 0.1;
+
+    // Vectorul de pan va fi compus din axele camerei
+    const panOffset = new THREE.Vector3();
+
+    // Obține axele camerei
+    const cameraRight = new THREE.Vector3();
+    camera.getWorldDirection(panOffset); // direcția în față
+    cameraRight.crossVectors(camera.up, panOffset).normalize(); // axa dreapta
+    const cameraUp = camera.up.clone().normalize(); // axa sus
+
+    // Alegem direcția de deplasare
+    switch (direction) {
+        case 'left':
+            panOffset.copy(cameraRight).multiplyScalar(-panSpeed);
+            break;
+        case 'right':
+            panOffset.copy(cameraRight).multiplyScalar(panSpeed);
+            break;
+        case 'up':
+            panOffset.copy(cameraUp).multiplyScalar(panSpeed);
+            break;
+        case 'down':
+            panOffset.copy(cameraUp).multiplyScalar(-panSpeed);
+            break;
+    }
+
+    // Aplicăm offset-ul poziției camerei și țintei
+    camera.position.add(panOffset);
+    controls.target.add(panOffset);
+    controls.update();
+}
+
+
+// Declarație pentru intervalul de mișcare
+let panInterval = null;
+
+// Începe mișcarea continuă la apăsarea butonului
+function startPan(direction) {
+    if (!panInterval) {
+        panInterval = setInterval(() => {
+            panCamera(direction);
+        }, 16);  // Aproape 60fps
+    }
+}
+
+// Oprește mișcarea la eliberarea butonului
+function stopPan() {
+    clearInterval(panInterval);
+    panInterval = null;
+}
+
+
+let zoomInterval = null;
+
+function startZoom(direction) {
+    const zoomSpeed = 0.05;
+    const currentDistance = camera.position.distanceTo(controls.target);
+    let zoomChange = 0;
+
+    if (direction === 'in' && currentDistance > 0.5) {
+        zoomChange = -zoomSpeed * currentDistance;
+    } else if (direction === 'out' && currentDistance < 100) {
+        zoomChange = zoomSpeed * currentDistance;
+    }
+
+    // Dacă nu există un interval activ, începem zoom-ul continuu
+    if (zoomChange !== 0 && !zoomInterval) {
+        zoomInterval = setInterval(() => {
+            const directionVector = new THREE.Vector3().subVectors(camera.position, controls.target).normalize();
+            camera.position.addScaledVector(directionVector, zoomChange);
+            controls.target.addScaledVector(directionVector, zoomChange);
+            controls.update();
+        }, 16); // Aproape 60fps
+    }
+}
+
+function stopZoom() {
+    if (zoomInterval) {
+        clearInterval(zoomInterval);
+        zoomInterval = null;
+    }
+}
+
+
 window.addEventListener('load', () => {
+    showLegend("emotional");
     const emotionDescription = document.getElementById("emotionDescription");
     emotionDescription.innerHTML = `
             <p>
@@ -1198,6 +1445,88 @@ window.addEventListener('load', () => {
                 <li>Hover over a brain region to discover its role.</li>
                 <li>Click on a brain region to see detailed scientific information about its function and emotional relevance.</li>
                 <li>Observe how emotions interact with brain structure.</li>
-            </ul>`;  
+            </ul>`; 
+    const panUpButton = document.getElementById('pan-up');
+    const panDownButton = document.getElementById('pan-down');
+    const panLeftButton = document.getElementById('pan-left');
+    const panRightButton = document.getElementById('pan-right');
+    const zoomInButton = document.getElementById('zoom-in');
+    const zoomOutButton = document.getElementById('zoom-out');
+    // Verifică dacă butoanele sunt găsite corect
+    console.log(panUpButton, panDownButton, panLeftButton, panRightButton, zoomInButton, zoomOutButton);
+
+
+    if (panUpButton) {
+        panUpButton.addEventListener('mousedown', function () {
+            startPan('up');
+        });
+        panUpButton.addEventListener('mouseup', function () {
+            stopPan();
+        });
+        panUpButton.addEventListener('mouseleave', function () {  // Asigură-te că pan-ul se oprește dacă utilizatorul părăsește butonul
+            stopPan();
+        });
+    }
+
+    if (panDownButton) {
+        panDownButton.addEventListener('mousedown', function () {
+            startPan('down');
+        });
+        panDownButton.addEventListener('mouseup', function () {
+            stopPan();
+        });
+        panDownButton.addEventListener('mouseleave', function () {
+            stopPan();
+        });
+    }
+
+    if (panLeftButton) {
+        panLeftButton.addEventListener('mousedown', function () {
+            startPan('left');
+        });
+        panLeftButton.addEventListener('mouseup', function () {
+            stopPan();
+        });
+        panLeftButton.addEventListener('mouseleave', function () {
+            stopPan();
+        });
+    }
+
+    if (panRightButton) {
+        panRightButton.addEventListener('mousedown', function () {
+            startPan('right');
+        });
+        panRightButton.addEventListener('mouseup', function () {
+            stopPan();
+        });
+        panRightButton.addEventListener('mouseleave', function () {
+            stopPan();
+        });
+    }
+
+    if (zoomInButton) {
+        zoomInButton.addEventListener('mousedown', function () {
+            startZoom('in');
+        });
+        zoomInButton.addEventListener('mouseup', function () {
+            stopZoom();
+        });
+        zoomInButton.addEventListener('mouseleave', function () {
+            stopZoom();
+        });
+    }
+
+    if (zoomOutButton) {
+        zoomOutButton.addEventListener('mousedown', function () {
+            startZoom('out');
+        });
+        zoomOutButton.addEventListener('mouseup', function () {
+            stopZoom();
+        });
+        zoomOutButton.addEventListener('mouseleave', function () {
+            stopZoom();
+        });
+    }
+    
 });
 

@@ -18,19 +18,19 @@
 
 <div style="display: flex; flex-direction: row; height: 100vh;">
     <!-- Stânga: Canvas Three.js -->
-    <div style="flex: 2; background: transparent;">
+    <div style="flex: 2; background: transparent; position:relative;">
         <canvas id="brainCanvas"></canvas>
-        <div id="emotionLegend">
-            <h4 style="color: #088aa7">Emotion Legend</h4>
-            <ul>
-                <li style="color: #F6BE00;"><span>&#128522;</span> Joy</li>
-                <li style="color: blue;"><span>&#128546;</span> Sadness</li>
-                <li style="color: magenta;"><span>&#128561;</span> Fear</li>
-                <li style="color: red;"><span>&#128548;</span> Anger</li>
-                <li style="color: #FF69B4;"><span>&#128525;</span> Love</li>
-                <li style="color: #FFD700;"><span>&#128578;</span> Surprise</li>
-                <li style="color: green;"><span>&#129300;</span> Disgust</li>
-            </ul>
+        <div id="emotionLegend"></div>
+
+        <!-- Butoane de navigare în dreapta jos -->
+        <div id="navigationControls">
+            <button id="pan-up">↑</button>
+            <button id="pan-left">←</button>
+            <button id="pan-right">→</button>
+            <button id="pan-down">↓</button>
+            <button id="zoom-in">＋</button>
+            <button id="zoom-out">－</button>
+
         </div>
     </div>
 
@@ -39,6 +39,7 @@
         <div style="display: flex; gap: 10px; margin-bottom: 20px;">
             <button id="tabInformative" class="tab-btn active" style="border-radius: 25px;">Informative</button>
             <button id="tabMyBrain" class="tab-btn" style="border-radius: 25px;">My Brain</button>
+            <button id="tabBrainProjection" class="tab-btn" style="border-radius: 25px;">Brain Projection</button>
         </div>
 
         <div id="informativePanel">
@@ -110,9 +111,16 @@
                 <label for="predictSlider" class="form-label">Predict my brain in:</label><br />
                 <input type="range" id="predictSlider" min="0" max="10" step="1" value="0" class="form-range" />
                 <span id="predictYears">0 years</span>
+
             </div>
 
-            <button id="showPredictionInfoBtn" style="display: none; border-radius: 30px; color:white;" class="btn btn-info">Show Prediction Details</button>
+            <button id="showPredictionInfoBtn1" style="display: none; border-radius: 30px; color:white;" class="btn btn-info">Show Prediction Details</button>
+            <div id="loadingSpinner1" class="text-center" style="display: none;">
+                <div class="spinner-border text-info" role="status" style="width: 2.5rem; height: 2.5rem;">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+
             <br />
             <!-- Scor de uzură / risc -->
             <div id="riskSummary" style="margin-top: 20px;">
@@ -131,6 +139,60 @@
                 <p id="noBalancedMessage" style="display: none; color: #28a745;">No balanced brain regions were found based on the selected emotional profile. This means that no regions were identified as being in a neutral state with respect to the chosen emotions.</p>
             </div>
         </div>
+
+        <div id="brainProjectionPanel" style="display: none;">
+            <h2>Brain Projection – Future Outlook</h2>
+
+            <!-- Funcțional: Slider și buton -->
+            <div style="margin-bottom: 20px;">
+                <label for="projectionSlider" class="form-label">Predict my brain in:</label><br />
+                <input type="range" id="projectionSlider" min="0" max="10" step="1" value="0" class="form-range" />
+                <span id="projectionYears">0 years</span>
+            </div>
+
+            <div id="projectionResult" style="margin-top: 20px;">
+                <p>Your brain projection will be displayed here based on your emotional history and the selected years.</p>
+            </div>
+
+            <br />
+            <button id="showPredictionInfoBtn2" style="display: none; border-radius: 30px; color:white;" class="btn btn-info">Show Prediction Details</button>
+            <div id="loadingSpinner2" class="text-center" style="display: none;">
+                <div class="spinner-border text-info" role="status" style="width: 2.5rem; height: 2.5rem;">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+            <!-- Informații explicative afișate permanent -->
+            <div id="brainInfoContent" style="margin-top: 30px;">
+                <h4>About this Brain Projection</h4>
+                <p>
+                    This feature leverages a <strong>machine learning model trained on the NKI-Rockland Sample (NKI-RS)</strong> dataset — a comprehensive, open-access
+                    neuroimaging collection used in research on brain development and mental health.
+                </p>
+
+                <p>
+                    Your current emotional profile is processed using a <strong>weighted average of your emotional history</strong>, with more recent experiences
+                    carrying greater influence. Based on this and the selected future timeframe (via the slider), we simulate how key brain regions might be impacted.
+                </p>
+
+                <p>
+                    The resulting prediction shows possible stress or dysregulation in areas such as the <em>Amygdala</em>, <em>Prefrontal Cortex</em>, and
+                    <em>Hippocampus</em> — regions known for their role in emotion, memory, and regulation.
+                </p>
+
+                <div style="margin: 15px 0; padding: 10px; background-color: #f5f5f5; border-left: 5px solid #0dcaf0;">
+                    <strong>Did you know?</strong><br />
+                    Research indicates that <strong>chronic emotional stress over 5–10 years</strong> can lead to measurable changes in brain structure and function.
+                    Early awareness supports better mental health outcomes.
+                </div>
+
+                <p>
+                    This projection is not a diagnosis, but a tool for awareness. The accompanying report includes personalized recommendations
+                    to help maintain or restore emotional brain balance based on predicted risk.
+                </p>
+            </div>
+        </div>
+
+
     </div>
 </div>
 <br /><br /><br />
@@ -149,16 +211,30 @@
     </div>
 </div>
 
-<!-- Modala pentru informații despre preziceri -->
-<div id="predictionModal" class="custom-modal">
+<!-- Modala pentru informații despre preziceri tab 1 -->
+<div id="predictionModal1" class="custom-modal">
     <div class="custom-modal-content">
-        <span class="custom-modal-close" onclick="document.getElementById('predictionModal').style.display='none'">&times;</span>
+        <span class="custom-modal-close" onclick="document.getElementById('predictionModal1').style.display='none'">&times;</span>
 
-        <h3 id="predictionModalTitle" class="custom-modal-title">Prediction Information</h3>
+        <h3 id="predictionModalTitle1" class="custom-modal-title">Prediction Information</h3>
 
-        <div id="predictionModalContent" class="custom-modal-body"></div>
+        <div id="predictionModalContent1" class="custom-modal-body"></div>
 
-        <button class="custom-modal-button" onclick="document.getElementById('predictionModal').style.display='none'">
+        <button class="custom-modal-button" onclick="document.getElementById('predictionModal1').style.display='none'">
+            Close
+        </button>
+    </div>
+</div>
+<!-- Modala pentru informații despre preziceri tab 2-->
+<div id="predictionModal2" class="custom-modal">
+    <div class="custom-modal-content">
+        <span class="custom-modal-close" onclick="document.getElementById('predictionModal2').style.display='none'">&times;</span>
+
+        <h3 id="predictionModalTitle2" class="custom-modal-title">Prediction Information</h3>
+
+        <div id="predictionModalContent2" class="custom-modal-body"></div>
+
+        <button class="custom-modal-button" onclick="document.getElementById('predictionModal2').style.display='none'">
             Close
         </button>
     </div>

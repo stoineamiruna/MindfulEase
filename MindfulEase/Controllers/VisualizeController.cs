@@ -130,6 +130,71 @@ namespace MindfulEase.Controllers
         }
 
 
+        [HttpPost]
+        [IgnoreAntiforgeryToken]
+        public async Task<IActionResult> PredictBrainDamageWeighted([FromBody] PredictionRequest request)
+        {
+            var userId = _userManager.GetUserId(User);
+            Console.WriteLine($"[PredictBrainDamage] UserId: {userId}");
+            Console.WriteLine($"[PredictBrainDamage] Request YearsSinceStart: {request.YearsSinceStart}");
+
+            // Calculăm data de început pe baza valorii sliderului (YearsSinceStart)
+            var startDate = DateTime.Now.AddYears(-request.YearsSinceStart);
+
+            // Extragem emoțiile utilizatorului din baza de date
+            var allEmotions = await db.ApplicationUserEmotions
+                .Where(ue => ue.UserId == userId && ue.Date >= startDate)
+                .Select(ue => new { ue.Emotion.Label, MoodValue = (int)Math.Round((double)ue.MoodValue) })
+                .ToListAsync();
+
+            var diaryEmotions = await db.DiaryEmotions
+                .Where(de => de.Diary.UserId == userId && de.Diary.EntryDate >= startDate)
+                .Select(de => new { de.Emotion.Label, MoodValue = (int)Math.Round((double)(de.Score * 9 + 1)) })
+                .ToListAsync();
+
+            var grouped = allEmotions.Concat(diaryEmotions)
+                .GroupBy(e => e.Label.ToLower())
+                .ToDictionary(g => g.Key, g => (int)Math.Round(g.Average(e => e.MoodValue)));
+
+            Console.WriteLine("[PredictBrainDamage] Grouped emotions:");
+            foreach (var kvp in grouped)
+            {
+                Console.WriteLine($"  - {kvp.Key}: {kvp.Value}");
+            }
+
+            // Calculează media ponderată pentru fiecare emoție
+            int Get(string key) => grouped.TryGetValue(key, out var val) ? val : 1;
+
+            var user = await _userManager.GetUserAsync(User);
+            Console.WriteLine($"[PredictBrainDamage] User Age: {user.Age}, Sex: {user.Sex}");
+
+            var input = new EmotionalInputData
+            {
+                Age = (float)user.Age,
+                Sex = user.Sex,
+                Joy = Get("joy"),
+                Sadness = Get("sadness"),
+                Anger = Get("anger"),
+                Love = Get("love"),
+                Fear = Get("fear"),
+                Surprise = Get("surprise"),
+                Disgust = Get("disgust"),
+                YearsSinceStart = request.YearsSinceStart
+            };
+
+            Console.WriteLine("[PredictBrainDamage] Input for model:");
+            Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(input));
+
+            var prediction = _predictionService.PredictBrainDamageProgression(input);
+
+            Console.WriteLine("[PredictBrainDamage] Prediction result:");
+            Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(prediction));
+
+            return Json(prediction);
+        }
+
+
+
         public class PredictionRequest
         {
             public DateTime Date { get; set; }
