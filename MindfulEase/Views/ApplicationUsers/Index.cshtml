@@ -4,7 +4,12 @@
 
 <div class="img-custom">
     <!-- Imagine de fundal, începe sub navbar -->
-    <div class="container-fluid" style="background-image: linear-gradient(to bottom, transparent 90%, rgb(255, 255, 255) 100%), url('@Url.Content("~/img/indexUser1.jpg")'); background-size: cover; background-position: center; height: 100vh; margin-top: 56px;">
+    <div class="container-fluid" style="background-image: linear-gradient(to bottom, transparent 90%, rgb(255, 255, 255) 100%), url('@Url.Content("~/img/indexUser1.jpg")'); background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 100vh;
+    height: auto;
+    margin-top: 56px;">
 
         <!-- Textul în colțul stâng sus fără fundal -->
         <div class="position-absolute top-40 start-0 p-4">
@@ -54,7 +59,7 @@
                 <div class="card mb-3" style="max-width: 700px; width: 100%; background-color: @user.BackgroundColor; border-radius: 15px;">
                     <div class="card-body d-flex align-items-center" style="min-height: 250px;">
                         <!-- Poza de profil în stânga, mai mare -->
-                        <img src="@user.ProfilePicture" class="card-img-top rounded-circle" alt="@user.FirstName @user.LastName" style="width: 150px; height: 150px; object-fit: cover; margin-right: 20px;">
+                        <img src="@user.ProfilePicture" class="card-img-top rounded-circle" alt="@user.FirstName @user.LastName" style="width: 10vw; height: 10vw; object-fit: cover; margin-right: 20px;">
 
                         <!-- Informațiile despre utilizator în dreapta -->
                         <div class="d-flex flex-column justify-content-between" style="flex-grow: 1;">
