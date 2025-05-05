@@ -4,6 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
+    <style>
+        .btn-outline-homepage {
+            color: #72bfcf;
+            border-color: #72bfcf;
+            font-size: 1.1rem;
+        }
+
+            .btn-outline-homepage:hover {
+                background-color: #72bfcf;
+                color: white;
+            }
+    </style>
 </head>
 <body>
     <div class="img-container">
@@ -13,5 +25,96 @@
             <p class="app-description">Your journey to better mental health starts here.</p>
         </div>
     </div>
+    <section class="container-fluid my-5 px-4 section1" style="border-radius: 30px;
+             background:
+             linear-gradient(to top, transparent 90%, #ffffff 100%),
+             linear-gradient(to bottom, transparent 90%, #ffffff 100%),
+             linear-gradient(to left, transparent 90%, #ffffff 100%),
+             linear-gradient(to right, transparent 90%, #ffffff 100%),
+             linear-gradient(45deg, rgba(106,170,255,0.3), rgba(146,201,255,0.3), rgba(141,232,230,0.3), rgba(255,151,183,0.3));
+             background-blend-mode: overlay, overlay, overlay, overlay, normal;">
+        <br /><br /><br /><br />
+        <h2 class="text-center mb-4 pt-4 app-title-little" >Start Your Mental Health Journey</h2>
+        <br /><br />
+        <div class="row text-center pb-4" style="color: #3a7784; font-family: 'Lora', serif;">
+
+            <!-- Routines -->
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm h-100" style="border:1.5px solid #72bfcf; background: linear-gradient(135deg, #d4f1f9, #ffffff); border-radius: 30px;">
+                    <div class="card-body">
+                        <h4 class="card-title" style="font-size: 1.5rem">Daily Routines</h4>
+                        <br />
+                        <p style="font-size: 1.3rem" class="card-text">Discover personalized wellness routines to support your emotional balance every day.</p>
+                        <br /><br />
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <a href="/Routines/Index" class="btn btn-outline-homepage rounded-pill">Explore Routines</a>
+                        }
+                        else
+                        {
+                            <a asp-area="" asp-controller="Routines" asp-action="SeeMore" class="btn btn-outline-homepage rounded-pill">Explore Routines</a>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <!-- Weekly Challenges -->
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm h-100" style="border:1.5px solid #72bfcf; background: linear-gradient(135deg, #ffe6f0, #ffffff); border-radius: 30px;">
+                    <div class="card-body">
+                        <h4 style="font-size: 1.5rem" class="card-title">Weekly Challenges</h4>
+                        <br />
+                        <p class="card-text" style="font-size: 1.3rem">Take on meaningful weekly challenges to build habits and boost your mood.</p>
+                        <br /><br />
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <a href="/WeeklyChallenges/Index" class="btn btn-outline-homepage rounded-pill">Join Challenge</a>
+                        }
+                        else
+                        {
+                            <a href="/Identity/Account/Login" class="btn btn-outline-homepage rounded-pill">Join Challenge</a>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <!-- Therapeutic Games -->
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm h-100" style="border:1.5px solid #72bfcf; background: linear-gradient(135deg, #e0f7ec, #ffffff); border-radius: 30px;">
+                    <div class="card-body">
+                        <h4 style="font-size: 1.5rem" class="card-title">Games & Quizzes</h4>
+                        <br />
+                        <p class="card-text" style="font-size: 1.3rem">Relax and grow through interactive games and self-reflection quizzes.</p>
+                        <br /><br />
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <a href="/TherapeuticGames/Index" class="btn btn-outline-homepage rounded-pill">Play Now</a>
+                        }
+                        else
+                        {
+                            <a href="/Identity/Account/Login" class="btn btn-outline-homepage rounded-pill">Play Now</a>
+                        }
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <br /><br /><br /><br />
+    </section>
+    <div class="img-custom">
+        <div class="container-fluid" style="background-image: linear-gradient(to bottom, transparent 90%, rgb(255, 255, 255) 100%), url('@Url.Content("~/img/indexUser1.jpg")'); background-size: cover; background-position: center; height: 100vh; margin-top: 56px;">
+            <div class="position-absolute top-40 start-0 p-4">
+                <h1 class="app-title">Find Therapists</h1>
+                <p class="app-description">Explore a wide range of experienced therapists to begin your wellness journey.</p>
+                <br />
+                <br />
+                <p class="app-description">Below, you can search for therapists based on your preferences.</p>
+                <br /><br />
+                <a style="font-family: 'Lora', serif;" href="/ApplicationUsers/Index" class="btn btn-outline-homepage rounded-pill">Browse Therapists</a>
+            </div>
+        </div>
+    </div>
+    <br /><br />
+
 </body>
 </html>
