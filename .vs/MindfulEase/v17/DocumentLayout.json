@@ -3,6 +3,326 @@
   "WorkspaceRootPath": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease.tests\\mindfulease.tests.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|solutionrelative:mindfulease.tests\\mindfulease.tests.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\controllers\\applicationuserscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\controllers\\applicationuserscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease.tests\\models\\ml\\useremotiondataunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|solutionrelative:mindfulease.tests\\models\\ml\\useremotiondataunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease.tests\\models\\ml\\emotionalinputdataunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|solutionrelative:mindfulease.tests\\models\\ml\\emotionalinputdataunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease.tests\\models\\ml\\emotionalbraindataunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|solutionrelative:mindfulease.tests\\models\\ml\\emotionalbraindataunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease.tests\\models\\ml\\brainregionpredictionunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|solutionrelative:mindfulease.tests\\models\\ml\\brainregionpredictionunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease.tests\\models\\ml\\braindamageunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|solutionrelative:mindfulease.tests\\models\\ml\\braindamageunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\models\\ml\\brainregionprediction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\models\\ml\\brainregionprediction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\models\\ml\\useremotiondata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\models\\ml\\useremotiondata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\models\\ml\\emotionalinputdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\models\\ml\\emotionalinputdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\models\\ml\\emotionalbraindata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\models\\ml\\emotionalbraindata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\models\\ml\\braindamage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\models\\ml\\braindamage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease.tests\\models\\emotionclausterpredictionunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|solutionrelative:mindfulease.tests\\models\\emotionclausterpredictionunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease.tests\\models\\errorviewmodelunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|solutionrelative:mindfulease.tests\\models\\errorviewmodelunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\models\\emotionclausterprediction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\models\\emotionclausterprediction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease.tests\\models\\applicationuserweeklychallengeunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|solutionrelative:mindfulease.tests\\models\\applicationuserweeklychallengeunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease.tests\\models\\applicationusertherapeuticgameunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|solutionrelative:mindfulease.tests\\models\\applicationusertherapeuticgameunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease.tests\\models\\applicationuserresourceunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|solutionrelative:mindfulease.tests\\models\\applicationuserresourceunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease.tests\\models\\applicationuserquizunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|solutionrelative:mindfulease.tests\\models\\applicationuserquizunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\models\\applicationuserweeklychallenge.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\models\\applicationuserweeklychallenge.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\models\\applicationusertherapeuticgame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\models\\applicationusertherapeuticgame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\models\\applicationuserresource.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\models\\applicationuserresource.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\models\\applicationuserquiz.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\models\\applicationuserquiz.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease.tests\\models\\weeklyreportunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|solutionrelative:mindfulease.tests\\models\\weeklyreportunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease.tests\\models\\weeklychallengeunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|solutionrelative:mindfulease.tests\\models\\weeklychallengeunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease.tests\\models\\userobjectiveprogressunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|solutionrelative:mindfulease.tests\\models\\userobjectiveprogressunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease.tests\\models\\userobjectiveunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|solutionrelative:mindfulease.tests\\models\\userobjectiveunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\models\\weeklyreport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\models\\weeklyreport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\models\\weeklychallenge.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\models\\weeklychallenge.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\models\\userobjectiveprogress.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\models\\userobjectiveprogress.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\models\\userobjective.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\models\\userobjective.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\models\\userbadge.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\models\\userbadge.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease.tests\\models\\userdataunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|solutionrelative:mindfulease.tests\\models\\userdataunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease.tests\\models\\userbadgeunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|solutionrelative:mindfulease.tests\\models\\userbadgeunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease.tests\\models\\therapeuticgametagunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|solutionrelative:mindfulease.tests\\models\\therapeuticgametagunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease.tests\\models\\therapeuticgameunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|solutionrelative:mindfulease.tests\\models\\therapeuticgameunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\models\\userdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\models\\userdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\models\\therapeuticgametag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\models\\therapeuticgametag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\models\\therapeuticgame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\models\\therapeuticgame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\models\\tag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\models\\tag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease.tests\\models\\savedresourceunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|solutionrelative:mindfulease.tests\\models\\savedresourceunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease.tests\\models\\routineunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|solutionrelative:mindfulease.tests\\models\\routineunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease.tests\\models\\rewardunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|solutionrelative:mindfulease.tests\\models\\rewardunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\models\\savedresource.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\models\\savedresource.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\models\\routine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\models\\routine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\models\\reward.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\models\\reward.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease.tests\\models\\resourcetagunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|solutionrelative:mindfulease.tests\\models\\resourcetagunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease.tests\\models\\resourceunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|solutionrelative:mindfulease.tests\\models\\resourceunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease.tests\\models\\quiztagunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|solutionrelative:mindfulease.tests\\models\\quiztagunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\models\\resourcetag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\models\\resourcetag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\models\\resource.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\models\\resource.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\models\\quiztag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\models\\quiztag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\models\\quiz.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\models\\quiz.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease.tests\\models\\tagunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|solutionrelative:mindfulease.tests\\models\\tagunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease.tests\\models\\applicationuserquestionquizunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|solutionrelative:mindfulease.tests\\models\\applicationuserquestionquizunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease.tests\\models\\questionquizunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|solutionrelative:mindfulease.tests\\models\\questionquizunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease.tests\\models\\quizunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|solutionrelative:mindfulease.tests\\models\\quizunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease.tests\\models\\objectiveunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|solutionrelative:mindfulease.tests\\models\\objectiveunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\models\\applicationuserquestionquiz.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\models\\applicationuserquestionquiz.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\models\\questionquiz.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\models\\questionquiz.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\models\\objective.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\models\\objective.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease.tests\\models\\notificationunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|solutionrelative:mindfulease.tests\\models\\notificationunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease.tests\\models\\emotionbrainregionunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|solutionrelative:mindfulease.tests\\models\\emotionbrainregionunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease.tests\\models\\diaryemotionunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|solutionrelative:mindfulease.tests\\models\\diaryemotionunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\models\\notification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\models\\notification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\models\\applicationuseremotion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\models\\applicationuseremotion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\models\\emotionbrainregion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\models\\emotionbrainregion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\models\\diaryemotion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\models\\diaryemotion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease.tests\\models\\emotionunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|solutionrelative:mindfulease.tests\\models\\emotionunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease.tests\\models\\diaryunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|solutionrelative:mindfulease.tests\\models\\diaryunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease.tests\\models\\brainregionunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|solutionrelative:mindfulease.tests\\models\\brainregionunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease.tests\\models\\badgeunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|solutionrelative:mindfulease.tests\\models\\badgeunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\models\\emotion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\models\\emotion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\models\\diary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\models\\diary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\models\\brainregion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\models\\brainregion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\models\\badge.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\models\\badge.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease.tests\\models\\applicationuseremotionunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|solutionrelative:mindfulease.tests\\models\\applicationuseremotionunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease.tests\\models\\applicationuserunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{95003697-3730-4044-8191-836742814DCD}|MindfulEase.Tests\\MindfulEase.Tests.csproj|solutionrelative:mindfulease.tests\\models\\applicationuserunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\models\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\models\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|c:\\users\\miru\\desktop\\licenta\\mindfulease\\mindfulease\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{25377F93-35AF-4CA5-9FED-351E1EAEEAF4}|MindfulEase\\MindfulEase.csproj|solutionrelative:mindfulease\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
@@ -70,11 +390,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 9,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 81,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "MindfulEase\\Views\\Shared\\_Layout.cshtml",
@@ -83,7 +403,1046 @@
               "ViewState": "AQIAAH8AAAAAAAAAAAAwwIYAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-05-05T15:12:12.781Z",
-              "IsPinned": true,
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ApplicationUsersController.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Controllers\\ApplicationUsersController.cs",
+              "RelativeDocumentMoniker": "MindfulEase\\Controllers\\ApplicationUsersController.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Controllers\\ApplicationUsersController.cs",
+              "RelativeToolTip": "MindfulEase\\Controllers\\ApplicationUsersController.cs",
+              "ViewState": "AQIAALcBAAAAAAAAAAAwwNcBAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T15:35:16.698Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "EmotionalBrainDataUnitTest.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\ML\\EmotionalBrainDataUnitTest.cs",
+              "RelativeDocumentMoniker": "MindfulEase.Tests\\Models\\ML\\EmotionalBrainDataUnitTest.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\ML\\EmotionalBrainDataUnitTest.cs",
+              "RelativeToolTip": "MindfulEase.Tests\\Models\\ML\\EmotionalBrainDataUnitTest.cs",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAwwC4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T15:25:50.632Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "EmotionalInputDataUnitTest.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\ML\\EmotionalInputDataUnitTest.cs",
+              "RelativeDocumentMoniker": "MindfulEase.Tests\\Models\\ML\\EmotionalInputDataUnitTest.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\ML\\EmotionalInputDataUnitTest.cs",
+              "RelativeToolTip": "MindfulEase.Tests\\Models\\ML\\EmotionalInputDataUnitTest.cs",
+              "ViewState": "AQIAAAEAAAAAAAAAAAAwwCEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T15:26:03.904Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MindfulEase.Tests",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\MindfulEase.Tests.csproj",
+              "RelativeDocumentMoniker": "MindfulEase.Tests\\MindfulEase.Tests.csproj",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\MindfulEase.Tests.csproj",
+              "RelativeToolTip": "MindfulEase.Tests\\MindfulEase.Tests.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-05-07T14:40:36.529Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "BrainRegionPredictionUnitTest.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\ML\\BrainRegionPredictionUnitTest.cs",
+              "RelativeDocumentMoniker": "MindfulEase.Tests\\Models\\ML\\BrainRegionPredictionUnitTest.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\ML\\BrainRegionPredictionUnitTest.cs",
+              "RelativeToolTip": "MindfulEase.Tests\\Models\\ML\\BrainRegionPredictionUnitTest.cs",
+              "ViewState": "AQIAAAUAAAAAAAAAAAA/wCUAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T15:26:36.636Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UserEmotionDataUnitTest.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\ML\\UserEmotionDataUnitTest.cs",
+              "RelativeDocumentMoniker": "MindfulEase.Tests\\Models\\ML\\UserEmotionDataUnitTest.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\ML\\UserEmotionDataUnitTest.cs",
+              "RelativeToolTip": "MindfulEase.Tests\\Models\\ML\\UserEmotionDataUnitTest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T15:26:16.423Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "BrainDamageUnitTest.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\ML\\BrainDamageUnitTest.cs",
+              "RelativeDocumentMoniker": "MindfulEase.Tests\\Models\\ML\\BrainDamageUnitTest.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\ML\\BrainDamageUnitTest.cs",
+              "RelativeToolTip": "MindfulEase.Tests\\Models\\ML\\BrainDamageUnitTest.cs",
+              "ViewState": "AQIAACYAAAAAAAAAAAAwwEYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T15:25:37.883Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "UserEmotionData.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\ML\\UserEmotionData.cs",
+              "RelativeDocumentMoniker": "MindfulEase\\Models\\ML\\UserEmotionData.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\ML\\UserEmotionData.cs",
+              "RelativeToolTip": "MindfulEase\\Models\\ML\\UserEmotionData.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T15:24:45.626Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "EmotionalInputData.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\ML\\EmotionalInputData.cs",
+              "RelativeDocumentMoniker": "MindfulEase\\Models\\ML\\EmotionalInputData.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\ML\\EmotionalInputData.cs",
+              "RelativeToolTip": "MindfulEase\\Models\\ML\\EmotionalInputData.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T15:24:32.747Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "EmotionalBrainData.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\ML\\EmotionalBrainData.cs",
+              "RelativeDocumentMoniker": "MindfulEase\\Models\\ML\\EmotionalBrainData.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\ML\\EmotionalBrainData.cs",
+              "RelativeToolTip": "MindfulEase\\Models\\ML\\EmotionalBrainData.cs",
+              "ViewState": "AQIAADYAAAAAAAAAAAAAAE4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T15:24:12.827Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "BrainRegionPrediction.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\ML\\BrainRegionPrediction.cs",
+              "RelativeDocumentMoniker": "MindfulEase\\Models\\ML\\BrainRegionPrediction.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\ML\\BrainRegionPrediction.cs",
+              "RelativeToolTip": "MindfulEase\\Models\\ML\\BrainRegionPrediction.cs",
+              "ViewState": "AQIAAAoAAAAAAAAAAAA/wBIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T15:23:57.415Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "BrainDamage.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\ML\\BrainDamage.cs",
+              "RelativeDocumentMoniker": "MindfulEase\\Models\\ML\\BrainDamage.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\ML\\BrainDamage.cs",
+              "RelativeToolTip": "MindfulEase\\Models\\ML\\BrainDamage.cs",
+              "ViewState": "AQIAAEMAAAAAAAAAAAAqwFoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T15:23:14.588Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ErrorViewModelUnitTest.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\ErrorViewModelUnitTest.cs",
+              "RelativeDocumentMoniker": "MindfulEase.Tests\\Models\\ErrorViewModelUnitTest.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\ErrorViewModelUnitTest.cs",
+              "RelativeToolTip": "MindfulEase.Tests\\Models\\ErrorViewModelUnitTest.cs",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAwwC8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T15:20:29.552Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "EmotionClausterPredictionUnitTest.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\EmotionClausterPredictionUnitTest.cs",
+              "RelativeDocumentMoniker": "MindfulEase.Tests\\Models\\EmotionClausterPredictionUnitTest.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\EmotionClausterPredictionUnitTest.cs",
+              "RelativeToolTip": "MindfulEase.Tests\\Models\\EmotionClausterPredictionUnitTest.cs",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAowAsAAAA5AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T15:20:18.575Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "ErrorViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\ErrorViewModel.cs",
+              "RelativeDocumentMoniker": "MindfulEase\\Models\\ErrorViewModel.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\ErrorViewModel.cs",
+              "RelativeToolTip": "MindfulEase\\Models\\ErrorViewModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T15:19:20.465Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "EmotionClausterPrediction.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\EmotionClausterPrediction.cs",
+              "RelativeDocumentMoniker": "MindfulEase\\Models\\EmotionClausterPrediction.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\EmotionClausterPrediction.cs",
+              "RelativeToolTip": "MindfulEase\\Models\\EmotionClausterPrediction.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T15:18:48.499Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "ApplicationUserWeeklyChallengeUnitTest.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\ApplicationUserWeeklyChallengeUnitTest.cs",
+              "RelativeDocumentMoniker": "MindfulEase.Tests\\Models\\ApplicationUserWeeklyChallengeUnitTest.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\ApplicationUserWeeklyChallengeUnitTest.cs",
+              "RelativeToolTip": "MindfulEase.Tests\\Models\\ApplicationUserWeeklyChallengeUnitTest.cs",
+              "ViewState": "AQIAABUAAAAAAAAAAAAwwDUAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T15:17:13.882Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "ApplicationUserTherapeuticGameUnitTest.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\ApplicationUserTherapeuticGameUnitTest.cs",
+              "RelativeDocumentMoniker": "MindfulEase.Tests\\Models\\ApplicationUserTherapeuticGameUnitTest.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\ApplicationUserTherapeuticGameUnitTest.cs",
+              "RelativeToolTip": "MindfulEase.Tests\\Models\\ApplicationUserTherapeuticGameUnitTest.cs",
+              "ViewState": "AQIAABEAAAAAAAAAAAAwwDEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T15:16:52.684Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "ApplicationUserResourceUnitTest.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\ApplicationUserResourceUnitTest.cs",
+              "RelativeDocumentMoniker": "MindfulEase.Tests\\Models\\ApplicationUserResourceUnitTest.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\ApplicationUserResourceUnitTest.cs",
+              "RelativeToolTip": "MindfulEase.Tests\\Models\\ApplicationUserResourceUnitTest.cs",
+              "ViewState": "AQIAABMAAAAAAAAAAAAwwDMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T15:16:31.235Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "ApplicationUserQuizUnitTest.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\ApplicationUserQuizUnitTest.cs",
+              "RelativeDocumentMoniker": "MindfulEase.Tests\\Models\\ApplicationUserQuizUnitTest.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\ApplicationUserQuizUnitTest.cs",
+              "RelativeToolTip": "MindfulEase.Tests\\Models\\ApplicationUserQuizUnitTest.cs",
+              "ViewState": "AQIAABcAAAAAAAAAAAAwwDcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T15:16:18.883Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "ApplicationUserWeeklyChallenge.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\ApplicationUserWeeklyChallenge.cs",
+              "RelativeDocumentMoniker": "MindfulEase\\Models\\ApplicationUserWeeklyChallenge.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\ApplicationUserWeeklyChallenge.cs",
+              "RelativeToolTip": "MindfulEase\\Models\\ApplicationUserWeeklyChallenge.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T15:15:43.063Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "ApplicationUserTherapeuticGame.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\ApplicationUserTherapeuticGame.cs",
+              "RelativeDocumentMoniker": "MindfulEase\\Models\\ApplicationUserTherapeuticGame.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\ApplicationUserTherapeuticGame.cs",
+              "RelativeToolTip": "MindfulEase\\Models\\ApplicationUserTherapeuticGame.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T15:15:25.534Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "ApplicationUserResource.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\ApplicationUserResource.cs",
+              "RelativeDocumentMoniker": "MindfulEase\\Models\\ApplicationUserResource.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\ApplicationUserResource.cs",
+              "RelativeToolTip": "MindfulEase\\Models\\ApplicationUserResource.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T15:15:07.531Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "ApplicationUserQuiz.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\ApplicationUserQuiz.cs",
+              "RelativeDocumentMoniker": "MindfulEase\\Models\\ApplicationUserQuiz.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\ApplicationUserQuiz.cs",
+              "RelativeToolTip": "MindfulEase\\Models\\ApplicationUserQuiz.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T15:14:50.183Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "WeeklyReportUnitTest.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\WeeklyReportUnitTest.cs",
+              "RelativeDocumentMoniker": "MindfulEase.Tests\\Models\\WeeklyReportUnitTest.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\WeeklyReportUnitTest.cs",
+              "RelativeToolTip": "MindfulEase.Tests\\Models\\WeeklyReportUnitTest.cs",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAwwC4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T15:13:19.735Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "WeeklyChallengeUnitTest.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\WeeklyChallengeUnitTest.cs",
+              "RelativeDocumentMoniker": "MindfulEase.Tests\\Models\\WeeklyChallengeUnitTest.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\WeeklyChallengeUnitTest.cs",
+              "RelativeToolTip": "MindfulEase.Tests\\Models\\WeeklyChallengeUnitTest.cs",
+              "ViewState": "AQIAABgAAAAAAAAAAAAwwDgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T15:13:08.298Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "UserObjectiveProgressUnitTest.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\UserObjectiveProgressUnitTest.cs",
+              "RelativeDocumentMoniker": "MindfulEase.Tests\\Models\\UserObjectiveProgressUnitTest.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\UserObjectiveProgressUnitTest.cs",
+              "RelativeToolTip": "MindfulEase.Tests\\Models\\UserObjectiveProgressUnitTest.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAA/wCgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T15:12:56.251Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "UserObjectiveUnitTest.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\UserObjectiveUnitTest.cs",
+              "RelativeDocumentMoniker": "MindfulEase.Tests\\Models\\UserObjectiveUnitTest.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\UserObjectiveUnitTest.cs",
+              "RelativeToolTip": "MindfulEase.Tests\\Models\\UserObjectiveUnitTest.cs",
+              "ViewState": "AQIAABAAAAAAAAAAAAAwwDAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T15:12:44.063Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "WeeklyReport.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\WeeklyReport.cs",
+              "RelativeDocumentMoniker": "MindfulEase\\Models\\WeeklyReport.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\WeeklyReport.cs",
+              "RelativeToolTip": "MindfulEase\\Models\\WeeklyReport.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T15:12:20.828Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "WeeklyChallenge.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\WeeklyChallenge.cs",
+              "RelativeDocumentMoniker": "MindfulEase\\Models\\WeeklyChallenge.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\WeeklyChallenge.cs",
+              "RelativeToolTip": "MindfulEase\\Models\\WeeklyChallenge.cs",
+              "ViewState": "AQIAAAIAAAAAAAAAAAAiwBcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T15:12:01.575Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "UserObjectiveProgress.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\UserObjectiveProgress.cs",
+              "RelativeDocumentMoniker": "MindfulEase\\Models\\UserObjectiveProgress.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\UserObjectiveProgress.cs",
+              "RelativeToolTip": "MindfulEase\\Models\\UserObjectiveProgress.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T15:11:48.097Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "UserObjective.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\UserObjective.cs",
+              "RelativeDocumentMoniker": "MindfulEase\\Models\\UserObjective.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\UserObjective.cs",
+              "RelativeToolTip": "MindfulEase\\Models\\UserObjective.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T15:11:29.735Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "TherapeuticGameTagUnitTest.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\TherapeuticGameTagUnitTest.cs",
+              "RelativeDocumentMoniker": "MindfulEase.Tests\\Models\\TherapeuticGameTagUnitTest.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\TherapeuticGameTagUnitTest.cs",
+              "RelativeToolTip": "MindfulEase.Tests\\Models\\TherapeuticGameTagUnitTest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T15:10:39.695Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "TherapeuticGameUnitTest.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\TherapeuticGameUnitTest.cs",
+              "RelativeDocumentMoniker": "MindfulEase.Tests\\Models\\TherapeuticGameUnitTest.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\TherapeuticGameUnitTest.cs",
+              "RelativeToolTip": "MindfulEase.Tests\\Models\\TherapeuticGameUnitTest.cs",
+              "ViewState": "AQIAABkAAAAAAAAAAAAwwDkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T15:10:28.376Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "UserDataUnitTest.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\UserDataUnitTest.cs",
+              "RelativeDocumentMoniker": "MindfulEase.Tests\\Models\\UserDataUnitTest.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\UserDataUnitTest.cs",
+              "RelativeToolTip": "MindfulEase.Tests\\Models\\UserDataUnitTest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T15:10:15.612Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "UserBadgeUnitTest.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\UserBadgeUnitTest.cs",
+              "RelativeDocumentMoniker": "MindfulEase.Tests\\Models\\UserBadgeUnitTest.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\UserBadgeUnitTest.cs",
+              "RelativeToolTip": "MindfulEase.Tests\\Models\\UserBadgeUnitTest.cs",
+              "ViewState": "AQIAAA0AAAAAAAAAAAAwwC0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T15:10:02.742Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "UserBadge.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\UserBadge.cs",
+              "RelativeDocumentMoniker": "MindfulEase\\Models\\UserBadge.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\UserBadge.cs",
+              "RelativeToolTip": "MindfulEase\\Models\\UserBadge.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T15:09:09.017Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "UserData.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\UserData.cs",
+              "RelativeDocumentMoniker": "MindfulEase\\Models\\UserData.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\UserData.cs",
+              "RelativeToolTip": "MindfulEase\\Models\\UserData.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T15:09:24.141Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "SavedResourceUnitTest.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\SavedResourceUnitTest.cs",
+              "RelativeDocumentMoniker": "MindfulEase.Tests\\Models\\SavedResourceUnitTest.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\SavedResourceUnitTest.cs",
+              "RelativeToolTip": "MindfulEase.Tests\\Models\\SavedResourceUnitTest.cs",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAwwC4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T15:07:45.865Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "RoutineUnitTest.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\RoutineUnitTest.cs",
+              "RelativeDocumentMoniker": "MindfulEase.Tests\\Models\\RoutineUnitTest.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\RoutineUnitTest.cs",
+              "RelativeToolTip": "MindfulEase.Tests\\Models\\RoutineUnitTest.cs",
+              "ViewState": "AQIAAAoAAAAAAAAAAAAwwCoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T15:07:35.87Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "Tag.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\Tag.cs",
+              "RelativeDocumentMoniker": "MindfulEase\\Models\\Tag.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\Tag.cs",
+              "RelativeToolTip": "MindfulEase\\Models\\Tag.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T14:56:58.825Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "TherapeuticGame.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\TherapeuticGame.cs",
+              "RelativeDocumentMoniker": "MindfulEase\\Models\\TherapeuticGame.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\TherapeuticGame.cs",
+              "RelativeToolTip": "MindfulEase\\Models\\TherapeuticGame.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T15:02:49.635Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "TherapeuticGameTag.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\TherapeuticGameTag.cs",
+              "RelativeDocumentMoniker": "MindfulEase\\Models\\TherapeuticGameTag.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\TherapeuticGameTag.cs",
+              "RelativeToolTip": "MindfulEase\\Models\\TherapeuticGameTag.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T15:03:06.701Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "RewardUnitTest.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\RewardUnitTest.cs",
+              "RelativeDocumentMoniker": "MindfulEase.Tests\\Models\\RewardUnitTest.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\RewardUnitTest.cs",
+              "RelativeToolTip": "MindfulEase.Tests\\Models\\RewardUnitTest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T15:07:26.432Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "SavedResource.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\SavedResource.cs",
+              "RelativeDocumentMoniker": "MindfulEase\\Models\\SavedResource.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\SavedResource.cs",
+              "RelativeToolTip": "MindfulEase\\Models\\SavedResource.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T15:07:05.271Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "Routine.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\Routine.cs",
+              "RelativeDocumentMoniker": "MindfulEase\\Models\\Routine.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\Routine.cs",
+              "RelativeToolTip": "MindfulEase\\Models\\Routine.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T15:06:50.752Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "Reward.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\Reward.cs",
+              "RelativeDocumentMoniker": "MindfulEase\\Models\\Reward.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\Reward.cs",
+              "RelativeToolTip": "MindfulEase\\Models\\Reward.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T15:06:37.22Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 47,
+              "Title": "ResourceTagUnitTest.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\ResourceTagUnitTest.cs",
+              "RelativeDocumentMoniker": "MindfulEase.Tests\\Models\\ResourceTagUnitTest.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\ResourceTagUnitTest.cs",
+              "RelativeToolTip": "MindfulEase.Tests\\Models\\ResourceTagUnitTest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T15:05:28.041Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 48,
+              "Title": "ResourceUnitTest.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\ResourceUnitTest.cs",
+              "RelativeDocumentMoniker": "MindfulEase.Tests\\Models\\ResourceUnitTest.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\ResourceUnitTest.cs",
+              "RelativeToolTip": "MindfulEase.Tests\\Models\\ResourceUnitTest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB0AAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T15:05:18.004Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 49,
+              "Title": "QuizTagUnitTest.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\QuizTagUnitTest.cs",
+              "RelativeDocumentMoniker": "MindfulEase.Tests\\Models\\QuizTagUnitTest.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\QuizTagUnitTest.cs",
+              "RelativeToolTip": "MindfulEase.Tests\\Models\\QuizTagUnitTest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T15:05:01.934Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 50,
+              "Title": "ResourceTag.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\ResourceTag.cs",
+              "RelativeDocumentMoniker": "MindfulEase\\Models\\ResourceTag.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\ResourceTag.cs",
+              "RelativeToolTip": "MindfulEase\\Models\\ResourceTag.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T15:04:43.103Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 51,
+              "Title": "Resource.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\Resource.cs",
+              "RelativeDocumentMoniker": "MindfulEase\\Models\\Resource.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\Resource.cs",
+              "RelativeToolTip": "MindfulEase\\Models\\Resource.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T15:04:16.134Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 52,
+              "Title": "QuizTag.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\QuizTag.cs",
+              "RelativeDocumentMoniker": "MindfulEase\\Models\\QuizTag.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\QuizTag.cs",
+              "RelativeToolTip": "MindfulEase\\Models\\QuizTag.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T15:03:57.197Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 54,
+              "Title": "TagUnitTest.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\TagUnitTest.cs",
+              "RelativeDocumentMoniker": "MindfulEase.Tests\\Models\\TagUnitTest.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\TagUnitTest.cs",
+              "RelativeToolTip": "MindfulEase.Tests\\Models\\TagUnitTest.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAswBsAAABhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T15:02:37.088Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 55,
+              "Title": "ApplicationUserQuestionQuizUnitTest.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\ApplicationUserQuestionQuizUnitTest.cs",
+              "RelativeDocumentMoniker": "MindfulEase.Tests\\Models\\ApplicationUserQuestionQuizUnitTest.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\ApplicationUserQuestionQuizUnitTest.cs",
+              "RelativeToolTip": "MindfulEase.Tests\\Models\\ApplicationUserQuestionQuizUnitTest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T15:02:01.46Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 53,
+              "Title": "Quiz.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\Quiz.cs",
+              "RelativeDocumentMoniker": "MindfulEase\\Models\\Quiz.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\Quiz.cs",
+              "RelativeToolTip": "MindfulEase\\Models\\Quiz.cs",
+              "ViewState": "AQIAAAIAAAAAAAAAAAAqwBkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T14:54:10.919Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 56,
+              "Title": "QuestionQuizUnitTest.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\QuestionQuizUnitTest.cs",
+              "RelativeDocumentMoniker": "MindfulEase.Tests\\Models\\QuestionQuizUnitTest.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\QuestionQuizUnitTest.cs",
+              "RelativeToolTip": "MindfulEase.Tests\\Models\\QuestionQuizUnitTest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAowCQAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T14:55:06.391Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 57,
+              "Title": "QuizUnitTest.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\QuizUnitTest.cs",
+              "RelativeDocumentMoniker": "MindfulEase.Tests\\Models\\QuizUnitTest.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\QuizUnitTest.cs",
+              "RelativeToolTip": "MindfulEase.Tests\\Models\\QuizUnitTest.cs",
+              "ViewState": "AQIAABQAAAAAAAAAAAAwwCUAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T14:54:54.056Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 58,
+              "Title": "ObjectiveUnitTest.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\ObjectiveUnitTest.cs",
+              "RelativeDocumentMoniker": "MindfulEase.Tests\\Models\\ObjectiveUnitTest.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\ObjectiveUnitTest.cs",
+              "RelativeToolTip": "MindfulEase.Tests\\Models\\ObjectiveUnitTest.cs",
+              "ViewState": "AQIAAA0AAAAAAAAAAAAwwBoAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T14:54:45.973Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 59,
+              "Title": "ApplicationUserQuestionQuiz.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\ApplicationUserQuestionQuiz.cs",
+              "RelativeDocumentMoniker": "MindfulEase\\Models\\ApplicationUserQuestionQuiz.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\ApplicationUserQuestionQuiz.cs",
+              "RelativeToolTip": "MindfulEase\\Models\\ApplicationUserQuestionQuiz.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T14:47:45.719Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 60,
+              "Title": "QuestionQuiz.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\QuestionQuiz.cs",
+              "RelativeDocumentMoniker": "MindfulEase\\Models\\QuestionQuiz.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\QuestionQuiz.cs",
+              "RelativeToolTip": "MindfulEase\\Models\\QuestionQuiz.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T14:54:24.088Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 61,
+              "Title": "Objective.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\Objective.cs",
+              "RelativeDocumentMoniker": "MindfulEase\\Models\\Objective.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\Objective.cs",
+              "RelativeToolTip": "MindfulEase\\Models\\Objective.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T14:53:48.748Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 64,
+              "Title": "DiaryEmotionUnitTest.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\DiaryEmotionUnitTest.cs",
+              "RelativeDocumentMoniker": "MindfulEase.Tests\\Models\\DiaryEmotionUnitTest.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\DiaryEmotionUnitTest.cs",
+              "RelativeToolTip": "MindfulEase.Tests\\Models\\DiaryEmotionUnitTest.cs",
+              "ViewState": "AQIAABEAAAAAAAAAAAAwwDEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T14:53:14.32Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 63,
+              "Title": "EmotionBrainRegionUnitTest.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\EmotionBrainRegionUnitTest.cs",
+              "RelativeDocumentMoniker": "MindfulEase.Tests\\Models\\EmotionBrainRegionUnitTest.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\EmotionBrainRegionUnitTest.cs",
+              "RelativeToolTip": "MindfulEase.Tests\\Models\\EmotionBrainRegionUnitTest.cs",
+              "ViewState": "AQIAAA0AAAAAAAAAAAAwwC0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T14:53:03.312Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 62,
+              "Title": "NotificationUnitTest.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\NotificationUnitTest.cs",
+              "RelativeDocumentMoniker": "MindfulEase.Tests\\Models\\NotificationUnitTest.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\NotificationUnitTest.cs",
+              "RelativeToolTip": "MindfulEase.Tests\\Models\\NotificationUnitTest.cs",
+              "ViewState": "AQIAABsAAAAAAAAAAAA/wDsAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T14:52:46.263Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 65,
+              "Title": "Notification.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\Notification.cs",
+              "RelativeDocumentMoniker": "MindfulEase\\Models\\Notification.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\Notification.cs",
+              "RelativeToolTip": "MindfulEase\\Models\\Notification.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T14:52:09.466Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 67,
+              "Title": "EmotionBrainRegion.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\EmotionBrainRegion.cs",
+              "RelativeDocumentMoniker": "MindfulEase\\Models\\EmotionBrainRegion.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\EmotionBrainRegion.cs",
+              "RelativeToolTip": "MindfulEase\\Models\\EmotionBrainRegion.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T14:51:54.843Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 68,
+              "Title": "DiaryEmotion.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\DiaryEmotion.cs",
+              "RelativeDocumentMoniker": "MindfulEase\\Models\\DiaryEmotion.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\DiaryEmotion.cs",
+              "RelativeToolTip": "MindfulEase\\Models\\DiaryEmotion.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T14:49:09.755Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 69,
+              "Title": "EmotionUnitTest.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\EmotionUnitTest.cs",
+              "RelativeDocumentMoniker": "MindfulEase.Tests\\Models\\EmotionUnitTest.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\EmotionUnitTest.cs",
+              "RelativeToolTip": "MindfulEase.Tests\\Models\\EmotionUnitTest.cs",
+              "ViewState": "AQIAABoAAAAAAAAAAAAwwDoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T14:49:55.575Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 66,
+              "Title": "ApplicationUserEmotion.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\ApplicationUserEmotion.cs",
+              "RelativeDocumentMoniker": "MindfulEase\\Models\\ApplicationUserEmotion.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\ApplicationUserEmotion.cs",
+              "RelativeToolTip": "MindfulEase\\Models\\ApplicationUserEmotion.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T14:45:26.148Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 71,
+              "Title": "BrainRegionUnitTest.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\BrainRegionUnitTest.cs",
+              "RelativeDocumentMoniker": "MindfulEase.Tests\\Models\\BrainRegionUnitTest.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\BrainRegionUnitTest.cs",
+              "RelativeToolTip": "MindfulEase.Tests\\Models\\BrainRegionUnitTest.cs",
+              "ViewState": "AQIAAAIAAAAAAAAAAAAkwBoAAAAOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T14:50:24.044Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 70,
+              "Title": "DiaryUnitTest.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\DiaryUnitTest.cs",
+              "RelativeDocumentMoniker": "MindfulEase.Tests\\Models\\DiaryUnitTest.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\DiaryUnitTest.cs",
+              "RelativeToolTip": "MindfulEase.Tests\\Models\\DiaryUnitTest.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAowCAAAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T14:49:46.257Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 73,
+              "Title": "Emotion.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\Emotion.cs",
+              "RelativeDocumentMoniker": "MindfulEase\\Models\\Emotion.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\Emotion.cs",
+              "RelativeToolTip": "MindfulEase\\Models\\Emotion.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T14:49:10.493Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 74,
+              "Title": "Diary.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\Diary.cs",
+              "RelativeDocumentMoniker": "MindfulEase\\Models\\Diary.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\Diary.cs",
+              "RelativeToolTip": "MindfulEase\\Models\\Diary.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T14:48:57.17Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 75,
+              "Title": "BrainRegion.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\BrainRegion.cs",
+              "RelativeDocumentMoniker": "MindfulEase\\Models\\BrainRegion.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\BrainRegion.cs",
+              "RelativeToolTip": "MindfulEase\\Models\\BrainRegion.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T14:48:43.742Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 72,
+              "Title": "BadgeUnitTest.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\BadgeUnitTest.cs",
+              "RelativeDocumentMoniker": "MindfulEase.Tests\\Models\\BadgeUnitTest.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\BadgeUnitTest.cs",
+              "RelativeToolTip": "MindfulEase.Tests\\Models\\BadgeUnitTest.cs",
+              "ViewState": "AQIAACgAAAAAAAAAAAAwwEgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T14:48:22.205Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 76,
+              "Title": "Badge.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\Badge.cs",
+              "RelativeDocumentMoniker": "MindfulEase\\Models\\Badge.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\Badge.cs",
+              "RelativeToolTip": "MindfulEase\\Models\\Badge.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T14:47:49.145Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 77,
+              "Title": "ApplicationUserEmotionUnitTest.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\ApplicationUserEmotionUnitTest.cs",
+              "RelativeDocumentMoniker": "MindfulEase.Tests\\Models\\ApplicationUserEmotionUnitTest.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\ApplicationUserEmotionUnitTest.cs",
+              "RelativeToolTip": "MindfulEase.Tests\\Models\\ApplicationUserEmotionUnitTest.cs",
+              "ViewState": "AQIAAAQAAAAAAAAAAAAkwA0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T14:46:01.192Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 78,
+              "Title": "ApplicationUserUnitTest.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\ApplicationUserUnitTest.cs",
+              "RelativeDocumentMoniker": "MindfulEase.Tests\\Models\\ApplicationUserUnitTest.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase.Tests\\Models\\ApplicationUserUnitTest.cs",
+              "RelativeToolTip": "MindfulEase.Tests\\Models\\ApplicationUserUnitTest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T14:44:12.732Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 79,
+              "Title": "ApplicationUser.cs",
+              "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\ApplicationUser.cs",
+              "RelativeDocumentMoniker": "MindfulEase\\Models\\ApplicationUser.cs",
+              "ToolTip": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Models\\ApplicationUser.cs",
+              "RelativeToolTip": "MindfulEase\\Models\\ApplicationUser.cs",
+              "ViewState": "AQIAADAAAAAAAAAAAAA2wEQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T14:42:08.342Z",
               "EditorCaption": ""
             },
             {
@@ -96,7 +1455,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 83,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Views\\ApplicationUsers\\Index.cshtml",
               "RelativeDocumentMoniker": "MindfulEase\\Views\\ApplicationUsers\\Index.cshtml",
@@ -104,12 +1463,11 @@
               "RelativeToolTip": "MindfulEase\\Views\\ApplicationUsers\\Index.cshtml",
               "ViewState": "AQIAADAAAAAAAAAAAAAAAEAAAABeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-05T18:41:21.305Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-05T18:41:21.305Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 85,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Views\\WeeklyChallenges\\Index.cshtml",
               "RelativeDocumentMoniker": "MindfulEase\\Views\\WeeklyChallenges\\Index.cshtml",
@@ -117,12 +1475,11 @@
               "RelativeToolTip": "MindfulEase\\Views\\WeeklyChallenges\\Index.cshtml",
               "ViewState": "AQIAABgAAAAAAAAAAAAAACcAAABkAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-05T18:29:35.331Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-05T18:29:35.331Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 86,
               "Title": "Login.cshtml.cs",
               "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Areas\\Identity\\Pages\\Account\\Login.cshtml.cs",
               "RelativeDocumentMoniker": "MindfulEase\\Areas\\Identity\\Pages\\Account\\Login.cshtml.cs",
@@ -130,12 +1487,11 @@
               "RelativeToolTip": "MindfulEase\\Areas\\Identity\\Pages\\Account\\Login.cshtml.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-05T18:23:48.91Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-05T18:23:48.91Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 87,
               "Title": "Logout.cshtml.cs",
               "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Areas\\Identity\\Pages\\Account\\Logout.cshtml.cs",
               "RelativeDocumentMoniker": "MindfulEase\\Areas\\Identity\\Pages\\Account\\Logout.cshtml.cs",
@@ -143,12 +1499,11 @@
               "RelativeToolTip": "MindfulEase\\Areas\\Identity\\Pages\\Account\\Logout.cshtml.cs",
               "ViewState": "AQIAABEAAAAAAAAAAAAAwBcAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-05T18:23:24.537Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-05T18:23:24.537Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 84,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "MindfulEase\\Views\\Home\\Index.cshtml",
@@ -156,12 +1511,11 @@
               "RelativeToolTip": "MindfulEase\\Views\\Home\\Index.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-05T17:23:14.794Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-05T17:23:14.794Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 82,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Views\\Notifications\\Index.cshtml",
               "RelativeDocumentMoniker": "MindfulEase\\Views\\Notifications\\Index.cshtml",
@@ -169,12 +1523,11 @@
               "RelativeToolTip": "MindfulEase\\Views\\Notifications\\Index.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAA3AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-05T15:39:40.019Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-05T15:39:40.019Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 80,
               "Title": "site.css",
               "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\css\\site.css",
               "RelativeDocumentMoniker": "MindfulEase\\wwwroot\\css\\site.css",
@@ -187,7 +1540,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 89,
               "Title": "New.cshtml",
               "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Views\\Diaries\\New.cshtml",
               "RelativeDocumentMoniker": "MindfulEase\\Views\\Diaries\\New.cshtml",
@@ -195,12 +1548,11 @@
               "RelativeToolTip": "MindfulEase\\Views\\Diaries\\New.cshtml",
               "ViewState": "AQIAAJ0AAAAAAAAAAAAwwL0AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-05T11:01:38.847Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-05T11:01:38.847Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 88,
               "Title": "DashboardController.cs",
               "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Controllers\\DashboardController.cs",
               "RelativeDocumentMoniker": "MindfulEase\\Controllers\\DashboardController.cs",
@@ -208,12 +1560,11 @@
               "RelativeToolTip": "MindfulEase\\Controllers\\DashboardController.cs",
               "ViewState": "AQIAAHoAAAAAAAAAAAAgwIcAAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-03T10:22:26.145Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-03T10:22:26.145Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 90,
               "Title": "PersonalTrainer.cshtml",
               "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Views\\Dashboard\\PersonalTrainer.cshtml",
               "RelativeDocumentMoniker": "MindfulEase\\Views\\Dashboard\\PersonalTrainer.cshtml",
@@ -221,12 +1572,11 @@
               "RelativeToolTip": "MindfulEase\\Views\\Dashboard\\PersonalTrainer.cshtml",
               "ViewState": "AQIAAA0BAAAAAAAAAAAawB4BAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-03T10:22:15.221Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-03T10:22:15.221Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 94,
               "Title": "VisualizeController.cs",
               "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Controllers\\VisualizeController.cs",
               "RelativeDocumentMoniker": "MindfulEase\\Controllers\\VisualizeController.cs",
@@ -238,7 +1588,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 92,
               "Title": "Brain.cshtml",
               "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\Views\\Visualize\\Brain.cshtml",
               "RelativeDocumentMoniker": "MindfulEase\\Views\\Visualize\\Brain.cshtml",
@@ -246,12 +1596,11 @@
               "RelativeToolTip": "MindfulEase\\Views\\Visualize\\Brain.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAPEAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-03T06:38:46.367Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-03T06:38:46.367Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 93,
               "Title": "brainVisualization.js",
               "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\js\\brainVisualization.js",
               "RelativeDocumentMoniker": "MindfulEase\\wwwroot\\js\\brainVisualization.js",
@@ -259,12 +1608,11 @@
               "RelativeToolTip": "MindfulEase\\wwwroot\\js\\brainVisualization.js",
               "ViewState": "AQIAAOwFAAAAAAAAAAAcwPUFAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-04-25T08:04:52.845Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-25T08:04:52.845Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 91,
               "Title": "brain.css",
               "DocumentMoniker": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\css\\brain.css",
               "RelativeDocumentMoniker": "MindfulEase\\wwwroot\\css\\brain.css",
@@ -272,8 +1620,7 @@
               "RelativeToolTip": "MindfulEase\\wwwroot\\css\\brain.css",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-05-01T01:40:28.642Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-01T01:40:28.642Z"
             }
           ]
         },
