@@ -118,7 +118,7 @@
             <h1>@(wellBeingScore != null ? ((double)wellBeingScore).ToString("0.00") : "N/A")</h1>
         </div>
 
-        @if (emotionScores != null)
+        @if (emotionScores != null && emotionScores.Count != 0)
         {
             var numEmotions = emotionScores.Count;
             var angleStep = 360 / numEmotions;

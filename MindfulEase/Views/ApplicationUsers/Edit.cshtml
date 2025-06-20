@@ -48,7 +48,16 @@
                     </div>
 
                     <br />
-
+                    <!-- Sex -->
+                    <div class="mb-3">
+                        <label for="Sex" class="form-label fw-bold" style="color: #01baa3">Sex</label>
+                        @Html.DropDownListFor(m => m.Sex, new SelectList(new[]            {
+                            new { Value = "", Text = "Unspecified" },
+                            new { Value = "F", Text = "Female" },
+                            new { Value = "M", Text = "Male" }
+                            }, "Value", "Text", Model.Sex), htmlAttributes: new { @class = "form-control", style = "border-radius: 30px;" })
+                        @Html.ValidationMessageFor(m => m.Sex, null, new { @class = "text-danger" })
+                    </div>
                     <div class="text-center">
                         <button class="btn btn-info" type="submit" style="font-size: 1.2em; padding: 10px 30px; border-radius: 30px; color: white">Apply Changes</button>
                     </div>
@@ -57,3 +66,4 @@
         </div>
     </div>
 </div>
+<br /><br />

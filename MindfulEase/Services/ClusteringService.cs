@@ -67,32 +67,30 @@ namespace MindfulEase.Services
 
         private float[] GetEmotionVector(string userId)
         {
-            // Obține toate emoțiile existente (din baza de date), care sunt acum fixate la 7
+            // Obtinerea emotiilor existente in baza de date, care sunt fixate 7 la numar
             var allEmotions = _dbContext.Emotions.ToList();
-
-            // Obține toate ID-urile de jurnale pentru utilizator
+            // Obtinerea ID-urilor de jurnalele utilizatorului
             var diaryIds = _dbContext.Diaries
                 .Where(d => d.UserId == userId)
                 .Select(d => d.Id)
                 .ToList();
 
-            // Creează un dicționar cu scoruri pentru fiecare emoție
+            // Crearea unui dictionar cu scoruri pentru fiecare emotie
             var emotionScores = _dbContext.DiaryEmotions
                 .Where(de => diaryIds.Contains(de.DiaryId.Value))
-                .AsEnumerable()  // Forțează evaluarea pe client
+                .AsEnumerable()  
                 .GroupBy(de => de.EmotionId)
                 .ToDictionary(
-                    g => g.Key,  // EmotionId
-                    g => g.Average(de => de.Score) ?? 0.0);  // Media scorurilor pentru fiecare emoție
+                    g => g.Key,  
+                    g => g.Average(de => de.Score) ?? 0.0);  // Media scorurilor pentru fiecare emotie
 
-            // Creează vectorul de scoruri pentru fiecare emoție din toate emoțiile posibile
-            var emotionVector = new float[7];  // Dimensiunea fixă
-
-            // Umple vectorul cu scoruri pentru fiecare emoție
+            // Crearea vectorului de scoruri pentru fiecare emotie 
+            var emotionVector = new float[7];  
+            // Alocarea de scoruri pentru fiecare emotie
             for (int i = 0; i < allEmotions.Count; i++)
             {
                 var emotionId = allEmotions[i].Id;
-                emotionVector[i] = emotionScores.ContainsKey(emotionId) ? (float)emotionScores[emotionId] : 0f;  // Folosește scorul sau 0 dacă nu există scor
+                emotionVector[i] = emotionScores.ContainsKey(emotionId) ? (float)emotionScores[emotionId] : 0f;  
             }
 
             return emotionVector;
