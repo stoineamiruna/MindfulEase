@@ -9,6 +9,7 @@ using MindfulEase.Data;
 using MindfulEase.Models;
 using MindfulEase.Services;
 using System;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace MindfulEase.Controllers
 {
@@ -223,6 +224,14 @@ namespace MindfulEase.Controllers
             user.LastName = updatedUser.LastName;
             user.Description = updatedUser.Description;
             user.Birthday = updatedUser.Birthday;
+            if (!string.IsNullOrEmpty(updatedUser.Sex))
+            {
+                user.Sex = updatedUser.Sex; // Setează "F" sau "M"
+            }
+            else
+            {
+                user.Sex = null; // Dacă e "Unspecified"
+            }
 
             // Salvează modificările în baza de date
             db.SaveChanges();
@@ -273,12 +282,13 @@ namespace MindfulEase.Controllers
             user.LastName = requestProfile.LastName;
             user.Description = requestProfile.Description;
             user.Birthday = requestProfile.Birthday;
+            user.Sex = requestProfile.Sex;
 
             TempData["message"] = "You edited your profile successfully!";
             TempData["messageType"] = "alert-success";
             db.SaveChanges();
+            return RedirectToAction("Show", new { id = user.Id });
 
-            return RedirectToAction("Index");
         }
 
 
@@ -401,6 +411,15 @@ namespace MindfulEase.Controllers
             user.BackgroundColor = updatedTherapist.BackgroundColor;
             user.Rating = 5;
             user.NumberOfReviews = 0;
+            if (!string.IsNullOrEmpty(updatedTherapist.Sex))
+            {
+                user.Sex = updatedTherapist.Sex; // Setează "F" sau "M"
+            }
+            else
+            {
+                user.Sex = null; // Dacă e "Unspecified"
+            }
+
 
             // Salvează modificările în baza de date
             db.SaveChanges();
@@ -457,6 +476,7 @@ namespace MindfulEase.Controllers
             therapist.BackgroundColor = updatedTherapist.BackgroundColor;
             therapist.Rating = updatedTherapist.Rating;
             therapist.NumberOfReviews = updatedTherapist.NumberOfReviews;
+            therapist.Sex = updatedTherapist.Sex;
 
             db.SaveChanges();
 

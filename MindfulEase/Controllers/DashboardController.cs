@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Text.Json;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
+using Humanizer.Localisation;
 
 namespace MindfulEase.Controllers
 {
@@ -229,25 +230,25 @@ namespace MindfulEase.Controllers
             var resources = new List<dynamic>();
             var quizzes = new List<dynamic>();
             var therapeuticGames = new List<dynamic>();
+            var resourceIds = new HashSet<int>();
+            var quizIds = new HashSet<int>();
+            var gameIds = new HashSet<int>();
 
             foreach (var emotion in relevantEmotions)
             {
                 var emotionScore = emotionScores.ContainsKey(emotion.ToLower()) ? emotionScores[emotion.ToLower()] : null;
 
-                // Dacă scorul mediu pentru o emoție este mai mare decât 4
                 if (emotionScore.HasValue && emotionScore >= 4)
                 {
-                    // Dacă emoția este pozitivă, inversăm scorul față de 10
                     var adjustedScore = positiveEmotions.Contains(emotion) ? 10 - emotionScore.Value : emotionScore.Value;
 
-                    // Dacă scorul ajustat este mai mare decât 4, adăugăm resursele, quizurile și jocurile terapeutice
                     if (adjustedScore >= 4)
                     {
-                        // Obținem resurse legate de emoția respectivă prin intermediul tabelului de legătura
+                        // RESURSE
                         var emotionResources = await _context.ResourceTags
-                            .Where(rt => rt.Tag.Title == emotion)  // Căutăm legăturile care au tagul respectiv
+                            .Where(rt => rt.Tag.Title == emotion)
                             .Join(_context.Resources,
-                                rt => rt.ResourceId,  // Join între ResourceTags și Resources pe baza ResourceId
+                                rt => rt.ResourceId,
                                 r => r.Id,
                                 (rt, r) => new
                                 {
@@ -257,13 +258,18 @@ namespace MindfulEase.Controllers
                                     r.ResourceType
                                 })
                             .ToListAsync();
-                        resources.AddRange(emotionResources);
 
-                        // Obținem quizuri legate de emoția respectivă prin intermediul tabelului de legătura
+                        foreach (var res in emotionResources)
+                        {
+                            if (resourceIds.Add(res.Id)) // adaugă doar dacă nu e deja
+                                resources.Add(res);
+                        }
+
+                        // QUIZURI
                         var emotionQuizzes = await _context.QuizTags
-                            .Where(qt => qt.Tag.Title == emotion)  // Căutăm legăturile care au tagul respectiv
+                            .Where(qt => qt.Tag.Title == emotion)
                             .Join(_context.Quizzes,
-                                qt => qt.QuizId,  // Join între QuizTags și Quizzes pe baza QuizId
+                                qt => qt.QuizId,
                                 q => q.Id,
                                 (qt, q) => new
                                 {
@@ -272,14 +278,18 @@ namespace MindfulEase.Controllers
                                     q.Background
                                 })
                             .ToListAsync();
-                        Console.WriteLine("emotionQuizzes: "+ emotion+" " + emotionQuizzes.Count);
-                        quizzes.AddRange(emotionQuizzes);
 
-                        // Obținem jocuri terapeutice legate de emoția respectivă prin intermediul tabelului de legătura
+                        foreach (var quiz in emotionQuizzes)
+                        {
+                            if (quizIds.Add(quiz.Id))
+                                quizzes.Add(quiz);
+                        }
+
+                        // JOCURI TERAPEUTICE
                         var emotionTherapeuticGames = await _context.TherapeuticGameTags
-                            .Where(tgt => tgt.Tag.Title == emotion)  // Căutăm legăturile care au tagul respectiv
+                            .Where(tgt => tgt.Tag.Title == emotion)
                             .Join(_context.TherapeuticGames,
-                                tgt => tgt.TherapeuticGameId,  // Join între TherapeuticGameTags și TherapeuticGames pe baza TherapeuticGameId
+                                tgt => tgt.TherapeuticGameId,
                                 tg => tg.Id,
                                 (tgt, tg) => new
                                 {
@@ -289,13 +299,19 @@ namespace MindfulEase.Controllers
                                     tg.Type
                                 })
                             .ToListAsync();
-                        therapeuticGames.AddRange(emotionTherapeuticGames);
+
+                        foreach (var game in emotionTherapeuticGames)
+                        {
+                            if (gameIds.Add(game.Id))
+                                therapeuticGames.Add(game);
+                        }
                     }
                 }
             }
 
 
-            // Dacă oricare dintre listele de resurse, quizuri sau jocuri terapeutice are mai puțin de 5 elemente, adăugăm resurse și quizuri suplimentare pentru tag-ul "Self-Awareness"
+
+            // Completăm lista de resurse, evitând duplicatele
             if (resources.Count < 5)
             {
                 var selfAwarenessResources = await _context.ResourceTags
@@ -310,10 +326,19 @@ namespace MindfulEase.Controllers
                             r.Link,
                             r.ResourceType
                         })
-                    .Take(5 - resources.Count).ToListAsync();
-                resources.AddRange(selfAwarenessResources);
+                    .Where(r => !resourceIds.Contains(r.Id))
+                    .Take(5 - resources.Count)
+                    .ToListAsync();
+
+                foreach (var res in selfAwarenessResources)
+                {
+                    if (resourceIds.Add(res.Id))
+                        resources.Add(res);
+                }
             }
 
+            // Completăm lista de quiz-uri, evitând duplicatele
+            // Completăm lista de quiz-uri, evitând duplicatele
             if (quizzes.Count < 5)
             {
                 var selfAwarenessQuizzes = await _context.QuizTags
@@ -327,10 +352,18 @@ namespace MindfulEase.Controllers
                             q.Title,
                             q.Background
                         })
-                    .Take(5 - quizzes.Count).ToListAsync();
-                quizzes.AddRange(selfAwarenessQuizzes);
+                    .Where(q => !quizIds.Contains(q.Id))
+                    .Take(5 - quizzes.Count)
+                    .ToListAsync();
+
+                foreach (var quiz in selfAwarenessQuizzes)
+                {
+                    if (quizIds.Add(quiz.Id))
+                        quizzes.Add(quiz);
+                }
             }
 
+            // Completăm lista de jocuri terapeutice, evitând duplicatele
             if (therapeuticGames.Count < 5)
             {
                 var selfAwarenessTherapeuticGames = await _context.TherapeuticGameTags
@@ -345,9 +378,17 @@ namespace MindfulEase.Controllers
                             tg.Background,
                             tg.Type
                         })
-                    .Take(5 - therapeuticGames.Count).ToListAsync();
-                therapeuticGames.AddRange(selfAwarenessTherapeuticGames);
+                    .Where(tg => !gameIds.Contains(tg.Id))
+                    .Take(5 - therapeuticGames.Count)
+                    .ToListAsync();
+
+                foreach (var game in selfAwarenessTherapeuticGames)
+                {
+                    if (gameIds.Add(game.Id))
+                        therapeuticGames.Add(game);
+                }
             }
+
 
             // Stocăm datele în ViewData pentru a le accesa în view
             ViewData["Resources"] = resources;
