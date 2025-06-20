@@ -68,6 +68,16 @@
                         @Html.ValidationMessageFor(m => m.Birthday, null, new { @class = "text-danger" })
                     </div>
 
+                    <!-- Sex -->
+                    <div class="mb-3">
+                        <label for="Sex" class="form-label fw-bold" style="color: #01baa3">Sex</label>
+                        <select class="form-control" name="Sex" id="Sex" style="border-radius: 30px;">
+                            <option value="">Unspecified</option>
+                            <option value="F">Female</option>
+                            <option value="M">Male</option>
+                        </select>
+                    </div>
+
                     <!-- Button -->
                     <div class="text-center">
                         <button class="btn btn-info" type="submit" style="font-size: 1.2em; padding: 10px 30px; border-radius: 30px; color: white">Create My Therapist Profile</button>
@@ -78,3 +88,5 @@
         </div>
     </div>
 </div>
+<br />
+<br />

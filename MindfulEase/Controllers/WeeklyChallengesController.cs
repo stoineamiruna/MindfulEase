@@ -282,17 +282,17 @@ namespace MindfulEase.Controllers
                     .OrderByDescending(wc => wc.StartDate)
                     .ToList(),
 
-                "ActiveChallenges" => db.WeeklyChallenges
+                "Active Challenges" => db.WeeklyChallenges
                     .Where(wc => wc.StartDate <= currentDate && wc.EndDate >= currentDate)
                     .OrderByDescending(wc => wc.StartDate)
                     .ToList(),
 
-                "ComingSoon" => db.WeeklyChallenges
+                "Coming Soon" => db.WeeklyChallenges
                     .Where(wc => wc.StartDate > currentDate)
                     .OrderBy(wc => wc.StartDate)
                     .ToList(),
 
-                "PastChallenges" => db.WeeklyChallenges
+                "Past Challenges" => db.WeeklyChallenges
                     .Where(wc => wc.EndDate < currentDate)
                     .OrderByDescending(wc => wc.StartDate)
                     .ToList(),

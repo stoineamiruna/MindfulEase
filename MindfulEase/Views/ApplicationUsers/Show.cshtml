@@ -30,6 +30,14 @@
 
     <div class="text-center">
         <h2><i class="bi bi-person-fill"></i> @ViewBag.User.FirstName @ViewBag.User.LastName</h2>
+        @if (ViewBag.User.Sex == "F")
+        {
+            <div><small style="color: #888;">(Female)</small></div>
+        }
+        else if (ViewBag.User.Sex == "M")
+        {
+            <div><small style="color: #888;">(Male)</small></div>
+        }
         @if (!string.IsNullOrEmpty(ViewBag.User.ProfilePicture))
         {
             <img src="@ViewBag.User.ProfilePicture" alt="Profile Picture" class="rounded-circle" style="border:3px solid #A7C7E7; width: 150px; height: 150px; object-fit: cover; margin-bottom: 20px;" />

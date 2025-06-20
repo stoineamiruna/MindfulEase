@@ -252,13 +252,10 @@ namespace MindfulEase.Services
                         featureColumnName: "FinalFeatures");
 
                     var model = trainer.Fit(transformedTrain);
-
-                    // Salvează modelul antrenat
                     var modelPath = Path.Combine(_modelPath, $"{region}_model.zip");
                     _mlContext.Model.Save(model, transformedTrain.Schema, modelPath);
                     Console.WriteLine($"Model salvat: {modelPath}");
 
-                    // Evaluează modelul pe datele de test
                     var predictions = model.Transform(transformedTest);
                     var actual = _mlContext.Data.CreateEnumerable<EmotionalBrainData>(testData, reuseRowObject: false)
                                     .Select(d => (float)d.GetType().GetProperty(region)?.GetValue(d))
@@ -280,7 +277,6 @@ namespace MindfulEase.Services
                 }
             }
 
-            // Salvează pipeline-ul de preprocesare
             var prepPath = Path.Combine(_modelPath, "DataPrepPipeline.zip");
             _mlContext.Model.Save(dataPrepPipeline, trainData.Schema, prepPath);
             Console.WriteLine($"\nPipeline-ul de preprocesare salvat la: {prepPath}");
