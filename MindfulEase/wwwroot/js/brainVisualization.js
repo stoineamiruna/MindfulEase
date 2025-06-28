@@ -445,7 +445,8 @@ loader.load('/Brain.glb', function (gltf) {
     const balancedList = document.getElementById("balancedList");
     const projectionSlider = document.getElementById('projectionSlider');
     const projectionYears = document.getElementById('projectionYears');
-
+    //var today = new Date().toISOString().split('T')[0];
+    //document.getElementById("emotionDatePicker").setAttribute("max", today);
     // Setăm valoarea implicită pentru predicție
     predictYears.textContent = predictSlider.value + " years";
 
@@ -1429,6 +1430,8 @@ function stopZoom() {
 
 window.addEventListener('load', () => {
     showLegend("emotional");
+    var today = new Date().toISOString().split('T')[0];
+    document.getElementById("emotionDatePicker").setAttribute("max", today);
     const emotionDescription = document.getElementById("emotionDescription");
     emotionDescription.innerHTML = `
             <p>

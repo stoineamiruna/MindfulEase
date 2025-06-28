@@ -204,7 +204,12 @@ namespace MindfulEase.Controllers
             combinedResources.AddRange(allResources.Where(r => !recommendedResources.Contains(r)));
 
             ViewBag.Resources = combinedResources.Take(4).ToList();
-            SetAccessRights(); 
+            SetAccessRights();
+            if (TempData.ContainsKey("message"))
+            {
+                ViewBag.Message = TempData["message"];
+                ViewBag.Alert = TempData["messageType"];
+            }
             return View();
         }
 
@@ -365,7 +370,11 @@ namespace MindfulEase.Controllers
 
             // Setarea drepturilor de acces pentru butoane
             SetAccessRights();
-
+            if (TempData.ContainsKey("message"))
+            {
+                ViewBag.Message = TempData["message"];
+                ViewBag.Alert = TempData["messageType"];
+            }
             // Returnează vizualizarea "SeeMore"
             return View("SeeMore");
         }
@@ -379,9 +388,11 @@ namespace MindfulEase.Controllers
             {
                 db.WeeklyChallenges.Update(challenge);
                 await db.SaveChangesAsync();
+                TempData["message"] = "Weekly challenge updated successfully!";
+                TempData["messageType"] = "alert-info";
                 return RedirectToAction(nameof(Index));
             }
-            return View(challenge);
+            return RedirectToAction(nameof(Index));
         }
 
         [HttpPost]
@@ -394,6 +405,8 @@ namespace MindfulEase.Controllers
                 db.ApplicationUserWeeklyChallenges.RemoveRange(applicationUserWeeklyChallenges);
                 db.WeeklyChallenges.Remove(challenge);
                 await db.SaveChangesAsync();
+                TempData["message"] = "Weekly challenge deleted successfully!";
+                TempData["messageType"] = "alert-info";
             }
             return RedirectToAction(nameof(Index));
         }
@@ -406,11 +419,17 @@ namespace MindfulEase.Controllers
                 db.WeeklyChallenges.Add(challenge);
                 await db.SaveChangesAsync();
 
-               
+                TempData["message"] = "Weekly challenge created successfully!";
+                TempData["messageType"] = "alert-info";
                 return RedirectToAction("Index");
             }
-
-            return View(challenge);
+            if(challenge.StartDate> challenge.EndDate)
+            {
+                TempData["message"] = "Challenge not created. Start Date cannot be after End Date.";
+                TempData["messageType"] = "alert-danger";
+            }
+            return RedirectToAction(nameof(Index));
+            //return RedirectToAction(nameof(Index));
         }
 
 

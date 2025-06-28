@@ -3,6 +3,13 @@
 @{
     ViewBag.Title = "New Therapeutic Game";
 }
+@if (TempData.ContainsKey("message"))
+{
+    <h4 class="@ViewBag.Alert p-3 rounded-3 text-center mb-5">
+        @ViewBag.Message
+    </h4>
+}
+
 
 <div class="container-fluid" style="background-image: url('@Url.Content("~/img/background1.png")') !important; background-size: cover !important; background-position: center !important; min-height: 100vh; background-repeat: repeat-y; position: relative; z-index: 1;">
     <div class="row justify-content-center align-items-center" style="min-height: 100vh;">
@@ -16,34 +23,41 @@
 
                 @using (Html.BeginForm(actionName: "New", controllerName: "TherapeuticGames", method: FormMethod.Post))
                 {
+                    @Html.AntiForgeryToken()
+
                     <!-- Game Name -->
                     <div class="mb-3">
                         <label for="Name" class="form-label fw-bold" style="color: #01baa3">Game Name</label>
                         @Html.TextBoxFor(model => model.Name, new { @class = "form-control", placeholder = "Enter the name of the game", style = "border-radius: 30px;" })
+                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                     </div>
 
                     <!-- Game Type -->
                     <div class="mb-3">
                         <label for="Type" class="form-label fw-bold" style="color: #01baa3">Game Type</label>
                         @Html.TextBoxFor(model => model.Type, new { @class = "form-control", placeholder = "Enter the game type (e.g., Puzzle, Memory)", style = "border-radius: 30px;" })
+                        @Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger" })
                     </div>
 
                     <!-- Game Instructions -->
                     <div class="mb-3">
                         <label for="Instructions" class="form-label fw-bold" style="color: #01baa3">Instructions</label>
                         @Html.TextAreaFor(model => model.Instructions, new { @class = "form-control", placeholder = "Enter instructions for the game", rows = 4, style = "border-radius: 30px;" })
+                        @Html.ValidationMessageFor(model => model.Instructions, "", new { @class = "text-danger" })
                     </div>
 
                     <!-- Game URL -->
                     <div class="mb-3">
                         <label for="GameUrl" class="form-label fw-bold" style="color: #01baa3">Game URL</label>
                         @Html.TextBoxFor(model => model.GameUrl, new { @class = "form-control", placeholder = "Enter the game URL", style = "border-radius: 30px;" })
+                        @Html.ValidationMessageFor(model => model.GameUrl, "", new { @class = "text-danger" })
                     </div>
 
                     <!-- Game Background -->
                     <div class="mb-3">
                         <label for="Background" class="form-label fw-bold" style="color: #01baa3">Game Background</label>
                         @Html.TextBoxFor(model => model.Background, new { @class = "form-control", placeholder = "Enter the background URL of the game", style = "border-radius: 30px;" })
+                        @Html.ValidationMessageFor(model => model.Background, "", new { @class = "text-danger" })
                     </div>
 
                     <!-- Select Tags -->
@@ -56,6 +70,8 @@
                             }
                         </select>
                     </div>
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
                     <!-- Submit Button -->
                     <div class="text-center">

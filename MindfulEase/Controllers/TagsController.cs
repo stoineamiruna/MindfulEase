@@ -17,6 +17,11 @@ namespace MindfulEase.Controllers
         [Authorize(Roles = "Admin,Moderator")]
         public async Task<IActionResult> Index()
         {
+            if (TempData.ContainsKey("message"))
+            {
+                ViewBag.Message = TempData["message"];
+                ViewBag.Alert = TempData["messageType"];
+            }
             return View(await _context.Tags.ToListAsync());
         }
 
@@ -28,9 +33,13 @@ namespace MindfulEase.Controllers
             {
                 _context.Add(tag);
                 await _context.SaveChangesAsync();
+                TempData["message"] = "Tag created successfully!";
+                TempData["messageType"] = "alert-info";
                 return RedirectToAction(nameof(Index));
             }
-            return View(tag);
+            TempData["message"] = "There was an error creating the tag.";
+            TempData["messageType"] = "alert-danger";
+            return RedirectToAction("Index");
         }
 
         [Authorize(Roles = "Admin,Moderator")]
@@ -43,9 +52,13 @@ namespace MindfulEase.Controllers
             {
                 _context.Update(tag);
                 await _context.SaveChangesAsync();
+                TempData["message"] = "Tag modified successfully!";
+                TempData["messageType"] = "alert-info";
                 return RedirectToAction(nameof(Index));
             }
-            return View(tag);
+            TempData["message"] = "There was an error editing the tag.";
+            TempData["messageType"] = "alert-danger";
+            return RedirectToAction("Index");
         }
 
         [Authorize(Roles = "Admin,Moderator")]
@@ -66,6 +79,8 @@ namespace MindfulEase.Controllers
 
             _context.Tags.Remove(tag);
             await _context.SaveChangesAsync();
+            TempData["message"] = "Tag deleted successfully!";
+            TempData["messageType"] = "alert-info";
             return RedirectToAction(nameof(Index));
         }
     }

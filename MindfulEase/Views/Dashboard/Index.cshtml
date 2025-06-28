@@ -260,20 +260,20 @@
                     <div class="d-flex align-items-center">
                         <input type="number" id="daySelect" min="1" max="31" class="form-control" style="width: 50px; margin-right: 10px;" placeholder="D" value="${currentDay}">
                         <input type="number" id="monthSelect" min="1" max="12" class="form-control" style="width: 50px; margin-right: 10px;" placeholder="M" value="${currentMonth}">
-                        <input type="number" id="yearSelect" min="2000" max="2099" class="form-control" style="width: 80px; margin-right: 10px;" placeholder="Year" value="${currentYear}">
+                        <input type="number" id="yearSelect" min="2000" max="2025" class="form-control" style="width: 80px; margin-right: 10px;" placeholder="Year" value="${currentYear}">
                     </div>
                     `;
             } else if (interval === "monthly") {
                 filterDiv.innerHTML = `
                     <div class="d-flex align-items-center">
                         <input type="number" id="monthSelect" min="1" max="12" class="form-control" style="width: 50px; margin-right: 10px;" placeholder="M" value="${currentMonth}">
-                        <input type="number" id="yearSelect" min="2000" max="2099" class="form-control" style="width: 80px; margin-right: 10px;" placeholder="Year" value="${currentYear}">
+                        <input type="number" id="yearSelect" min="2000" max="2025" class="form-control" style="width: 80px; margin-right: 10px;" placeholder="Year" value="${currentYear}">
                     </div>
                     `;
             } else if (interval === "yearly") {
                 filterDiv.innerHTML = `
                     <div class="d-flex align-items-center">
-                        <input type="number" id="yearSelect" min="2000" max="2099" class="form-control" style="width: 80px; margin-right: 10px;" placeholder="Year" value="${currentYear}">
+                        <input type="number" id="yearSelect" min="2000" max="2025" class="form-control" style="width: 80px; margin-right: 10px;" placeholder="Year" value="${currentYear}">
                     </div>
                     `;
             }

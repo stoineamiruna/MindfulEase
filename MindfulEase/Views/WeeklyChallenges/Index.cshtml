@@ -2,7 +2,15 @@
 
 @{
     ViewBag.Title = "Weekly Challenges";
+    var today = DateTime.Today.ToString("yyyy-MM-dd");
 }
+@if (TempData.ContainsKey("message"))
+{
+    <h4 class="@ViewBag.Alert p-3 rounded-3 text-center mb-5">
+        @ViewBag.Message
+    </h4>
+}
+
 
 <div class="container my-5">
     <h2 class="text-center text-info mb-4">🏆 WEEKLY CHALLENGES</h2>
@@ -179,8 +187,8 @@
                                         <form asp-action="Edit" method="post">
                                             <input type="hidden" name="Id" value="@challenge.Id" />
                                             <div class="mb-3">
-                                                <label for="Title1" class="form-label">Title</label>
-                                                <input id="Title1"style="border-radius: 30px;" type="text" name="Title" class="form-control" value="@challenge.Title" required />
+                                                <label  for="Title1" class="form-label">Title</label>
+                                                <input id="Title1" style="border-radius: 30px;" type="text" name="Title" class="form-control" value="@challenge.Title" required />
                                             </div>
                                             <div class="mb-3">
                                                 <label for="Description1" class="form-label">Description</label>
@@ -241,6 +249,7 @@
                 </div>
                 <div class="modal-body">
                     <form asp-action="Create" method="post">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                         <div class="mb-3">
                             <label for="Title" class="form-label">Title</label>
                             <input id="Title "style="border-radius: 30px;" type="text" name="Title" class="form-control" required />
@@ -255,11 +264,11 @@
                         </div>
                         <div class="mb-3">
                             <label for="StartDate" class="form-label">Start Date</label>
-                            <input id="StartDate" style="border-radius: 30px;" type="date" name="StartDate" class="form-control" required />
+                            <input id="StartDate" style="border-radius: 30px;" type="date" name="StartDate" class="form-control" required min="@today" />
                         </div>
                         <div class="mb-3">
                             <label for="EndDate" class="form-label">End Date</label>
-                            <input id="EndDate" style="border-radius: 30px;" type="date" name="EndDate" class="form-control" required />
+                            <input id="EndDate" style="border-radius: 30px;" type="date" name="EndDate" class="form-control" required min="@today" />
                         </div>
                         <div class="mb-3">
                             <label for="RequiredPoints" class="form-label">Required Points</label>
@@ -294,3 +303,30 @@
         margin: 0;
     }
 </style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const startInput = document.getElementById('StartDate');
+        const endInput = document.getElementById('EndDate');
+        const startInput1 = document.getElementById('StartDate1');
+        const endInput1 = document.getElementById('EndDate1');
+
+        // Actualizează min endDate când selectezi startDate
+        startInput.addEventListener('change', function () {
+            endInput.min = this.value;
+
+            // Dacă endDate este înainte de startDate, resetează-l
+            if (endInput.value < this.value) {
+                endInput.value = this.value;
+            }
+        });
+        startInput1.addEventListener('change', function () {
+            endInput1.min = this.value;
+
+            // Dacă endDate este înainte de startDate, resetează-l
+            if (endInput1.value < this.value) {
+                endInput1.value = this.value;
+            }
+        });
+    });
+</script>

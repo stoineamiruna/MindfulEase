@@ -2,6 +2,12 @@
 @{
     ViewBag.Title = "Badges";
 }
+@if (TempData.ContainsKey("message"))
+{
+    <h4 class="@ViewBag.Alert p-3 rounded-3 text-center mb-5">
+        @ViewBag.Message
+    </h4>
+}
 
 <div class="container my-5">
     <h2 class="text-center mb-4">🏅 Manage Badges</h2>
@@ -20,13 +26,14 @@
             <div class="row">
                 @foreach (var badge in activityGroup)
                 {
-                    <div class="col-6 col-md-4 col-lg-3 mb-4">
-                        <div class="card shadow-sm text-center" style="border-radius: 20px;">
+                    <div class="col-6 col-md-4 col-lg-3 mb-4 d-flex">
+                        <div class="card shadow-sm text-center w-100" style="border-radius: 20px; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
                             <div style="background: white; padding: 10px; border-radius: 20px 20px 0 0;">
                                 <img src="@badge.ImageUrl" class="card-img-top" alt="@badge.Title"
                                      style="height: 180px; object-fit: contain; max-width: 100%;">
                             </div>
-                            <div class="card-body">
+                            <div class="card-body" style="flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; min-height: 220px;">
+                                >
                                 <h5 class="card-title">@badge.Title</h5>
                                 <p class="card-text">@badge.Description</p>
                                 <div class="d-flex justify-content-between">
@@ -96,6 +103,12 @@
                         <div class="mb-3">
                             <label class="form-label">Title</label>
                             <input style="border-radius: 30px;" type="text" name="Title" class="form-control" required />
+                            @if (ViewData.ModelState["Title"]?.Errors.Any() == true)
+                            {
+                                <span class="text-danger">
+                                    @ViewData.ModelState["Title"].Errors.First().ErrorMessage
+                                </span>
+                            }
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Description</label>

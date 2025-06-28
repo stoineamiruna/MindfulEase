@@ -2,6 +2,12 @@
 @{
     ViewBag.Title = "Show Profile";
 }
+@if (TempData.ContainsKey("message"))
+{
+    <h4 class="@ViewBag.Alert p-3 rounded-3 text-center mb-5">
+        @ViewBag.Message
+    </h4>
+}
 
 <section class="container p-3" style="background-color: @ViewBag.User.BackgroundColor; padding: 30px; border-radius: 15px;">
     @if (TempData["message"] != null)

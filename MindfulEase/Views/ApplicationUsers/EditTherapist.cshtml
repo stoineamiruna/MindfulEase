@@ -2,6 +2,13 @@
 @{
     ViewBag.Title = "Edit Your Therapist Profile";
 }
+@if (TempData.ContainsKey("message"))
+{
+    <h4 class="@ViewBag.Alert p-3 rounded-3 text-center mb-5">
+        @ViewBag.Message
+    </h4>
+}
+
 
 <div class="container-fluid" style="background-image: url('@Url.Content("~/img/NewProfile.jpg")') !important; background-size: cover !important; background-position: center !important; min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-start;">
     <div class="row justify-content-start align-items-center" style="height: 100%;">
@@ -15,59 +22,60 @@
 
                 @using (Html.BeginForm(actionName: "EditTherapist", controllerName: "ApplicationUsers", method: FormMethod.Post, routeValues: new { id = Model.Id }))
                 {
+                    @Html.AntiForgeryToken()
                     <!-- First Name -->
                     <div class="mb-3">
                         <label for="FirstName" class="form-label fw-bold" style="color: #01baa3">First Name</label>
-                        @Html.Editor("FirstName", new { htmlAttributes = new { @class = "form-control", style = "border-radius: 30px;" } })
+                        @Html.EditorFor(m => m.FirstName, new { htmlAttributes = new { @class = "form-control", style = "border-radius: 30px;" } })
                         @Html.ValidationMessageFor(m => m.FirstName, null, new { @class = "text-danger" })
                     </div>
 
                     <!-- Last Name -->
                     <div class="mb-3">
                         <label for="LastName" class="form-label fw-bold" style="color: #01baa3">Last Name</label>
-                        @Html.Editor("LastName", new { htmlAttributes = new { @class = "form-control", style = "border-radius: 30px;" } })
+                        @Html.EditorFor(m => m.LastName, new { htmlAttributes = new { @class = "form-control", style = "border-radius: 30px;" } })
                         @Html.ValidationMessageFor(m => m.LastName, null, new { @class = "text-danger" })
                     </div>
 
                     <!-- Description -->
                     <div class="mb-3">
                         <label for="Description" class="form-label fw-bold" style="color: #01baa3">Tell us about your practice 𓂃🖊</label>
-                        @Html.Editor("Description", new { htmlAttributes = new { @class = "form-control", style = "height: 150px; border-radius: 30px;" } })
+                        @Html.EditorFor(m => m.Description, new { htmlAttributes = new { @class = "form - control", style = "height: 150px; border - radius: 30px; " } })
                         @Html.ValidationMessageFor(m => m.Description, null, new { @class = "text-danger" })
                     </div>
 
                     <!-- Profile Picture -->
                     <div class="mb-3">
                         <label for="ProfilePicture" class="form-label fw-bold" style="color: #01baa3">Profile Picture</label>
-                        @Html.Editor("ProfilePicture", new { htmlAttributes = new { @class = "form-control", style = "border-radius: 30px;" } })
+                        @Html.EditorFor(m => m.ProfilePicture, new { htmlAttributes = new { @class = "form - control", style = "border - radius: 30px; " } })
                         @Html.ValidationMessageFor(m => m.ProfilePicture, null, new { @class = "text-danger" })
                     </div>
 
                     <!-- Birthday -->
                     <div class="mb-3">
                         <label for="Birthday" class="form-label fw-bold" style="color: #01baa3">Birthday 🎉</label>
-                        @Html.Editor("Birthday", new { htmlAttributes = new { @class = "form-control", style = "border-radius: 30px;" } })
+                        @Html.EditorFor(m => m.Birthday, new { htmlAttributes = new { @class = "form-control", style = "border-radius: 30px;" } })
                         @Html.ValidationMessageFor(m => m.Birthday, null, new { @class = "text-danger" })
                     </div>
 
                     <!-- Studies -->
                     <div class="mb-3">
                         <label for="Studies" class="form-label fw-bold" style="color: #01baa3">Your Studies 📚</label>
-                        @Html.Editor("Studies", new { htmlAttributes = new { @class = "form-control", style = "border-radius: 30px;" } })
+                        @Html.EditorFor(m => m.Studies, new { htmlAttributes = new { @class = "form - control", style = "border - radius: 30px; " } })
                         @Html.ValidationMessageFor(m => m.Studies, null, new { @class = "text-danger" })
                     </div>
 
                     <!-- Phone Number -->
                     <div class="mb-3">
                         <label for="PhoneNumber" class="form-label fw-bold" style="color: #01baa3">Phone Number 📞</label>
-                        @Html.Editor("PhoneNumber", new { htmlAttributes = new { @class = "form-control", style = "border-radius: 30px;" } })
+                        @Html.EditorFor(m => m.PhoneNumber, new { htmlAttributes = new { @class = "form-control", style = "border-radius: 30px;" } })
                         @Html.ValidationMessageFor(m => m.PhoneNumber, null, new { @class = "text-danger" })
                     </div>
 
                     <!-- Background Color -->
                     <div class="mb-3">
                         <label for="BackgroundColor" class="form-label fw-bold" style="color: #01baa3">Preferred Background Color</label>
-                        @Html.Editor("BackgroundColor", new { htmlAttributes = new { @class = "form-control", style = "border-radius: 30px;" } })
+                        @Html.EditorFor(m => m.BackgroundColor, new { htmlAttributes = new { @class = "form - control", style = "border - radius: 30px; " } })
                         @Html.ValidationMessageFor(m => m.BackgroundColor, null, new { @class = "text-danger" })
                     </div>
                     <!-- Sex -->
@@ -82,7 +90,7 @@
                     </div>
 
                     <br />
-
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     <div class="text-center">
                         <button class="btn btn-info" type="submit" style="font-size: 1.2em; padding: 10px 30px; border-radius: 30px; color: white">Apply Changes</button>
                     </div>

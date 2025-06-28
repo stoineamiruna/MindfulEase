@@ -1,4 +1,10 @@
 ﻿@model IEnumerable<MindfulEase.Models.Resource>
+@if (TempData.ContainsKey("message"))
+{
+    <h4 class="@ViewBag.Alert p-3 rounded-3 text-center mb-5">
+        @ViewBag.Message
+    </h4>
+}
 
 <div class="container my-5">
     <h2 class="text-center mb-4 text-info">RECOMMENDED RESOURCES</h2>
