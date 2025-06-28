@@ -41,6 +41,11 @@ namespace MindfulEase.Controllers
         public IActionResult New()
         {
             ViewBag.Tags = db.Tags.ToList();
+            if (TempData.ContainsKey("message"))
+            {
+                ViewBag.Message = TempData["message"];
+                ViewBag.Alert = TempData["messageType"];
+            }
             return View();
         }
 
@@ -66,8 +71,8 @@ namespace MindfulEase.Controllers
                     db.SaveChanges();
                 }
 
-                TempData["message"] = "Quiz created successfully!";
-                TempData["messageType"] = "alert-success";
+                TempData["message"] = "Quiz created info!";
+                TempData["messageType"] = "alert-info";
                 
                 return RedirectToAction("Show", new { id = quiz.Id }); // Redirectează către pagina de detalii a quiz-ului
             }
@@ -88,7 +93,8 @@ namespace MindfulEase.Controllers
             {
                 TempData["message"] = "Quiz not found.";
                 TempData["messageType"] = "alert-danger";
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "TherapeuticGames");
+
             }
 
             ViewBag.Tags = db.Tags.ToList(); // Toate tagurile disponibile
@@ -106,16 +112,24 @@ namespace MindfulEase.Controllers
         }
 
         // POST: Update quiz details
+        [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin, Moderator")]
         [HttpPost]
         public IActionResult Edit(int id, Quiz updatedQuiz, List<int> SelectedTags)
         {
+            if (!ModelState.IsValid)
+            {
+                ViewBag.Tags = db.Tags.ToList();
+                ViewBag.SelectedTags = SelectedTags;
+                return View(updatedQuiz); // trimite modelul înapoi pentru validare
+            }
             var quiz = db.Quizzes.FirstOrDefault(q => q.Id == id);
             if (quiz == null)
             {
                 TempData["message"] = "Quiz not found.";
                 TempData["messageType"] = "alert-danger";
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "TherapeuticGames");
+
             }
 
             quiz.Title = updatedQuiz.Title;
@@ -140,11 +154,12 @@ namespace MindfulEase.Controllers
                     db.QuizTags.Add(new QuizTag { QuizId = quiz.Id, TagId = tagId });
                 }
             }
-
-            db.SaveChanges();
-
+            if (ModelState.IsValid)
+            {
+                db.SaveChanges();
+            }
             TempData["message"] = "Quiz updated successfully!";
-            TempData["messageType"] = "alert-success";
+            TempData["messageType"] = "alert-info";
 
             return RedirectToAction("Show", new { id = quiz.Id }); // Redirecționează către pagina de detalii
         }
@@ -159,7 +174,8 @@ namespace MindfulEase.Controllers
             {
                 TempData["message"] = "Quiz not found.";
                 TempData["messageType"] = "alert-danger";
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "TherapeuticGames");
+
             }
             quiz.Questions = quiz.Questions.OrderBy(q => q.Order).ToList();
 
@@ -171,7 +187,11 @@ namespace MindfulEase.Controllers
 
             // Dacă quiz-ul a fost completat anterior, setează ViewBag.Completat
             ViewBag.Completat = userQuiz != null && userQuiz.IsCompleted;
-
+            if (TempData.ContainsKey("message"))
+            {
+                ViewBag.Message = TempData["message"];
+                ViewBag.Alert = TempData["messageType"];
+            }
             // Returnează quiz-ul cu întrebările sale
             return View(quiz);
         }
@@ -188,7 +208,8 @@ namespace MindfulEase.Controllers
             {
                 TempData["message"] = "Quiz not found.";
                 TempData["messageType"] = "alert-danger";
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "TherapeuticGames");
+
             }
             Console.WriteLine(isReversed);
             // Crează o întrebare nouă
@@ -204,7 +225,7 @@ namespace MindfulEase.Controllers
             db.SaveChanges();
 
             TempData["message"] = "Question added successfully!";
-            TempData["messageType"] = "alert-success";
+            TempData["messageType"] = "alert-info";
 
             return RedirectToAction("Show", new { id = quiz.Id });
         }
@@ -258,7 +279,7 @@ namespace MindfulEase.Controllers
             db.SaveChanges();
 
             TempData["message"] = "Quiz deleted successfully!";
-            TempData["messageType"] = "alert-success";
+            TempData["messageType"] = "alert-info";
 
             return RedirectToAction("Index", "TherapeuticGames");
         }
@@ -289,7 +310,7 @@ namespace MindfulEase.Controllers
             db.SaveChanges();
 
             TempData["message"] = "Question deleted successfully!";
-            TempData["messageType"] = "alert-success";
+            TempData["messageType"] = "alert-info";
 
             // Redirecționează înapoi la pagina anterioară
             var referer = Request.Headers["Referer"].ToString();
@@ -297,7 +318,8 @@ namespace MindfulEase.Controllers
             {
                 return Redirect(referer);
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "TherapeuticGames");
+
         }
 
         // POST: Update a question
@@ -323,7 +345,7 @@ namespace MindfulEase.Controllers
             db.SaveChanges();
 
             TempData["message"] = "Question updated successfully!";
-            TempData["messageType"] = "alert-success";
+            TempData["messageType"] = "alert-info";
 
             // Redirecționăm către pagina de detalii a quiz-ului
             return RedirectToAction("Show", new { id = question.QuizId });
@@ -489,11 +511,11 @@ namespace MindfulEase.Controllers
             var quiz = db.Quizzes.FirstOrDefault(q => q.Id == quizId);
             if (quiz == null)
             {
-                TempData["message"] = "Quiz-ul nu a fost găsit.";
+                TempData["message"] = "The quiz was not found.";
                 TempData["messageType"] = "alert-danger";
                 Console.WriteLine("Quiz-ul nu a fost găsit." + quizId);
                 Console.WriteLine(quizId);
-                return RedirectToAction("Index", "Quizzes");
+                return RedirectToAction("Index", "TherapeuticGames");
             }
 
             // Preluăm întrebările corect, pe baza quizId
@@ -504,9 +526,9 @@ namespace MindfulEase.Controllers
 
             if (!questions.Any())
             {
-                TempData["message"] = "Nu există întrebări asociate acestui quiz.";
+                TempData["message"] = "There are no questions associated with this quiz.";
                 TempData["messageType"] = "alert-warning";
-                return RedirectToAction("Index", "Quizzes");
+                return RedirectToAction("Index", "TherapeuticGames");
             }
 
             // Obține rezultatele complete pentru acest quiz din baza de date
@@ -515,10 +537,10 @@ namespace MindfulEase.Controllers
 
             if (existingQuizResponse == null)
             {
-                TempData["message"] = "Nu ai completat acest quiz.";
+                TempData["message"] = "You haven't completed this quiz.";
                 TempData["messageType"] = "alert-warning";
                 Console.WriteLine("Nu ai completat acest quiz.");
-                return RedirectToAction("Index", "Quizzes");
+                return RedirectToAction("Index", "TherapeuticGames");
             }
 
             // Obține răspunsurile la întrebările din quiz

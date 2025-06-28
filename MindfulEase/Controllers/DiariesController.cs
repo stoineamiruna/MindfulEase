@@ -65,6 +65,11 @@ namespace MindfulEase.Controllers
                 TempData["messageType"] = "alert-danger";
                 return RedirectToAction("Index");
             }
+            if (TempData.ContainsKey("message"))
+            {
+                ViewBag.Message = TempData["message"];
+                ViewBag.Alert = TempData["messageType"];
+            }
             return View(diary);
         }
 
@@ -135,7 +140,12 @@ namespace MindfulEase.Controllers
 
 
             var userDiaries = db.Diaries.Where(d => d.UserId == userId).ToList(); 
-            ViewBag.UserDiaries = userDiaries; 
+            ViewBag.UserDiaries = userDiaries;
+            if (TempData.ContainsKey("message"))
+            {
+                ViewBag.Message = TempData["message"];
+                ViewBag.Alert = TempData["messageType"];
+            }
             return View();
         }
 
@@ -144,9 +154,9 @@ namespace MindfulEase.Controllers
         [HttpPost]
         public async Task<IActionResult> New(Diary newDiary)
         {
+            var userId = _userManager.GetUserId(User);
             if (ModelState.IsValid)
             {
-                var userId = _userManager.GetUserId(User);
                 if (userId == null)
                 {
                     TempData["message"] = "Access denied.";
@@ -228,7 +238,7 @@ namespace MindfulEase.Controllers
                 clusteringService.AssignClustersToUsers();
 
                 TempData["message"] = "Diary entry created successfully!";
-                TempData["messageType"] = "alert-success";
+                TempData["messageType"] = "alert-info";
                 return RedirectToAction("New");
             }
 
@@ -237,6 +247,74 @@ namespace MindfulEase.Controllers
                 Console.WriteLine(error.ErrorMessage);
             }
 
+            SetAccessRights();
+            
+            if (userId == null)
+            {
+                TempData["message"] = "Access denied.";
+                TempData["messageType"] = "alert-danger";
+                // Redirecționează înapoi la pagina anterioară
+                var referer = Request.Headers["Referer"].ToString();
+                if (!string.IsNullOrEmpty(referer))
+                {
+                    return Redirect(referer);
+                }
+            }
+            var userObjectives = db.UserObjectives
+                            .Where(uo => uo.UserId == userId)
+                            .Include(uo => uo.Objective)
+                            .ToList();
+
+            // Obținem Id-urile obiectivelor utilizatorului
+            var userObjectiveIds = userObjectives.Select(uo => (int?)uo.Id).ToList();
+
+            // Obținem progresul pentru obiectivele utilizatorului, doar pentru ziua curentă
+            var userObjectiveProgresses = db.UserObjectiveProgresses
+                .Where(up => userObjectiveIds.Contains(up.UserObjectiveId) && up.Date.Date == DateTime.Today)
+            .ToList();
+
+            var userObjectiveProgressesCompleted = db.UserObjectiveProgresses
+                .Where(up => userObjectiveIds.Contains(up.UserObjectiveId) && up.Date.Date == DateTime.Today && up.IsCompleted == true)
+            .ToList();
+
+            if (userObjectives.Count > 0 && userObjectives.Count == userObjectiveProgressesCompleted.Count)
+            {
+                // Verificăm dacă există deja un Reward pentru ziua curentă cu Activity = "CompleteDay"
+                bool alreadyRewarded = await db.Rewards
+                    .AnyAsync(r => r.UserId == userId && r.Activity == "CompleteDay" && r.DateEarned.Date == DateTime.UtcNow.Date);
+
+                if (!alreadyRewarded)
+                {
+                    // Adăugăm Reward-ul de 10 puncte
+                    await _rewardService.AddRewardAsync(userId, "CompleteDay", 5);
+
+                    var notification = new Notification
+                    {
+                        UserId = userId,
+                        Message = $"Congratulations! You have earned 5 points for a full day",
+                        Link = "/Diaries/New/",
+                        CreatedAt = DateTime.Now,
+                        IsRead = false
+                    };
+
+                    db.Notifications.Add(notification);
+                    db.SaveChanges();
+                }
+            }
+
+            Console.WriteLine("Count: " + userObjectiveProgresses.Count);
+            // Trimitem datele către view
+            ViewBag.UserObjectives = userObjectives;
+            ViewBag.UserObjectiveProgresses = userObjectiveProgresses;
+
+
+            var userDiaries = db.Diaries.Where(d => d.UserId == userId).ToList();
+            ViewBag.UserDiaries = userDiaries;
+            if (TempData.ContainsKey("message"))
+            {
+                ViewBag.Message = TempData["message"];
+                ViewBag.Alert = TempData["messageType"];
+            }
             return View(newDiary);
         }
 
@@ -267,7 +345,11 @@ namespace MindfulEase.Controllers
                 TempData["messageType"] = "alert-danger";
                 return RedirectToAction("Index");
             }
-
+            if (TempData.ContainsKey("message"))
+            {
+                ViewBag.Message = TempData["message"];
+                ViewBag.Alert = TempData["messageType"];
+            }
             return View(diary);
         }
 
@@ -301,7 +383,8 @@ namespace MindfulEase.Controllers
             db.SaveChanges();
 
             TempData["message"] = "Diary entry updated successfully!";
-            TempData["messageType"] = "alert-success";
+            TempData["messageType"] = "alert-info";
+            
             return RedirectToAction("New");
         }
 
@@ -336,7 +419,8 @@ namespace MindfulEase.Controllers
             db.SaveChanges();
 
             TempData["message"] = "Diary entry deleted successfully!";
-            TempData["messageType"] = "alert-success";
+            TempData["messageType"] = "alert-info";
+
             return RedirectToAction("New");
         }
 

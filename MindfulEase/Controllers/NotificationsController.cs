@@ -30,9 +30,12 @@ namespace MindfulEase.Controllers
                 .Where(n => (n.UserId == null || n.UserId == userId) && n.IsRead == false) // Notificări globale sau specifice
                 .OrderByDescending(n => n.CreatedAt)
                 .ToList();
-
-            ViewBag.Message = TempData["message"];
-            ViewBag.MessageType = TempData["messageType"];
+;
+            if (TempData.ContainsKey("message"))
+            {
+                ViewBag.Message = TempData["message"];
+                ViewBag.Alert = TempData["messageType"];
+            }
 
             return View(notifications);
         }
@@ -49,7 +52,7 @@ namespace MindfulEase.Controllers
                 _db.SaveChanges();
 
                 TempData["message"] = "Notification marked as read.";
-                TempData["messageType"] = "alert-success";
+                TempData["messageType"] = "alert-info";
             }
             else
             {
@@ -80,7 +83,7 @@ namespace MindfulEase.Controllers
                 _db.SaveChanges();
 
                 TempData["message"] = "Notification added successfully.";
-                TempData["messageType"] = "alert-success";
+                TempData["messageType"] = "alert-info";
 
                 return RedirectToAction("Index");
             }
@@ -101,7 +104,7 @@ namespace MindfulEase.Controllers
                 _db.SaveChanges();
 
                 TempData["message"] = "Notification deleted successfully.";
-                TempData["messageType"] = "alert-success";
+                TempData["messageType"] = "alert-info";
             }
             else
             {
@@ -121,7 +124,11 @@ namespace MindfulEase.Controllers
             {
                 return NotFound();
             }
-
+            if (TempData.ContainsKey("message"))
+            {
+                ViewBag.Message = TempData["message"];
+                ViewBag.Alert = TempData["messageType"];
+            }
             return View(notification);
         }
     }

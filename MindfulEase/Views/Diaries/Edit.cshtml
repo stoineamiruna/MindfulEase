@@ -3,6 +3,12 @@
 @{
     ViewBag.Title = "Edit Diary Entry";
 }
+@if (TempData.ContainsKey("message"))
+{
+    <h4 class="@ViewBag.Alert p-3 rounded-3 text-center mb-5">
+        @ViewBag.Message
+    </h4>
+}
 
 <div class="container-fluid" style="background-image: url('@Url.Content("~/img/background1.png")') !important; background-size: cover !important; background-position: center !important; min-height: 100vh; position: relative; z-index: 1;">
     <div class="row justify-content-center align-items-center" style="min-height: 100vh;">
@@ -26,14 +32,25 @@
                     <div class="mb-3">
                         @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "form-label fw-bold", style = "color: #01baa3;" })
                         @Html.EditorFor(model => model.Content, new { htmlAttributes = new { @class = "form-control", style = "border-radius: 30px; background-color: rgba(255, 255, 255, 0.8);" } })
+                        @Html.ValidationMessageFor(model => model.Content, null, new { @class = "text-danger" })
                     </div>
 
                     <!-- Entry Date -->
                     <div class="mb-3">
                         @Html.LabelFor(model => model.EntryDate, htmlAttributes: new { @class = "form-label fw-bold", style = "color: #01baa3;" })
-                        @Html.EditorFor(model => model.EntryDate, new { htmlAttributes = new { @class = "form-control", style = "border-radius: 30px; background-color: rgba(255, 255, 255, 0.8);" } })
+                        @Html.EditorFor(model => model.EntryDate, new
+                            {
+                                htmlAttributes = new
+                                {
+                                    @class = "form-control",
+                                    type = "date",
+                                    max = DateTime.Today.ToString("yyyy-MM-dd"),
+                                    style = "border-radius: 30px; background-color: rgba(255, 255, 255, 0.8);"
+                                }
+                            })
+                        @Html.ValidationMessageFor(model => model.EntryDate, null, new { @class = "text-danger" })
                     </div>
-
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     <!-- Submit Button -->
                     <div class="text-center mt-4">
                         <button type="submit" class="btn btn-warning" style="font-size: 1.2em; padding: 10px 30px; border-radius: 30px; color: white;">

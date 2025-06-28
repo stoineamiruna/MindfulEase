@@ -44,6 +44,11 @@ namespace MindfulEase.Controllers
         {
             SetAccessRights();
             var badges = db.Badges.ToList();
+            if (TempData.ContainsKey("message"))
+            {
+                ViewBag.Message = TempData["message"];
+                ViewBag.Alert = TempData["messageType"];
+            }
             return View(badges);
         }
 
@@ -68,31 +73,31 @@ namespace MindfulEase.Controllers
 
             // Returnăm view-ul badge-urilor utilizatorului
             ViewBag.User = user;
+            if (TempData.ContainsKey("message"))
+            {
+                ViewBag.Message = TempData["message"];
+                ViewBag.Alert = TempData["messageType"];
+            }
             return View(userBadges);
         }
 
 
-        [Authorize(Roles = "Admin,Moderator")]
-        public IActionResult New()
-        {
-            return View();
-        }
 
         [Authorize(Roles = "Admin,Moderator")]
         [HttpPost]
-        public IActionResult New(Badge badge)
+        public async Task<IActionResult> Create(Badge badge)
         {
             if (ModelState.IsValid)
             {
                 db.Badges.Add(badge);
                 db.SaveChanges();
                 TempData["message"] = "Badge created successfully!";
-                TempData["messageType"] = "alert-success";
+                TempData["messageType"] = "alert-info";
                 return RedirectToAction("Index");
             }
             TempData["message"] = "There was an error creating the badge.";
             TempData["messageType"] = "alert-danger";
-            return View(badge);
+            return RedirectToAction("Index");
         }
 
         [Authorize(Roles = "Admin,Moderator")]
@@ -125,7 +130,7 @@ namespace MindfulEase.Controllers
             badge.Activity = updatedBadge.Activity;
             db.SaveChanges();
             TempData["message"] = "Badge updated successfully!";
-            TempData["messageType"] = "alert-success";
+            TempData["messageType"] = "alert-info";
             return RedirectToAction("Index");
         }
 
@@ -147,7 +152,7 @@ namespace MindfulEase.Controllers
             db.Badges.Remove(badge);
             db.SaveChanges();
             TempData["message"] = "Badge deleted successfully!";
-            TempData["messageType"] = "alert-success";
+            TempData["messageType"] = "alert-info";
             return RedirectToAction("Index");
         }
     

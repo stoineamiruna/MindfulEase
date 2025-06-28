@@ -5,6 +5,13 @@
     var userObjectives = ViewBag.UserObjectives as List<MindfulEase.Models.UserObjective>;
     var userId = ViewBag.UserId as string;
 }
+@if (TempData.ContainsKey("message"))
+{
+    <h4 class="@ViewBag.Alert p-3 rounded-3 text-center mb-5">
+        @ViewBag.Message
+    </h4>
+}
+
 
 <div class="container-fluid" style="background-image: url('@Url.Content("~/img/quiz_background.png")'); background-size: cover; background-position: center; min-height: 100vh;">
     <div class="row justify-content-center " >
@@ -187,10 +194,15 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form method="post" action="/Objectives/Create">
+                <form method="post" action="/Objectives/New">
                     <div class="mb-3">
                         <label for="title" class="form-label">Title</label>
                         <input type="text" class="form-control" id="title" name="Title" required placeholder="Enter objective title" style="border-radius: 30px;" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="category" class="form-label">Category</label>
+                        <input type="text" class="form-control" id="category" name="Category" required placeholder="Enter objective category" style="border-radius: 30px;" />
                     </div>
 
                     <div class="mb-3">

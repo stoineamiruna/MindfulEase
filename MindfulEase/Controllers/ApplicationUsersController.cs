@@ -237,7 +237,7 @@ namespace MindfulEase.Controllers
             db.SaveChanges();
 
             TempData["message"] = "Your profile has been updated successfully!";
-            TempData["messageType"] = "alert-success";
+            TempData["messageType"] = "alert-info";
 
             return RedirectToAction("Show", new { id = userId }); // Redirecționează către profilul utilizatorului
 
@@ -277,6 +277,11 @@ namespace MindfulEase.Controllers
                 {
                     return Redirect(referer);
                 }
+                if (TempData.ContainsKey("message"))
+                {
+                    ViewBag.Message = TempData["message"];
+                    ViewBag.Alert = TempData["messageType"];
+                }
             }
             user.FirstName = requestProfile.FirstName;
             user.LastName = requestProfile.LastName;
@@ -285,7 +290,7 @@ namespace MindfulEase.Controllers
             user.Sex = requestProfile.Sex;
 
             TempData["message"] = "You edited your profile successfully!";
-            TempData["messageType"] = "alert-success";
+            TempData["messageType"] = "alert-info";
             db.SaveChanges();
             return RedirectToAction("Show", new { id = user.Id });
 
@@ -360,7 +365,7 @@ namespace MindfulEase.Controllers
 
                 db.ApplicationUsers.Remove(user);
                 TempData["message"] = "Your profile has been deleted.";
-                TempData["messageType"] = "alert-success";
+                TempData["messageType"] = "alert-info";
                 db.SaveChanges();
 
                 await _signInManager.SignOutAsync();
@@ -425,7 +430,7 @@ namespace MindfulEase.Controllers
             db.SaveChanges();
 
             TempData["message"] = "Your therapist profile has been updated successfully!";
-            TempData["messageType"] = "alert-success";
+            TempData["messageType"] = "alert-info";
 
             return RedirectToAction("Show", new { id = userId });
         }
@@ -481,7 +486,7 @@ namespace MindfulEase.Controllers
             db.SaveChanges();
 
             TempData["message"] = "Your therapist profile has been updated successfully!";
-            TempData["messageType"] = "alert-success";
+            TempData["messageType"] = "alert-info";
 
             return RedirectToAction("Show", new { id = therapist.Id });
         }
