@@ -53,7 +53,7 @@ namespace MindfulEase.Controllers
                 }
 
                 TempData["message"] = "Therapeutic game created successfully!";
-                TempData["messageType"] = "alert-success";
+                TempData["messageType"] = "alert-info";
 
 
                 return RedirectToAction("Play", new { id = game.Id });
@@ -96,6 +96,12 @@ namespace MindfulEase.Controllers
         [HttpPost]
         public IActionResult Edit(int id, TherapeuticGame updatedGame, List<int> SelectedTags)
         {
+            if (!ModelState.IsValid)
+            {
+                ViewBag.Tags = db.Tags.ToList();
+                ViewBag.SelectedTags = SelectedTags;
+                return View(updatedGame); // trimite modelul înapoi pentru validare
+            }
             var game = db.TherapeuticGames.FirstOrDefault(g => g.Id == id);
             if (game == null)
             {
@@ -130,7 +136,7 @@ namespace MindfulEase.Controllers
             db.SaveChanges();
 
             TempData["message"] = "Therapeutic game updated successfully!";
-            TempData["messageType"] = "alert-success";
+            TempData["messageType"] = "alert-info";
 
             return RedirectToAction("Play", new { id = game.Id });
         }
@@ -157,7 +163,7 @@ namespace MindfulEase.Controllers
             db.SaveChanges();
 
             TempData["message"] = "Therapeutic game deleted successfully!";
-            TempData["messageType"] = "alert-success";
+            TempData["messageType"] = "alert-info";
 
             return RedirectToAction("Index");
         }
@@ -167,7 +173,11 @@ namespace MindfulEase.Controllers
             SetAccessRights();
             var game = db.TherapeuticGames.FirstOrDefault(g => g.Id == id);
             if (game == null) return NotFound();
-
+            if (TempData.ContainsKey("message"))
+            {
+                ViewBag.Message = TempData["message"];
+                ViewBag.Alert = TempData["messageType"];
+            }
             return View(game);
         }
 
@@ -285,7 +295,11 @@ namespace MindfulEase.Controllers
             ViewBag.SearchString = search;
             ViewBag.Games = games;
             ViewBag.Quizzes = quizzes;
-
+            if (TempData.ContainsKey("message"))
+            {
+                ViewBag.Message = TempData["message"];
+                ViewBag.Alert = TempData["messageType"];
+            }
             return View();
         }
 

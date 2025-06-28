@@ -3,6 +3,13 @@
 @{
     ViewBag.Title = "Rezultatele Quiz-ului";
 }
+@if (TempData.ContainsKey("message"))
+{
+    <h4 class="@ViewBag.Alert p-3 rounded-3 text-center mb-5">
+        @ViewBag.Message
+    </h4>
+}
+
 
 <div class="container-fluid" style="background-image: url('@Url.Content("~/img/quiz_background.png")'); background-size: cover; background-position: center; min-height: 100vh;">
     <div class="row justify-content-center align-items-center" style="min-height: 100vh;">

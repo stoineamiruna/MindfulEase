@@ -3,6 +3,12 @@
 @{
     ViewData["Title"] = "Notifications";
 }
+@if (TempData.ContainsKey("message"))
+{
+    <h4 class="@ViewBag.Alert p-3 rounded-3 text-center mb-5">
+        @ViewBag.Message
+    </h4>
+}
 
 <section class="features-area features-one min-vh-100">
     <div class="container">

@@ -133,7 +133,11 @@ public class RoutinesController : Controller
         ViewBag.SavedResourcesList = savedResources;
         ViewBag.DisLikedResources = disLikedResources.Select(r => r.Id).ToList();
         ViewBag.ReallyLikedResources = likedResources.Select(r => r.Id).ToList();
-
+        if (TempData.ContainsKey("message"))
+        {
+            ViewBag.Message = TempData["message"];
+            ViewBag.Alert = TempData["messageType"];
+        }
         Console.WriteLine(User.IsInRole("Admin"));
         return View(combinedResources);
     }
@@ -227,7 +231,11 @@ public class RoutinesController : Controller
         ViewBag.DisLikedResources = disLikedResources.Select(r => r.Id).ToList();
         ViewBag.ReallyLikedResources = likedResources.Select(r => r.Id).ToList();
         ViewBag.SavedResources = savedResourceIds.ToList(); // Folosim ID-uri pentru resurse salvate
-
+        if (TempData.ContainsKey("message"))
+        {
+            ViewBag.Message = TempData["message"];
+            ViewBag.Alert = TempData["messageType"];
+        }
         return View(resources.ToList());
     }
 

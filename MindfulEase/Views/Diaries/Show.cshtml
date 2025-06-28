@@ -3,6 +3,12 @@
 @{
     ViewBag.Title = "Diary Entry";
 }
+@if (TempData.ContainsKey("message"))
+{
+    <h4 class="@ViewBag.Alert p-3 rounded-3 text-center mb-5">
+        @ViewBag.Message
+    </h4>
+}
 
 <div class="container-fluid" style="background-image: url('@Url.Content("~/img/background1.png")') !important; background-size: cover !important; background-position: center !important; min-height: 100vh; position: relative; z-index: 1;">
     <div class="row justify-content-center align-items-center" style="min-height: 100vh;">

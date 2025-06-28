@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Components.RenderTree;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MindfulEase.Data;
@@ -33,6 +34,11 @@ namespace MindfulEase.Controllers
         public IActionResult New()
         {
             ViewBag.Tags = db.Tags.ToList();
+            if (TempData.ContainsKey("message"))
+            {
+                ViewBag.Message = TempData["message"];
+                ViewBag.Alert = TempData["messageType"];
+            }
             return View();
         }
 
@@ -41,6 +47,7 @@ namespace MindfulEase.Controllers
         [HttpPost]
         public IActionResult New(Resource resource, List<int> SelectedTags)
         {
+            string referer = Request.Headers["Referer"].ToString();
             if (ModelState.IsValid)
             {
                 db.Resources.Add(resource);
@@ -58,15 +65,18 @@ namespace MindfulEase.Controllers
                 }
 
                 TempData["message"] = "Your resource has been created successfully!";
-                TempData["messageType"] = "alert-success";
+                TempData["messageType"] = "alert-info";
+                
+                return RedirectToAction("Index", "Routines");
             }
 
-           
-
+            // Dacă avem erori de validare, ne întoarcem în view
+            ViewBag.Tags = db.Tags.ToList();
+            return View(resource);
+            /*
             TempData["message"] = "Your resource has not been created!";
             TempData["messageType"] = "alert-danger";
-            ViewBag.Tags = db.Tags.ToList();
-            return Redirect("/Routines/Index");
+            return RedirectToAction("Index", "Routines");*/
 
         }
         [Authorize(Roles = "Admin,Moderator")]
@@ -96,7 +106,13 @@ namespace MindfulEase.Controllers
         [HttpPost]
         public IActionResult Edit(int id, Resource requestResource, List<int> SelectedTags)
         {
-            Resource resource = db.Resources.Find(id);
+            if (!ModelState.IsValid)
+            {
+                ViewBag.Tags = db.Tags.ToList();
+                ViewBag.SelectedTags = SelectedTags;
+                return View(requestResource); // trimite modelul înapoi pentru validare
+            }
+            var resource = db.Resources.Find(id);
 
             resource.Title = requestResource.Title;
             resource.Link =  requestResource.Link;
@@ -121,13 +137,10 @@ namespace MindfulEase.Controllers
                 }
             }
 
-            db.SaveChanges();
-
             TempData["message"] = "You edited your resource successfully!";
-            TempData["messageType"] = "alert-success";
+            TempData["messageType"] = "alert-info";
             db.SaveChanges();
-
-            return Redirect("/Routines/Index");
+            return RedirectToAction("Index", "Routines");
         }
 
         [Authorize(Roles = "Admin,Moderator")]
@@ -156,7 +169,7 @@ namespace MindfulEase.Controllers
             db.SaveChanges();
 
             TempData["message"] = "Resource deleted successfully!";
-            TempData["messageType"] = "alert-success";
+            TempData["messageType"] = "alert-info";
             return RedirectToAction("Index", "Routines"); 
 
         }

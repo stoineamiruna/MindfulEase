@@ -51,7 +51,11 @@ namespace MindfulEase.Controllers
 
             ViewBag.UserObjectives = userObjectives;
             ViewBag.UserId = userId;
-
+            if (TempData.ContainsKey("message"))
+            {
+                ViewBag.Message = TempData["message"];
+                ViewBag.Alert = TempData["messageType"];
+            }
             return View(objectives);
         }
         [HttpPost]
@@ -79,7 +83,8 @@ namespace MindfulEase.Controllers
                 };
                 db.UserObjectives.Add(userObjective);
             }
-
+            TempData["message"] = "Objective set successfully!";
+            TempData["messageType"] = "alert-info";
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -100,12 +105,12 @@ namespace MindfulEase.Controllers
                 db.Objectives.Add(objective);
                 db.SaveChanges();
                 TempData["message"] = "Objective created successfully!";
-                TempData["messageType"] = "alert-success";
+                TempData["messageType"] = "alert-info";
                 return RedirectToAction("Index");
             }
             TempData["message"] = "There was an error creating the objective.";
             TempData["messageType"] = "alert-danger";
-            return View(objective);
+            return RedirectToAction("Index");
         }
 
         [Authorize(Roles = "Admin,Moderator")]
@@ -118,7 +123,7 @@ namespace MindfulEase.Controllers
                 TempData["messageType"] = "alert-danger";
                 return NotFound();
             }
-            return View(objective);
+            return RedirectToAction("Index");
         }
 
         [Authorize(Roles = "Admin,Moderator")]
@@ -137,7 +142,7 @@ namespace MindfulEase.Controllers
             objective.Category = updatedObjective.Category;
             db.SaveChanges();
             TempData["message"] = "Objective updated successfully!";
-            TempData["messageType"] = "alert-success";
+            TempData["messageType"] = "alert-info";
             return RedirectToAction("Index");
         }
 
@@ -175,8 +180,10 @@ namespace MindfulEase.Controllers
                 // Ștergem obiectivul principal
                 db.Objectives.Remove(objective);
 
-                db.Objectives.Remove(objective);
                 db.SaveChanges();
+                TempData["message"] = "Objective deleted successfully!";
+                TempData["messageType"] = "alert-info";
+                return RedirectToAction("Index");
             }
             TempData["message"] = "Objective not found.";
             TempData["messageType"] = "alert-danger";
@@ -207,7 +214,6 @@ namespace MindfulEase.Controllers
             }
 
             db.SaveChanges();
-
             return Json(new { success = true });
         }
 

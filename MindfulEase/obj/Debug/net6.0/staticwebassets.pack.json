@@ -113,6 +113,10 @@
       "PackagePath": "staticwebassets\\img\\liked.png"
     },
     {
+      "Id": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\img\\logo.png",
+      "PackagePath": "staticwebassets\\img\\logo.png"
+    },
+    {
       "Id": "C:\\Users\\Miru\\Desktop\\Licenta\\MindfulEase\\MindfulEase\\wwwroot\\img\\notebook.png",
       "PackagePath": "staticwebassets\\img\\notebook.png"
     },
