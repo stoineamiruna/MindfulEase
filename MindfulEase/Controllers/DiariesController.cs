@@ -161,7 +161,7 @@ namespace MindfulEase.Controllers
                 {
                     TempData["message"] = "Access denied.";
                     TempData["messageType"] = "alert-danger";
-                    // Redirecționează înapoi la pagina anterioară
+                    
                     var referer = Request.Headers["Referer"].ToString();
                     if (!string.IsNullOrEmpty(referer))
                     {
@@ -176,22 +176,22 @@ namespace MindfulEase.Controllers
                 await db.SaveChangesAsync();
 
                 await _rewardService.AddRewardAsync(userId, "Diary", 10);
-                // Analizează emoțiile folosind serviciul de sentiment analysis
+                // Analizam emotiile folosind serviciul de sentiment analysis
                 var emotions = await _sentimentAnalysisService.AnalyzeEmotionAsync(newDiary.Content);
                 Console.WriteLine("emotion: " + emotions);
                 if (emotions != null)
                 {
                     if (emotions != null)
                     {
-                        // Iterăm prin lista de emoții
+                        // Iteram prin lista de emotii
                         foreach (var emotion in emotions)
                         {
-                            // Verificăm dacă elementul poate fi accesat ca un dicționar
+                            // Verificam daca elementul poate fi accesat ca un dictionar
                             if (emotion is IDictionary<string, object> emotionDict)
                             {
                 
                                 //var emotionInDb = await db.Emotions.FirstOrDefaultAsync(e => e.Label == emotion.label);
-                                // Accesăm valorile cheilor din dicționar
+                                // Accesam valorile cheilor din dicționar
                                 if (emotionDict.TryGetValue("label", out var label) &&
                                     emotionDict.TryGetValue("score", out var score))
                                 {
@@ -202,7 +202,7 @@ namespace MindfulEase.Controllers
                             {
                                 string label = emotion.label?.ToString();
                                 double score = Convert.ToDouble(emotion.score);
-                                // Dacă este de tip dynamic, accesăm direct proprietățile
+                                // Daca este de tip dynamic, accesam direct proprietatile
                                 Console.WriteLine($"2Label: {emotion.label}, Score: {emotion.score}");
                                 Console.WriteLine($"2Label: {emotion.label.GetType()}, Score: {emotion.score.GetType()}");
                                 Console.WriteLine($"2Label: {label}, Score: {score}");
@@ -210,19 +210,19 @@ namespace MindfulEase.Controllers
                                 var emotionInDb = await db.Emotions.FirstOrDefaultAsync(e => e.Label == label);
                                 if (emotionInDb == null)
                                 {
-                                    // Dacă emoția nu există în DB, o adăugăm
+                                    // Daca emotia nu exista în DB, o adaugam
                                     emotionInDb = new Emotion {};
                                     emotionInDb.Label = label;
                                     db.Emotions.Add(emotionInDb);
                                     await db.SaveChangesAsync();
                                 }
 
-                                // Creăm legătura între jurnal și emoție
+                                // Cream legatura intre jurnal si emotie
                                 var diaryEmotion = new DiaryEmotion
                                 {
                                     DiaryId = newDiary.Id,
                                     EmotionId = emotionInDb.Id,
-                                    Score = score  // Asociem scorul emoției
+                                    Score = score  // Asociem scorul emotiei
                                 };
 
                                 db.DiaryEmotions.Add(diaryEmotion);
@@ -233,7 +233,7 @@ namespace MindfulEase.Controllers
 
                 }
 
-                // Actualizăm clusterizarea utilizatorilor
+                // Actualizam clusterizarea utilizatorilor
                 var clusteringService = new ClusteringService(db);
                 clusteringService.AssignClustersToUsers();
 
@@ -253,7 +253,7 @@ namespace MindfulEase.Controllers
             {
                 TempData["message"] = "Access denied.";
                 TempData["messageType"] = "alert-danger";
-                // Redirecționează înapoi la pagina anterioară
+                
                 var referer = Request.Headers["Referer"].ToString();
                 if (!string.IsNullOrEmpty(referer))
                 {
@@ -265,10 +265,10 @@ namespace MindfulEase.Controllers
                             .Include(uo => uo.Objective)
                             .ToList();
 
-            // Obținem Id-urile obiectivelor utilizatorului
+            // Obtinem Id-urile obiectivelor utilizatorului
             var userObjectiveIds = userObjectives.Select(uo => (int?)uo.Id).ToList();
 
-            // Obținem progresul pentru obiectivele utilizatorului, doar pentru ziua curentă
+            // Obtinem progresul pentru obiectivele utilizatorului, doar pentru ziua curenta
             var userObjectiveProgresses = db.UserObjectiveProgresses
                 .Where(up => userObjectiveIds.Contains(up.UserObjectiveId) && up.Date.Date == DateTime.Today)
             .ToList();
@@ -279,13 +279,13 @@ namespace MindfulEase.Controllers
 
             if (userObjectives.Count > 0 && userObjectives.Count == userObjectiveProgressesCompleted.Count)
             {
-                // Verificăm dacă există deja un Reward pentru ziua curentă cu Activity = "CompleteDay"
+                // Verificam daca exista deja un Reward pentru ziua curenta cu Activity = "CompleteDay"
                 bool alreadyRewarded = await db.Rewards
                     .AnyAsync(r => r.UserId == userId && r.Activity == "CompleteDay" && r.DateEarned.Date == DateTime.UtcNow.Date);
 
                 if (!alreadyRewarded)
                 {
-                    // Adăugăm Reward-ul de 10 puncte
+                    // Adaugam Reward-ul de 10 puncte
                     await _rewardService.AddRewardAsync(userId, "CompleteDay", 5);
 
                     var notification = new Notification
@@ -303,7 +303,7 @@ namespace MindfulEase.Controllers
             }
 
             Console.WriteLine("Count: " + userObjectiveProgresses.Count);
-            // Trimitem datele către view
+            // Trimitem datele catre view
             ViewBag.UserObjectives = userObjectives;
             ViewBag.UserObjectiveProgresses = userObjectiveProgresses;
 
@@ -332,7 +332,7 @@ namespace MindfulEase.Controllers
             {
                 TempData["message"] = "Access denied.";
                 TempData["messageType"] = "alert-danger";
-                // Redirecționează înapoi la pagina anterioară
+                
                 var referer = Request.Headers["Referer"].ToString();
                 if (!string.IsNullOrEmpty(referer))
                 {
@@ -363,7 +363,6 @@ namespace MindfulEase.Controllers
             {
                 TempData["message"] = "Access denied.";
                 TempData["messageType"] = "alert-danger";
-                // Redirecționează înapoi la pagina anterioară
                 var referer = Request.Headers["Referer"].ToString();
                 if (!string.IsNullOrEmpty(referer))
                 {
@@ -435,12 +434,12 @@ namespace MindfulEase.Controllers
 
             if (existingEmotion != null)
                 {
-                    // Dacă există deja o înregistrare, actualizează valoarea
+                    // Daca exista deja o inregistrare, actualizam valoarea
                     existingEmotion.MoodValue = value;
                 }
                 else
                 {
-                    // Dacă nu există, creează o nouă intrare
+                    // Dacă nu exista, cream o noua intrare
                     var newEmotion = new ApplicationUserEmotion
                     {
                         UserId = userId,

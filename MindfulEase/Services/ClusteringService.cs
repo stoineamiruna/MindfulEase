@@ -20,7 +20,7 @@ namespace MindfulEase.Services
         public void AssignClustersToUsers()
         {
             var userEmotionVectors = _dbContext.ApplicationUsers
-    .AsEnumerable()  // Mută evaluarea pe client (memoria aplicației)
+    .AsEnumerable()  // Mutam evaluarea pe client (memoria aplicatiei)
     .Select(user => new UserData
     {
         UserId = user.Id,
@@ -35,7 +35,7 @@ namespace MindfulEase.Services
             var mlContext = new MLContext();
             var data = mlContext.Data.LoadFromEnumerable(userEmotionVectors);
 
-            // Definește pipeline-ul
+            // Definim pipeline-ul
             var pipeline = mlContext.Transforms.Concatenate("Features", "Features")
                 .Append(mlContext.Clustering.Trainers.KMeans("Features", numberOfClusters: 3));
             foreach (var user in userEmotionVectors)
@@ -44,14 +44,14 @@ namespace MindfulEase.Services
                 Console.WriteLine($"Vector Length: {user.Features.Length}", " type: ", user.Features.GetType());
                 Console.WriteLine($"userEmotionVectors.GetType(): {userEmotionVectors.GetType()}");
             }
-            // Încarcă și antrenează modelul
+            // Incarcam si antrenam modelul
             var model = pipeline.Fit(data);
 
-            // Transformă datele pentru a obține predicțiile
+            // Transformam datele pentru a obtine predictiile
             var predictions = model.Transform(data);
             var clusterPredictions = mlContext.Data.CreateEnumerable<EmotionClusterPrediction>(predictions, reuseRowObject: false);
 
-            // Actualizează utilizatorii cu clusterul atribuit
+            // Actualizam utilizatorii cu clusterul atribuit
             foreach (var (user, prediction) in userEmotionVectors.Zip(clusterPredictions))
             {
                 var userEntity = _dbContext.ApplicationUsers.Find(user.UserId);
@@ -67,9 +67,9 @@ namespace MindfulEase.Services
 
         private float[] GetEmotionVector(string userId)
         {
-            // Obtinerea emotiilor existente in baza de date, care sunt fixate 7 la numar
+            // Obtinem emotiile existente in baza de date, care sunt fixate 7 la numar
             var allEmotions = _dbContext.Emotions.ToList();
-            // Obtinerea ID-urilor de jurnalele utilizatorului
+            // Obtinem ID-urilor de jurnalele utilizatorului
             var diaryIds = _dbContext.Diaries
                 .Where(d => d.UserId == userId)
                 .Select(d => d.Id)

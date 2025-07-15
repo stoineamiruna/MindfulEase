@@ -183,24 +183,24 @@ namespace MindfulEase.Controllers
                 return NotFound("User not found.");
             }
 
-            // Dacă utilizatorul nu are ClusterId, îi asignăm unul
+            // Daca utilizatorul nu are ClusterId, ii asignam unul
             if (user.ClusterId == null)
             {
                 var clusteringService = new ClusteringService(db);
                 clusteringService.AssignClustersToUsers();
-                user = db.ApplicationUsers.Find(userId); // Reîncarcă utilizatorul cu ClusterId actualizat
+                user = db.ApplicationUsers.Find(userId); // Reincarcam utilizatorul cu ClusterId actualizat
             }
 
             var recommendedResources = _recommendationService.GetRecommendedResources(userId);
             var allResources = db.Resources.ToList();
 
-            // Creăm o listă combinată cu resursele recomandate urmate de celelalte resurse
+            // Cream o lista combinata cu resursele recomandate urmate de celelalte resurse
             var combinedResources = new List<Resource>();
 
-            // Adăugăm resursele recomandate
+            // Adaugam resursele recomandate
             combinedResources.AddRange(recommendedResources);
 
-            // Adăugăm restul resurselor care nu sunt deja în lista de recomandări
+            // Adaugam restul resurselor care nu sunt deja in lista de recomandari
             combinedResources.AddRange(allResources.Where(r => !recommendedResources.Contains(r)));
 
             ViewBag.Resources = combinedResources.Take(4).ToList();
