@@ -25,11 +25,11 @@ namespace MindfulEase.Services
                 if (response.IsSuccessStatusCode)
                 {
                     var result = await response.Content.ReadAsStringAsync();
-                    // Deserializăm rezultatul într-o listă de tip dynamic
+                    // Deserializăm rezultatul intr-o lista de tip dynamic
                     return JsonConvert.DeserializeObject<List<dynamic>>(result);
                 }
 
-                return null;  // În caz de eroare, returnăm null
+                return null;  // In caz de eroare, returnam null
             }
 
 

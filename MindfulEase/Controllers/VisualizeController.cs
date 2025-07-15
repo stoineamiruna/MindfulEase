@@ -32,7 +32,7 @@ namespace MindfulEase.Controllers
         {
             var userId = _userManager.GetUserId(User);
 
-            // Preluăm emoțiile pentru toate datele disponibile
+            // Preluam emotiile pentru toate datele disponibile
             var userEmotionsData = await db.ApplicationUserEmotions
                 .Where(ue => ue.UserId == userId)
                 .Select(ue => new
@@ -59,11 +59,11 @@ namespace MindfulEase.Controllers
                 {
                     g.Key.Date,
                     g.Key.EmotionLabel,
-                    AverageMoodValue = g.Average(e => e.MoodValue) // Calculăm media intensității emoțiilor pe zi
+                    AverageMoodValue = g.Average(e => e.MoodValue) // Calculam media intensitatii emotiilor pe zi
                 })
                 .ToList();
 
-            ViewBag.EmotionsByDate = JsonConvert.SerializeObject(allEmotions); // Trimitem toate emoțiile
+            ViewBag.EmotionsByDate = JsonConvert.SerializeObject(allEmotions); // Trimitem toate emotiile
             return View();
         }
 

@@ -55,28 +55,28 @@
                     <!-- Profile Picture -->
                     <div class="mb-3">
                         <label for="ProfilePicture" class="form-label fw-bold" style="color: #01baa3">Profile Picture</label>
-                        @Html.TextBoxFor(m => m.ProfilePicture, new { @class = "form - control", placeholder = "Provide a link to your profile picture", style = "border - radius: 30px; " })
+                        @Html.TextBoxFor(m => m.ProfilePicture, new { @class = "form-control", placeholder = "Provide a link to your profile picture", style = "border-radius: 30px; " })
                         @Html.ValidationMessageFor(m => m.ProfilePicture, null, new { @class = "text-danger" })
                     </div>
 
                     <!-- Studies -->
                     <div class="mb-3">
                         <label for="Studies" class="form-label fw-bold" style="color: #01baa3">Your Studies 📚</label>
-                        @Html.TextBoxFor(m => m.Studies, new { @class = "form - control", placeholder = "Provide your educational background", style = "border - radius: 30px; " })
+                        @Html.TextBoxFor(m => m.Studies, new { @class = "form-control", placeholder = "Provide your educational background", style = "border-radius: 30px; " })
                         @Html.ValidationMessageFor(m => m.Studies, null, new { @class = "text-danger" })
                     </div>
 
                     <!-- Phone Number -->
                     <div class="mb-3">
                         <label for="PhoneNumber" class="form-label fw-bold" style="color: #01baa3">Phone Number 📞</label>
-                        @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form - control", placeholder = "Enter your phone number", style = "border - radius: 30px; " })
+                        @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control", placeholder = "Enter your phone number", style = "border-radius: 30px; " })
                         @Html.ValidationMessageFor(m => m.PhoneNumber, null, new { @class = "text-danger" })
                     </div>
 
                     <!-- Background Color -->
                     <div class="mb-3">
                         <label for="BackgroundColor" class="form-label fw-bold" style="color: #01baa3">Preferred Background Color</label>
-                        @Html.TextBoxFor(m => m.BackgroundColor, new { @class = "form - control", placeholder = "Choose a background color for your profile", style = "border - radius: 30px; " })
+                        @Html.TextBoxFor(m => m.BackgroundColor, new { @class = "form-control", placeholder = "Choose a background color for your profile", style = "border-radius: 30px; " })
                         @Html.ValidationMessageFor(m => m.BackgroundColor, null, new { @class = "text-danger" })
                     </div>
 

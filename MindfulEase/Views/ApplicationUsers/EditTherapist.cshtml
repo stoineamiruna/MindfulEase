@@ -40,7 +40,7 @@
                     <!-- Description -->
                     <div class="mb-3">
                         <label for="Description" class="form-label fw-bold" style="color: #01baa3">Tell us about your practice 𓂃🖊</label>
-                        @Html.EditorFor(m => m.Description, new { htmlAttributes = new { @class = "form - control", style = "height: 150px; border - radius: 30px; " } })
+                        @Html.EditorFor(m => m.Description, new { htmlAttributes = new { @class = "form-control", style = "height: 150px; border-radius: 30px; " } })
                         @Html.ValidationMessageFor(m => m.Description, null, new { @class = "text-danger" })
                     </div>
 
@@ -61,7 +61,7 @@
                     <!-- Studies -->
                     <div class="mb-3">
                         <label for="Studies" class="form-label fw-bold" style="color: #01baa3">Your Studies 📚</label>
-                        @Html.EditorFor(m => m.Studies, new { htmlAttributes = new { @class = "form - control", style = "border - radius: 30px; " } })
+                        @Html.EditorFor(m => m.Studies, new { htmlAttributes = new { @class = "form-control", style = "border-radius: 30px; " } })
                         @Html.ValidationMessageFor(m => m.Studies, null, new { @class = "text-danger" })
                     </div>
 
@@ -75,7 +75,7 @@
                     <!-- Background Color -->
                     <div class="mb-3">
                         <label for="BackgroundColor" class="form-label fw-bold" style="color: #01baa3">Preferred Background Color</label>
-                        @Html.EditorFor(m => m.BackgroundColor, new { htmlAttributes = new { @class = "form - control", style = "border - radius: 30px; " } })
+                        @Html.EditorFor(m => m.BackgroundColor, new { htmlAttributes = new { @class = "form-control", style = "border-radius: 30px; " } })
                         @Html.ValidationMessageFor(m => m.BackgroundColor, null, new { @class = "text-danger" })
                     </div>
                     <!-- Sex -->

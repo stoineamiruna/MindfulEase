@@ -29,7 +29,7 @@
                     <!-- First Name -->
                     <div class="mb-3">
                         <label for="FirstName" class="form-label fw-bold" style="color: #01baa3">First Name</label>
-                        @Html.EditorFor(m => m.FirstName, new { htmlAttributes = new { @class = "form - control", style = "border - radius: 30px; " } })
+                        @Html.EditorFor(m => m.FirstName, new { htmlAttributes = new { @class = "form-control", style = "border-radius: 30px; " } })
                         @Html.ValidationMessageFor(m => m.FirstName, null, new { @class = "text-danger" })
                     </div>
 
@@ -50,7 +50,7 @@
                     <!-- Birthday -->
                     <div class="mb-3">
                         <label for="Birthday" class="form-label fw-bold" style="color: #01baa3">Birthday 🎉</label>
-                        @Html.EditorFor(m => m.Birthday, new { htmlAttributes = new { @class = "form - control", style = "border - radius: 30px; " } })
+                        @Html.EditorFor(m => m.Birthday, new { htmlAttributes = new { @class = "form-control", style = "border-radius: 30px; " } })
                         @Html.ValidationMessageFor(m => m.Birthday, null, new { @class = "text-danger" })
                     </div>
 

@@ -38,10 +38,9 @@ namespace MindfulEase.Services
         }
 
 
-
+        /*
         private ITransformer BuildAndTrainModel(IDataView dataView)
         {
-            // Create a data preparation pipeline for all models
             var dataPrepPipeline = _mlContext.Transforms
                 .Concatenate("Features",
                     "Age", "Joy", "Sadness", "Anger", "Love", "Fear", "Surprise", "Disgust", "YearsSinceStart")
@@ -71,6 +70,8 @@ namespace MindfulEase.Services
             var model = pipeline.Fit(dataView);
             return model;
         }
+        */
+
         private float CalculateRSquared(List<float> actual, List<float> predicted)
         {
             var meanActual = actual.Average();
@@ -218,7 +219,7 @@ namespace MindfulEase.Services
 
             if (!File.Exists(_trainingDataPath))
             {
-                Console.WriteLine($"ERROR: Fișierul de training nu există la: {_trainingDataPath}");
+                Console.WriteLine($"ERROR: Fisierul de training nu exista la: {_trainingDataPath}");
                 return;
             }
 
@@ -239,7 +240,7 @@ namespace MindfulEase.Services
             var transformedTrain = dataPrepPipeline.Transform(trainData);
             var transformedTest = dataPrepPipeline.Transform(testData);
 
-            Console.WriteLine("Datele au fost prelucrate și împărțite în train/test.");
+            Console.WriteLine("Datele au fost prelucrate si impartite in train/test.");
 
             foreach (var region in _brainRegions)
             {
@@ -353,7 +354,7 @@ namespace MindfulEase.Services
             var pipelinePath = Path.Combine(_modelPath, "DataPrepPipeline.zip");
             if (!File.Exists(pipelinePath))
             {
-                Console.WriteLine("ERROR: DataPrepPipeline.zip nu a fost găsit.");
+                Console.WriteLine("ERROR: DataPrepPipeline.zip nu a fost gasit.");
                 return new BrainRegionPrediction();
             }
 
@@ -412,11 +413,11 @@ namespace MindfulEase.Services
     }
     public class RegionScore
     {
-        public float Score { get; set; }  // not used in metoda actuală, dar poate fi extinsă
+        public float Score { get; set; }  // not used in metoda actuala, dar poate fi extinsa
     }
     public class PredictionScore
     {
-        public float Score { get; set; } // aici ML.NET pune predicția by default
+        public float Score { get; set; } // aici ML.NET pune predictia by default
     }
 
 
