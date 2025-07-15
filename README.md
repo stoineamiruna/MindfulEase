@@ -1,25 +1,55 @@
-# MindfulEase
+# MindfulEase – Mental Health Support Platform
 
-## Descriere
+## Overview
 
-Dat fiind contextul actual, într-o eră în care avem acces la cele mai diverse resurse și tehnologii avansate, este îngrijorător faptul că observăm o creștere semnificativă a problemelor de sănătate mentală, cum ar fi depresia, anxietatea, burnout-ul și multe altele, la nivel global. Acest paradox nu ne arată doar complexitatea și fragilitatea umană, ci și necesitatea de a găsi noi soluții pentru a ne gestiona sănătatea psihologică, fiind la fel de importantă precum sănătatea fizică.
+MindfulEase is an interactive web platform designed to support mental health using modern technologies such as machine learning, affective neuroscience, and 3D visualization. Developed as part of a bachelor’s thesis, the platform addresses the increasing prevalence of emotional disorders by providing a personalized, educational framework that helps users understand and manage their emotional states.
 
-Astfel, un instrument util prin care putem avea grijă în mod conștient de sănătatea mentală este aplicația **MindfulEase**, o aplicație mobilă, destinată persoanelor din toate categoriile de vârstă, care ajută în dezvoltarea personală prin antrenarea rezistenței și cunoașterii emoționale. Aceasta are la bază o rutină personalizată în funcție de utilizator, punând la dispoziție materiale (descrieri, statistici, podcast-uri, link-uri utile), dar și o serie de task-uri/obiective de atins. 
+## Features
 
-Ca să nu devină o aplicație plictisitoare/obositoare și pentru a menține utilizatorul focusat pe termen cât mai lung, aceasta va avea la dispoziție mai multe funcționalități:
+- **Automated Emotion Analysis**  
+  Extracts and analyzes emotions from personal journal entries using a Python API based on the EmoLLMs NLP model.
 
-- **Stele și premii**: Fiecare obiectiv realizat duce la obținerea unor „stele” adunate și alte premii, prin care utilizatorul își poate vedea progresul la final de zi/săptămână/lună. Dacă aplicația este monetizată, progresul se poate transforma în cashback raportat la progres.
-  
-- **Jocuri și activități**: Aplicația pune la dispoziție joculețe mobile/activități și soluții pentru reducerea nivelurilor sentimentelor negative (stres, furie, anxietate). De exemplu, pentru perioadele stresante, este indicată meditația, iar pentru perioadele lipsite de activități care să necesite contribuție intelectuală (aceasta poate reduce nivelul de bunăstare emoțională), pot fi indicate joculețe intelectuale (sudoku, integrame, alte recomandări online) sau activități din viața de zi cu zi, care să aibă legătură cu domeniul de interes al utilizatorului.
+- **3D Brain Visualization**  
+  Visualizes emotional patterns within an interactive 3D brain model created in Blender and rendered with Three.js.
 
-- **Model 3D al creierului**: Pentru o conștientizare mai bună a punctului în care se situează utilizatorul, acesta va avea acces la un model 3D cu creierul său, în care se evidențiază experiențele emoționale și psihologice complexe (tulburări afective, cum ar fi anxietatea) prin utilizarea unei hărți de culori și nuanțe pentru a reprezenta regiunile cerebrale implicate. În plus, funcționalitatea se extinde la a vedea cum va arăta creierul unui utilizator peste X ani urmând o anumită rutină de activități. Prin atingerea punctelor de interes ale modelului 3D, utilizatorul poate afla informații legate de neuroștiință pentru a facilita cunoașterea acestuia.
+- **Predictive Modeling**  
+  Uses a FastForest regression model from ML.NET to generate predictions on how emotions potentially affect different brain regions.
 
-- **Statistici în timp real**: Pentru a crește nivelul de satisfacție personală și a spori interesul utilizatorilor în dezvoltarea lor, aplicația va oferi statistici în timp real cu privire la modul în care se situează utilizatorii și din ce procent fac parte, raportate la toți utilizatorii aplicației.
+- **Personalized Recommendations**  
+  Employs K-Means clustering to detect emotional patterns and KNN algorithms to suggest relevant resources.
 
-## Instalare
+- **Gamification System**  
+  Keeps users engaged through interactive challenges and digital rewards.
 
-Pentru a instala aplicația MindfulEase, urmează pașii de mai jos:
+## Technologies Used
 
-1. Clonează acest repository:
-   ```bash
-   git clone https://github.com/username/MindfulEase.git
+- **ASP.NET MVC**
+- **ML.NET** (FastForest Regression)
+- **Python API** (using EmoLLMs NLP model)
+- **Blender** (3D modeling)
+- **Three.js** (3D rendering and interactivity)
+- **K-Means Clustering & KNN Algorithms**
+
+## Contribution
+
+The project’s original contribution lies in integrating these diverse technologies into a unified, accessible, and scientifically grounded application. MindfulEase transforms emotional introspection into an interactive, engaging process that combines practical mental health tools with advanced visualization techniques.
+
+## Project Summary (Romanian)
+
+Această lucrare de licență are ca temă dezvoltarea aplicației **MindfulEase**, o platformă web interactivă realizată pentru a sprijini sănătatea mintală prin tehnologii moderne. Aplicația propune un cadru personalizat și educativ care facilitează înțelegerea și gestionarea stărilor afective, integrând:
+
+- Analiza automată a emoțiilor extrase din jurnalele personale
+- Vizualizarea 3D interactivă a creierului uman
+- Predicții privind impactul emoțiilor asupra regiunilor cerebrale (pe baza neuroștiinței afective)
+- Recomandări personalizate generate prin algoritmi de clusterizare (K-Means) și clasificare (KNN)
+- Sistem de gamificare pentru creșterea implicării utilizatorului
+
+Contribuția originală constă în dezvoltarea unei aplicații unitare și accesibile care promovează echilibrul psihic printr-o combinație între știință și interactivitate digitală.
+
+## License
+
+This project is part of an academic research project and is not licensed for commercial use without explicit permission.
+
+---
+
+Developed as part of the Bachelor's thesis by **me - Stoinea Maria-Miruna**.

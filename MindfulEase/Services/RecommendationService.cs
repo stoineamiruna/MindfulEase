@@ -19,7 +19,7 @@ public class RecommendationService
         if (user == null || user.ClusterId == null) return new List<Resource>();
 
         var clusterRoutine = _dbContext.Routines
-            .Include(r => r.Resources) // Include relația cu resursele
+            .Include(r => r.Resources) // Includem relatia cu resursele
             .FirstOrDefault(cr => cr.ClusterId == user.ClusterId);
 
         return clusterRoutine?.Resources ?? new List<Resource>();
@@ -32,7 +32,7 @@ public class RecommendationService
             throw new ArgumentException("Invalid user or resource ID");
         }
 
-        // Verifică dacă relația există deja
+        // Verificam daca relatia exista deja
         var existingUserResource = _dbContext.ApplicationUserResources
             .FirstOrDefault(ur => ur.UserId == userId && ur.ResourceId == resourceId);
 
@@ -54,35 +54,35 @@ public class RecommendationService
 
         _dbContext.SaveChanges();
 
-        // După ce s-a înregistrat feedback-ul, actualizăm rutina sau o creăm dacă nu există
+        // Dupa ce s-a inregistrat feedback-ul, actualizam rutina sau o cream daca nu exista
         UpdateRoutineForCluster(userId, resourceId);
     }
 
     private void UpdateRoutineForCluster(string userId, int resourceId)
     {
-        // Obținem ClusterId-ul utilizatorului
+        // Obtinem ClusterId-ul utilizatorului
         var user = _dbContext.ApplicationUsers.Find(userId);
         if (user == null || user.ClusterId == null) return;
 
         int clusterId = (int)user.ClusterId;
 
-        // Căutăm rutina asociată acestui ClusterId
+        // Cautam rutina asociata acestui ClusterId
         var routine = _dbContext.Routines
             .Include(r => r.Resources)
             .FirstOrDefault(r => r.ClusterId == clusterId);
 
-        // Obținem utilizatorii care au apreciat această resursă (like)
+        // Obtinem utilizatorii care au apreciat aceasta resursa (like)
         var usersThatLikedResource = _dbContext.ApplicationUserResources
             .Where(ur => ur.ResourceId == resourceId && ur.IsLiked == true)
             .Select(ur => ur.UserId)
             .ToList();
 
-        // Dacă utilizatorii au apreciat resursa, creăm sau actualizăm rutina
+        // Daca utilizatorii au apreciat resursa, cream sau actualizam rutina
         if (usersThatLikedResource.Any())
         {
             if (routine != null)
             {
-                // Adăugăm resursa în rutina respectivă, dacă nu există deja
+                // Adaugam resursa in rutina respectiva, daca nu exista deja
                 var resource = _dbContext.Resources.Find(resourceId);
                 if (resource != null && !routine.Resources.Contains(resource))
                 {
@@ -91,7 +91,7 @@ public class RecommendationService
             }
             else
             {
-                // Dacă rutina nu există, o creăm și o asociem cu ClusterId-ul
+                // Daca rutina nu exista, o cream si o asociem cu ClusterId-ul
                 routine = new Routine
                 {
                     ClusterId = clusterId,
@@ -105,7 +105,7 @@ public class RecommendationService
                 _dbContext.Routines.Add(routine);
             }
 
-            // Salvăm modificările în baza de date
+            // Salvam modificarile în baza de date
             _dbContext.SaveChanges();
         }
     }

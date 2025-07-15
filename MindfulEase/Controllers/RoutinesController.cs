@@ -164,8 +164,9 @@ public class RoutinesController : Controller
         }
     }
 
-    public IActionResult SeeMore(string section, string search)
+    public IActionResult SeeMore(string type, string search)
     {
+        string section = type;
         SetAccessRights();
         string userId = _userManager.GetUserId(User);
 
